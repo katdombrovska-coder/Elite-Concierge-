@@ -208,67 +208,6 @@
     .demo-card.is-live{box-shadow:0 0 0 2px var(--accent), var(--shadow-card)}
     .demo-status{margin-top:14px; font-size:13px; color:var(--ink-2); min-height:18px}
 
-    /* ===================== Sample call card ===================== */
-    .sample-card{
-      margin-top:18px;
-      display:grid; grid-template-columns:auto 1fr auto; gap:18px; align-items:center;
-      padding:16px 22px; background:#fff; border:1px solid var(--line);
-      border-radius:18px; box-shadow:0 1px 0 rgba(36,0,41,.03), 0 10px 30px -20px rgba(36,0,41,.15);
-    }
-    .sample-eq{display:flex; gap:3px; align-items:end; height:38px; width:120px}
-    .sample-eq span{
-      flex:1; background:linear-gradient(180deg, var(--accent), #ff6cb6);
-      border-radius:2px; height:30%;
-      animation:eq 1.1s ease-in-out infinite;
-    }
-    .sample-eq span:nth-child(1){animation-delay:0s}
-    .sample-eq span:nth-child(2){animation-delay:.08s}
-    .sample-eq span:nth-child(3){animation-delay:.16s}
-    .sample-eq span:nth-child(4){animation-delay:.24s}
-    .sample-eq span:nth-child(5){animation-delay:.32s}
-    .sample-eq span:nth-child(6){animation-delay:.40s}
-    .sample-eq span:nth-child(7){animation-delay:.48s}
-    .sample-eq span:nth-child(8){animation-delay:.56s}
-    .sample-eq span:nth-child(9){animation-delay:.64s}
-    .sample-eq span:nth-child(10){animation-delay:.72s}
-    .sample-eq span:nth-child(11){animation-delay:.80s}
-    .sample-eq span:nth-child(12){animation-delay:.88s}
-    .sample-eq span:nth-child(13){animation-delay:.96s}
-    .sample-eq span:nth-child(14){animation-delay:1.04s}
-    .sample-eq span:nth-child(15){animation-delay:.04s}
-    .sample-eq span:nth-child(16){animation-delay:.12s}
-    .sample-eq span:nth-child(17){animation-delay:.20s}
-    .sample-eq span:nth-child(18){animation-delay:.28s}
-    .sample-eq span:nth-child(19){animation-delay:.36s}
-    .sample-eq span:nth-child(20){animation-delay:.44s}
-    @keyframes eq{
-      0%, 100%{height:18%}
-      30%{height:90%}
-      60%{height:50%}
-      80%{height:75%}
-    }
-    .sample-mid{min-width:0; text-align:left}
-    .sample-meta{display:flex; align-items:center; gap:8px; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:600}
-    .sample-dot{width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 0 rgba(236,28,140,.6); animation:pulse 1.4s ease-out infinite}
-    @keyframes pulse{
-      0%{box-shadow:0 0 0 0 rgba(236,28,140,.55)}
-      70%{box-shadow:0 0 0 10px rgba(236,28,140,0)}
-      100%{box-shadow:0 0 0 0 rgba(236,28,140,0)}
-    }
-    .sample-caption{margin-top:6px; font-size:15px; color:var(--ink-2); font-weight:500; line-height:1.45; min-height:22px}
-    .sample-btn{
-      width:54px; height:54px; border-radius:50%;
-      background:var(--accent); color:#fff; border:none; cursor:pointer;
-      display:inline-flex; align-items:center; justify-content:center;
-      box-shadow:var(--shadow-pink);
-      transition:transform .18s ease, background-color .18s ease;
-    }
-    .sample-btn:hover{background:var(--accent-hov); transform:translateY(-2px)}
-    @media (max-width: 680px){
-      .sample-card{grid-template-columns:1fr auto; gap:14px; padding:14px 16px}
-      .sample-left{display:none}
-    }
-
     /* ===================== Marquee ===================== */
     .marquee{
       padding:24px 0 56px;
@@ -683,28 +622,6 @@
           <div class="demo-status" id="demo-status" aria-live="polite"></div>
           <div class="powered">Powered by Retell AI</div>
         </div>
-
-        <!-- ===================== LISTEN TO A REAL CALL ===================== -->
-        <div class="sample-card reveal" data-testid="sample-call-card">
-          <div class="sample-left">
-            <div class="sample-eq" aria-hidden="true" id="sample-eq">
-              <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-            </div>
-          </div>
-          <div class="sample-mid">
-            <div class="sample-caption" id="sample-caption" data-testid="sample-caption">Don't take our word for it. Hear an actual Elite Concierge agent on a real inbound call.</div>
-          </div>
-          <div class="sample-right">
-            <button class="sample-btn" id="sample-mute" aria-label="Unmute sample" data-testid="sample-mute-btn">
-              <svg class="ico-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-              <svg class="ico-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-            </button>
-          </div>
-          <audio id="sample-audio" preload="auto" autoplay muted loop playsinline data-testid="sample-audio">
-            <!-- Replace src with your real Elite Concierge call recording (place at /app/frontend/public/sample-call.mp3 or paste a URL). -->
-            <source src="https://cdn.jsdelivr.net/gh/rafaelreis-hotmart/Audio-Sample-files@master/sample.mp3" type="audio/mpeg"/>
-          </audio>
-        </div>
       </div>
     </section>
 
@@ -814,6 +731,11 @@
                   <option value="ecommerce">E-Commerce</option>
                   <option value="healthcare">Healthcare Clinic</option>
                   <option value="insurance">Insurance Broker</option>
+                  <option value="restaurant">Restaurant / Cafe</option>
+                  <option value="beauty">Beauty Salon / Spa</option>
+                  <option value="gym">Gym / Fitness Studio</option>
+                  <option value="property">Property Management</option>
+                  <option value="car-dealership">Car Dealership</option>
                 </select>
                 <svg class="calc-select-caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
               </div>
@@ -977,9 +899,8 @@
             </svg>
             <span>Elite Concierge</span>
           </div>
-          <p>AI Voice and Chat Agents for businesses that cannot afford to miss a call.</p>
+          <p>Always on. Never on hold. Never on payroll.</p>
           <div class="links">
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener" data-testid="footer-linkedin">LinkedIn →</a>
             <a href="mailto:eliteconcierge@outlook.com" data-testid="footer-email">eliteconcierge@outlook.com</a>
           </div>
         </div>
@@ -987,7 +908,7 @@
       <div class="rule"></div>
       <div class="bottom">
         <span>© 2025 Elite Concierge</span>
-        <span><a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a></span>
+        <span><a href="/privacy.html" data-testid="footer-privacy">Privacy</a> &nbsp;·&nbsp; <a href="/terms.html" data-testid="footer-terms">Terms</a></span>
       </div>
     </div>
   </footer>
@@ -1241,51 +1162,7 @@
       }
     });
 
-    // ---------- Sample call audio widget ----------
-    const sampleAudio   = document.getElementById("sample-audio");
-    const sampleBtn     = document.getElementById("sample-mute");
-    const sampleCaption = document.getElementById("sample-caption");
-    if (sampleAudio && sampleBtn && sampleCaption) {
-      const icoMuted   = sampleBtn.querySelector(".ico-muted");
-      const icoUnmuted = sampleBtn.querySelector(".ico-unmuted");
-
-      const CAPTIONS = [
-        { t: 0,  text: "Don't take our word for it. Hear an actual Elite Concierge agent on a real inbound call." },
-        { t: 4,  text: "Agent: \"Thanks for calling — how can I help you today?\"" },
-        { t: 9,  text: "Caller: \"Hi, I'd like to book an appointment for next Tuesday afternoon.\"" },
-        { t: 15, text: "Agent: \"Absolutely — let me pull up our calendar real quick.\"" },
-        { t: 20, text: "Agent: \"I have 2:30pm or 4pm — which works better?\"" },
-        { t: 25, text: "Caller: \"2:30 is perfect, thanks.\"" },
-        { t: 28, text: "Agent: \"Booked. You'll get a confirmation text in a moment.\"" },
-      ];
-
-      const setMuted = (muted) => {
-        sampleAudio.muted = muted;
-        icoMuted.style.display   = muted ? "" : "none";
-        icoUnmuted.style.display = muted ? "none" : "";
-        sampleBtn.setAttribute("aria-label", muted ? "Unmute sample" : "Mute sample");
-      };
-      setMuted(true);
-
-      sampleBtn.addEventListener("click", async () => {
-        const willUnmute = sampleAudio.muted;
-        setMuted(!willUnmute);
-        if (willUnmute) { try { await sampleAudio.play(); } catch (_) {} }
-      });
-
-      sampleAudio.addEventListener("timeupdate", () => {
-        const t = sampleAudio.currentTime % 30;
-        let current = CAPTIONS[0].text;
-        for (const c of CAPTIONS) { if (t >= c.t) current = c.text; }
-        if (sampleCaption.textContent !== current) sampleCaption.textContent = current;
-      });
-
-      sampleAudio.addEventListener("error", () => {
-        sampleCaption.textContent = "Sample call demo · book a live demo to hear our agents handle real calls.";
-        sampleBtn.style.opacity = "0.55";
-        sampleBtn.style.pointerEvents = "none";
-      });
-    }
+    // ---------- Sample call audio widget (removed in iteration 4) ----------
 
     // ---------- Revenue recovery calculator ----------
     const calcIndustry  = document.getElementById("calc-industry");
@@ -1308,7 +1185,12 @@
       "law":           { callsPerDay: 15, missedPct: 30, avgValue: 3500, closePct: 35 },
       "ecommerce":     { callsPerDay: 60, missedPct: 40, avgValue: 280,  closePct: 18 },
       "healthcare":    { callsPerDay: 30, missedPct: 33, avgValue: 900,  closePct: 45 },
-      "insurance":     { callsPerDay: 18, missedPct: 29, avgValue: 2200, closePct: 28 },
+      "insurance":      { callsPerDay: 18, missedPct: 29, avgValue: 2200, closePct: 28 },
+      "restaurant":     { callsPerDay: 35, missedPct: 40, avgValue: 120,  closePct: 40 },
+      "beauty":         { callsPerDay: 20, missedPct: 35, avgValue: 180,  closePct: 50 },
+      "gym":            { callsPerDay: 15, missedPct: 30, avgValue: 600,  closePct: 35 },
+      "property":       { callsPerDay: 25, missedPct: 28, avgValue: 1800, closePct: 30 },
+      "car-dealership": { callsPerDay: 30, missedPct: 32, avgValue: 3200, closePct: 22 },
     };
 
     const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
