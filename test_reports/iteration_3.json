@@ -1,0 +1,34 @@
+{
+  "summary": "Iteration 3 verification of Elite Concierge — 6 small markup/JS changes. Backend: 18/18 pytest cases pass (no regressions on /api/health, /api/contact validation+intent normalization+honeypot+IP rate limit, /api/contacts list, /api/create-web-call). Frontend: 'Recover This Revenue' button has correct text and opens contact modal with title 'Book a free strategy call.' (strategy intent). Sample call card has 0 .sample-meta/.sample-label nodes; caption text preserved; mute button [data-testid='sample-mute-btn'] toggles audio.muted (true→false confirmed). Industry dropdown #calc-industry visible above missed-calls slider with label 'I run a…' and default option 'Select your industry'; styled with border-radius:12px, background:rgb(255,247,235) (#fff7eb). 6 of 7 industry presets correctly fill sliders (real-estate, dental, home-services, law, healthcare, insurance) — but ecommerce preset sets calc-value to 300 instead of expected 280 because the #calc-value range input has step=50 and snaps 280→300. Annual recompute confirmed: real-estate→$4.2M, dental→$1.5M. Manual slider adjustment after preset re-runs calc (verified by changing missed to 150 after dental preset → annual changed $1.5M→$3.7M). Selecting default option leaves sliders unchanged. All 8 desktop Calendly anchors (nav-cta-sales, nav-cta-demo, hero-cta-demo, plan-voice-cta, plan-chat-cta, plan-full-cta, pricing-strategy-cta, strip-cta-strategy) are <a> with href='https://calendly.com/dombrovskakate/30min', target='_blank', rel='noopener noreferrer', and no data-intent. Clicking nav-cta-demo does NOT open contact modal. Footer email [data-testid='footer-email'] is mailto:eliteconcierge@outlook.com with visible text 'eliteconcierge@outlook.com'; old 'hello@eliteconcierge.ai' string is absent from rendered HTML. strip-cta-message → modal title 'Send us a message.'; footer-contact → modal 'Send us a message.'; calc-cta → modal 'Book a free strategy call.' Mobile (420x820): hamburger opens drawer (.nav-drawer.open), both mobile-cta-sales and mobile-cta-demo are calendly anchors with target=_blank; clicking mobile-cta-demo closes the drawer. Zero JS errors on page load + reload.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "Industry preset (ecommerce)", "issue": "Selecting 'E-Commerce' fills calc-value to 300 instead of the spec'd 280. Root cause: #calc-value range input has step=50 (line 836 index.html: min=50 max=10000 step=50). When JS assigns slider.value=280, the browser snaps it to the nearest valid step (300). All 6 other presets (real-estate 4500, dental 1200, home-services 850, law 3500, healthcare 900, insurance 2200) are multiples of 50 so they land exactly. The displayed Annual figure is therefore slightly higher than spec'd ecommerce target. Fix: either change ecommerce avgValue to 300 (multiple of 50) at line 1309, or reduce step to 10 on #calc-value so 280 is reachable.", "selector": "#calc-industry option[value='ecommerce'] / #calc-value", "priority": "MEDIUM"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_elite_concierge.py",
+    "/app/test_reports/pytest/iteration_3_pytest.xml"
+  ],
+  "action_items": [
+    "Fix ecommerce preset: change INDUSTRY_PRESETS['ecommerce'].avgValue from 280 → 300 in /app/frontend/public/index.html line 1309 (simplest), OR change #calc-value step from 50 to 10 (also widens overall slider precision). Recommend bumping avgValue to 300 to stay within the existing slider granularity."
+  ],
+  "critical_code_review_comments": [
+    "Range slider step (#calc-value step=50) silently rounds preset values. Either align preset avgValue to a multiple of the step (preferred — quickest) or reduce step granularity. Today only ecommerce trips it, but any future preset must be a multiple of 50.",
+    "index.html is ~1400 lines now — single-file monolith remains maintainable but is approaching the soft limit where splitting calc/sample/contact JS into separate files would help.",
+    "Calendly anchors retain the original button styling classes (.btn, .btn-primary, etc.) — verified visually identical to iteration 2 buttons. Good drop-in replacement."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (18/18)", "frontend": "94% (16/17 spec checks — ecommerce preset value off by one step)"},
+  "test_credentials": "N/A (no auth)",
+  "seed_data_creation": "~10 TEST_-prefixed contact docs created in MongoDB during pytest run (each with unique synthetic X-Forwarded-For IP). No hp- prefixed docs persisted.",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Backend rate limiter is in-memory — keep using unique X-Forwarded-For per test (see fresh_ip_headers fixture). The #calc-value slider has step=50 — any future industry preset whose avgValue is not a multiple of 50 will silently snap. After main agent fix, just rerun the desktop industry preset loop to confirm ecommerce returns value=300 (or =280 if step is reduced).",
+  "rca of the issue": "Single bug found. RCA: HTML <input type='range' id='calc-value' min='50' max='10000' step='50'>. JS assigns calcValue.value = 280 in selectIndustry handler (~line 1370). Browsers normalize range input.value to nearest step from min: floor((280-50)/50)*50+50 = floor(4.6)*50+50 = 200+50 = 250; or round((280-50)/50)*50+50 = 5*50+50 = 300 — Chrome rounds, so output is 300. Reproduction: open page, select 'E-Commerce' in #calc-industry, observe #calc-value-out shows $300 and #calc-value.value is 300. Mitigation: change preset value to 300 (multiple of 50) OR change slider step to 10/25."
+}

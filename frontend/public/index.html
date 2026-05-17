@@ -368,6 +368,23 @@
       font-family:'Bricolage Grotesque', serif; font-weight:700;
       font-size:24px; color:var(--ink); letter-spacing:-.01em;
     }
+    /* Industry select — styled to match input fields */
+    .calc-select-wrap{position:relative; margin-top:6px}
+    .calc-field-industry select{
+      -webkit-appearance:none; appearance:none;
+      width:100%; padding:12px 40px 12px 14px;
+      border-radius:12px; border:1px solid var(--line); background:#fff7eb;
+      font-family:inherit; font-size:14.5px; color:var(--ink);
+      font-weight:500; cursor:pointer; outline:none;
+      transition:border-color .18s ease, background-color .18s ease;
+    }
+    .calc-field-industry select:focus,
+    .calc-field-industry select:hover{border-color:var(--accent); background:#fff}
+    .calc-field-industry select:invalid{color:var(--muted)}
+    .calc-select-caret{
+      position:absolute; right:14px; top:50%; transform:translateY(-50%);
+      pointer-events:none; color:var(--muted);
+    }
     .calc-range-marks{
       display:flex; justify-content:space-between; margin-top:6px;
       font-size:11px; color:var(--muted); letter-spacing:.04em;
@@ -605,8 +622,8 @@
         <a href="#pricing" data-testid="nav-link-pricing">Pricing</a>
       </nav>
       <div class="nav-cta">
-        <button class="btn btn-ghost" data-intent="sales" data-testid="nav-cta-sales">Talk to Sales</button>
-        <button class="btn btn-primary" data-intent="demo" data-testid="nav-cta-demo">Book a Demo</button>
+        <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="nav-cta-sales">Talk to Sales</a>
+        <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="nav-cta-demo">Book a Demo</a>
         <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" data-testid="nav-burger">
           <span></span><span></span><span></span>
         </button>
@@ -618,8 +635,8 @@
         <a href="#how" class="nav-drawer-link" data-testid="mobile-link-how">How it Works</a>
         <a href="#features" class="nav-drawer-link" data-testid="mobile-link-features">Features</a>
         <a href="#pricing" class="nav-drawer-link" data-testid="mobile-link-pricing">Pricing</a>
-        <button class="btn btn-ghost" data-intent="sales" data-testid="mobile-cta-sales">Talk to Sales</button>
-        <button class="btn btn-primary" data-intent="demo" data-testid="mobile-cta-demo">Book a Demo</button>
+        <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="mobile-cta-sales">Talk to Sales</a>
+        <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="mobile-cta-demo">Book a Demo</a>
       </div>
     </div>
   </header>
@@ -639,7 +656,7 @@
           Elite Concierge picks up every call, replies on every channel, and books every appointment — so you never lose another <b>call</b>, <b>lead</b>, or <b>appointment</b> to a missed message again.
         </p>
         <div class="hero-ctas reveal">
-          <button class="btn btn-primary btn-lg btn-arrow" data-intent="demo" data-testid="hero-cta-demo">Book a Demo Call</button>
+          <a class="btn btn-primary btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="hero-cta-demo">Book a Demo Call</a>
           <button class="btn btn-ghost btn-lg" id="hero-hear-it" data-testid="hero-cta-hear">Hear It in Action</button>
         </div>
         <div class="chips reveal">
@@ -675,10 +692,6 @@
             </div>
           </div>
           <div class="sample-mid">
-            <div class="sample-meta">
-              <span class="sample-dot"></span>
-              <span class="sample-label">Live recording · inbound call · 0:30</span>
-            </div>
             <div class="sample-caption" id="sample-caption" data-testid="sample-caption">Don't take our word for it. Hear an actual Elite Concierge agent on a real inbound call.</div>
           </div>
           <div class="sample-right">
@@ -787,6 +800,25 @@
 
         <div class="calc reveal" data-testid="calc">
           <div class="calc-form" data-testid="calc-form">
+            <div class="calc-field calc-field-industry">
+              <div class="calc-field-head">
+                <label for="calc-industry">I run a&hellip;</label>
+              </div>
+              <div class="calc-select-wrap">
+                <select id="calc-industry" data-testid="calc-industry">
+                  <option value="">Select your industry</option>
+                  <option value="real-estate">Real Estate Agency</option>
+                  <option value="dental">Dental Practice</option>
+                  <option value="home-services">Home Services</option>
+                  <option value="law">Law Firm</option>
+                  <option value="ecommerce">E-Commerce</option>
+                  <option value="healthcare">Healthcare Clinic</option>
+                  <option value="insurance">Insurance Broker</option>
+                </select>
+                <svg class="calc-select-caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+
             <div class="calc-field">
               <div class="calc-field-head">
                 <label for="calc-missed">Missed calls per week</label>
@@ -830,7 +862,7 @@
               <div class="calc-result-sub">
                 That's roughly <b><span id="calc-monthly" data-testid="calc-monthly">$6,500</span></b> a month walking past your front door.
               </div>
-              <button class="btn btn-primary btn-lg btn-arrow" data-intent="strategy" data-testid="calc-cta" style="margin-top:22px">Stop the bleeding</button>
+              <button class="btn btn-primary btn-lg btn-arrow" data-intent="strategy" data-testid="calc-cta" style="margin-top:22px">Recover This Revenue</button>
             </div>
           </div>
         </div>
@@ -857,7 +889,7 @@
               <li>Transcripts, summaries, SMS follow-ups</li>
               <li>Weekly tuning included</li>
             </ul>
-            <button class="btn btn-ghost" data-intent="quote" data-testid="plan-voice-cta">Get a Quote</button>
+            <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-voice-cta">Get a Quote</a>
           </div>
 
           <div class="price-card featured reveal" data-testid="plan-chat">
@@ -871,7 +903,7 @@
               <li>Handoff to your team in Slack or email</li>
               <li>Auto QA & weekly tuning</li>
             </ul>
-            <button class="btn btn-primary" data-intent="quote" data-testid="plan-chat-cta">Get a Quote</button>
+            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-chat-cta">Get a Quote</a>
           </div>
 
           <div class="price-card reveal" data-testid="plan-full">
@@ -884,14 +916,14 @@
               <li>SOC 2 / HIPAA / GDPR compliance pack</li>
               <li>Dedicated success engineer</li>
             </ul>
-            <button class="btn btn-ghost" data-intent="quote" data-testid="plan-full-cta">Get a Quote</button>
+            <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-full-cta">Get a Quote</a>
           </div>
         </div>
 
         <div class="pricing-foot reveal">
           <span class="scribble">not sure which fits?</span>
           <p>15 minutes on the phone and we'll tell you straight up which surface will move the needle first — and which one to skip for now.</p>
-          <button class="btn btn-primary btn-lg big-cta" data-intent="strategy" data-testid="pricing-strategy-cta">Book Your Free Strategy Call</button>
+          <a class="btn btn-primary btn-lg big-cta" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="pricing-strategy-cta">Book Your Free Strategy Call</a>
         </div>
       </div>
     </section>
@@ -903,7 +935,7 @@
           <h2>Ready to Never Miss<br/>Another Call?</h2>
           <p>Join businesses cutting call handling costs by 80 percent while answering every inbound — voice, chat, after hours, in 31 languages.</p>
           <div class="row">
-            <button class="btn btn-light btn-lg" data-intent="strategy" data-testid="strip-cta-strategy">Book a Strategy Call</button>
+            <a class="btn btn-light btn-lg" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="strip-cta-strategy">Book a Strategy Call</a>
             <button class="btn btn-outline-light btn-lg" data-intent="message" data-testid="strip-cta-message">Send a Message</button>
           </div>
         </div>
@@ -948,7 +980,7 @@
           <p>AI Voice and Chat Agents for businesses that cannot afford to miss a call.</p>
           <div class="links">
             <a href="https://www.linkedin.com" target="_blank" rel="noopener" data-testid="footer-linkedin">LinkedIn →</a>
-            <a href="mailto:hello@eliteconcierge.ai" data-testid="footer-email">hello@eliteconcierge.ai</a>
+            <a href="mailto:eliteconcierge@outlook.com" data-testid="footer-email">eliteconcierge@outlook.com</a>
           </div>
         </div>
       </div>
@@ -1256,6 +1288,7 @@
     }
 
     // ---------- Revenue recovery calculator ----------
+    const calcIndustry  = document.getElementById("calc-industry");
     const calcMissed    = document.getElementById("calc-missed");
     const calcValue     = document.getElementById("calc-value");
     const calcClose     = document.getElementById("calc-close");
@@ -1265,6 +1298,20 @@
     const calcAnnual    = document.getElementById("calc-annual");
     const calcMonthly   = document.getElementById("calc-monthly");
     const RECOVERY      = 0.80;
+
+    // Industry presets: callsPerDay × (missedPct/100) × 7 = missed_per_week.
+    // closePct is an industry-typical default so all 3 sliders auto-fill.
+    const INDUSTRY_PRESETS = {
+      "real-estate":   { callsPerDay: 40, missedPct: 32, avgValue: 4500, closePct: 25 },
+      "dental":        { callsPerDay: 25, missedPct: 35, avgValue: 1200, closePct: 50 },
+      "home-services": { callsPerDay: 20, missedPct: 28, avgValue: 850,  closePct: 55 },
+      "law":           { callsPerDay: 15, missedPct: 30, avgValue: 3500, closePct: 35 },
+      "ecommerce":     { callsPerDay: 60, missedPct: 40, avgValue: 280,  closePct: 18 },
+      "healthcare":    { callsPerDay: 30, missedPct: 33, avgValue: 900,  closePct: 45 },
+      "insurance":     { callsPerDay: 18, missedPct: 29, avgValue: 2200, closePct: 28 },
+    };
+
+    const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
 
     const fmtMoney = (n) => {
       const v = Math.round(n);
@@ -1316,6 +1363,17 @@
       el.addEventListener("input", recompute);
       setRangeFill(el);
     });
+
+    calcIndustry.addEventListener("change", () => {
+      const p = INDUSTRY_PRESETS[calcIndustry.value];
+      if (!p) return;
+      const missedPerWeek = Math.round(p.callsPerDay * (p.missedPct / 100) * 7);
+      calcMissed.value = clamp(missedPerWeek, Number(calcMissed.min), Number(calcMissed.max));
+      calcValue.value  = clamp(p.avgValue,    Number(calcValue.min),  Number(calcValue.max));
+      calcClose.value  = clamp(p.closePct,    Number(calcClose.min),  Number(calcClose.max));
+      recompute();
+    });
+
     recompute();
   </script>
 </body>
