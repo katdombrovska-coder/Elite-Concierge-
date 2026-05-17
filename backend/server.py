@@ -10,13 +10,15 @@ from __future__ import annotations
 
 import logging
 import os
+import time
 import uuid
+from collections import deque
 from datetime import datetime, timezone
-from typing import Optional
+from typing import Deque, Dict, Optional
 
 import httpx
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel, EmailStr, Field
@@ -57,6 +59,8 @@ class ContactIn(BaseModel):
     phone: Optional[str] = Field(default="", max_length=40)
     message: Optional[str] = Field(default="", max_length=4000)
     intent: str = Field(default="message")
+    # Honeypot — real users never see/fill this. Bots fill all fields.
+    website: Optional[str] = Field(default="", max_length=200)
 
 
 class ContactOut(BaseModel):
@@ -76,6 +80,31 @@ class CreateCallOut(BaseModel):
 
 
 # ---------- Helpers ----------
+
+# In-memory rate limiter: max 3 contact submissions per IP per hour.
+RATE_LIMIT_MAX = 3
+RATE_LIMIT_WINDOW_SEC = 3600
+_contact_hits: Dict[str, Deque[float]] = {}
+
+
+def _client_ip(request: Request) -> str:
+    fwd = request.headers.get("x-forwarded-for")
+    if fwd:
+        return fwd.split(",")[0].strip()
+    return request.client.host if request.client else "unknown"
+
+
+def _rate_limited(ip: str) -> bool:
+    now = time.time()
+    cutoff = now - RATE_LIMIT_WINDOW_SEC
+    bucket = _contact_hits.setdefault(ip, deque(maxlen=RATE_LIMIT_MAX * 4))
+    while bucket and bucket[0] < cutoff:
+        bucket.popleft()
+    if len(bucket) >= RATE_LIMIT_MAX:
+        return True
+    bucket.append(now)
+    return False
+
 
 def _to_out(doc: dict) -> ContactOut:
     return ContactOut(
@@ -101,7 +130,25 @@ async def health():
 
 
 @app.post("/api/contact", response_model=ContactOut, status_code=201)
-async def create_contact(payload: ContactIn):
+async def create_contact(payload: ContactIn, request: Request):
+    # Honeypot — silently pretend success so bots don't retry.
+    if payload.website and payload.website.strip():
+        logger.info("honeypot hit ip=%s email=%s", _client_ip(request), payload.email)
+        return ContactOut(
+            id="hp-" + uuid.uuid4().hex[:8],
+            name=payload.name, email=payload.email,
+            company=payload.company or "", phone=payload.phone or "",
+            message=payload.message or "", intent="message",
+            created_at=datetime.now(timezone.utc).isoformat(),
+        )
+
+    ip = _client_ip(request)
+    if _rate_limited(ip):
+        raise HTTPException(
+            status_code=429,
+            detail=f"Too many submissions. Limit is {RATE_LIMIT_MAX} per hour.",
+        )
+
     intent = payload.intent if payload.intent in VALID_INTENTS else "message"
     doc = {
         "id": str(uuid.uuid4()),
@@ -112,9 +159,10 @@ async def create_contact(payload: ContactIn):
         "message": (payload.message or "").strip(),
         "intent": intent,
         "created_at": datetime.now(timezone.utc).isoformat(),
+        "ip": ip,
     }
     await db.contacts.insert_one(doc)
-    logger.info("contact stored intent=%s email=%s", intent, payload.email)
+    logger.info("contact stored intent=%s email=%s ip=%s", intent, payload.email, ip)
     return _to_out(doc)
 
 

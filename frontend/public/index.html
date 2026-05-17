@@ -117,7 +117,40 @@
     @media (max-width: 900px){
       .nav-links{display:none}
       .nav-cta .btn-ghost{display:none}
+      .nav-burger{display:inline-flex !important}
     }
+
+    /* Mobile hamburger button */
+    .nav-burger{
+      display:none; width:42px; height:42px; padding:0;
+      border-radius:var(--radius-pill); background:transparent;
+      border:1px solid var(--ink); cursor:pointer;
+      align-items:center; justify-content:center; gap:4px; flex-direction:column;
+      transition:background-color .18s ease;
+    }
+    .nav-burger:hover{background:rgba(36,0,41,.06)}
+    .nav-burger span{
+      display:block; width:18px; height:2px; background:var(--ink); border-radius:2px;
+      transition:transform .25s ease, opacity .2s ease;
+    }
+    .nav-burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+    .nav-burger.open span:nth-child(2){opacity:0}
+    .nav-burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+    /* Mobile drawer */
+    .nav-drawer{
+      display:none;
+      background:rgba(255,247,235,.96); backdrop-filter:saturate(140%) blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-drawer.open{display:block}
+    .nav-drawer .wrap{display:flex; flex-direction:column; gap:14px; padding-top:18px; padding-bottom:22px}
+    .nav-drawer-link{
+      font-size:18px; color:var(--ink); font-weight:600;
+      padding:10px 0; border-bottom:1px solid var(--line);
+    }
+    .nav-drawer-link:hover{color:var(--accent)}
+    .nav-drawer .btn{justify-content:center; margin-top:4px}
 
     /* ===================== Hero ===================== */
     .hero{padding:80px 0 40px}
@@ -173,6 +206,67 @@
     .demo-card .powered{margin-top:18px; font-size:12px; color:var(--muted); letter-spacing:.04em}
     .demo-card.is-live{box-shadow:0 0 0 2px var(--accent), var(--shadow-card)}
     .demo-status{margin-top:14px; font-size:13px; color:var(--ink-2); min-height:18px}
+
+    /* ===================== Sample call card ===================== */
+    .sample-card{
+      margin-top:18px;
+      display:grid; grid-template-columns:auto 1fr auto; gap:18px; align-items:center;
+      padding:16px 22px; background:#fff; border:1px solid var(--line);
+      border-radius:18px; box-shadow:0 1px 0 rgba(36,0,41,.03), 0 10px 30px -20px rgba(36,0,41,.15);
+    }
+    .sample-eq{display:flex; gap:3px; align-items:end; height:38px; width:120px}
+    .sample-eq span{
+      flex:1; background:linear-gradient(180deg, var(--accent), #ff6cb6);
+      border-radius:2px; height:30%;
+      animation:eq 1.1s ease-in-out infinite;
+    }
+    .sample-eq span:nth-child(1){animation-delay:0s}
+    .sample-eq span:nth-child(2){animation-delay:.08s}
+    .sample-eq span:nth-child(3){animation-delay:.16s}
+    .sample-eq span:nth-child(4){animation-delay:.24s}
+    .sample-eq span:nth-child(5){animation-delay:.32s}
+    .sample-eq span:nth-child(6){animation-delay:.40s}
+    .sample-eq span:nth-child(7){animation-delay:.48s}
+    .sample-eq span:nth-child(8){animation-delay:.56s}
+    .sample-eq span:nth-child(9){animation-delay:.64s}
+    .sample-eq span:nth-child(10){animation-delay:.72s}
+    .sample-eq span:nth-child(11){animation-delay:.80s}
+    .sample-eq span:nth-child(12){animation-delay:.88s}
+    .sample-eq span:nth-child(13){animation-delay:.96s}
+    .sample-eq span:nth-child(14){animation-delay:1.04s}
+    .sample-eq span:nth-child(15){animation-delay:.04s}
+    .sample-eq span:nth-child(16){animation-delay:.12s}
+    .sample-eq span:nth-child(17){animation-delay:.20s}
+    .sample-eq span:nth-child(18){animation-delay:.28s}
+    .sample-eq span:nth-child(19){animation-delay:.36s}
+    .sample-eq span:nth-child(20){animation-delay:.44s}
+    @keyframes eq{
+      0%, 100%{height:18%}
+      30%{height:90%}
+      60%{height:50%}
+      80%{height:75%}
+    }
+    .sample-mid{min-width:0; text-align:left}
+    .sample-meta{display:flex; align-items:center; gap:8px; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:600}
+    .sample-dot{width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 0 rgba(236,28,140,.6); animation:pulse 1.4s ease-out infinite}
+    @keyframes pulse{
+      0%{box-shadow:0 0 0 0 rgba(236,28,140,.55)}
+      70%{box-shadow:0 0 0 10px rgba(236,28,140,0)}
+      100%{box-shadow:0 0 0 0 rgba(236,28,140,0)}
+    }
+    .sample-caption{margin-top:6px; font-size:15px; color:var(--ink-2); font-weight:500; line-height:1.45; min-height:22px}
+    .sample-btn{
+      width:54px; height:54px; border-radius:50%;
+      background:var(--accent); color:#fff; border:none; cursor:pointer;
+      display:inline-flex; align-items:center; justify-content:center;
+      box-shadow:var(--shadow-pink);
+      transition:transform .18s ease, background-color .18s ease;
+    }
+    .sample-btn:hover{background:var(--accent-hov); transform:translateY(-2px)}
+    @media (max-width: 680px){
+      .sample-card{grid-template-columns:1fr auto; gap:14px; padding:14px 16px}
+      .sample-left{display:none}
+    }
 
     /* ===================== Marquee ===================== */
     .marquee{
@@ -255,18 +349,90 @@
       .feat:last-child{border-bottom:none !important}
     }
 
-    /* ===================== Stats ===================== */
-    .stats{
-      display:grid; grid-template-columns:repeat(4, 1fr); gap:32px;
-      padding-top:8px;
+    /* ===================== Revenue Calculator ===================== */
+    .calc{
+      display:grid; grid-template-columns:1.05fr 1fr; gap:24px; align-items:stretch;
     }
-    .stat .big{
+    @media (max-width: 900px){ .calc{grid-template-columns:1fr} }
+    .calc-form{
+      background:#fff; border:1px solid var(--line); border-radius:24px;
+      padding:36px 30px; box-shadow:var(--shadow-card);
+      display:flex; flex-direction:column; gap:28px;
+    }
+    .calc-field-head{
+      display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px;
+    }
+    .calc-field label{font-size:14px; color:var(--ink-2); font-weight:600}
+    .calc-field output{
+      font-family:'Bricolage Grotesque', serif; font-weight:700;
+      font-size:24px; color:var(--ink); letter-spacing:-.01em;
+    }
+    .calc-range-marks{
+      display:flex; justify-content:space-between; margin-top:6px;
+      font-size:11px; color:var(--muted); letter-spacing:.04em;
+    }
+    /* Range slider styling */
+    .calc-field input[type=range]{
+      -webkit-appearance:none; appearance:none; width:100%; height:6px; background:transparent; outline:none;
+    }
+    .calc-field input[type=range]::-webkit-slider-runnable-track{
+      height:6px; border-radius:6px;
+      background:linear-gradient(90deg, var(--accent) 0%, var(--accent) var(--p,15%), #f4d9e5 var(--p,15%), #f4d9e5 100%);
+    }
+    .calc-field input[type=range]::-moz-range-track{
+      height:6px; border-radius:6px;
+      background:linear-gradient(90deg, var(--accent) 0%, var(--accent) var(--p,15%), #f4d9e5 var(--p,15%), #f4d9e5 100%);
+    }
+    .calc-field input[type=range]::-webkit-slider-thumb{
+      -webkit-appearance:none; appearance:none;
+      width:22px; height:22px; border-radius:50%;
+      background:#fff; border:3px solid var(--accent);
+      margin-top:-8px; cursor:pointer;
+      box-shadow:0 4px 10px -2px rgba(236,28,140,.5);
+      transition:transform .15s ease;
+    }
+    .calc-field input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.12)}
+    .calc-field input[type=range]::-moz-range-thumb{
+      width:18px; height:18px; border-radius:50%;
+      background:#fff; border:3px solid var(--accent); cursor:pointer;
+      box-shadow:0 4px 10px -2px rgba(236,28,140,.5);
+    }
+    .calc-assumption{
+      margin-top:auto; padding-top:18px; border-top:1px solid var(--line);
+      font-size:13px; color:var(--muted); line-height:1.5;
+    }
+    .calc-assumption b{color:var(--ink-2)}
+
+    .calc-result{
+      position:relative; border-radius:24px; overflow:hidden;
+      background:var(--ink); color:#fff;
+      padding:40px 32px;
+      display:flex; align-items:center; justify-content:flex-start;
+      min-height:340px;
+      box-shadow:0 30px 60px -30px rgba(36,0,41,.5);
+    }
+    .calc-result-bg{
+      position:absolute; inset:0; pointer-events:none;
+      background:
+        radial-gradient(380px 280px at 110% -10%, rgba(236,28,140,.55), transparent 60%),
+        radial-gradient(380px 280px at -10% 110%, rgba(255,108,182,.4), transparent 60%);
+    }
+    .calc-result-inner{position:relative; z-index:1; max-width:100%}
+    .calc-result-label{
+      font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+      color:rgba(255,255,255,.65); font-weight:700;
+    }
+    .calc-result-big{
       font-family:'Bricolage Grotesque', serif; font-weight:800;
-      font-size:clamp(48px, 6vw, 76px); color:var(--ink);
-      letter-spacing:-.03em; line-height:1;
+      font-size:clamp(48px, 7vw, 84px); line-height:1; letter-spacing:-.03em;
+      margin-top:12px; color:#fff;
+      display:flex; align-items:baseline; flex-wrap:wrap; gap:10px;
     }
-    .stat .desc{margin-top:10px; color:var(--muted); font-size:14px; max-width:24ch}
-    @media (max-width: 800px){ .stats{grid-template-columns:repeat(2, 1fr); gap:28px} }
+    .calc-result-unit{font-size:.32em; color:rgba(255,255,255,.7); font-weight:600; letter-spacing:.04em}
+    .calc-result-sub{
+      margin-top:18px; color:rgba(255,255,255,.78); font-size:16px; line-height:1.55; max-width:38ch;
+    }
+    .calc-result-sub b{color:#fff}
 
     /* ===================== Pricing ===================== */
     .price-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; align-items:stretch}
@@ -409,6 +575,9 @@
     .modal .ok-msg{display:none; padding:14px; background:#fff1f7; color:var(--accent); border-radius:12px; font-size:14px; font-weight:600}
     .modal .err-msg{display:none; padding:14px; background:#fde8e8; color:#9b1c1c; border-radius:12px; font-size:14px}
 
+    /* Honeypot — visually + a11y-hidden, but kept in tab order off */
+    .hp{position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden}
+
   </style>
 </head>
 <body>
@@ -437,6 +606,19 @@
       <div class="nav-cta">
         <button class="btn btn-ghost" data-intent="sales" data-testid="nav-cta-sales">Talk to Sales</button>
         <button class="btn btn-primary" data-intent="demo" data-testid="nav-cta-demo">Book a Demo</button>
+        <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" data-testid="nav-burger">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu drawer -->
+    <div class="nav-drawer" id="nav-drawer" data-testid="nav-drawer" aria-hidden="true">
+      <div class="wrap">
+        <a href="#how" class="nav-drawer-link" data-testid="mobile-link-how">How it Works</a>
+        <a href="#features" class="nav-drawer-link" data-testid="mobile-link-features">Features</a>
+        <a href="#pricing" class="nav-drawer-link" data-testid="mobile-link-pricing">Pricing</a>
+        <button class="btn btn-ghost" data-intent="sales" data-testid="mobile-cta-sales">Talk to Sales</button>
+        <button class="btn btn-primary" data-intent="demo" data-testid="mobile-cta-demo">Book a Demo</button>
       </div>
     </div>
   </header>
@@ -482,6 +664,32 @@
           </div>
           <div class="demo-status" id="demo-status" aria-live="polite"></div>
           <div class="powered">Powered by Retell AI</div>
+        </div>
+
+        <!-- ===================== LISTEN TO A REAL CALL ===================== -->
+        <div class="sample-card reveal" data-testid="sample-call-card">
+          <div class="sample-left">
+            <div class="sample-eq" aria-hidden="true" id="sample-eq">
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="sample-mid">
+            <div class="sample-meta">
+              <span class="sample-dot"></span>
+              <span class="sample-label">Live recording · inbound call · 0:30</span>
+            </div>
+            <div class="sample-caption" id="sample-caption" data-testid="sample-caption">Don't take our word for it. Hear an actual Elite Concierge agent on a real inbound call.</div>
+          </div>
+          <div class="sample-right">
+            <button class="sample-btn" id="sample-mute" aria-label="Unmute sample" data-testid="sample-mute-btn">
+              <svg class="ico-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+              <svg class="ico-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            </button>
+          </div>
+          <audio id="sample-audio" preload="auto" autoplay muted loop playsinline data-testid="sample-audio">
+            <!-- Replace src with your real Elite Concierge call recording (place at /app/frontend/public/sample-call.mp3 or paste a URL). -->
+            <source src="https://cdn.jsdelivr.net/gh/rafaelreis-hotmart/Audio-Sample-files@master/sample.mp3" type="audio/mpeg"/>
+          </audio>
         </div>
       </div>
     </section>
@@ -567,28 +775,62 @@
       </div>
     </section>
 
-    <!-- ===================== STATS ===================== -->
-    <section class="block" style="padding-top:0">
+    <!-- ===================== REVENUE RECOVERY CALCULATOR ===================== -->
+    <section class="block" id="calculator" style="padding-top:0">
       <div class="wrap">
-        <div class="section-head reveal" style="margin-bottom:36px">
-          <span class="label">By the Numbers</span>
+        <div class="section-head reveal" style="margin-bottom:44px">
+          <span class="label">Revenue Recovery Calculator</span>
+          <h2>See What You're Losing<br/>to Missed Calls.</h2>
+          <p>Drop in your numbers. We'll show you the money walking out the door every month — and how much of it Elite Concierge gets back.</p>
         </div>
-        <div class="stats reveal">
-          <div class="stat" data-testid="stat-1">
-            <div class="big">40M+</div>
-            <div class="desc">calls handled monthly across the platform</div>
+
+        <div class="calc reveal" data-testid="calc">
+          <div class="calc-form" data-testid="calc-form">
+            <div class="calc-field">
+              <div class="calc-field-head">
+                <label for="calc-missed">Missed calls per week</label>
+                <output id="calc-missed-out" data-testid="calc-missed-out">15</output>
+              </div>
+              <input type="range" id="calc-missed" min="1" max="200" step="1" value="15" data-testid="calc-missed"/>
+              <div class="calc-range-marks"><span>1</span><span>50</span><span>100</span><span>200+</span></div>
+            </div>
+
+            <div class="calc-field">
+              <div class="calc-field-head">
+                <label for="calc-value">Average customer value</label>
+                <output id="calc-value-out" data-testid="calc-value-out">$500</output>
+              </div>
+              <input type="range" id="calc-value" min="50" max="10000" step="50" value="500" data-testid="calc-value"/>
+              <div class="calc-range-marks"><span>$50</span><span>$2.5k</span><span>$5k</span><span>$10k+</span></div>
+            </div>
+
+            <div class="calc-field">
+              <div class="calc-field-head">
+                <label for="calc-close">Close rate</label>
+                <output id="calc-close-out" data-testid="calc-close-out">25%</output>
+              </div>
+              <input type="range" id="calc-close" min="1" max="100" step="1" value="25" data-testid="calc-close"/>
+              <div class="calc-range-marks"><span>1%</span><span>25%</span><span>50%</span><span>100%</span></div>
+            </div>
+
+            <div class="calc-assumption">
+              Assumes Elite Concierge recovers <b>80%</b> of currently-missed calls — our average across active clients.
+            </div>
           </div>
-          <div class="stat" data-testid="stat-2">
-            <div class="big">80%</div>
-            <div class="desc">average reduction in call handling costs</div>
-          </div>
-          <div class="stat" data-testid="stat-3">
-            <div class="big">600ms</div>
-            <div class="desc">conversational response latency</div>
-          </div>
-          <div class="stat" data-testid="stat-4">
-            <div class="big">99.99%</div>
-            <div class="desc">uptime on production voice infrastructure</div>
+
+          <div class="calc-result" data-testid="calc-result">
+            <div class="calc-result-bg" aria-hidden="true"></div>
+            <div class="calc-result-inner">
+              <div class="calc-result-label">You're leaving on the table</div>
+              <div class="calc-result-big">
+                <span id="calc-annual" data-testid="calc-annual">$78,000</span>
+                <span class="calc-result-unit">/ year</span>
+              </div>
+              <div class="calc-result-sub">
+                That's roughly <b><span id="calc-monthly" data-testid="calc-monthly">$6,500</span></b> a month walking past your front door.
+              </div>
+              <button class="btn btn-primary btn-lg btn-arrow" data-intent="strategy" data-testid="calc-cta" style="margin-top:22px">Stop the bleeding</button>
+            </div>
           </div>
         </div>
       </div>
@@ -749,6 +991,11 @@
           <label for="cf-message">Message</label>
           <textarea id="cf-message" name="message" placeholder="What kind of calls are you trying to cover?" data-testid="cf-message"></textarea>
         </div>
+        <!-- Honeypot — hidden from humans, bots fill it. -->
+        <div class="hp" aria-hidden="true">
+          <label for="cf-website">Website</label>
+          <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off"/>
+        </div>
         <div class="ok-msg" id="cf-ok" data-testid="cf-ok">Thanks — we'll be in touch shortly.</div>
         <div class="err-msg" id="cf-err" data-testid="cf-err"></div>
         <div class="actions">
@@ -773,6 +1020,20 @@
     const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
+
+    // ---------- Mobile hamburger menu ----------
+    const burger = document.getElementById("nav-burger");
+    const drawer = document.getElementById("nav-drawer");
+    const setDrawer = (open) => {
+      burger.classList.toggle("open", open);
+      drawer.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", String(open));
+      drawer.setAttribute("aria-hidden", String(!open));
+    };
+    burger.addEventListener("click", () => setDrawer(!drawer.classList.contains("open")));
+    drawer.querySelectorAll("a, button").forEach(el => {
+      el.addEventListener("click", () => setDrawer(false));
+    });
 
     // ---------- Reveal on enter (Intersection Observer) ----------
     document.querySelectorAll(
@@ -849,6 +1110,7 @@
         phone:   document.getElementById("cf-phone").value.trim(),
         message: document.getElementById("cf-message").value.trim(),
         intent:  currentIntent,
+        website: document.getElementById("cf-website").value, // honeypot
       };
       if (!payload.name || !payload.email) {
         errEl.textContent = "Please add your name and email.";
@@ -865,8 +1127,10 @@
           body: JSON.stringify(payload),
         });
         if (!res.ok) {
-          const t = await res.text();
-          throw new Error(t || `Request failed (${res.status})`);
+          let detail = `Request failed (${res.status})`;
+          try { const j = await res.json(); if (j && j.detail) detail = j.detail; } catch (_) {}
+          if (res.status === 429) detail = `${detail} Try again in a bit.`;
+          throw new Error(detail);
         }
         okEl.style.display = "block";
         form.reset();
@@ -943,6 +1207,115 @@
         startBtn.textContent = "Start Voice Demo";
       }
     });
+
+    // ---------- Sample call audio widget ----------
+    const sampleAudio   = document.getElementById("sample-audio");
+    const sampleBtn     = document.getElementById("sample-mute");
+    const sampleCaption = document.getElementById("sample-caption");
+    if (sampleAudio && sampleBtn && sampleCaption) {
+      const icoMuted   = sampleBtn.querySelector(".ico-muted");
+      const icoUnmuted = sampleBtn.querySelector(".ico-unmuted");
+
+      const CAPTIONS = [
+        { t: 0,  text: "Don't take our word for it. Hear an actual Elite Concierge agent on a real inbound call." },
+        { t: 4,  text: "Agent: \"Thanks for calling — how can I help you today?\"" },
+        { t: 9,  text: "Caller: \"Hi, I'd like to book an appointment for next Tuesday afternoon.\"" },
+        { t: 15, text: "Agent: \"Absolutely — let me pull up our calendar real quick.\"" },
+        { t: 20, text: "Agent: \"I have 2:30pm or 4pm — which works better?\"" },
+        { t: 25, text: "Caller: \"2:30 is perfect, thanks.\"" },
+        { t: 28, text: "Agent: \"Booked. You'll get a confirmation text in a moment.\"" },
+      ];
+
+      const setMuted = (muted) => {
+        sampleAudio.muted = muted;
+        icoMuted.style.display   = muted ? "" : "none";
+        icoUnmuted.style.display = muted ? "none" : "";
+        sampleBtn.setAttribute("aria-label", muted ? "Unmute sample" : "Mute sample");
+      };
+      setMuted(true);
+
+      sampleBtn.addEventListener("click", async () => {
+        const willUnmute = sampleAudio.muted;
+        setMuted(!willUnmute);
+        if (willUnmute) { try { await sampleAudio.play(); } catch (_) {} }
+      });
+
+      sampleAudio.addEventListener("timeupdate", () => {
+        const t = sampleAudio.currentTime % 30;
+        let current = CAPTIONS[0].text;
+        for (const c of CAPTIONS) { if (t >= c.t) current = c.text; }
+        if (sampleCaption.textContent !== current) sampleCaption.textContent = current;
+      });
+
+      sampleAudio.addEventListener("error", () => {
+        sampleCaption.textContent = "Sample call demo · book a live demo to hear our agents handle real calls.";
+        sampleBtn.style.opacity = "0.55";
+        sampleBtn.style.pointerEvents = "none";
+      });
+    }
+
+    // ---------- Revenue recovery calculator ----------
+    const calcMissed    = document.getElementById("calc-missed");
+    const calcValue     = document.getElementById("calc-value");
+    const calcClose     = document.getElementById("calc-close");
+    const calcMissedOut = document.getElementById("calc-missed-out");
+    const calcValueOut  = document.getElementById("calc-value-out");
+    const calcCloseOut  = document.getElementById("calc-close-out");
+    const calcAnnual    = document.getElementById("calc-annual");
+    const calcMonthly   = document.getElementById("calc-monthly");
+    const RECOVERY      = 0.80;
+
+    const fmtMoney = (n) => {
+      const v = Math.round(n);
+      if (v >= 1000000) return "$" + (v / 1000000).toFixed(v >= 10000000 ? 0 : 1) + "M";
+      return "$" + v.toLocaleString("en-US");
+    };
+    const fmtValueLabel  = (v) => v >= 10000 ? "$10k+" : "$" + Number(v).toLocaleString("en-US");
+    const fmtMissedLabel = (v) => v >= 200 ? "200+" : String(v);
+
+    const setRangeFill = (el) => {
+      const min = Number(el.min), max = Number(el.max), val = Number(el.value);
+      const p = ((val - min) / (max - min)) * 100;
+      el.style.setProperty("--p", p + "%");
+    };
+
+    const animateNumber = (el, target, prevAttr) => {
+      const prev = Number(el.getAttribute(prevAttr) || 0);
+      const start = performance.now();
+      const dur = 380;
+      const tick = (now) => {
+        const k = Math.min(1, (now - start) / dur);
+        const eased = 1 - Math.pow(1 - k, 3);
+        const cur = prev + (target - prev) * eased;
+        el.textContent = fmtMoney(cur);
+        if (k < 1) requestAnimationFrame(tick);
+        else el.setAttribute(prevAttr, String(target));
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const recompute = () => {
+      const missed = Number(calcMissed.value);
+      const value  = Number(calcValue.value);
+      const close  = Number(calcClose.value) / 100;
+      const annual = missed * 52 * close * value * RECOVERY;
+      const monthly= annual / 12;
+
+      calcMissedOut.textContent = fmtMissedLabel(missed);
+      calcValueOut.textContent  = fmtValueLabel(value);
+      calcCloseOut.textContent  = (close * 100) + "%";
+
+      animateNumber(calcAnnual,  annual,  "data-prev");
+      animateNumber(calcMonthly, monthly, "data-prev");
+
+      [calcMissed, calcValue, calcClose].forEach(setRangeFill);
+    };
+
+    [calcMissed, calcValue, calcClose].forEach(el => {
+      el.addEventListener("input", recompute);
+      setRangeFill(el);
+    });
+    recompute();
   </script>
 </body>
 </html>

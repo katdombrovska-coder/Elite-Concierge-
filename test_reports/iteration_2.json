@@ -1,0 +1,38 @@
+{
+  "summary": "Iteration 2 verification of Elite Concierge: sample-call audio widget, Revenue Recovery Calculator, mobile hamburger drawer, and anti-spam (honeypot + IP rate limit). Backend: 18/18 pytest cases pass — all iteration-1 endpoints (health, contact validation/intent normalization, contacts list, real Retell create-web-call) plus 4 new cases for honeypot (returns hp- prefixed id, NOT stored in DB, does not count against rate limit, empty value follows normal flow) and 1 new case for IP rate limit (3 succeed + 4th returns 429 with correct detail message; fresh X-Forwarded-For IP succeeds in a separate bucket). Existing tests retrofit with unique X-Forwarded-For per-test to prevent cross-test bleed in the in-memory limiter. Frontend: desktop (1440x900) — burger hidden, nav links + Talk to Sales + Book a Demo visible; sample-call-card visible with autoplay+muted+loop audio, click on mute button toggles muted attr and swaps muted/unmuted SVG icons; old stats section removed; #calculator renders with defaults $78,000/year, $6,500/month; missed=50 → $260,000; value=1000 → $156,000; close=50% → $156,000; 'Stop the bleeding' CTA opens contact modal with title 'Book a free strategy call.'; honeypot input present with empty default. Mobile (420x820) — burger has display:flex, click opens nav-drawer with 3 links + 2 CTAs; clicking mobile-link-features smoothly closes the drawer. Zero console errors on full page load + interaction.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Mobile navbar (<900px)", "issues": ["'Book a Demo' (and possibly 'Talk to Sales' at slightly wider widths) remains visible in the top navbar alongside the burger button, which duplicates the same actions inside the drawer. Spec doesn't require hiding them, but for cleanliness consider hiding .nav-cta .btn (keep only .nav-burger) below 900px."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_elite_concierge.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Rate limiter is in-memory (_contact_hits dict) — resets on backend restart. Fine for current scale; if app scales to multi-worker uvicorn or multiple replicas, limiter becomes per-worker and effective limit becomes 3 * worker_count. Consider Redis-backed limiter (or slowapi) when scaling.",
+    "X-Forwarded-For is trusted blindly — any client can spoof it to bypass the limiter. For a public preview this is acceptable; for production behind a known proxy, parse from the right (real client) and only trust if proxy chain is verified, or use request.client.host directly when no proxy is present.",
+    "Honeypot returns 201 with a fake hp- id and the bot's email/name echoed back (still inside ContactOut) — this is safe (nothing stored), but the log line emits the bot's email which can pollute logs at high volume. Consider rate-logging or counting honeypot hits per IP instead.",
+    "calc number animation uses 380ms easing — tests must wait >400ms after slider input before asserting final value, otherwise they read an intermediate frame (caused a false failure in first test run; fixed by waiting 700ms).",
+    "index.html is now ~1320 lines (was ~950) — vanilla HTML+CSS+JS monolith is per-recipe and still functional, but the inlined <script> at the bottom is approaching the point where splitting into /public/calc.js, /public/sample.js, /public/contact.js would aid maintainability.",
+    "sample audio src is an external jsDelivr URL (rafaelreis-hotmart/Audio-Sample-files). Verified loads in test. Replace with self-hosted /sample-call.mp3 in production to avoid third-party dependency and CSP concerns.",
+    "Honeypot input #cf-website is positioned:absolute offscreen but is still focusable via Tab (tabindex=-1 is set — good). Confirmed via getComputedStyle in test."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_elite_concierge.py (added fresh_ip_headers fixture + TestHoneypot class + TestRateLimit class; retrofit existing TestContactCreate and TestContactsList cases with X-Forwarded-For headers for bucket isolation)"
+  ],
+  "success_rate": {"backend": "100% (18/18)", "frontend": "100%"},
+  "test_credentials": "N/A (no auth)",
+  "seed_data_creation": "~10 additional TEST_-prefixed contact documents created in MongoDB during pytest run, each tagged with a unique 172.x.x.x or 10.x.x.x synthetic IP. Honeypot test verifies no hp- id documents are persisted.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Rate limiter is in-memory and shared per backend process. ALWAYS send a unique X-Forwarded-For header per test (see fresh_ip_headers fixture) to isolate buckets — otherwise the 4th+ request from a test session will 429. Backend restart (sudo supervisorctl restart backend) wipes the limiter state and is needed if you suspect cross-suite contamination. Calculator output uses 380ms eased animation — wait >=500ms after slider input before asserting the displayed text. Honeypot field #cf-website is offscreen (position:absolute), not display:none, and is correctly tabindex=-1.",
+  "rca of the issue": "No real bugs found. One transient false-positive during testing: calculator assertion captured $238,276 mid-animation instead of $260,000 final value. Root cause: animateNumber easing duration 380ms (in index.html line ~1285) vs test wait of 200ms. Mitigation: bumped test wait to 700ms after each slider input event. All other assertions passed first try."
+}
