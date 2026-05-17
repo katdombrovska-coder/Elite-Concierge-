@@ -119,6 +119,19 @@
     footer.site .brand-col p{color:rgba(255,255,255,.7); margin-top:14px; max-width:42ch; line-height:1.55}
     footer.site .brand-col .links{margin-top:18px; display:flex; flex-direction:column; gap:8px}
     footer.site .rule{height:1px; background:rgba(255,255,255,.12); margin:48px 0 24px}
+    footer.site .footer-trust{
+      display:flex; justify-content:center; align-items:center;
+      gap:10px; flex-wrap:wrap; margin:0 0 22px;
+    }
+    footer.site .trust-badge{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:7px 14px; border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.15);
+      font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+      color:rgba(255,255,255,.78); font-weight:600; white-space:nowrap;
+    }
+    footer.site .trust-badge svg{color:var(--accent); flex-shrink:0}
     footer.site .bottom{display:flex; justify-content:space-between; align-items:center; color:rgba(255,255,255,.55); font-size:13px; gap:18px}
     footer.site .bottom a{color:rgba(255,255,255,.55)}
     footer.site .bottom a:hover{color:#fff}
@@ -204,6 +217,7 @@
       <section>
         <h2>6. Data Processing</h2>
         <p>Where Elite Concierge processes personal data on your behalf as part of delivering the services we act as data processor and you act as data controller. A Data Processing Agreement will be provided as part of the client onboarding process in accordance with Article 28 of the GDPR. Each party agrees to comply with its obligations under applicable data protection law.</p>
+        <p>Elite Concierge is built on infrastructure that is SOC 2 Type II, HIPAA, and GDPR compliant. These certifications apply to the underlying platform and data infrastructure used to deliver our services.</p>
       </section>
 
       <section>
@@ -278,6 +292,12 @@
         </div>
       </div>
       <div class="rule"></div>
+      <div class="footer-trust" data-testid="footer-trust">
+        <span class="trust-badge" data-testid="trust-soc2"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SOC 2</span>
+        <span class="trust-badge" data-testid="trust-hipaa"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>HIPAA</span>
+        <span class="trust-badge" data-testid="trust-gdpr"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>GDPR</span>
+        <span class="trust-badge" data-testid="trust-uptime"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>99.99% Uptime</span>
+      </div>
       <div class="bottom">
         <span>© 2025 Elite Concierge</span>
         <span><a href="/privacy.html" data-testid="footer-privacy">Privacy</a> &nbsp;·&nbsp; <a href="/terms.html" data-testid="footer-terms">Terms</a></span>

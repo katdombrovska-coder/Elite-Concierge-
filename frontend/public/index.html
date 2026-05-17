@@ -406,12 +406,14 @@
       font-size:28px; letter-spacing:-.01em; margin:10px 0 18px; color:var(--ink);
     }
     .price-card ul{list-style:none; padding:0; margin:0 0 24px; display:flex; flex-direction:column; gap:10px}
-    .price-card li{font-size:14.5px; color:var(--ink-2); padding-left:24px; position:relative}
+    .price-card li{font-size:14.5px; color:var(--ink-2); padding-left:26px; position:relative}
     .price-card li::before{
-      content:""; position:absolute; left:0; top:6px;
-      width:14px; height:14px; border-radius:50%;
-      background:radial-gradient(circle, var(--accent) 0 4px, transparent 5px);
-      border:1.5px solid var(--accent);
+      content:""; position:absolute; left:0; top:8px;
+      width:14px; height:9px;
+      border-left:2px solid var(--accent);
+      border-bottom:2px solid var(--accent);
+      transform:rotate(-45deg);
+      transform-origin:left center;
     }
     .price-card .btn{margin-top:auto; justify-content:center}
     .price-card.featured{
@@ -421,7 +423,7 @@
     .price-card.featured .plan,
     .price-card.featured .tag{color:#fff}
     .price-card.featured li{color:rgba(255,255,255,.86)}
-    .price-card.featured li::before{background:radial-gradient(circle, var(--accent) 0 4px, transparent 5px); border-color:var(--accent)}
+    .price-card.featured li::before{border-color:var(--accent)}
     .price-card .popular{
       position:absolute; top:-12px; left:50%; transform:translateX(-50%);
       background:var(--accent); color:#fff;
@@ -479,6 +481,19 @@
     footer.site .brand-col p{color:rgba(255,255,255,.7); margin-top:14px; max-width:42ch; line-height:1.55}
     footer.site .brand-col .links{margin-top:18px; display:flex; flex-direction:column; gap:8px}
     footer.site .rule{height:1px; background:rgba(255,255,255,.12); margin:48px 0 24px}
+    footer.site .footer-trust{
+      display:flex; justify-content:center; align-items:center;
+      gap:10px; flex-wrap:wrap; margin:0 0 22px;
+    }
+    footer.site .trust-badge{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:7px 14px; border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.15);
+      font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+      color:rgba(255,255,255,.78); font-weight:600; white-space:nowrap;
+    }
+    footer.site .trust-badge svg{color:var(--accent); flex-shrink:0}
     footer.site .bottom{display:flex; justify-content:space-between; align-items:center; color:rgba(255,255,255,.55); font-size:13px; gap:18px}
     footer.site .bottom a{color:rgba(255,255,255,.55)}
     footer.site .bottom a:hover{color:#fff}
@@ -620,7 +635,6 @@
             <button class="btn btn-primary btn-lg" id="start-voice-demo" data-testid="start-voice-demo">Start Voice Demo</button>
           </div>
           <div class="demo-status" id="demo-status" aria-live="polite"></div>
-          <div class="powered">Powered by Retell AI</div>
         </div>
       </div>
     </section>
@@ -794,10 +808,10 @@
     <!-- ===================== PRICING ===================== -->
     <section class="block" id="pricing">
       <div class="wrap">
-        <div class="section-head reveal">
+        <div class="section-head reveal" style="text-align:center; margin-left:auto; margin-right:auto">
           <span class="label">Pricing</span>
           <h2>Built Around Your Business,<br/>Not a Generic Plan.</h2>
-          <p>Every business handles calls differently. Pick the surface your customers actually use — we price around the volume that matches your stage.</p>
+          <p style="margin-left:auto; margin-right:auto">Every business handles calls differently. Pick the surface your customers actually use — we price around the volume that matches your stage.</p>
         </div>
 
         <div class="price-grid">
@@ -825,7 +839,7 @@
               <li>Handoff to your team in Slack or email</li>
               <li>Auto QA & weekly tuning</li>
             </ul>
-            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-chat-cta">Get a Quote</a>
+            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-chat-cta">Book a Demo</a>
           </div>
 
           <div class="price-card reveal" data-testid="plan-full">
@@ -838,7 +852,7 @@
               <li>SOC 2 / HIPAA / GDPR compliance pack</li>
               <li>Dedicated success engineer</li>
             </ul>
-            <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-full-cta">Get a Quote</a>
+            <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-full-cta">Let's Build</a>
           </div>
         </div>
 
@@ -906,6 +920,12 @@
         </div>
       </div>
       <div class="rule"></div>
+      <div class="footer-trust" data-testid="footer-trust">
+        <span class="trust-badge" data-testid="trust-soc2"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SOC 2</span>
+        <span class="trust-badge" data-testid="trust-hipaa"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>HIPAA</span>
+        <span class="trust-badge" data-testid="trust-gdpr"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>GDPR</span>
+        <span class="trust-badge" data-testid="trust-uptime"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>99.99% Uptime</span>
+      </div>
       <div class="bottom">
         <span>© 2025 Elite Concierge</span>
         <span><a href="/privacy.html" data-testid="footer-privacy">Privacy</a> &nbsp;·&nbsp; <a href="/terms.html" data-testid="footer-terms">Terms</a></span>
