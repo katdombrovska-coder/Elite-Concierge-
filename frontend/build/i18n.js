@@ -1,5 +1,4 @@
 // ===================== i18n Translation Engine =====================
-// Drop this script at the bottom of index.html, before </body>
 
 (function() {
   'use strict';
@@ -8,190 +7,212 @@
     en: {},
 
     ua: {
-      // Navbar
+      // ─── Navbar ───
       'nav.howItWorks': 'Як це працює',
       'nav.features': 'Можливості',
-      'nav.pricing': 'Ціни',
-      'nav.talkToSales': 'Звʼязатися',
+      'nav.pricing': 'Тарифи',
+      'nav.talkToSales': "Зв'язатися з відділом продажу",
       'nav.bookDemo': 'Замовити демо',
 
-      // Hero
-      'hero.label': 'Для готельного бізнесу · юридичних фірм · нерухомості · медицини',
+      // ─── Hero ───
+      'hero.label': 'Для готелів · юридичних фірм · нерухомості · медицини',
       'hero.line1': 'Ваш бізнес',
-      'hero.line2': 'Ніколи не перестає ',
-      'hero.line2Accent': 'відповідати',
-      'hero.sub': 'Створено для бізнесу, який не може дозволити собі втратити жодного клієнта. Ваш ШІ-представник обробляє дзвінки, чати та бронювання — поки ви займаєтесь роботою.',
-      'hero.ctaDemo': 'Замовити демо-дзвінок',
-      'hero.ctaHear': 'Подивитись як це працює',
-      'hero.chipAlways': 'Завжди на звʼязку',
-      'hero.chipResponse': 'Час відповіді',
-      'hero.chipLanguages': 'Мови',
+      'hero.line2': 'завжди ',
+      'hero.line2Accent': 'на звʼязку',
+      'hero.sub': 'Для сервісного бізнесу, який не може дозволити собі втрачати клієнтів. Ваш ШІ-представник приймає дзвінки, веде чати та оформлює бронювання — поки ви займаєтеся справою.',
+      'hero.ctaDemo': 'Замовити демо-дзвінок →',
+      'hero.ctaHear': 'Подивитись, як це працює',
+      'hero.chipAlways': 'Цілодобово · 24/7',
+      'hero.chipResponse': 'Час відповіді · 600 мс',
+      'hero.chipLanguages': 'Мови · 31+',
 
-      // Demo
-      'demo.scribble': 'спробуйте live ↓',
-      'demo.title': 'Поговоріть з Elite Concierge — Живе демо',
-      'demo.sub': 'Реальна розмова з нашим ШІ-агентом. Без форм, без очікування.',
-      'demo.startBtn': 'Почати голосове демо',
+      // ─── Demo ───
+      'demo.scribble': 'спробуйте наживо ↓',
+      'demo.title': 'Поговоріть з Elite Concierge — наживо',
+      'demo.sub': 'Справжній діалог з нашим ШІ-агентом. Без форм. Без очікування.',
+      'demo.startBtn': 'Розпочати голосове демо',
 
-      // Founding
+      // ─── Founding Offer ───
       'founding.label': 'Обмежена пропозиція для перших клієнтів',
-      'founding.title': 'Лише 10 перших клієнтів.',
-      'founding.sub': 'Ваш ШІ-агент — розроблений, інтегрований та запущений за менш ніж тиждень. Особисто від нашої засновницької команди.',
-      'founding.pill1': '✓ Повна настройка під ключ',
-      'founding.pill2': '✓ Запуск за < 1 тиждень',
-      'founding.pill3': '✓ 4 з 5 пропущених дзвінків відновлено',
+      'founding.title': 'Лише 10 місць для перших клієнтів.',
+      'founding.sub': 'Ваш ШІ-агент — налаштований, інтегрований і запущений менш ніж за тиждень. Під особистим контролем нашої команди засновників.',
+      'founding.pill1': '✓ Повне налаштування під ключ',
+      'founding.pill2': '✓ Запуск менш ніж за 1 тиждень',
+      'founding.pill3': '✓ 4 з 5 пропущених дзвінків повертаються',
       'founding.spots': '⚡ 7 з 10 місць зайнято — залишилось 3',
-      'founding.cta': 'Забронювати своє місце →',
+      'founding.cta': 'Зайняти своє місце →',
 
-      // Who it's for
-      'who.title': 'Знайомо?',
-      'who.sub': 'Оберіть свою ситуацію — побачите, як це працює.',
+      // ─── Who It's For ───
+      'who.title': 'Знайоме?',
+      'who.sub': 'Оберіть свою галузь — і побачте, як це вирішується.',
+      // Restaurant
       'who.r': 'Ресторан',
-      'who.rProblem': 'Дзвінки на бронювання потрапляють на автовідповідач під час вечірнього піку.',
-      'who.rOutcome': '«Кожен запит на столик отримує відповідь — навіть коли зал повний.»',
+      'who.rProblem': 'Під час вечірнього сервісу телефон дзвонить, а всі зайняті — дзвінки йдуть на голосову пошту.',
+      'who.rOutcome': '«Кожен запит на бронювання отримує відповідь — навіть у розпал вечері.»',
       'who.rCta': 'Як це працює для ресторанів →',
+      // Law
       'who.law': 'Юридична фірма',
-      'who.lawProblem': 'Нові клієнти втрачаються у вихідні.',
-      'who.lawOutcome': '«Кожен потенційний кейс отримує реальну відповідь, 24/7.»',
+      'who.lawProblem': 'Нові клієнти телефонують у вихідні — і не отримують жодної відповіді.',
+      'who.lawOutcome': '«Кожне потенційне звернення отримує реальну відповідь — цілодобово, без вихідних.»',
       'who.lawCta': 'Як це працює для юридичних фірм →',
+      // Real Estate
       'who.re': 'Агентство нерухомості',
-      'who.reProblem': 'Ліди холонуть за лічені хвилини, якщо не відповісти.',
-      'who.reOutcome': '«Ваш агент кваліфікує та бронює перегляди, поки ви показуєте інший обʼєкт.»',
+      'who.reProblem': 'Ліди остигають за лічені хвилини, якщо їм не відповісти одразу.',
+      'who.reOutcome': '«Агент кваліфікує звернення та призначає покази — поки ви на іншому обʼєкті.»',
       'who.reCta': 'Як це працює для агентств нерухомості →',
+      // Beauty
       'who.beauty': 'Салон краси',
-      'who.beautyProblem': 'Клієнти телефонують, коли ви зайняті, і записуються в інше місце.',
-      'who.beautyOutcome': '«Заповнюйте крісла, не перериваючи процедуру.»',
+      'who.beautyProblem': 'Клієнти телефонують, поки ви з іншим клієнтом, і йдуть записуватися до конкурентів.',
+      'who.beautyOutcome': '«Запис іде повним ходом — навіть коли ваші руки зайняті.»',
       'who.beautyCta': 'Як це працює для салонів краси →',
 
-      // How it works
+      // ─── How It Works ───
       'how.label': 'Як це працює',
-      'how.title': 'Запуск за дні,<br/>а не місяці.',
-      'how.when1': 'День 1',
-      'how.step1Title': 'Діскавері та blueprint',
-      'how.step1Desc': 'Ми мапуємо ваші поточні потоки дзвінків, FAQ та системи бронювання за одну 30-хвилинну сесію. Ви виходите з одно сторінковим blueprint-ом агента — кожен інтент, кожен фолбек, кожен хендофф.',
-      'how.when2': 'Дні 2–5',
+      'how.title': 'Запуск за дні, а не за місяці.',
+      'how.step1Title': 'Аналіз і план',
+      'how.step1Desc': 'За 30 хвилин ми детально розбираємо ваш поточний процес: сценарії дзвінків, типові запитання, системи бронювання. Результат — чіткий односторінковий план агента: кожен сценарій, кожен запасний варіант, кожне передавання.',
       'how.step2Title': 'Розробка та інтеграція',
-      'how.step2Desc': 'Наша команда пише голос вашого агента, підключає CRM та календар, і зʼєднує ваш існуючий номер телефону. Ви отримуєте працюючого агента за 3–5 робочих днів.',
-      'how.when3': 'День 6+',
-      'how.step3Title': 'Запуск та оптимізація',
-      'how.step3Desc': 'Запускаємо в тіньовому режимі, потім — бойовий. Кожен дзвінок автоматично транскрибується, оцінюється та налаштовується щотижня — ваш агент покращується сам.',
+      'how.step2Desc': 'Наша команда прописує голос агента, підключає вашу CRM і календар, налаштовує існуючий номер телефону. Готового робочого агента ви побачите вже через 3–5 робочих днів.',
+      'how.step3Title': 'Запуск і вдосконалення',
+      'how.step3Desc': 'Спочатку — тихий тестовий режим, потім — повноцінний запуск. Кожен дзвінок автоматично транскрибується, оцінюється та щотижня оптимізується. Агент стає кращим — без вашої участі.',
 
-      // Features
+      // ─── Features ───
       'feat.label': 'Можливості',
-      'feat.title': 'Інфраструктура за кожною Elite-розмовою.',
-      'feat.sub': 'Голосовий ШІ корпоративного рівня — для бізнесу, де кожна розмова — це можливість доходу.',
-      'feat.inboundTitle': 'Вхідні та вихідні',
-      'feat.inboundDesc': 'Приймайте дзвінки та запускайте зворотні дзвінки з одного агента — без додаткових налаштувань, без додаткової ліцензії.',
+      'feat.title': 'Технологія за кожною розмовою.',
+      'feat.sub': 'Корпоративний голосовий ШІ — для бізнесу, де кожна розмова є джерелом доходу.',
+      'feat.inboundTitle': 'Вхідні й вихідні дзвінки',
+      'feat.inboundDesc': 'Один агент приймає дзвінки та здійснює зворотні — без додаткових налаштувань і ліцензій.',
       'feat.chatTitle': 'Веб-чат',
-      'feat.chatDesc': 'Додайте один скрипт на ваш сайт — і ваш агент підхоплює чати з тим самим мозком.',
-      'feat.crmTitle': 'CRM-синхронізація',
-      'feat.crmDesc': 'HubSpot, Salesforce, Pipedrive, GoHighLevel — кожен дзвінок стає повним контактом.',
+      'feat.chatDesc': 'Один рядок коду на вашому сайті — і агент відповідає на чати з тією ж базою знань.',
+      'feat.crmTitle': 'Синхронізація з CRM',
+      'feat.crmDesc': 'HubSpot, Salesforce, Pipedrive, GoHighLevel — кожен дзвінок потрапляє в систему як повноцінний контакт.',
       'feat.calendarTitle': 'Бронювання в календарі',
-      'feat.calendarDesc': 'Зчитує доступність та бронює прямо в Google, Outlook або Calendly — підтверджено.',
-      'feat.languagesTitle': '31+ мов',
-      'feat.languagesDesc': 'Нативні голоси для кожного ринку з авто-визначенням мови під час дзвінка.',
+      'feat.calendarDesc': 'Агент перевіряє доступність і одразу записує в Google, Outlook або Calendly — підтверджено.',
+      'feat.languagesTitle': '31+ мова',
+      'feat.languagesDesc': 'Природне звучання на всіх ключових ринках з автоматичним визначенням мови під час розмови.',
       'feat.phoneTitle': 'Ваш номер телефону',
-      'feat.phoneDesc': 'Збережіть існуючу лінію через SIP або оберіть новий локальний чи безкоштовний номер за хвилини.',
-      'feat.transferTitle': 'Розумний теплий трансфер',
-      'feat.transferDesc': 'Коли потрібна людина, агент підготовлює репер перед зʼєднанням — без «давайте повторю».',
-      'feat.transcriptTitle': 'Транскрипти та зведення',
-      'feat.transcriptDesc': 'Кожен дзвінок транскрибується, резюмується та тегається з наступними діями автоматично.',
-      'feat.smsTitle': 'SMS-нагадування',
-      'feat.smsDesc': 'Автоматичні тексти після кожного дзвінка — нагадування, посилання, відновлення після неяви.',
+      'feat.phoneDesc': 'Залишіть існуючий номер через SIP або швидко підключіть новий — місцевий або безкоштовний.',
+      'feat.transferTitle': 'Розумне передавання',
+      'feat.transferDesc': "Коли потрібна людина — агент вводить колегу в курс справи перед з'єднанням. Без «розкажіть ще раз».",
+      'feat.transcriptTitle': 'Транскрипти й підсумки',
+      'feat.transcriptDesc': 'Кожен дзвінок транскрибується, узагальнюється й позначається наступними кроками — автоматично.',
+      'feat.smsTitle': 'SMS після дзвінка',
+      'feat.smsDesc': 'Автоматичні повідомлення після кожного дзвінка: нагадування, посилання, повернення клієнтів — за чіткими правилами.',
       'feat.complianceTitle': 'SOC 2 / HIPAA / GDPR',
-      'feat.complianceDesc': 'Комплаєнс корпоративного рівня вбудований. Регіональне резидентство даних за запитом.',
-      'feat.latencyTitle': '600ms затримка',
-      'feat.latencyDesc': 'Реакція менше секунди, що відчувається як реальна розмова — не робот-пауза.',
-      'feat.qaTitle': 'Авто QA',
-      'feat.qaDesc': 'Кожен дзвінок оцінюється за вашим плейбуком, щоб ви бачили дрифт до клієнтів.',
+      'feat.complianceDesc': 'Корпоративний рівень відповідності. Регіональне зберігання даних — за запитом.',
+      'feat.latencyTitle': 'Затримка 600 мс',
+      'feat.latencyDesc': 'Відповідь швидше за секунду — відчуття живої розмови, а не робота.',
+      'feat.qaTitle': 'Автоматичний контроль якості',
+      'feat.qaDesc': 'Кожен дзвінок оцінюється за вашим сценарієм — ви бачите відхилення раніше, ніж їх помітять клієнти.',
 
-      // Calculator
+      // ─── Calculator ───
       'calc.label': 'Калькулятор відновлення доходу',
-      'calc.title': 'Подивіться, що ви втрачаєте<br/>через пропущені дзвінки.',
-      'calc.sub': 'Введіть ваші числа. Ми покажемо гроші, що виходять щомісяця — і скільки з цього Elite Concierge повертає.',
-      'calc.industryLabel': 'Я працюю в…',
+      'calc.title': 'Дізнайтеся, скільки ви втрачаєте через пропущені дзвінки.',
+      'calc.sub': 'Введіть свої показники — і ми покажемо, скільки грошей щомісяця проходить повз вас, і скільки з них повертає Elite Concierge.',
+      'calc.industryLabel': 'Тип мого бізнесу...',
       'calc.industryPlaceholder': 'Оберіть вашу індустрію',
       'calc.industry.realEstate': 'Агентство нерухомості',
       'calc.industry.dental': 'Стоматологічна клініка',
-      'calc.industry.homeServices': 'Домашні послуги',
+      'calc.industry.homeServices': 'Домашній сервіс',
       'calc.industry.law': 'Юридична фірма',
-      'calc.industry.ecommerce': 'Електронна комерція',
+      'calc.industry.ecommerce': 'Інтернет-магазин',
       'calc.industry.healthcare': 'Медична клініка',
       'calc.industry.insurance': 'Страховий брокер',
       'calc.industry.restaurant': 'Ресторан / Кафе',
-      'calc.industry.beauty': 'Салон краси / Спа',
-      'calc.industry.gym': 'Тренажерний зал',
+      'calc.industry.beauty': 'Салон краси / СПА',
+      'calc.industry.gym': 'Тренажерний зал / Фітнес-студія',
       'calc.industry.property': 'Управління нерухомістю',
-      'calc.industry.car': 'Автодилер',
-      'calc.missedLabel': 'Пропущені дзвінки на тиждень',
+      'calc.industry.car': 'Автосалон',
+      'calc.missedLabel': 'Пропущених дзвінків на тиждень',
       'calc.valueLabel': 'Середня цінність клієнта',
-      'calc.closeLabel': 'Рівень закриття',
-      'calc.assumption': 'Elite Concierge відновлює <b>80%</b> пропущених дзвінків — наш середній показник по активних клієнтах.',
+      'calc.closeLabel': 'Рівень конверсії',
+      'calc.assumption': 'Розрахунок базується на тому, що Elite Concierge повертає <b>80%</b> пропущених дзвінків — середній показник серед наших активних клієнтів.',
       'calc.resultLabel': 'Ви залишаєте на столі',
-      'calc.resultUnit': '/ рік',
-      'calc.resultSub': 'Це приблизно <b><span id="calc-monthly"></span></b> на місяць проходить повз ваші двері.',
+      'calc.resultUnit': '/ на рік',
+      'calc.resultSub': 'Це приблизно <b><span id="calc-monthly"></span></b> на місяць, які проходять повз ваш бізнес.',
       'calc.cta': 'Припиніть втрачати гроші щодня',
 
-      // Pricing
-      'pricing.label': 'Ціни',
-      'pricing.title': 'Побудовано навколо вашого бізнесу,<br/>а не типового плану.',
-      'pricing.sub': 'Кожен бізнес обробляє дзвінки по-різному. Оберіть поверхню, яку ваші клієнти реально використовують — ми цінуємо за обʼєм, який відповідає вашій стадії.',
+      // ─── Pricing ───
+      'pricing.label': 'Тарифи',
+      'pricing.title': 'Рішення під ваш бізнес,<br/>а не стандартний пакет.',
+      'pricing.sub': 'Кожен бізнес по-своєму обробляє звернення клієнтів. Оберіть канал, яким користуються ваші клієнти — тариф формується під ваш обсяг.',
+      // Plan 1 — Voice
       'pricing.voiceBadge': 'Найпопулярніший',
       'pricing.voicePlan': 'Голосовий агент',
-      'pricing.voiceTag': 'Ніколи більше не пропустіть продажний дзвінок.',
-      'pricing.voicePrice': 'Від $499/міс + разова плата за налаштування',
-      'pricing.voiceNote': 'Плата за налаштування покриває діскавері, розробку та інтеграцію — зроблено під ключ.',
-      'pricing.voiceDesc': 'Ваш ШІ-представник відповідає на кожен вхідний дзвінок, кваліфікує ліда та бронює зустріч — день і ніч.',
+      'pricing.voiceTag': 'Жодного пропущеного дзвінка з продажу.',
+      'pricing.voicePrice': 'Від $499/міс + разовий внесок за налаштування',
+      'pricing.voiceNote': 'Внесок покриває аналіз, розробку та інтеграцію — повністю під ключ.',
+      'pricing.voiceDesc': 'Ваш ШІ-представник відповідає на кожен вхідний дзвінок, кваліфікує ліда та бронює зустріч — вдень і вночі.',
+      'pricing.voiceF1': 'Вхідні та вихідні дзвінки',
+      'pricing.voiceF2': 'Збереження вашого існуючого номера',
+      'pricing.voiceF3': 'Кваліфікація лідів і бронювання наживо',
+      'pricing.voiceF4': 'Інтеграція з CRM і календарем',
+      'pricing.voiceF5': 'Транскрипти, підсумки та SMS-повідомлення',
+      'pricing.voiceF6': 'Автоматичний контроль якості + щотижневе налаштування',
       'pricing.voiceCta': 'Замовити демо',
-      'pricing.chatBadge': 'Найбільше можливостей',
+      // Plan 2 — Chat
+      'pricing.chatBadge': 'Найбільше функцій',
       'pricing.chatPlan': 'Чат-агент',
-      'pricing.chatTag': 'Відповідайте на кожному каналі, миттєво — 24/7.',
+      'pricing.chatTag': 'Відповідь на кожному каналі — миттєво, 24/7.',
       'pricing.chatPrice': 'Від $249/міс',
-      'pricing.chatNote': 'Цінується на основі обʼєму повідомлень та каналів.',
-      'pricing.chatDesc': 'Перетворіть ваш сайт та соціальні канали на машину лідів, яка ніколи не спить.',
-      'pricing.chatCta': 'Отримати пропозицію',
+      'pricing.chatNote': 'Ціна залежить від обсягу повідомлень і каналів.',
+      'pricing.chatDesc': 'Перетворіть сайт і соціальні мережі на машину для залучення клієнтів, яка ніколи не спить.',
+      'pricing.chatF1': 'Агент у веб-чаті, SMS та WhatsApp',
+      'pricing.chatF2': 'База знань автоматично навчається на вашому сайті',
+      'pricing.chatF3': 'Захоплення лідів, оцінка та синхронізація з CRM',
+      'pricing.chatF4': 'Бронювання в календарі через чат',
+      'pricing.chatF5': '31+ мова з єдиним тоном і термінологією',
+      'pricing.chatF6': "Розумне передавання людині, коли бот досяг межі",
+      'pricing.chatCta': 'Отримати комерційну пропозицію',
+      // Plan 3 — Full
       'pricing.fullBadge': 'Все включено',
-      'pricing.fullPlan': 'Повний пакет',
-      'pricing.fullTag': 'Голос + чат, один спільний мозок.',
-      'pricing.fullPrice': 'Від $999/міс — все включено',
-      'pricing.fullNote': 'Одна ціна. Голос, чат, комплаєнс та виділений інженер успіху.',
-      'pricing.fullCta': 'Давайте будувати',
-      'pricing.note': 'Всі плани включають онбординг. Довгострокові контракти не потрібні.',
+      'pricing.fullPlan': 'Повний комплекс',
+      'pricing.fullTag': 'Голос і чат — одна спільна система.',
+      'pricing.fullPrice': 'Від $999/міс — повний комплекс',
+      'pricing.fullNote': 'Єдина ціна. Голос, чат, відповідність стандартам і персональний менеджер з підтримки.',
+      'pricing.fullF1': "Все, що є у тарифах «Голос» і «Чат»",
+      'pricing.fullF2': 'Єдина історія розмов по всіх каналах',
+      'pricing.fullF3': 'Розумне передавання дзвінка людині',
+      'pricing.fullF4': 'Персональний менеджер з підтримки',
+      'pricing.fullF5': 'Аналіз настроїв клієнтів і правила ескалації',
+      'pricing.fullCta': 'Побудуємо разом',
+      'pricing.note': 'Усі тарифи включають онбординг. Довгострокові контракти не потрібні.',
 
-      // CTA Strip
-      'cta.title': 'Завжди на звʼязку. Ніколи на утриманні.<br/>Ніколи не в штаті.',
-      'cta.sub': 'Приєднуйтесь до бізнесів, які скорочують витрати на обробку дзвінків на 80%, відповідаючи на кожен вхідний — голос, чат, після годин, 31 мовами.',
+      // ─── CTA Strip ───
+      'cta.title': 'Завжди на звʼязку. Ніколи не в очікуванні.<br/>Без зарплатних витрат.',
+      'cta.sub': 'Приєднуйтесь до компаній, які скорочують витрати на обробку дзвінків на 80% — відповідаючи на кожен вхідний запит голосом і чатом, цілодобово, 31 мовою.',
       'cta.ctaStrategy': 'Замовити стратегічний дзвінок',
-      'cta.ctaMessage': 'Надіслати повідомлення',
+      'cta.ctaMessage': 'Написати нам',
 
-      // Founding Bottom
-      'founding.bottomTitle': 'Досі тут? Пропозиція для перших — не буде.',
-      'founding.bottomSub': '3 місця залишилось. Без блокування. Скасуйте будь-коли.',
-      'founding.bottomCta': 'Забронювати своє місце →',
+      // ─── Urgency ───
+      'founding.banner': '⚡ Залишилось лише 3 місця для перших клієнтів — Займіть своє, поки не пізно →',
+      'founding.bottomTitle': 'Ще тут? Пропозиція для перших клієнтів не вічна.',
+      'founding.bottomSub': 'Залишилось 3 місця. Без зобовʼязань. Скасування в будь-який момент.',
+      'founding.bottomCta': 'Зайняти місце зараз →',
 
-      // Footer
-      'footer.features': 'Можливості',
+      // ─── Footer ───
+      'footer.features': 'Голосові агенти',
       'footer.voice': 'Голосові агенти',
       'footer.chat': 'Веб-чат',
-      'footer.integrations': 'CRM-інтеграції',
-      'footer.calendar': 'Бронювання календаря',
+      'footer.integrations': 'Інтеграції з CRM',
+      'footer.calendar': 'Бронювання в календарі',
       'footer.multilingual': 'Багатомовність',
-      'footer.compliance': 'Комплаєнс',
+      'footer.compliance': 'Відповідність стандартам',
       'footer.company': 'Компанія',
       'footer.about': 'Про нас',
-      'footer.contact': 'Контакт',
+      'footer.contact': 'Контакти',
       'footer.email': 'hello@eliteai.space',
-      'footer.location': 'Базиємось в Лісабоні, Португалія. Обслуговуємо клієнтів глобально.',
+      'footer.location': 'Базуємося в Лісабоні, Португалія. Працюємо з клієнтами по всьому світу.',
       'footer.copyright': '© 2026 Elite AI',
-      'footer.privacy': 'Конфіденційність',
-      'footer.terms': 'Умови',
+      'footer.privacy': 'Політика конфіденційності',
+      'footer.terms': 'Умови використання',
 
-      // Modal
-      'modal.title': 'Давайте поговоримо.',
-      'modal.sub': 'Розкажіть трохи про ваш бізнес, і ми звʼяжемося протягом одного робочого дня.',
+      // ─── Modal ───
+      'modal.title': "Зв'яжіться з нами.",
+      'modal.sub': 'Розкажіть трохи про ваш бізнес — і ми відповімо протягом одного робочого дня.',
       'modal.name': "Ім'я",
       'modal.namePlaceholder': 'Ваше імʼя',
-      'modal.email': 'Email',
+      'modal.email': 'Електронна пошта',
       'modal.emailPlaceholder': 'you@company.com',
       'modal.company': 'Компанія',
       'modal.companyPlaceholder': 'Назва компанії',
@@ -200,12 +221,16 @@
       'modal.message': 'Повідомлення',
       'modal.messagePlaceholder': 'Які дзвінки ви намагаєтесь покрити?',
       'modal.submit': 'Надіслати повідомлення',
-      'modal.noSpam': 'Без спаму. Ніколи.',
-      'modal.ok': 'Дякуємо — ми звʼяжемося найближчим часом.',
+      'modal.noSpam': 'Жодного спаму. Ніколи.',
+      'modal.ok': 'Дякуємо — незабаром ми з вами звʼяжемося.',
       'modal.errName': 'Будь ласка, додайте ваше імʼя та email.',
       'modal.err': 'Не вдалося надіслати:',
 
-      // Demo status
+      // ─── Page Meta ───
+      'page.title': 'Elite AI — Ваш бізнес завжди на звʼязку',
+      'page.description': 'Elite AI — голосові й чат-агенти, які відповідають на кожен дзвінок, фіксують кожен лід і оформлюють кожне бронювання. Цілодобово, без вихідних.',
+
+      // ─── Demo Status (JS) ───
       'demo.statusConnecting': 'Запит мікрофона…',
       'demo.statusStarting': 'Запуск безпечної сесії…',
       'demo.statusLoading': 'Завантаження агента…',
@@ -220,14 +245,21 @@
     }
   };
 
-  // ---- Engine ----
+  // ─── Translation helper (for JS strings) ───
+  function t(key) {
+    const lang = localStorage.getItem('elite-lang') || 'en';
+    return (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) || key;
+  }
+  window.i18n = t;
+
+  // ─── Engine ───
   let currentLang = localStorage.getItem('elite-lang') || 'en';
 
-  // Apply translation to all elements with data-i18n
   function applyTranslations(lang) {
     const dict = TRANSLATIONS[lang];
     if (!dict) return;
 
+    // Translate all elements with data-i18n
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       const translation = dict[key];
@@ -236,7 +268,7 @@
       }
     });
 
-    // Update html lang attribute
+    // Update html lang
     document.documentElement.lang = lang === 'ua' ? 'uk' : 'en';
 
     // Update toggle buttons
@@ -247,28 +279,28 @@
       }
     });
 
-    // Update calculator industry options if language changed
+    // Update calculator industry options
     const industrySelect = document.getElementById('calc-industry');
     if (industrySelect) {
       const opts = industrySelect.querySelectorAll('option');
-      const valueLabels = {
-        '': lang === 'ua' ? 'Оберіть вашу індустрію' : 'Select your industry',
-        'real-estate': lang === 'ua' ? 'Агентство нерухомості' : 'Real Estate Agency',
-        'dental': lang === 'ua' ? 'Стоматологічна клініка' : 'Dental Practice',
-        'home-services': lang === 'ua' ? 'Домашні послуги' : 'Home Services',
-        'law': lang === 'ua' ? 'Юридична фірма' : 'Law Firm',
-        'ecommerce': lang === 'ua' ? 'Електронна комерція' : 'E-Commerce',
-        'healthcare': lang === 'ua' ? 'Медична клініка' : 'Healthcare Clinic',
-        'insurance': lang === 'ua' ? 'Страховий брокер' : 'Insurance Broker',
-        'restaurant': lang === 'ua' ? 'Ресторан / Кафе' : 'Restaurant / Cafe',
-        'beauty': lang === 'ua' ? 'Салон краси / Спа' : 'Beauty Salon / Spa',
-        'gym': lang === 'ua' ? 'Тренажерний зал' : 'Gym / Fitness Studio',
-        'property': lang === 'ua' ? 'Управління нерухомістю' : 'Property Management',
-        'car-dealership': lang === 'ua' ? 'Автодилер' : 'Car Dealership',
+      const labels = {
+        '': dict['calc.industryPlaceholder'] || 'Select your industry',
+        'real-estate': dict['calc.industry.realEstate'] || 'Real Estate Agency',
+        'dental': dict['calc.industry.dental'] || 'Dental Practice',
+        'home-services': dict['calc.industry.homeServices'] || 'Home Services',
+        'law': dict['calc.industry.law'] || 'Law Firm',
+        'ecommerce': dict['calc.industry.ecommerce'] || 'E-Commerce',
+        'healthcare': dict['calc.industry.healthcare'] || 'Healthcare Clinic',
+        'insurance': dict['calc.industry.insurance'] || 'Insurance Broker',
+        'restaurant': dict['calc.industry.restaurant'] || 'Restaurant / Cafe',
+        'beauty': dict['calc.industry.beauty'] || 'Beauty Salon / Spa',
+        'gym': dict['calc.industry.gym'] || 'Gym / Fitness Studio',
+        'property': dict['calc.industry.property'] || 'Property Management',
+        'car-dealership': dict['calc.industry.car'] || 'Car Dealership',
       };
       opts.forEach(opt => {
-        const t = valueLabels[opt.value];
-        if (t) opt.textContent = t;
+        const label = labels[opt.value];
+        if (label) opt.textContent = label;
       });
     }
 
@@ -276,7 +308,7 @@
     if (typeof recompute === 'function') recompute();
   }
 
-  // ---- Toggle buttons ----
+  // ─── Toggle buttons ───
   function setupToggles() {
     const toggles = [document.getElementById('lang-toggle'), document.getElementById('lang-toggle-mobile')];
     toggles.forEach(btn => {
@@ -290,7 +322,7 @@
     });
   }
 
-  // ---- Init on DOM ready ----
+  // ─── Init ───
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       applyTranslations(currentLang);
