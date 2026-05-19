@@ -731,6 +731,25 @@
     .modal .err-msg{display:none; padding:14px; background:#fde8e8; color:#9b1c1c; border-radius:12px; font-size:14px}
 
     /* Honeypot — visually + a11y-hidden, but kept in tab order off */
+    /* ===================== Mobile improvements ===================== */
+    @media (max-width: 700px){
+      /* CTA strip: make it wider and less tall on mobile */
+      .cta-strip{padding:48px 20px}
+      .cta-strip p{font-size:15px}
+      .cta-strip .row{flex-direction:column; gap:10px}
+      .cta-strip .btn{width:100%; justify-content:center; padding:14px 20px; font-size:15px}
+      
+      /* Calculator result: better proportions on mobile */
+      .calc-result{padding:28px 20px; min-height:auto; border-radius:20px}
+      .calc-result-big{font-size:clamp(36px, 10vw, 56px)}
+      .calc-result-sub{font-size:14px}
+      
+      /* Fix the giant "Stop Losing Money" button on mobile */
+      .calc-result .btn-lg{padding:14px 20px; font-size:14px}
+      
+      /* Pricing cards on mobile */
+      .price-card{padding:24px 20px}
+    }
     .hp{position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden}
 
   </style>
