@@ -733,11 +733,20 @@
     /* Honeypot — visually + a11y-hidden, but kept in tab order off */
     /* ===================== Mobile improvements ===================== */
     @media (max-width: 700px){
-      /* CTA strip: make it wider and less tall on mobile */
-      .cta-strip{padding:48px 20px}
-      .cta-strip p{font-size:15px}
-      .cta-strip .row{flex-direction:column; gap:10px}
-      .cta-strip .btn{width:100%; justify-content:center; padding:14px 20px; font-size:15px}
+      /* CTA strip: Less square, better colors */
+      .cta-strip{
+        padding: 40px 20px;
+        border-radius: 0;
+        min-height: auto;
+      }
+      /* Fix background gradients on mobile so it doesn't look flat */
+      .cta-strip::before{width: 300px; height: 300px; top: -50px; left: -100px}
+      .cta-strip::after{width: 300px; height: 300px; bottom: -100px; right: -100px}
+      
+      .cta-strip h2{font-size: clamp(24px, 6vw, 36px) !important; line-height: 1.1 !important;}
+      .cta-strip p{font-size: 14px; margin: 14px auto 0; max-width: 100%}
+      .cta-strip .row{flex-direction:column; gap:12px; margin-top: 24px}
+      .cta-strip .btn{width:100%; justify-content:center; padding: 14px 16px; font-size: 15px}
       
       /* Calculator result: better proportions on mobile */
       .calc-result{padding:28px 20px; min-height:auto; border-radius:20px}
