@@ -166,6 +166,13 @@
     /* ===================== Hero ===================== */
     .hero{padding:80px 0 40px}
     @media (max-width: 700px){ .hero{padding:52px 0 28px} }
+    .hero-layout{display:flex; align-items:center; gap:60px}
+    .hero-left{flex:1}
+    .hero-right{width:40%; flex-shrink:0}
+    @media (max-width: 1000px){
+      .hero-layout{flex-direction:column; gap:36px}
+      .hero-right{width:100%; max-width:500px}
+    }
     .hero h1{margin:18px 0 22px}
     .hero h1 .pink{color:var(--accent)}
     .hero .sub b{color:var(--ink); font-weight:700}
@@ -901,51 +908,50 @@
     <!-- ===================== HERO ===================== -->
     <section class="hero">
       <div class="wrap">
-        <div class="reveal">
-          <span class="label">For hospitality · legal · real estate · healthcare</span>
-        </div>
-        <h1 class="reveal">
-          Your Business <br/>
-          Never Stops <span class="pink">Answering</span>
-        </h1>
-        <p class="sub reveal">
-          Built for service businesses that can't afford to miss a lead. Your AI rep handles voice, chat, and booking — while you focus on the work.
-        </p>
-        <div class="hero-ctas reveal">
-          <a class="btn btn-primary btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="hero-cta-demo">Book a Demo Call</a>
-          <button class="btn btn-ghost btn-lg" id="hero-hear-it" data-testid="hero-cta-hear">See How It Works</button>
-        </div>
-        <div class="chips reveal">
-          <span class="chip" data-testid="chip-always-on">
-            <span class="chip-label">Always on</span>
-            <span class="chip-value">24/7</span>
-          </span>
-          <span class="chip" data-testid="chip-response">
-            <span class="chip-label">Response time</span>
-            <span class="chip-value">600ms</span>
-          </span>
-          <span class="chip" data-testid="chip-languages">
-            <span class="chip-label">Languages</span>
-            <span class="chip-value">31+</span>
-          </span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== DEMO CARD ===================== -->
-    <section class="demo-wrap">
-      <div class="wrap">
-        <div class="demo-card reveal" id="demo-card" data-testid="demo-card">
-          <span class="scribble demo-scribble">try it live ↓</span>
-          <div class="waveform" aria-hidden="true">
-            <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        <div class="hero-layout">
+          <div class="hero-left">
+            <div class="reveal">
+              <span class="label">For hospitality · legal · real estate · healthcare</span>
+            </div>
+            <h1 class="reveal">
+              Your Business <br/>
+              Never Stops <span class="pink">Answering</span>
+            </h1>
+            <p class="sub reveal">
+              Built for service businesses that can't afford to miss a lead. Your AI rep handles voice, chat, and booking — while you focus on the work.
+            </p>
+            <div class="hero-ctas reveal">
+              <a class="btn btn-primary btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="hero-cta-demo">Book a Demo Call</a>
+              <button class="btn btn-ghost btn-lg" id="hero-hear-it" data-testid="hero-cta-hear">See How It Works</button>
+            </div>
+            <div class="chips reveal">
+              <span class="chip" data-testid="chip-always-on">
+                <span class="chip-label">Always on</span>
+                <span class="chip-value">24/7</span>
+              </span>
+              <span class="chip" data-testid="chip-response">
+                <span class="chip-label">Response time</span>
+                <span class="chip-value">600ms</span>
+              </span>
+              <span class="chip" data-testid="chip-languages">
+                <span class="chip-label">Languages</span>
+                <span class="chip-value">31+</span>
+              </span>
+            </div>
           </div>
-          <h3>Talk to Elite Concierge — Live Demo</h3>
-          <p class="muted">Have an actual conversation with our AI agent. No forms, no waiting.</p>
-          <div id="retell-demo-widget">
-            <button class="btn btn-primary btn-lg" id="start-voice-demo" data-testid="start-voice-demo">Start Voice Demo</button>
+          <div class="hero-right">
+            <div class="demo-card reveal" id="demo-card" data-testid="demo-card">
+              <div class="waveform" aria-hidden="true">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+              </div>
+              <h3>Talk to Elite Concierge — Live Demo</h3>
+              <p class="muted">Have an actual conversation with our AI agent. No forms, no waiting.</p>
+              <div id="retell-demo-widget">
+                <button class="btn btn-primary btn-lg" id="start-voice-demo" data-testid="start-voice-demo">Start Voice Demo</button>
+              </div>
+              <div class="demo-status" id="demo-status" aria-live="polite"></div>
+            </div>
           </div>
-          <div class="demo-status" id="demo-status" aria-live="polite"></div>
         </div>
       </div>
     </section>
