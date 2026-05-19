@@ -1078,7 +1078,7 @@
                 <label for="calc-value" data-i18n="calc.valueLabel">Average customer value</label>
                 <output id="calc-value-out" data-testid="calc-value-out">$120</output>
               </div>
-              <input type="range" id="calc-value" min="50" max="10000" step="10" value="120" data-testid="calc-value"/>
+              <input type="range" id="calc-value" min="2000" max="400000" step="100" value="4800" data-testid="calc-value"/>
               <div class="calc-range-marks"><span>₴2 000</span><span>₴100k</span><span>₴200k</span><span>₴400k+</span></div>
             </div>
 
@@ -1564,11 +1564,11 @@
     const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
 
     const fmtMoney = (n) => {
-      const v = Math.round(n);
-      if (v >= 1000000) return "$" + (v / 1000000).toFixed(v >= 10000000 ? 0 : 1) + "M";
-      return "$" + v.toLocaleString("en-US");
+      const v = Math.round(n * 40);
+      if (v >= 1000000) return "₴" + (v / 1000000).toFixed(v >= 10000000 ? 0 : 1) + "M";
+      return "₴" + v.toLocaleString("en-US");
     };
-    const fmtValueLabel  = (v) => v >= 10000 ? "$10k+" : "$" + Number(v).toLocaleString("en-US");
+    const fmtValueLabel  = (v) => v >= 10000 ? "₴400k+" : "₴" + Number(v * 40).toLocaleString("en-US");
     const fmtMissedLabel = (v) => v >= 200 ? "200+" : String(v);
 
     const setRangeFill = (el) => {
