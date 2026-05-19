@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#fff7eb" />
-  <meta name="description" content="Elite Concierge — AI voice and chat agents that answer every call, capture every lead, and book every appointment, 24/7." />
-  <title>Elite Concierge — Your Business Never Stops Answering</title>
+  <meta name="description" content="Elite AI — Elite Concierge voice and chat agents that answer every call, capture every lead, and book every appointment, 24/7." />
+  <title>Elite AI — Your Business Never Stops Answering</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -83,8 +83,18 @@
       white-space:nowrap;
     }
     .btn-lg{padding:16px 30px; font-size:16px}
-    .btn-primary{background:var(--accent); color:#fff; box-shadow:var(--shadow-pink)}
-    .btn-primary:hover{background:var(--accent-hov); transform:translateY(-2px)}
+    .btn-primary{background:var(--accent); color:#fff; box-shadow:none}
+    .btn-primary:hover{
+      background:var(--accent); color:#fff;
+      box-shadow:none;
+      transform:translateY(-2px); cursor:pointer;
+    }
+    .btn-primary:active,
+    .btn-primary:focus-visible{
+      background:var(--accent); color:#fff; box-shadow:none;
+      transform:none;
+    }
+    .btn-primary.btn-arrow:hover::after{transform:translateX(3px)}
     .btn-ghost{background:transparent; color:var(--ink); border-color:var(--ink)}
     .btn-ghost:hover{background:var(--ink); color:#fff}
     .btn-light{background:#fff; color:var(--ink)}
@@ -159,15 +169,116 @@
     .hero h1{margin:18px 0 22px}
     .hero h1 .pink{color:var(--accent)}
     .hero .sub b{color:var(--ink); font-weight:700}
+    .hero .label{text-transform:none; letter-spacing:.06em}
     .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-top:32px}
+    .hero-ctas .btn-ghost{border-color:var(--line)}
+    .hero-ctas .btn-ghost:hover,
+    .hero-ctas .btn-ghost:focus-visible{
+      background:var(--accent); color:#fff; border-color:var(--accent);
+    }
     .chips{display:flex; gap:10px; flex-wrap:wrap; margin-top:30px}
     .chip{
-      display:inline-flex; align-items:center; gap:8px;
+      display:inline-flex; flex-direction:column; align-items:center; gap:2px;
       padding:8px 14px; border-radius:var(--radius-pill);
       background:rgba(255,255,255,.7); border:1px solid var(--line);
-      font-size:13px; color:var(--ink-2); font-weight:500;
     }
-    .chip .dot{width:6px; height:6px; border-radius:50%; background:var(--accent)}
+    .chip-label{font-size:11px; color:var(--muted); font-weight:500; line-height:1.2}
+    .chip-value{font-size:15px; color:var(--ink); font-weight:700; line-height:1.2}
+
+    /* ===================== Founding offer card ===================== */
+    .social-proof{padding:0 0 56px}
+    .founding-card{
+      background:#0f0f0f; border-radius:20px;
+      padding:48px 64px; text-align:center;
+      display:flex; flex-direction:column; align-items:center;
+    }
+    .founding-card-label{
+      font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--accent); margin:0 0 16px;
+    }
+    .founding-card-title{
+      font-family:'Bricolage Grotesque', serif; font-weight:800;
+      font-size:clamp(36px, 5vw, 52px); line-height:1.05; letter-spacing:-.02em;
+      color:#fff; margin:0 0 16px;
+    }
+    .founding-card-sub{
+      font-size:18px; line-height:1.5; color:#a0a0a0;
+      max-width:600px; margin:0 0 28px;
+    }
+    .founding-pills{
+      display:flex; flex-wrap:wrap; justify-content:center; gap:12px;
+      margin:0 0 24px;
+    }
+    .founding-pill{
+      padding:8px 20px; border-radius:999px;
+      background:#1e1e1e; border:1px solid #333;
+      color:#fff; font-size:14px; font-weight:500; line-height:1.3;
+    }
+    .founding-spots{
+      font-size:15px; font-weight:500; color:var(--accent);
+      margin:0 0 20px;
+    }
+    .founding-cta{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:16px 40px; border-radius:999px; border:none;
+      background:var(--accent); color:#fff;
+      font-size:17px; font-weight:600; text-decoration:none;
+      transition:background-color .2s ease, transform .18s ease;
+    }
+    .founding-cta:hover{background:var(--accent-hov); transform:translateY(-1px)}
+    @media (max-width: 700px){
+      .founding-card{padding:40px 24px}
+    }
+
+    /* ===================== Founding sticky bar ===================== */
+    .founding-sticky-bar{
+      position:fixed; top:0; left:0; right:0; z-index:60;
+      height:48px; background:var(--accent);
+      display:flex; align-items:center; justify-content:center;
+      padding:0 52px 0 20px;
+      transform:translateY(-100%);
+      transition:transform .3s ease;
+      pointer-events:none;
+    }
+    .founding-sticky-bar.is-visible{transform:translateY(0); pointer-events:auto}
+    .founding-sticky-bar.is-dismissed{display:none}
+    .founding-sticky-bar-text{
+      margin:0; font-size:14px; font-weight:500; color:#fff; line-height:1.3;
+    }
+    .founding-sticky-bar-text a{
+      color:#fff; text-decoration:underline; text-underline-offset:3px;
+      font-weight:600;
+    }
+    .founding-sticky-bar-text a:hover{opacity:.9}
+    .founding-sticky-bar-close{
+      position:absolute; right:12px; top:50%; transform:translateY(-50%);
+      width:32px; height:32px; padding:0; border:none; border-radius:50%;
+      background:transparent; color:#fff; font-size:22px; line-height:1;
+      cursor:pointer; opacity:.85;
+    }
+    .founding-sticky-bar-close:hover{opacity:1; background:rgba(255,255,255,.12)}
+
+    /* ===================== Founding bottom CTA ===================== */
+    .founding-bottom-cta{
+      background:var(--accent); padding:80px 28px; text-align:center;
+    }
+    .founding-bottom-title{
+      font-family:'Bricolage Grotesque', serif; font-weight:800;
+      font-size:clamp(28px, 4vw, 40px); line-height:1.1; letter-spacing:-.02em;
+      color:#fff; margin:0;
+    }
+    .founding-bottom-sub{
+      font-size:18px; color:rgba(255,255,255,.7);
+      margin:12px 0 0; line-height:1.5;
+    }
+    .founding-bottom-btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      margin-top:28px; padding:16px 40px; border-radius:999px;
+      background:#fff; color:var(--accent);
+      font-size:17px; font-weight:600; text-decoration:none;
+      transition:transform .2s ease;
+    }
+    .founding-bottom-btn:hover{transform:scale(1.03)}
 
     /* ===================== Demo card ===================== */
     .demo-wrap{position:relative; padding:24px 0 80px}
@@ -208,26 +319,44 @@
     .demo-card.is-live{box-shadow:0 0 0 2px var(--accent), var(--shadow-card)}
     .demo-status{margin-top:14px; font-size:13px; color:var(--ink-2); min-height:18px}
 
-    /* ===================== Marquee ===================== */
-    .marquee{
-      padding:24px 0 56px;
-      overflow:hidden;
-      position:relative;
-      mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-      -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    /* ===================== Who it's for (industry cards) ===================== */
+    .who-for{padding:24px 0 56px}
+    .who-for-head{text-align:center; margin:0 0 18px; padding:0 28px}
+    .who-for-title{
+      font-family:'Bricolage Grotesque', serif; font-size:clamp(28px, 3.5vw, 40px);
+      font-weight:700; letter-spacing:-.02em; line-height:1.1;
+      margin:0 0 8px; color:var(--ink);
     }
-    .marquee-track{
-      display:flex; gap:14px; width:max-content;
-      animation:scroll 44s linear infinite;
+    .who-for-sub{font-size:16px; color:var(--muted); margin:0; line-height:1.5}
+    .who-for-grid{
+      display:grid; grid-template-columns:repeat(2, 1fr); gap:16px;
     }
-    .marquee-track .pill{
-      padding:10px 20px; border-radius:var(--radius-pill);
-      background:#fff; border:1px solid var(--line);
-      font-size:14px; color:var(--ink-2); font-weight:500; white-space:nowrap;
+    .who-for-card{
+      background:#fff; border:0.5px solid var(--line); border-left:3px solid transparent;
+      border-radius:12px; padding:1.5rem; display:flex; flex-direction:column; gap:10px;
+      transition:border-left-color .2s ease;
     }
-    @keyframes scroll{
-      from{transform:translateX(0)}
-      to{transform:translateX(-50%)}
+    .who-for-card:hover{border-left-color:var(--accent)}
+    .who-for-card h3{
+      font-size:16px; font-weight:500; margin:0;
+      font-family:'Inter', sans-serif; letter-spacing:0; color:var(--ink);
+    }
+    .who-for-card .who-for-problem{font-size:13px; color:var(--muted); line-height:1.5; margin:0}
+    .who-for-card .who-for-outcome{
+      font-size:14px; font-weight:500; color:var(--accent); line-height:1.45; margin:0;
+      transition:font-weight .2s ease;
+    }
+    .who-for-card:hover .who-for-outcome{font-weight:700}
+    .who-for-cta{
+      display:inline-flex; align-self:flex-start; margin-top:auto;
+      padding:8px 16px; border-radius:var(--radius-pill);
+      font-size:13px; font-weight:600; color:var(--accent); background:transparent;
+      border:1px solid var(--accent); text-decoration:none;
+      transition:background-color .2s ease, color .2s ease;
+    }
+    .who-for-cta:hover{background:var(--accent); color:#fff}
+    @media (max-width: 767px){
+      .who-for-grid{grid-template-columns:1fr}
     }
 
     /* ===================== Sections shared ===================== */
@@ -244,10 +373,15 @@
       padding:42px 0; border-top:1px solid var(--line);
     }
     .step:last-child{border-bottom:1px solid var(--line)}
+    .step-num-col{display:flex; flex-direction:column; align-items:flex-start}
     .step .num{
       font-family:'Bricolage Grotesque', serif; font-weight:800;
       font-size:clamp(80px, 11vw, 140px); line-height:1;
       color:rgba(236,28,140,.18); letter-spacing:-.04em;
+    }
+    .step-when{
+      font-family:'Bricolage Grotesque', serif; font-size:14px; font-weight:400;
+      color:rgba(236,28,140,.18); margin-top:6px; line-height:1.2;
     }
     .step h3{font-size:clamp(26px, 3vw, 36px); margin-bottom:14px; font-family:'Bricolage Grotesque', serif}
     .step p{color:var(--ink-2); font-size:17px; max-width:60ch}
@@ -256,37 +390,42 @@
       .step .num{font-size:88px}
     }
 
-    /* ===================== Features ===================== */
-    .features-card{
-      background:#fff; border:1px solid var(--line); border-radius:var(--radius);
-      box-shadow:var(--shadow-card); overflow:hidden;
+    /* ===================== Features (grid) ===================== */
+    .feat-groups{display:block}
+    .feat-board{
+      display:grid; grid-template-columns:repeat(4, 1fr);
+      background:#fff; border-radius:24px; overflow:hidden;
+      border:1px solid var(--line); box-shadow:var(--shadow-card);
     }
-    .features-grid{display:grid; grid-template-columns:repeat(4, 1fr)}
-    .feat{
-      padding:30px 26px; border-right:1px solid var(--line); border-bottom:1px solid var(--line);
+    .feat-card{
+      padding:28px 24px 30px;
+      border-right:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#fff;
     }
-    .feat:nth-child(4n){border-right:none}
-    .feat:nth-last-child(-n+4){border-bottom:none}
-    .feat .ico{
+    .feat-board .feat-card:nth-child(4n){border-right:none}
+    .feat-board .feat-card:nth-child(n+9){border-bottom:none}
+    .feat-card .ico{
       width:36px; height:36px; border-radius:10px;
       background:#fff1f7; color:var(--accent);
       display:inline-flex; align-items:center; justify-content:center;
       margin-bottom:14px;
     }
-    .feat h3{font-size:16px; font-weight:700; margin-bottom:6px; font-family:'Inter', sans-serif; letter-spacing:0}
-    .feat p{font-size:13.5px; color:var(--muted); line-height:1.5}
-    @media (max-width: 1000px){
-      .features-grid{grid-template-columns:repeat(2, 1fr)}
-      .feat{border-right:1px solid var(--line); border-bottom:1px solid var(--line)}
-      .feat:nth-child(4n){border-right:1px solid var(--line)}
-      .feat:nth-child(2n){border-right:none}
-      .feat:nth-last-child(-n+4){border-bottom:1px solid var(--line)}
-      .feat:nth-last-child(-n+2){border-bottom:none}
+    .feat-card h3{font-size:16px; font-weight:700; margin-bottom:6px; font-family:'Inter', sans-serif; letter-spacing:0}
+    .feat-card p{font-size:13.5px; color:var(--muted); line-height:1.5; margin:0}
+    @media (max-width: 1024px){
+      .feat-board{grid-template-columns:repeat(2, 1fr)}
+      .feat-board .feat-card{border-right:1px solid var(--line); border-bottom:1px solid var(--line)}
+      .feat-board .feat-card:nth-child(4n){border-right:1px solid var(--line)}
+      .feat-board .feat-card:nth-child(2n){border-right:none}
+      .feat-board .feat-card:nth-child(n+9){border-bottom:1px solid var(--line)}
+      .feat-board .feat-card:nth-child(n+11){border-bottom:none}
     }
-    @media (max-width: 600px){
-      .features-grid{grid-template-columns:1fr}
-      .feat{border-right:none !important; border-bottom:1px solid var(--line) !important}
-      .feat:last-child{border-bottom:none !important}
+    @media (max-width: 560px){
+      .feat-board{grid-template-columns:1fr}
+      .feat-board .feat-card{border-right:none !important}
+      .feat-board .feat-card:not(:last-child){border-bottom:1px solid var(--line)}
+      .feat-board .feat-card:last-child{border-bottom:none}
     }
 
     /* ===================== Revenue Calculator ===================== */
@@ -312,7 +451,7 @@
     .calc-field-industry select{
       -webkit-appearance:none; appearance:none;
       width:100%; padding:12px 40px 12px 14px;
-      border-radius:12px; border:1px solid var(--line); background:#fff7eb;
+      border-radius:12px; border:1px solid var(--line); background:#fff;
       font-family:inherit; font-size:14.5px; color:var(--ink);
       font-weight:500; cursor:pointer; outline:none;
       transition:border-color .18s ease, background-color .18s ease;
@@ -415,6 +554,18 @@
       transform:rotate(-45deg);
       transform-origin:left center;
     }
+    .price-card .plan-trust{
+      display:flex; flex-wrap:wrap; gap:6px; margin:0 0 18px;
+      justify-content:flex-start;
+    }
+    .price-card .plan-trust .trust-badge{
+      display:inline-flex; align-items:center; gap:4px;
+      padding:4px 10px; border-radius:999px;
+      font-size:9px; letter-spacing:.1em; text-transform:uppercase;
+      background:#fff1f7; border:1px solid rgba(236,28,140,.14);
+      color:var(--accent); font-weight:600; white-space:nowrap;
+    }
+    .price-card .plan-trust .trust-badge svg{width:9px; height:9px; color:var(--accent); flex-shrink:0}
     .price-card .btn{margin-top:auto; justify-content:center}
     .price-card.featured{
       background:var(--ink); color:#fff; border-color:var(--ink);
@@ -424,22 +575,34 @@
     .price-card.featured .tag{color:#fff}
     .price-card.featured li{color:rgba(255,255,255,.86)}
     .price-card.featured li::before{border-color:var(--accent)}
+    .price-card .plan-badge,
     .price-card .popular{
       position:absolute; top:-12px; left:50%; transform:translateX(-50%);
-      background:var(--accent); color:#fff;
       padding:6px 14px; border-radius:var(--radius-pill);
       font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:700;
+      white-space:nowrap; z-index:1;
     }
-
-    .pricing-foot{
-      text-align:center; margin-top:54px;
-      display:flex; flex-direction:column; align-items:center; gap:18px;
+    .price-card .popular,
+    .plan-badge--popular,
+    .plan-badge--value,
+    .plan-badge--premium{background:var(--accent); color:#fff}
+    .price-anchor{
+      font-size:15px; font-weight:500; line-height:1.35;
+      margin:0 0 4px;
     }
-    .pricing-foot .scribble{font-size:38px; margin-bottom:-4px}
-    .pricing-foot p{color:var(--ink-2); max-width:54ch; font-size:17px}
-    .pricing-foot .big-cta{
-      font-family:'Bricolage Grotesque', serif; font-weight:700;
-      font-size:clamp(20px, 2.2vw, 26px); padding:20px 36px;
+    .price-anchor--accent{color:var(--accent)}
+    .price-anchor--ink{color:var(--ink)}
+    .price-anchor--value{color:#0d9488; font-weight:600}
+    .price-anchor--premium{color:#7c3aed; font-weight:600}
+    .price-anchor--light{color:#fff}
+    .price-anchor-note{
+      font-size:12px; line-height:1.4; color:var(--muted);
+      margin:0 0 14px;
+    }
+    .price-card.featured .price-anchor-note{color:rgba(255,255,255,.55)}
+    .pricing-note{
+      text-align:center; font-size:13px; color:var(--muted);
+      margin:28px 0 0; line-height:1.5;
     }
 
     /* ===================== CTA strip ===================== */
@@ -460,13 +623,32 @@
     .cta-strip h2{color:#fff}
     .cta-strip p{margin:18px auto 0; max-width:60ch; color:rgba(255,255,255,.78); font-size:18px}
     .cta-strip .row{margin-top:34px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+    .cta-strip .btn-light{
+      background:#fff; color:var(--ink);
+      box-shadow:0 4px 18px rgba(0,0,0,.14);
+      transition:transform .18s ease, box-shadow .25s ease, background-color .18s ease;
+    }
+    .cta-strip .btn-light:hover,
+    .cta-strip .btn-light:focus-visible{
+      background:#fff; color:var(--ink);
+      transform:translateY(-2px);
+      box-shadow:0 10px 28px rgba(0,0,0,.22);
+    }
+    .cta-strip .btn-light:active{
+      transform:translateY(0);
+      box-shadow:0 4px 14px rgba(0,0,0,.16);
+    }
     @media (max-width: 700px){
       .cta-strip{border-radius:0; padding:64px 22px; max-width:none}
+    }
+    .cta-section{padding-bottom:48px}
+    @media (max-width: 700px){
+      .cta-section{padding-bottom:32px}
     }
 
     /* ===================== Footer ===================== */
     footer.site{
-      background:var(--dark); color:#fff; margin-top:96px; padding:80px 0 32px;
+      background:var(--dark); color:#fff; margin-top:0; padding:80px 0 32px;
     }
     footer.site .cols{
       display:grid; grid-template-columns:1.2fr 1fr 1.6fr; gap:48px;
@@ -480,6 +662,7 @@
     footer.site a:hover{color:#fff}
     footer.site .brand-col p{color:rgba(255,255,255,.7); margin-top:14px; max-width:42ch; line-height:1.55}
     footer.site .brand-col .links{margin-top:18px; display:flex; flex-direction:column; gap:8px}
+    footer.site .brand-col .footer-location{color:rgba(255,255,255,.82); font-size:14.5px; line-height:1.55}
     footer.site .rule{height:1px; background:rgba(255,255,255,.12); margin:48px 0 24px}
     footer.site .footer-trust{
       display:flex; justify-content:center; align-items:center;
@@ -508,7 +691,7 @@
     .reveal.in{opacity:1; transform:none}
     @media (prefers-reduced-motion: reduce){
       .reveal{opacity:1; transform:none; transition:none}
-      .waveform .bar, .marquee-track{animation:none !important}
+      .waveform .bar{animation:none !important}
     }
 
     /* ===================== Modal ===================== */
@@ -556,6 +739,15 @@
   <!-- React mounts a hidden root; the real page is this static markup. -->
   <div id="react-root" style="display:none"></div>
 
+  <!-- ===================== FOUNDING STICKY BAR ===================== -->
+  <div class="founding-sticky-bar" id="founding-sticky-bar" role="region" aria-label="Founding offer reminder">
+    <p class="founding-sticky-bar-text">
+      ⚡ Only 3 founding spots left —
+      <a href="https://t.me/elite_ai_concierge_bot" target="_blank" rel="noopener noreferrer" id="founding-bar-link">Claim yours before they're gone →</a>
+    </p>
+    <button type="button" class="founding-sticky-bar-close" id="founding-sticky-bar-close" aria-label="Dismiss notification">×</button>
+  </div>
+
   <!-- ===================== NAVBAR ===================== -->
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
@@ -568,7 +760,7 @@
           <rect x="22" y="13" width="3" height="6"  rx="1.5" fill="#ec1c8c"/>
           <rect x="27" y="15" width="3" height="2"  rx="1"   fill="#ec1c8c"/>
         </svg>
-        <span>Elite Concierge</span>
+        <span>Elite AI</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#how" data-testid="nav-link-how">How it Works</a>
@@ -600,23 +792,32 @@
     <section class="hero">
       <div class="wrap">
         <div class="reveal">
-          <span class="label">AI Voice and Chat Agents</span>
+          <span class="label">For hospitality · legal · real estate · healthcare</span>
         </div>
         <h1 class="reveal">
           Your Business <br/>
-          Never Stops <span class="pink">Answering.</span>
+          Never Stops <span class="pink">Answering</span>
         </h1>
         <p class="sub reveal">
-          Elite Concierge picks up every call, replies on every channel, and books every appointment — so you never lose another <b>call</b>, <b>lead</b>, or <b>appointment</b> to a missed message again.
+          Built for service businesses that can't afford to miss a lead. Your AI rep handles voice, chat, and booking — while you focus on the work.
         </p>
         <div class="hero-ctas reveal">
           <a class="btn btn-primary btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="hero-cta-demo">Book a Demo Call</a>
-          <button class="btn btn-ghost btn-lg" id="hero-hear-it" data-testid="hero-cta-hear">Hear It in Action</button>
+          <button class="btn btn-ghost btn-lg" id="hero-hear-it" data-testid="hero-cta-hear">See How It Works</button>
         </div>
         <div class="chips reveal">
-          <span class="chip" data-testid="chip-always-on"><span class="dot"></span>24/7 Always On</span>
-          <span class="chip" data-testid="chip-response"><span class="dot"></span>600ms Response Time</span>
-          <span class="chip" data-testid="chip-languages"><span class="dot"></span>31+ Languages</span>
+          <span class="chip" data-testid="chip-always-on">
+            <span class="chip-label">Always on</span>
+            <span class="chip-value">24/7</span>
+          </span>
+          <span class="chip" data-testid="chip-response">
+            <span class="chip-label">Response time</span>
+            <span class="chip-value">600ms</span>
+          </span>
+          <span class="chip" data-testid="chip-languages">
+            <span class="chip-label">Languages</span>
+            <span class="chip-value">31+</span>
+          </span>
         </div>
       </div>
     </section>
@@ -639,19 +840,57 @@
       </div>
     </section>
 
-    <!-- ===================== MARQUEE ===================== -->
-    <section class="marquee" aria-label="Industries we serve">
-      <div class="marquee-track" id="marquee-track">
-        <span class="pill">Real Estate Agency</span>
-        <span class="pill">Law Firm</span>
-        <span class="pill">E-Commerce Store</span>
-        <span class="pill">Healthcare Clinic</span>
-        <span class="pill">Home Services</span>
-        <span class="pill">Logistics</span>
-        <span class="pill">Insurance</span>
-        <span class="pill">SaaS</span>
-        <span class="pill">Dental</span>
-        <span class="pill">Property Mgmt</span>
+    <!-- ===================== FOUNDING OFFER ===================== -->
+    <section class="social-proof" id="founding-offer" aria-label="Founding client offer">
+      <div class="wrap">
+        <div class="founding-card reveal" data-testid="founding-offer-card">
+          <p class="founding-card-label">Limited Founding Offer</p>
+          <h2 class="founding-card-title">Only 10 Founding Clients.</h2>
+          <p class="founding-card-sub">Your AI agent — built, integrated, and live in under a week. Handled personally by our founding team.</p>
+          <div class="founding-pills">
+            <span class="founding-pill">✓ Done-for-you setup</span>
+            <span class="founding-pill">✓ Live in &lt; 1 week</span>
+            <span class="founding-pill">✓ 4 out of 5 missed calls recovered</span>
+          </div>
+          <p class="founding-spots" data-testid="founding-spots">⚡ 7 of 10 spots claimed — 3 remaining</p>
+          <a class="founding-cta" href="https://t.me/elite_ai_concierge_bot" target="_blank" rel="noopener noreferrer" data-testid="founding-offer-cta">Claim Your Founding Spot →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WHO IT'S FOR ===================== -->
+    <section class="who-for" aria-label="Industries we serve">
+      <div class="wrap">
+        <div class="who-for-head">
+          <h2 class="who-for-title">Sound familiar?</h2>
+          <p class="who-for-sub">Pick your situation — see exactly how it plays out.</p>
+        </div>
+        <div class="who-for-grid" data-testid="who-for-grid">
+          <article class="who-for-card">
+            <h3>Restaurant</h3>
+            <p class="who-for-problem">Reservation calls hit voicemail during the dinner rush.</p>
+            <p class="who-for-outcome">"Every table inquiry gets answered — even when the floor is packed."</p>
+            <a class="who-for-cta" href="#demo-card">See how it works for restaurants →</a>
+          </article>
+          <article class="who-for-card">
+            <h3>Law Firm</h3>
+            <p class="who-for-problem">New client intakes get missed on weekends.</p>
+            <p class="who-for-outcome">"Every potential case gets a real response, 24/7."</p>
+            <a class="who-for-cta" href="#demo-card">See how it works for law firms →</a>
+          </article>
+          <article class="who-for-card">
+            <h3>Real Estate Agency</h3>
+            <p class="who-for-problem">Leads go cold in minutes if you don't answer.</p>
+            <p class="who-for-outcome">"Your agent qualifies and books viewings while you're showing another property."</p>
+            <a class="who-for-cta" href="#demo-card">See how it works for real estate agencies →</a>
+          </article>
+          <article class="who-for-card">
+            <h3>Beauty Salon</h3>
+            <p class="who-for-problem">Clients call while you're mid-appointment and book elsewhere.</p>
+            <p class="who-for-outcome">"Keep filling your chair without stopping mid-service."</p>
+            <a class="who-for-cta" href="#demo-card">See how it works for beauty salons →</a>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -665,24 +904,33 @@
 
         <div class="steps">
           <div class="step reveal">
-            <div class="num">01</div>
+            <div class="step-num-col">
+              <div class="num">01</div>
+              <span class="step-when">Day 1</span>
+            </div>
             <div>
               <h3>Discovery & blueprint</h3>
               <p>We map your current call flows, FAQs, and booking systems in a single 30-minute session. You leave with a one-page agent blueprint — every intent, every fallback, every handoff.</p>
             </div>
           </div>
           <div class="step reveal">
-            <div class="num">02</div>
+            <div class="step-num-col">
+              <div class="num">02</div>
+              <span class="step-when">Days 2–5</span>
+            </div>
             <div>
               <h3>Build & integrate</h3>
               <p>Our team writes your agent's voice, plugs into your CRM and calendar, and connects your existing phone number. You review a working agent within 3–5 business days.</p>
             </div>
           </div>
           <div class="step reveal">
-            <div class="num">03</div>
+            <div class="step-num-col">
+              <div class="num">03</div>
+              <span class="step-when">Day 6 onwards</span>
+            </div>
             <div>
               <h3>Go live & optimize</h3>
-              <p>We launch in shadow mode, then take live calls. Every conversation is auto-transcribed and scored, and we tune prompts weekly so the agent gets sharper the longer it runs.</p>
+              <p>We launch in shadow mode, then go live. Every call is auto-transcribed, scored, and tuned weekly — your agent improves without you lifting a finger.</p>
             </div>
           </div>
         </div>
@@ -694,29 +942,75 @@
       <div class="wrap">
         <div class="section-head reveal">
           <span class="label">Features</span>
-          <h2>Everything Built In.</h2>
-          <p>Powered by Retell AI, 40M+ calls/month — production-grade voice infrastructure trusted by teams across finance, healthcare, and ops.</p>
+          <h2>The infrastructure behind every Elite conversation.</h2>
+          <p>Enterprise-grade voice AI — built for businesses where every conversation is a revenue opportunity.</p>
         </div>
 
-        <div class="features-card reveal" data-testid="features-grid">
-          <div class="features-grid">
-            <!-- 12 features -->
-            <div class="feat"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div><h3>Inbound & Outbound</h3><p>Take calls and run callbacks from one agent — no extra setup, no extra license.</p></div>
-            <div class="feat"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Web Chat</h3><p>Drop a single script on your site and your agent picks up chats with the same brain.</p></div>
-            <div class="feat"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div><h3>CRM Sync</h3><p>HubSpot, Salesforce, Pipedrive, GoHighLevel — every call lands as a fully attributed contact.</p></div>
-            <div class="feat"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><h3>Calendar Booking</h3><p>Reads availability and books straight into Google, Outlook, or Calendly — confirmed.</p></div>
-
-            <div class="feat"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3>31+ Languages</h3><p>Native-sounding voices across every major market, with auto language detection mid-call.</p></div>
-            <div class="feat"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></div><h3>Your Phone Number</h3><p>Keep your existing line via SIP, or pick a new local or toll-free number in minutes.</p></div>
-            <div class="feat"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div><h3>Smart Warm Transfer</h3><p>When a human is needed, the agent briefs the rep before connecting — no "let me repeat that."</p></div>
-            <div class="feat"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></div><h3>Transcripts & Summary</h3><p>Every call is transcribed, summarized, and tagged with next-step actions automatically.</p></div>
-
-            <div class="feat"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><h3>SMS Follow-Ups</h3><p>Triggered texts after every call — reminders, links, no-show recovery, all rule-driven.</p></div>
-            <div class="feat"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3>SOC 2 / HIPAA / GDPR</h3><p>Enterprise-grade compliance baked in. Regional data residency on request.</p></div>
-            <div class="feat"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3>600ms Latency</h3><p>Sub-second response times that feel like a real conversation — not a robot pause.</p></div>
-            <div class="feat"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6"  y1="20" x2="6"  y2="14"/></svg></div><h3>Auto QA</h3><p>Every call scored against your playbook so you see drift before customers do.</p></div>
+        <div class="feat-groups reveal" data-testid="features-grid">
+          <div class="feat-board">
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div>
+              <h3>Inbound &amp; outbound</h3>
+              <p>Take calls and run callbacks from one agent — no extra setup, no extra license.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+              <h3>Web chat</h3>
+              <p>Drop a single script on your site and your agent picks up chats with the same brain.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+              <h3>CRM sync</h3>
+              <p>HubSpot, Salesforce, Pipedrive, GoHighLevel — every call lands as a fully attributed contact.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+              <h3>Calendar booking</h3>
+              <p>Reads availability and books straight into Google, Outlook, or Calendly — confirmed.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+              <h3>31+ languages</h3>
+              <p>Native-sounding voices across every major market, with auto language detection mid-call.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="4" x2="9" y2="20"/><line x1="15" y1="4" x2="15" y2="20"/><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/></svg></div>
+              <h3>Your phone number</h3>
+              <p>Keep your existing line via SIP, or pick a new local or toll-free number in minutes.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+              <h3>Smart warm transfer</h3>
+              <p>When a human is needed, the agent briefs the rep before connecting — no &ldquo;let me repeat that.&rdquo;</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></div>
+              <h3>Transcripts &amp; summary</h3>
+              <p>Every call is transcribed, summarized, and tagged with next-step actions automatically.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+              <h3>SMS follow-ups</h3>
+              <p>Triggered texts after every call — reminders, links, no-show recovery, all rule-driven.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+              <h3>SOC 2 / HIPAA / GDPR</h3>
+              <p>Enterprise-grade compliance baked in. Regional data residency on request.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+              <h3>600ms latency</h3>
+              <p>Sub-second response times that feel like a real conversation — not a robot pause.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg></div>
+              <h3>Auto QA</h3>
+              <p>Every call scored against your playbook so you see drift before customers do.</p>
+            </article>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -745,7 +1039,7 @@
                   <option value="ecommerce">E-Commerce</option>
                   <option value="healthcare">Healthcare Clinic</option>
                   <option value="insurance">Insurance Broker</option>
-                  <option value="restaurant">Restaurant / Cafe</option>
+                  <option value="restaurant" selected>Restaurant / Cafe</option>
                   <option value="beauty">Beauty Salon / Spa</option>
                   <option value="gym">Gym / Fitness Studio</option>
                   <option value="property">Property Management</option>
@@ -758,27 +1052,27 @@
             <div class="calc-field">
               <div class="calc-field-head">
                 <label for="calc-missed">Missed calls per week</label>
-                <output id="calc-missed-out" data-testid="calc-missed-out">15</output>
+                <output id="calc-missed-out" data-testid="calc-missed-out">98</output>
               </div>
-              <input type="range" id="calc-missed" min="1" max="200" step="1" value="15" data-testid="calc-missed"/>
+              <input type="range" id="calc-missed" min="1" max="200" step="1" value="98" data-testid="calc-missed"/>
               <div class="calc-range-marks"><span>1</span><span>50</span><span>100</span><span>200+</span></div>
             </div>
 
             <div class="calc-field">
               <div class="calc-field-head">
                 <label for="calc-value">Average customer value</label>
-                <output id="calc-value-out" data-testid="calc-value-out">$500</output>
+                <output id="calc-value-out" data-testid="calc-value-out">$120</output>
               </div>
-              <input type="range" id="calc-value" min="50" max="10000" step="10" value="500" data-testid="calc-value"/>
+              <input type="range" id="calc-value" min="50" max="10000" step="10" value="120" data-testid="calc-value"/>
               <div class="calc-range-marks"><span>$50</span><span>$2.5k</span><span>$5k</span><span>$10k+</span></div>
             </div>
 
             <div class="calc-field">
               <div class="calc-field-head">
                 <label for="calc-close">Close rate</label>
-                <output id="calc-close-out" data-testid="calc-close-out">25%</output>
+                <output id="calc-close-out" data-testid="calc-close-out">40%</output>
               </div>
-              <input type="range" id="calc-close" min="1" max="100" step="1" value="25" data-testid="calc-close"/>
+              <input type="range" id="calc-close" min="1" max="100" step="1" value="40" data-testid="calc-close"/>
               <div class="calc-range-marks"><span>1%</span><span>25%</span><span>50%</span><span>100%</span></div>
             </div>
 
@@ -792,13 +1086,13 @@
             <div class="calc-result-inner">
               <div class="calc-result-label">You're leaving on the table</div>
               <div class="calc-result-big">
-                <span id="calc-annual" data-testid="calc-annual">$78,000</span>
+                <span id="calc-annual" data-testid="calc-annual">$195,686</span>
                 <span class="calc-result-unit">/ year</span>
               </div>
               <div class="calc-result-sub">
-                That's roughly <b><span id="calc-monthly" data-testid="calc-monthly">$6,500</span></b> a month walking past your front door.
+                That's roughly <b><span id="calc-monthly" data-testid="calc-monthly">$16,307</span></b> a month walking past your front door.
               </div>
-              <button class="btn btn-primary btn-lg btn-arrow" data-intent="strategy" data-testid="calc-cta" style="margin-top:22px">Recover This Revenue</button>
+              <a class="btn btn-primary btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="calc-cta" style="margin-top:22px">Stop Losing Money Every Day</a>
             </div>
           </div>
         </div>
@@ -815,67 +1109,87 @@
         </div>
 
         <div class="price-grid">
-          <div class="price-card reveal" data-testid="plan-voice">
-            <div class="plan">Voice Only</div>
-            <div class="tag">Answer every call, day one.</div>
+          <div class="price-card featured reveal" data-testid="plan-voice">
+            <span class="popular">Most Popular</span>
+            <div class="plan">Voice Agent</div>
+            <div class="tag">Never miss a sales call again.</div>
+            <p class="price-anchor price-anchor--accent">From $499/mo + one-time setup fee</p>
+            <p class="price-anchor-note">Setup fee covers discovery, build &amp; integration — done for you.</p>
+            <p style="margin:0 0 18px;font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.78)">Your AI rep answers every inbound call, qualifies the lead, and books the meeting — day and night.</p>
             <ul>
               <li>Inbound & outbound voice agent</li>
-              <li>Your existing phone number</li>
+              <li>Keep your existing phone number</li>
+              <li>Lead qualification &amp; live booking</li>
               <li>CRM + calendar integration</li>
-              <li>Transcripts, summaries, SMS follow-ups</li>
-              <li>Weekly tuning included</li>
+              <li>Transcripts, summaries &amp; SMS follow-ups</li>
+              <li>Auto QA + weekly performance tuning</li>
             </ul>
-            <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-voice-cta">Get a Quote</a>
+            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-voice-cta">Book a demo</a>
           </div>
 
-          <div class="price-card featured reveal" data-testid="plan-chat">
-            <span class="popular">Most Popular</span>
-            <div class="plan">Chat Only</div>
-            <div class="tag">Reply on every channel, instantly.</div>
+          <div class="price-card reveal" data-testid="plan-chat">
+            <span class="plan-badge plan-badge--popular">Most Feature-Rich</span>
+            <div class="plan">Chat Agent</div>
+            <div class="tag">Reply on every channel, instantly — 24/7.</div>
+            <p class="price-anchor price-anchor--accent">From $249/mo</p>
+            <p class="price-anchor-note">Quoted based on message volume and channels.</p>
+            <p style="margin:0 0 18px;font-size:14.5px;line-height:1.55;color:var(--ink-2)">Turn your website and social channels into a lead machine that never sleeps.</p>
             <ul>
               <li>Web chat + SMS + WhatsApp agent</li>
               <li>Knowledge base auto-trained on your site</li>
-              <li>CRM sync + calendar booking</li>
-              <li>Handoff to your team in Slack or email</li>
-              <li>Auto QA & weekly tuning</li>
+              <li>Lead capture, scoring &amp; CRM sync</li>
+              <li>Calendar booking in chat</li>
+              <li>31+ languages with consistent tone &amp; terminology</li>
+              <li>Smart human handoff when the bot hits its limit</li>
             </ul>
-            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-chat-cta">Book a Demo</a>
+            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-chat-cta">Get a quote</a>
           </div>
 
           <div class="price-card reveal" data-testid="plan-full">
+            <span class="plan-badge plan-badge--popular">Everything Included</span>
             <div class="plan">Full Suite</div>
             <div class="tag">Voice + chat, one shared brain.</div>
+            <p class="price-anchor price-anchor--accent">From $999/mo — everything included</p>
+            <p class="price-anchor-note">One price. Voice, chat, compliance, and a dedicated success engineer.</p>
             <ul>
               <li>Everything in Voice & Chat</li>
-              <li>Unified conversation history</li>
+              <li>Unified conversation history across channels</li>
               <li>Smart warm transfer to humans</li>
-              <li>SOC 2 / HIPAA / GDPR compliance pack</li>
               <li>Dedicated success engineer</li>
+              <li>Sentiment analysis &amp; escalation rules</li>
             </ul>
-            <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-full-cta">Let's Build</a>
+            <div class="plan-trust footer-trust" data-testid="plan-full-trust">
+              <span class="trust-badge" data-testid="trust-soc2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SOC 2</span>
+              <span class="trust-badge" data-testid="trust-hipaa"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>HIPAA</span>
+              <span class="trust-badge" data-testid="trust-gdpr"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>GDPR</span>
+            </div>
+            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-full-cta">Let's Build</a>
           </div>
         </div>
 
-        <div class="pricing-foot reveal">
-          <span class="scribble">not sure which fits?</span>
-          <p>15 minutes on the phone and we'll tell you straight up which surface will move the needle first — and which one to skip for now.</p>
-          <a class="btn btn-primary btn-lg big-cta" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="pricing-strategy-cta">Book Your Free Strategy Call</a>
-        </div>
+        <p class="pricing-note">All plans include onboarding. No long-term contracts required.</p>
       </div>
     </section>
 
     <!-- ===================== CTA STRIP ===================== -->
-    <section style="padding:0 0 96px">
+    <section class="cta-section">
       <div class="wrap">
         <div class="cta-strip reveal">
-          <h2>Ready to Never Miss<br/>Another Call?</h2>
+          <h2>Always on. Never on hold.<br/>Never on payroll.</h2>
           <p>Join businesses cutting call handling costs by 80 percent while answering every inbound — voice, chat, after hours, in 31 languages.</p>
           <div class="row">
-            <a class="btn btn-light btn-lg" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="strip-cta-strategy">Book a Strategy Call</a>
+            <a class="btn btn-light btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="strip-cta-strategy">Book a Strategy Call</a>
             <a class="btn btn-outline-light btn-lg" href="https://t.me/elite_ai_concierge_bot" target="_blank" rel="noopener noreferrer" data-testid="strip-cta-message">Send a Message</a>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- ===================== FOUNDING BOTTOM CTA ===================== -->
+    <section class="founding-bottom-cta" aria-label="Founding offer closing call to action">
+      <h2 class="founding-bottom-title">Still here? The founding offer won't be.</h2>
+      <p class="founding-bottom-sub">3 spots left. No lock-in. Cancel anytime.</p>
+      <a class="founding-bottom-btn" href="https://t.me/elite_ai_concierge_bot" target="_blank" rel="noopener noreferrer" data-testid="founding-bottom-cta">Claim Your Spot Now →</a>
     </section>
   </main>
 
@@ -911,11 +1225,11 @@
               <rect x="22" y="13" width="3" height="6"  rx="1.5" fill="#ec1c8c"/>
               <rect x="27" y="15" width="3" height="2"  rx="1"   fill="#ec1c8c"/>
             </svg>
-            <span>Elite Concierge</span>
+            <span>Elite AI</span>
           </div>
-          <p>Always on. Never on hold. Never on payroll.</p>
           <div class="links">
-            <a href="mailto:eliteconcierge@outlook.com" data-testid="footer-email">eliteconcierge@outlook.com</a>
+            <a href="mailto:hello@eliteai.space" data-testid="footer-email">hello@eliteai.space</a>
+            <span class="footer-location">Based in Lisbon, Portugal, serving clients globally</span>
           </div>
         </div>
       </div>
@@ -927,7 +1241,7 @@
         <span class="trust-badge" data-testid="trust-uptime"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>99.99% Uptime</span>
       </div>
       <div class="bottom">
-        <span>© 2025 Elite Concierge</span>
+        <span>© 2026 Elite AI</span>
         <span><a href="/privacy.html" data-testid="footer-privacy">Privacy</a> &nbsp;·&nbsp; <a href="/terms.html" data-testid="footer-terms">Terms</a></span>
       </div>
     </div>
@@ -995,6 +1309,32 @@
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 
+    // ---------- Founding sticky bar (after hero, session-dismissible) ----------
+    const foundingStickyBar = document.getElementById("founding-sticky-bar");
+    const foundingStickyClose = document.getElementById("founding-sticky-bar-close");
+    const heroSection = document.querySelector(".hero");
+    const FOUNDING_BAR_KEY = "foundingBarDismissed";
+
+    if (sessionStorage.getItem(FOUNDING_BAR_KEY) === "1") {
+      foundingStickyBar.classList.add("is-dismissed");
+    }
+
+    const updateFoundingStickyBar = () => {
+      if (sessionStorage.getItem(FOUNDING_BAR_KEY) === "1") return;
+      const pastHero = heroSection
+        ? heroSection.getBoundingClientRect().bottom <= 0
+        : window.scrollY > window.innerHeight;
+      foundingStickyBar.classList.toggle("is-visible", pastHero);
+    };
+    updateFoundingStickyBar();
+    window.addEventListener("scroll", updateFoundingStickyBar, { passive: true });
+
+    foundingStickyClose.addEventListener("click", () => {
+      foundingStickyBar.classList.remove("is-visible");
+      foundingStickyBar.classList.add("is-dismissed");
+      sessionStorage.setItem(FOUNDING_BAR_KEY, "1");
+    });
+
     // ---------- Mobile hamburger menu ----------
     const burger = document.getElementById("nav-burger");
     const drawer = document.getElementById("nav-drawer");
@@ -1011,7 +1351,7 @@
 
     // ---------- Reveal on enter (Intersection Observer) ----------
     document.querySelectorAll(
-      ".hero .reveal, .demo-card.reveal, .section-head.reveal, .step.reveal, .features-card.reveal, .stats.reveal, .price-card.reveal, .pricing-foot.reveal, .cta-strip.reveal"
+      ".hero .reveal, .founding-card.reveal, .demo-card.reveal, .section-head.reveal, .step.reveal, .feat-groups.reveal, .stats.reveal, .price-card.reveal, .cta-strip.reveal"
     ).forEach(el => el.classList.add("reveal"));
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
@@ -1022,13 +1362,6 @@
       });
     }, { threshold: 0.08 });
     document.querySelectorAll(".reveal").forEach(el => io.observe(el));
-
-    // ---------- Marquee: duplicate once for seamless loop ----------
-    const track = document.getElementById("marquee-track");
-    if (track) {
-      const clones = Array.from(track.children).map(n => n.cloneNode(true));
-      clones.forEach(n => track.appendChild(n));
-    }
 
     // ---------- Contact modal ----------
     const backdrop = document.getElementById("modal-backdrop");
@@ -1117,7 +1450,7 @@
       }
     });
 
-    // ---------- "Hear It in Action" smooth-scrolls to demo card ----------
+    // ---------- "See How It Works" smooth-scrolls to demo card ----------
     document.getElementById("hero-hear-it").addEventListener("click", () => {
       document.getElementById("demo-card").scrollIntoView({ behavior: "smooth", block: "center" });
     });
@@ -1244,6 +1577,15 @@
       requestAnimationFrame(tick);
     };
 
+    const applyIndustryPreset = () => {
+      const p = INDUSTRY_PRESETS[calcIndustry.value];
+      if (!p) return;
+      const missedPerWeek = Math.round(p.callsPerDay * (p.missedPct / 100) * 7);
+      calcMissed.value = clamp(missedPerWeek, Number(calcMissed.min), Number(calcMissed.max));
+      calcValue.value  = clamp(p.avgValue,    Number(calcValue.min),  Number(calcValue.max));
+      calcClose.value  = clamp(p.closePct,    Number(calcClose.min),  Number(calcClose.max));
+    };
+
     const recompute = () => {
       const missed = Number(calcMissed.value);
       const value  = Number(calcValue.value);
@@ -1267,15 +1609,11 @@
     });
 
     calcIndustry.addEventListener("change", () => {
-      const p = INDUSTRY_PRESETS[calcIndustry.value];
-      if (!p) return;
-      const missedPerWeek = Math.round(p.callsPerDay * (p.missedPct / 100) * 7);
-      calcMissed.value = clamp(missedPerWeek, Number(calcMissed.min), Number(calcMissed.max));
-      calcValue.value  = clamp(p.avgValue,    Number(calcValue.min),  Number(calcValue.max));
-      calcClose.value  = clamp(p.closePct,    Number(calcClose.min),  Number(calcClose.max));
+      applyIndustryPreset();
       recompute();
     });
 
+    applyIndustryPreset();
     recompute();
   </script>
 </body>
