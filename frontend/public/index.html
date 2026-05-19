@@ -226,8 +226,52 @@
       transition:background-color .2s ease, transform .18s ease;
     }
     .founding-cta:hover{background:var(--accent-hov); transform:translateY(-1px)}
+    /* Founding offer: price tag, details, retainer, talk link */
+    .founding-price-tag{
+      margin:18px 0 0;
+      font-size:28px; font-weight:800; color:#fff;
+    }
+    .founding-price-tag .strikethrough{
+      text-decoration:line-through; opacity:.5; font-size:20px; font-weight:500;
+      color:#999; margin-right:8px;
+    }
+    .founding-price-tag .price-note{
+      font-size:14px; font-weight:400; color:#a0a0a0; display:block; margin-top:4px;
+    }
+    .founding-details{
+      margin:24px 0 0; background:#1a1a1a; border-radius:12px; padding:16px 20px;
+      display:flex; flex-direction:column; gap:10px; text-align:left;
+    }
+    .founding-detail-title{
+      margin:0; font-size:14px; font-weight:600; color:#ccc; text-transform:uppercase; letter-spacing:.06em;
+    }
+    .founding-detail-row{
+      display:flex; align-items:baseline; gap:10px;
+    }
+    .founding-detail-price{
+      font-size:16px; font-weight:600; min-width:40px;
+    }
+    .founding-detail-price.strikethrough{
+      text-decoration:line-through; color:#888; font-weight:400;
+    }
+    .founding-detail-price.free{color:var(--accent); font-weight:700}
+    .founding-detail-label{font-size:14px; color:#c0c0c0; line-height:1.3}
+    .founding-retainer{
+      margin:20px 0 0; font-size:14px; color:#a0a0a0; line-height:1.6; text-align:center;
+    }
+    .founding-retainer strong{color:#fff; font-weight:600}
+    .founding-talk{
+      margin:14px 0 0; font-size:14px; color:#a0a0a0;
+    }
+    .founding-talk-link{
+      color:var(--accent); font-weight:600; text-decoration:underline; text-underline-offset:3px;
+    }
+    .founding-talk-link:hover{opacity:.8}
     @media (max-width: 700px){
       .founding-card{padding:40px 24px}
+      .founding-price-tag{font-size:24px}
+      .founding-price-tag .strikethrough{font-size:16px}
+      .founding-details{padding:14px 16px}
     }
 
     /* ===================== Founding sticky bar ===================== */
@@ -899,15 +943,31 @@
       <div class="wrap">
         <div class="founding-card reveal" data-testid="founding-offer-card">
           <p class="founding-card-label">Limited Founding Offer</p>
-          <h2 class="founding-card-title">Only 10 Founding Clients.</h2>
-          <p class="founding-card-sub">Your AI agent — built, integrated, and live in under a week. Handled personally by our founding team.</p>
+          <h2 class="founding-card-title">Only 3 Founding Spots Left.</h2>
+          <p class="founding-card-sub">Your AI agent — built, integrated, and live in under a week.<br/>Handled personally by our founding team.</p>
+          <div class="founding-price-tag" data-testid="founding-price">$599 setup fee <span class="strikethrough">$599</span> $0 <span class="price-note">— Founding clients only</span></div>
           <div class="founding-pills">
             <span class="founding-pill">✓ Done-for-you setup</span>
             <span class="founding-pill">✓ Live in &lt; 1 week</span>
             <span class="founding-pill">✓ 4 out of 5 missed calls recovered</span>
           </div>
+          <div class="founding-details">
+            <p class="founding-detail-title">Here's what you get:</p>
+            <div class="founding-detail-row">
+              <span class="founding-detail-price strikethrough">$599</span>
+              <span class="founding-detail-price free">$0</span>
+              <span class="founding-detail-label">Full setup &amp; integration</span>
+            </div>
+            <div class="founding-detail-row">
+              <span class="founding-detail-price strikethrough">$0</span>
+              <span class="founding-detail-price free">$0</span>
+              <span class="founding-detail-label">First 30 days free — no card needed</span>
+            </div>
+          </div>
+          <p class="founding-retainer">After that, a simple monthly retainer based on your business size.<br/><strong>Most clients pay between €97–€297/month.</strong> Cancel anytime. No contracts.</p>
           <p class="founding-spots" data-testid="founding-spots">⚡ 7 of 10 spots claimed — 3 remaining</p>
           <a class="founding-cta" href="https://t.me/eliteai_assistant_bot" target="_blank" rel="noopener noreferrer" data-testid="founding-offer-cta">Claim Your Founding Spot →</a>
+          <p class="founding-talk">Not ready to book? <a href="#demo-card" class="founding-talk-link">Talk to the AI first →</a></p>
         </div>
       </div>
     </section>
@@ -1242,7 +1302,7 @@
     <!-- ===================== FOUNDING BOTTOM CTA ===================== -->
     <section class="founding-bottom-cta" aria-label="Founding offer closing call to action">
       <h2 class="founding-bottom-title">Still here? The founding offer won't be.</h2>
-      <p class="founding-bottom-sub">3 spots left. No lock-in. Cancel anytime.</p>
+      <p class="founding-bottom-sub">Only 3 founding spots left — Claim yours before they're gone.</p>
       <a class="founding-bottom-btn" href="https://t.me/eliteai_assistant_bot" target="_blank" rel="noopener noreferrer" data-testid="founding-bottom-cta">Claim Your Spot Now →</a>
     </section>
   </main>
