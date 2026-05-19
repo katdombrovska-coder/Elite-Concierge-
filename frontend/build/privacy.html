@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#fff7eb" />
+  <meta name="description" content="Privacy Policy — Elite AI (Elite Concierge voice and chat agents)." />
+  <title>Privacy Policy — Elite AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Caveat+Brush&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root{
+      --bg:#fff7eb; --ink:#240029; --ink-2:#3a1240; --muted:#6b4f6f;
+      --line:#e9d9d4; --accent:#ec1c8c; --accent-hov:#c8146f; --dark:#240029;
+      --radius-pill:999px;
+      --shadow-pink:0 14px 30px -10px rgba(236,28,140,.55), 0 0 0 1px rgba(236,28,140,.05) inset;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color:var(--ink); background:var(--bg);
+      background-image:
+        radial-gradient(1100px 600px at 8% -10%, #ffd6e7, transparent 55%),
+        radial-gradient(1200px 700px at 110% -5%, #fff1b0, transparent 60%),
+        radial-gradient(900px 600px at 50% 0%, #fcd9bd, transparent 70%);
+      background-attachment:fixed;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    button{font-family:inherit}
+    .wrap{max-width:1200px; margin:0 auto; padding:0 28px}
+    @media (max-width:700px){ .wrap{padding:0 20px} }
+
+    /* Buttons (subset for navbar) */
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; padding:14px 26px; border-radius:var(--radius-pill);
+      font-weight:600; font-size:15px; border:1px solid transparent; cursor:pointer; white-space:nowrap;
+      transition:transform .18s ease, background-color .18s ease, color .18s ease, box-shadow .25s ease, border-color .18s ease;
+    }
+    .btn-primary{background:var(--accent); color:#fff; box-shadow:none}
+    .btn-primary:hover{
+      background:var(--accent); color:#fff;
+      box-shadow:none;
+      transform:translateY(-2px); cursor:pointer;
+    }
+    .btn-primary:active,
+    .btn-primary:focus-visible{
+      background:var(--accent); color:#fff; box-shadow:none;
+      transform:none;
+    }
+    .btn-ghost{background:transparent; color:var(--ink); border-color:var(--ink)}
+    .btn-ghost:hover{background:var(--ink); color:#fff}
+
+    /* Navbar (identical to landing) */
+    .nav{
+      position:sticky; top:0; z-index:50; padding:18px 0;
+      transition:background-color .25s ease, backdrop-filter .25s ease, border-color .25s ease;
+      border-bottom:1px solid transparent;
+    }
+    .nav.scrolled{
+      background:rgba(255,247,235,.78);
+      backdrop-filter:saturate(140%) blur(14px); -webkit-backdrop-filter:saturate(140%) blur(14px);
+      border-bottom-color:var(--line);
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:24px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:-.01em; font-size:18px; color:var(--ink)}
+    .brand svg{width:26px; height:26px}
+    .nav-links{display:flex; gap:28px; align-items:center}
+    .nav-links a{font-size:14px; color:var(--ink-2); font-weight:500}
+    .nav-links a:hover{color:var(--accent)}
+    .nav-cta{display:flex; gap:10px; align-items:center}
+    @media (max-width:900px){
+      .nav-links{display:none}
+      .nav-cta .btn-ghost{display:none}
+      .nav-cta .btn-primary{display:none}
+      .nav-burger{display:inline-flex !important}
+    }
+    .nav-burger{
+      display:none; width:42px; height:42px; padding:0;
+      border-radius:var(--radius-pill); background:transparent;
+      border:1px solid var(--ink); cursor:pointer;
+      align-items:center; justify-content:center; gap:4px; flex-direction:column;
+      transition:background-color .18s ease;
+    }
+    .nav-burger:hover{background:rgba(36,0,41,.06)}
+    .nav-burger span{display:block; width:18px; height:2px; background:var(--ink); border-radius:2px; transition:transform .25s ease, opacity .2s ease}
+    .nav-burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+    .nav-burger.open span:nth-child(2){opacity:0}
+    .nav-burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+    .nav-drawer{display:none; background:rgba(255,247,235,.96); backdrop-filter:saturate(140%) blur(14px); border-bottom:1px solid var(--line)}
+    .nav-drawer.open{display:block}
+    .nav-drawer .wrap{display:flex; flex-direction:column; gap:14px; padding-top:18px; padding-bottom:22px}
+    .nav-drawer-link{font-size:18px; color:var(--ink); font-weight:600; padding:10px 0; border-bottom:1px solid var(--line)}
+    .nav-drawer-link:hover{color:var(--accent)}
+    .nav-drawer .btn{justify-content:center; margin-top:4px}
+
+    /* Legal page layout */
+    main.legal{padding:80px 0}
+    .legal-col{max-width:720px; margin:0 auto; padding:0 28px}
+    @media (max-width:700px){ .legal-col{padding:0 24px} }
+    .legal-label{
+      font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
+      font-weight:600; display:block;
+    }
+    .legal h1{
+      font-family:'Bricolage Grotesque', serif; font-weight:800; color:var(--ink);
+      letter-spacing:-.025em; font-size:clamp(36px, 5vw, 56px); line-height:1.05;
+      margin:14px 0 18px;
+    }
+    .legal-sub{color:var(--muted); font-size:16px; line-height:1.55; margin:0}
+    .legal section{padding:36px 0; border-top:1px solid var(--line)}
+    .legal section:first-of-type{border-top:none; padding-top:48px}
+    .legal h2{
+      font-family:'Inter', sans-serif; font-size:22px; font-weight:700; color:var(--ink);
+      letter-spacing:-.005em; margin:0 0 18px;
+    }
+    .legal p{font-size:18px; line-height:28px; color:var(--ink-2); margin:0 0 16px}
+    .legal p:last-child{margin-bottom:0}
+    .legal a{color:var(--accent); font-weight:600}
+    .legal a:hover{color:var(--accent-hov); text-decoration:underline}
+
+    /* Footer (identical to landing minus LinkedIn, new tagline) */
+    footer.site{background:var(--dark); color:#fff; margin-top:48px; padding:80px 0 32px}
+    footer.site .cols{display:grid; grid-template-columns:1.2fr 1fr 1.6fr; gap:48px}
+    footer.site h4{font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.55); margin:0 0 18px; font-weight:700}
+    footer.site ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px}
+    footer.site a{color:rgba(255,255,255,.82); font-size:14.5px}
+    footer.site a:hover{color:#fff}
+    footer.site .brand-col p{color:rgba(255,255,255,.7); margin-top:14px; max-width:42ch; line-height:1.55}
+    footer.site .brand-col .links{margin-top:18px; display:flex; flex-direction:column; gap:8px}
+    footer.site .rule{height:1px; background:rgba(255,255,255,.12); margin:48px 0 24px}
+    footer.site .footer-trust{
+      display:flex; justify-content:center; align-items:center;
+      gap:10px; flex-wrap:wrap; margin:0 0 22px;
+    }
+    footer.site .trust-badge{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:7px 14px; border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.15);
+      font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+      color:rgba(255,255,255,.78); font-weight:600; white-space:nowrap;
+    }
+    footer.site .trust-badge svg{color:var(--accent); flex-shrink:0}
+    footer.site .bottom{display:flex; justify-content:space-between; align-items:center; color:rgba(255,255,255,.55); font-size:13px; gap:18px}
+    footer.site .bottom a{color:rgba(255,255,255,.55)}
+    footer.site .bottom a:hover{color:#fff}
+    @media (max-width:800px){
+      footer.site .cols{grid-template-columns:1fr 1fr; gap:36px}
+      footer.site .brand-col{grid-column:1 / -1}
+      footer.site .bottom{flex-direction:column; align-items:flex-start; gap:8px}
+    }
+  </style>
+</head>
+<body>
+  <!-- ============== NAVBAR ============== -->
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="/" data-testid="nav-brand">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect x="2"  y="13" width="3" height="6"  rx="1.5" fill="#ec1c8c"/>
+          <rect x="7"  y="9"  width="3" height="14" rx="1.5" fill="#ec1c8c"/>
+          <rect x="12" y="5"  width="3" height="22" rx="1.5" fill="#ec1c8c"/>
+          <rect x="17" y="9"  width="3" height="14" rx="1.5" fill="#ec1c8c"/>
+          <rect x="22" y="13" width="3" height="6"  rx="1.5" fill="#ec1c8c"/>
+          <rect x="27" y="15" width="3" height="2"  rx="1"   fill="#ec1c8c"/>
+        </svg>
+        <span>Elite AI</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/#how" data-testid="nav-link-how">How it Works</a>
+        <a href="/#features" data-testid="nav-link-features">Features</a>
+        <a href="/#pricing" data-testid="nav-link-pricing">Pricing</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="nav-cta-sales">Talk to Sales</a>
+        <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="nav-cta-demo">Book a Demo</a>
+        <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" data-testid="nav-burger">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-drawer" id="nav-drawer" data-testid="nav-drawer" aria-hidden="true">
+      <div class="wrap">
+        <a href="/#how" class="nav-drawer-link">How it Works</a>
+        <a href="/#features" class="nav-drawer-link">Features</a>
+        <a href="/#pricing" class="nav-drawer-link">Pricing</a>
+        <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer">Talk to Sales</a>
+        <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer">Book a Demo</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============== LEGAL CONTENT ============== -->
+  <main class="legal" data-testid="legal-main">
+    <div class="legal-col">
+      <span class="legal-label">Legal</span>
+      <h1>Privacy Policy</h1>
+      <p class="legal-sub">Last updated: May 2025. This policy applies to all users of Elite Concierge services.</p>
+
+      <section>
+        <h2>1. Who We Are</h2>
+        <p>Elite Concierge is an AI-powered Voice and Chat Assistant product operated by Elite AI, a company registered in Portugal. We provide custom-configured Elite Concierge agents for businesses. For all privacy matters contact us at <a href="mailto:hello@eliteai.space">hello@eliteai.space</a>.</p>
+      </section>
+
+      <section>
+        <h2>2. What Data We Collect</h2>
+        <p>We collect data you provide directly including your name, email address, company name, phone number, and any information submitted through our contact or booking forms.</p>
+        <p>We also collect data automatically during service delivery including call recordings and transcripts generated by AI agents deployed on behalf of our clients, chat conversation logs, metadata including call duration and timestamps, and website usage data collected via cookies and analytics tools.</p>
+      </section>
+
+      <section>
+        <h2>3. Why We Collect It and Our Legal Basis Under GDPR</h2>
+        <p>We process your data for the following purposes. To provide and operate our services, lawful basis is performance of a contract. To respond to enquiries and onboard new clients, lawful basis is legitimate interests. To send service-related communications, lawful basis is performance of a contract. To comply with legal obligations, lawful basis is legal obligation. To improve and monitor AI agent performance, lawful basis is legitimate interests.</p>
+        <p>We do not use your data for automated decision-making that produces legal or similarly significant effects without human review.</p>
+      </section>
+
+      <section>
+        <h2>4. Call and Chat Data</h2>
+        <p>Elite AI deploys Elite Concierge AI voice and chat agents on behalf of business clients. Calls and chats handled by these agents may be recorded and transcribed for quality assurance, compliance, and performance improvement purposes. Where required by applicable law, callers and chat users are informed of recording at the start of the interaction.</p>
+        <p>Call and chat data is stored securely and is accessible only to Elite AI and the relevant business client. Retention periods are defined in individual client agreements with a default maximum retention of 12 months unless a longer period is required by law.</p>
+      </section>
+
+      <section>
+        <h2>5. How Long We Keep Your Data</h2>
+        <p>Contact form and enquiry data is retained for up to 24 months from the date of last contact. Client account data is retained for the duration of the contract plus 3 years for legal and accounting purposes. Call and chat recordings and transcripts are retained for up to 12 months unless otherwise agreed in writing. Website analytics data is retained in anonymised or aggregated form only.</p>
+      </section>
+
+      <section>
+        <h2>6. Who We Share Your Data With</h2>
+        <p>We do not sell your personal data. We share data only with trusted third-party service providers acting as data processors on our behalf including cloud infrastructure providers, telephony providers such as Twilio and Telnyx, CRM platforms connected at the client's request, and analytics tools.</p>
+        <p>All processors are bound by data processing agreements and are required to maintain appropriate security measures. Where processors are located outside the European Economic Area, transfers are governed by Standard Contractual Clauses approved by the European Commission.</p>
+      </section>
+
+      <section>
+        <h2>7. Your Rights Under GDPR</h2>
+        <p>If you are located in the European Economic Area you have the following rights regarding your personal data: the right to access a copy of the data we hold about you, the right to rectification of inaccurate data, the right to erasure in certain circumstances, the right to restrict processing, the right to data portability, the right to object to processing based on legitimate interests, and the right to lodge a complaint with the Portuguese data protection authority the Comissao Nacional de Protecao de Dados at <a href="https://www.cnpd.pt" target="_blank" rel="noopener noreferrer">www.cnpd.pt</a>.</p>
+        <p>To exercise any of these rights contact us at <a href="mailto:hello@eliteai.space">hello@eliteai.space</a>. We will respond within 30 days.</p>
+      </section>
+
+      <section>
+        <h2>8. Cookies</h2>
+        <p>Our website uses essential cookies required for the site to function and optional analytics cookies to understand how visitors use the site. We do not use advertising or tracking cookies. You can manage cookie preferences through your browser settings at any time.</p>
+      </section>
+
+      <section>
+        <h2>9. Security</h2>
+        <p>We implement appropriate technical and organisational measures to protect personal data against unauthorised access, loss, destruction, or alteration. Our underlying infrastructure is SOC 2 Type II and GDPR compliant.</p>
+        <p>Elite Concierge is built on infrastructure that is SOC 2 Type II, HIPAA, and GDPR compliant. These certifications apply to the underlying platform and data infrastructure used to deliver our services.</p>
+        <p>In the event of a personal data breach that poses a risk to individuals we will notify the relevant supervisory authority within 72 hours as required by Article 33 of the GDPR.</p>
+      </section>
+
+      <section>
+        <h2>10. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. We will notify active clients of material changes by email. The date at the top of this page reflects the most recent update. Continued use of our services after an update constitutes acceptance of the revised policy.</p>
+      </section>
+
+      <section>
+        <h2>11. Contact</h2>
+        <p>For any privacy-related questions or to exercise your rights contact us at <a href="mailto:hello@eliteai.space">hello@eliteai.space</a>. We aim to respond within 30 days of receiving your request.</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="cols">
+        <div>
+          <h4>Features</h4>
+          <ul>
+            <li><a href="/#features">Voice Agents</a></li>
+            <li><a href="/#features">Web Chat</a></li>
+            <li><a href="/#features">CRM Integrations</a></li>
+            <li><a href="/#features">Calendar Booking</a></li>
+            <li><a href="/#features">Multilingual</a></li>
+            <li><a href="/#features">Compliance</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/#how">About</a></li>
+            <li><a href="/" data-testid="footer-contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="brand-col">
+          <div class="brand" style="color:#fff">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <rect x="2"  y="13" width="3" height="6"  rx="1.5" fill="#ec1c8c"/>
+              <rect x="7"  y="9"  width="3" height="14" rx="1.5" fill="#ec1c8c"/>
+              <rect x="12" y="5"  width="3" height="22" rx="1.5" fill="#ec1c8c"/>
+              <rect x="17" y="9"  width="3" height="14" rx="1.5" fill="#ec1c8c"/>
+              <rect x="22" y="13" width="3" height="6"  rx="1.5" fill="#ec1c8c"/>
+              <rect x="27" y="15" width="3" height="2"  rx="1"   fill="#ec1c8c"/>
+            </svg>
+            <span>Elite AI</span>
+          </div>
+          <p>Always on. Never on hold. Never on payroll.</p>
+          <div class="links">
+            <a href="mailto:hello@eliteai.space" data-testid="footer-email">hello@eliteai.space</a>
+          </div>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div class="footer-trust" data-testid="footer-trust">
+        <span class="trust-badge" data-testid="trust-soc2"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SOC 2</span>
+        <span class="trust-badge" data-testid="trust-hipaa"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>HIPAA</span>
+        <span class="trust-badge" data-testid="trust-gdpr"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>GDPR</span>
+        <span class="trust-badge" data-testid="trust-uptime"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>99.99% Uptime</span>
+      </div>
+      <div class="bottom">
+        <span>© 2026 Elite AI</span>
+        <span><a href="/privacy.html" data-testid="footer-privacy">Privacy</a> &nbsp;·&nbsp; <a href="/terms.html" data-testid="footer-terms">Terms</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar shade on scroll
+    const nav = document.getElementById("nav");
+    const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    // Mobile hamburger
+    const burger = document.getElementById("nav-burger");
+    const drawer = document.getElementById("nav-drawer");
+    const setDrawer = (open) => {
+      burger.classList.toggle("open", open);
+      drawer.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", String(open));
+      drawer.setAttribute("aria-hidden", String(!open));
+    };
+    burger.addEventListener("click", () => setDrawer(!drawer.classList.contains("open")));
+    drawer.querySelectorAll("a, button").forEach(el => el.addEventListener("click", () => setDrawer(false)));
+  </script>
+</body>
+</html>
