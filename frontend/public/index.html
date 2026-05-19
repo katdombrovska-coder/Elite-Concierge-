@@ -617,8 +617,8 @@
       content:""; position:absolute; width:520px; height:520px; border-radius:50%;
       filter:blur(70px); opacity:.5; pointer-events:none;
     }
-    .cta-strip::before{background:#ec1c8c; top:-220px; left:-180px}
-    .cta-strip::after{background:#ff6cb6; bottom:-260px; right:-180px}
+    .cta-strip::before{background:#ec1c8c; top:-100px; left:-80px}
+    .cta-strip::after{background:#ff6cb6; bottom:-100px; right:-80px}
     .cta-strip > *{position:relative; z-index:1}
     .cta-strip h2{color:#fff}
     .cta-strip p{margin:18px auto 0; max-width:60ch; color:rgba(255,255,255,.78); font-size:18px}
@@ -639,7 +639,13 @@
       box-shadow:0 4px 14px rgba(0,0,0,.16);
     }
     @media (max-width: 700px){
-      .cta-strip{border-radius:0; padding:64px 22px; max-width:none}
+      .cta-strip{border-radius:22px; padding:48px 20px; max-width:none}
+      .cta-strip::before{top:-100px; left:-50px; width:250px; height:250px; opacity:.7}
+      .cta-strip::after{bottom:-100px; right:-50px; width:250px; height:250px; opacity:.7}
+      .cta-strip h2{font-size:clamp(24px, 7vw, 40px)}
+      .cta-strip p{font-size:16px; max-width:38ch}
+      .cta-strip .row{flex-direction:column; gap:12px; align-items:center}
+      .cta-strip .btn{width:100%; max-width:300px; justify-content:center}
     }
     .cta-section{padding-bottom:48px}
     @media (max-width: 700px){
@@ -733,10 +739,10 @@
     /* Honeypot — visually + a11y-hidden, but kept in tab order off */
     /* ===================== Mobile improvements ===================== */
     @media (max-width: 700px){
-      /* CTA strip: Less square, better colors */
+      /* CTA strip: Rounded corners like pricing cards, better colors */
       .cta-strip{
         padding: 40px 20px;
-        border-radius: 0;
+        border-radius: 22px;
         min-height: auto;
       }
       /* Fix background gradients on mobile so it doesn't look flat */
@@ -761,7 +767,27 @@
     }
     .hp{position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden}
 
-  </style>
+  
+    /* ===================== Mobile improvements ===================== */
+    @media (max-width: 700px){
+      /* CTA strip: rounded corners, wider on mobile */
+      .cta-strip{padding:48px 20px; border-radius:22px; max-width:none}
+      .cta-strip p{font-size:15px}
+      .cta-strip .row{flex-direction:column; gap:10px}
+      .cta-strip .btn{width:100%; justify-content:center; padding:14px 20px; font-size:15px}
+      
+      /* Calculator result: better proportions on mobile */
+      .calc-result{padding:28px 20px; min-height:auto; border-radius:20px}
+      .calc-result-big{font-size:clamp(36px, 10vw, 56px)}
+      .calc-result-sub{font-size:14px}
+      
+      /* Fix the giant "Stop Losing Money" button on mobile */
+      .calc-result .btn-lg{padding:14px 20px; font-size:14px}
+      
+      /* Pricing cards on mobile */
+      .price-card{padding:24px 20px}
+    }
+    </style>
 </head>
 <body>
   <!-- React mounts a hidden root; the real page is this static markup. -->
