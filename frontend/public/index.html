@@ -260,6 +260,7 @@
       margin:20px 0 0; font-size:14px; color:#a0a0a0; line-height:1.6; text-align:center;
     }
     .founding-retainer strong{color:#fff; font-weight:600}
+    .founding-clean-line{margin:20px 0 0; font-size:15px; color:#d0d0d0; text-align:center; line-height:1.5}
     .founding-talk{
       margin:14px 0 0; font-size:14px; color:#a0a0a0;
     }
@@ -312,8 +313,8 @@
       color:#fff; margin:0;
     }
     .founding-bottom-sub{
-      font-size:18px; color:rgba(255,255,255,.7);
-      margin:12px 0 0; line-height:1.5;
+      font-size:16px; color:#fff;
+      margin:12px 0 0; line-height:1.6;
     }
     .founding-bottom-btn{
       display:inline-flex; align-items:center; justify-content:center;
@@ -325,6 +326,7 @@
     .founding-bottom-btn:hover{transform:scale(1.03)}
     .founding-bottom-sub .price-strike{text-decoration:line-through; opacity:.7; font-weight:400}
     .founding-bottom-sub strong{color:#fff; font-weight:700}
+    .founding-bottom-sub br{display:block; margin:4px 0}
 
     /* ===================== Demo card ===================== */
     .demo-wrap{position:relative; padding:24px 0 80px}
@@ -843,7 +845,7 @@
   <div class="founding-sticky-bar" id="founding-sticky-bar" role="region" aria-label="Founding offer reminder">
     <p class="founding-sticky-bar-text">
       ⚡ Only 3 founding spots left —
-      <a href="https://t.me/eliteai_assistant_bot" target="_blank" rel="noopener noreferrer" id="founding-bar-link">Claim yours before they're gone →</a>
+      <a href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" id="founding-bar-link">Claim yours before they're gone →</a>
     </p>
     <button type="button" class="founding-sticky-bar-close" id="founding-sticky-bar-close" aria-label="Dismiss notification">×</button>
   </div>
@@ -947,28 +949,16 @@
           <p class="founding-card-label">Limited Founding Offer</p>
           <h2 class="founding-card-title">Only 3 Founding Spots Left.</h2>
           <p class="founding-card-sub">Your AI agent — built, integrated, and live in under a week.<br/>Handled personally by our founding team.</p>
-          <div class="founding-price-tag" data-testid="founding-price">$599 setup fee <span class="strikethrough">$599</span> $0 <span class="price-note">— Founding clients only</span></div>
+          <div class="founding-price-tag" data-testid="founding-price"><s>$599 setup fee</s> <strong>$0 — Founding clients only</strong></div>
           <div class="founding-pills">
             <span class="founding-pill">✓ Done-for-you setup</span>
             <span class="founding-pill">✓ Live in &lt; 1 week</span>
             <span class="founding-pill">✓ 4 out of 5 missed calls recovered</span>
           </div>
-          <div class="founding-details">
-            <p class="founding-detail-title">Here's what you get:</p>
-            <div class="founding-detail-row">
-              <span class="founding-detail-price strikethrough">$599</span>
-              <span class="founding-detail-price free">$0</span>
-              <span class="founding-detail-label">Full setup &amp; integration</span>
-            </div>
-            <div class="founding-detail-row">
-              <span class="founding-detail-price strikethrough">$0</span>
-              <span class="founding-detail-price free">$0</span>
-              <span class="founding-detail-label">First 30 days free — no card needed</span>
-            </div>
-          </div>
+          <p class="founding-clean-line">Full setup, integration &amp; first 30 days — completely free. No card needed.</p>
           <p class="founding-retainer">After that, a simple monthly retainer based on your business size.<br/><strong>Most clients pay between €97–€297/month.</strong> Cancel anytime. No contracts.</p>
-          <p class="founding-spots" data-testid="founding-spots">⚡ 7 of 10 spots claimed — 3 remaining</p>
-          <a class="founding-cta" href="https://t.me/eliteai_assistant_bot" target="_blank" rel="noopener noreferrer" data-testid="founding-offer-cta">Claim Your Founding Spot →</a>
+          <p class="founding-spots" data-testid="founding-spots">⚡ Only 3 spots remaining</p>
+          <a class="founding-cta" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="founding-offer-cta">Claim Your Founding Spot →</a>
           <p class="founding-talk">Not ready to book? <a href="#demo-card" class="founding-talk-link">Talk to the AI first →</a></p>
         </div>
       </div>
@@ -1295,7 +1285,7 @@
           <p>Join businesses cutting call handling costs by 80 percent while answering every inbound — voice, chat, after hours, in 31 languages.</p>
           <div class="row">
             <a class="btn btn-light btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="strip-cta-strategy">Book a Strategy Call</a>
-            <a class="btn btn-outline-light btn-lg" href="https://t.me/eliteai_assistant_bot" target="_blank" rel="noopener noreferrer" data-testid="strip-cta-message">Send a Message</a>
+            <a class="btn btn-outline-light btn-lg" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="strip-cta-message">Talk to Sales →</a>
           </div>
         </div>
       </div>
@@ -1304,8 +1294,12 @@
     <!-- ===================== FOUNDING BOTTOM CTA ===================== -->
     <section class="founding-bottom-cta" aria-label="Founding offer closing call to action">
       <h2 class="founding-bottom-title">Still here? So is your free setup — barely.</h2>
-      <p class="founding-bottom-sub"><span class="price-strike">$599 setup</span> <strong>$0</strong> for 3 more businesses. No lock-in. Cancel anytime.</p>
-      <a class="founding-bottom-btn" href="https://t.me/eliteai_assistant_bot" target="_blank" rel="noopener noreferrer" data-testid="founding-bottom-cta">Claim Your Spot Now →</a>
+      <div class="founding-bottom-sub">
+        <div><span class="price-strike">$599 setup</span> <strong>$0</strong> for 3 more businesses.</div>
+        <div>First 30 days free, then a simple monthly retainer.</div>
+        <div>No lock-in. Cancel anytime.</div>
+      </div>
+      <a class="founding-bottom-btn" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="founding-bottom-cta">Claim Your Spot Now →</a>
     </section>
   </main>
 
