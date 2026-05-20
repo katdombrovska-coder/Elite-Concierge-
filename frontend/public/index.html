@@ -632,10 +632,10 @@
     @media (max-width: 1200px){ .price-grid{grid-template-columns:repeat(2, 1fr)} }
     @media (max-width: 950px){ .price-grid{grid-template-columns:1fr} }
     .price-card{
-      position:relative;
+      position:relative; display:flex;
       background:#fff; border:1px solid var(--line); border-radius:24px;
       padding:34px 28px; display:flex; flex-direction:column;
-      box-shadow:var(--shadow-card);
+      box-shadow:var(--shadow-card); height:100%;
     }
     .price-card .plan{font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-weight:700}
     .price-card .tag{
@@ -1269,14 +1269,14 @@
           <div class="price-card reveal" data-testid="plan-chat">
             <span class="plan-badge plan-badge--popular">Most Feature-Rich</span>
             <div class="plan">Chat Agent</div>
-            <div class="tag">Reply on every channel, instantly — 24/7.</div>
+            <div class="tag">Reply instantly on every channel. 24/7.</div>
             <p class="price-anchor price-anchor--accent">From $249/mo</p>
             <p class="price-anchor-note">Quoted based on message volume and channels.</p>
             <p style="margin:0 0 18px;font-size:14.5px;line-height:1.55;color:var(--ink-2)">Turn your website and social channels into a lead machine that never sleeps.</p>
             <ul>
-              <li>Web chat + SMS + WhatsApp agent</li>
+              <li>Web, SMS &amp; WhatsApp chat</li>
               <li>Auto-trained knowledge base</li>
-              <li>Lead capture, scoring &amp; CRM sync</li>
+              <li>Lead capture &amp; CRM sync</li>
               <li>Calendar booking in chat</li>
               <li>31+ languages</li>
               <li>Smart human handoff</li>
@@ -1313,10 +1313,10 @@
             <p class="price-anchor-note">Custom scoped to your business size and goals.</p>
             <ul>
               <li>Everything in Full Suite</li>
-              <li>Custom sales &amp; lead gen agents</li>
+              <li>Sales &amp; lead gen agents</li>
               <li>Outbound calling campaigns</li>
-              <li>Full CRM &amp; workflow automation</li>
-              <li>Dedicated account manager</li>
+              <li>CRM &amp; workflow automation</li>
+              <li>Account manager</li>
               <li>Weekly strategy calls</li>
               <li>Priority build &amp; support</li>
               <li>White-glove onboarding</li>
