@@ -1616,6 +1616,14 @@
     });
 
     // ---------- Retell voice demo ----------
+    document.querySelectorAll('.who-for-cta[href="#demo-card"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.getElementById('demo-card');
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+
     const startBtn = document.getElementById("start-voice-demo");
     const demoCard = document.getElementById("demo-card");
     const statusEl = document.getElementById("demo-status");
