@@ -497,7 +497,7 @@
     /* ===================== Features (grid) ===================== */
     .feat-groups{display:block}
     .feat-board{
-      display:grid; grid-template-columns:repeat(4, 1fr);
+      display:grid; grid-template-columns:repeat(3, 1fr);
       background:#fff; border-radius:24px; overflow:hidden;
       border:1px solid var(--line); box-shadow:var(--shadow-card);
     }
@@ -507,8 +507,8 @@
       border-bottom:1px solid var(--line);
       background:#fff;
     }
-    .feat-board .feat-card:nth-child(4n){border-right:none}
-    .feat-board .feat-card:nth-child(n+9){border-bottom:none}
+    .feat-board .feat-card:nth-child(3n){border-right:none}
+    .feat-board .feat-card:nth-child(n+7){border-bottom:none}
     .feat-card .ico{
       width:36px; height:36px; border-radius:10px;
       background:#fff1f7; color:var(--accent);
@@ -520,10 +520,10 @@
     @media (max-width: 1024px){
       .feat-board{grid-template-columns:repeat(2, 1fr)}
       .feat-board .feat-card{border-right:1px solid var(--line); border-bottom:1px solid var(--line)}
-      .feat-board .feat-card:nth-child(4n){border-right:1px solid var(--line)}
+      .feat-board .feat-card:nth-child(3n){border-right:1px solid var(--line)}
       .feat-board .feat-card:nth-child(2n){border-right:none}
-      .feat-board .feat-card:nth-child(n+9){border-bottom:1px solid var(--line)}
-      .feat-board .feat-card:nth-child(n+11){border-bottom:none}
+      .feat-board .feat-card:nth-child(n+5){border-bottom:1px solid var(--line)}
+      .feat-board .feat-card:nth-child(n+7){border-bottom:none}
     }
     @media (max-width: 560px){
       .feat-board{grid-template-columns:1fr}
