@@ -634,7 +634,9 @@
     .price-card{
       position:relative; display:flex;
       background:#fff; border:1px solid var(--line); border-radius:24px;
-      padding:34px 28px; display:flex; flex-direction:column;
+      padding:34px 28px;
+      flex-direction:column;
+      justify-content:space-between;
       box-shadow:var(--shadow-card); height:100%;
     }
     .price-card .plan{font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-weight:700}
@@ -1269,7 +1271,7 @@
           <div class="price-card reveal" data-testid="plan-chat">
             <span class="plan-badge plan-badge--popular">Most Feature-Rich</span>
             <div class="plan">Chat Agent</div>
-            <div class="tag">Reply instantly on every channel. 24/7.</div>
+            <div class="tag">Reply on every channel. 24/7.</div>
             <p class="price-anchor price-anchor--accent">From $249/mo</p>
             <p class="price-anchor-note">Quoted based on message volume and channels.</p>
             <p style="margin:0 0 18px;font-size:14.5px;line-height:1.55;color:var(--ink-2)">Turn your website and social channels into a lead machine that never sleeps.</p>
