@@ -327,9 +327,17 @@
 
     /* ===================== Founding bottom CTA ===================== */
     .founding-bottom-cta{
-      background:linear-gradient(180deg, #1a0a2e 0%, #2d0a2e 25%, #4a1040 60%, #6b1050 100%);
+      background:var(--dark); color:#fff;
       padding:80px 28px; text-align:center;
+      position:relative; overflow:hidden;
     }
+    .founding-bottom-cta::before, .founding-bottom-cta::after{
+      content:""; position:absolute; width:600px; height:600px; border-radius:50%;
+      filter:blur(100px); opacity:.4; pointer-events:none;
+    }
+    .founding-bottom-cta::before{background:var(--accent); top:-200px; left:-100px}
+    .founding-bottom-cta::after{background:#ff6cb6; bottom:-200px; right:-100px}
+    .founding-bottom-cta > *{position:relative; z-index:1}
     .founding-bottom-title{
       font-family:'Bricolage Grotesque', serif; font-weight:800;
       font-size:clamp(28px, 4vw, 40px); line-height:1.1; letter-spacing:-.02em;
