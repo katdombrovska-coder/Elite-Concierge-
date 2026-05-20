@@ -598,7 +598,8 @@
     .calc-result-sub b{color:#fff}
 
     /* ===================== Pricing ===================== */
-    .price-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; align-items:stretch}
+    .price-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:22px; align-items:stretch}
+    @media (max-width: 1200px){ .price-grid{grid-template-columns:repeat(2, 1fr)} }
     @media (max-width: 950px){ .price-grid{grid-template-columns:1fr} }
     .price-card{
       position:relative;
@@ -1300,6 +1301,30 @@
               <span class="trust-badge" data-testid="trust-gdpr"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>GDPR</span>
             </div>
             <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-full-cta">Let's Build</a>
+          </div>
+
+          <div class="price-card reveal" data-testid="plan-enterprise">
+            <span class="plan-badge plan-badge--popular">Enterprise</span>
+            <div class="plan">Full Automation</div>
+            <div class="tag">Built around your business. Everything, custom.</div>
+            <p class="price-anchor price-anchor--accent">From $2,997/mo</p>
+            <p class="price-anchor-note">Custom scoped to your business size and goals.</p>
+            <ul>
+              <li>Everything in Full Suite</li>
+              <li>Custom sales &amp; lead gen agents</li>
+              <li>Outbound calling campaigns</li>
+              <li>Full CRM &amp; workflow automation</li>
+              <li>Dedicated account manager</li>
+              <li>Weekly strategy calls</li>
+              <li>Priority build &amp; support</li>
+              <li>White-glove onboarding</li>
+            </ul>
+            <div class="plan-trust footer-trust" data-testid="plan-enterprise-trust">
+              <span class="trust-badge" data-testid="trust-soc2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SOC 2</span>
+              <span class="trust-badge" data-testid="trust-hipaa"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>HIPAA</span>
+              <span class="trust-badge" data-testid="trust-gdpr"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>GDPR</span>
+            </div>
+            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-enterprise-cta">Book a Discovery Call</a>
           </div>
         </div>
 
