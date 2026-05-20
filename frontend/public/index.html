@@ -927,7 +927,7 @@
             </p>
             <div class="hero-ctas reveal">
               <a class="btn btn-primary btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="hero-cta-demo">Book a Demo Call</a>
-              <button class="btn btn-ghost btn-lg" id="hero-hear-it" data-testid="hero-cta-hear">See How It Works</button>
+              <a class="btn btn-ghost btn-lg" href="#how">See How It Works</a>
             </div>
             <div class="chips reveal">
               <span class="chip" data-testid="chip-always-on">
@@ -1613,11 +1613,6 @@
         submitBtn.disabled = false;
         submitBtn.textContent = "Send message";
       }
-    });
-
-    // ---------- "See How It Works" smooth-scrolls to demo card ----------
-    document.getElementById("hero-hear-it").addEventListener("click", () => {
-      document.getElementById("demo-card").scrollIntoView({ behavior: "smooth", block: "center" });
     });
 
     // ---------- Retell voice demo ----------
