@@ -616,7 +616,7 @@
       font-size:28px; letter-spacing:-.01em; margin:10px 0 18px; color:var(--ink);
     }
     .price-card ul{list-style:none; padding:0; margin:0 0 24px; display:flex; flex-direction:column; gap:10px}
-    .price-card li{font-size:14.5px; color:var(--ink-2); padding-left:26px; position:relative}
+    .price-card li{font-size:13px; color:var(--ink-2); padding-left:26px; position:relative; line-height:1.4}
     .price-card li::before{
       content:""; position:absolute; left:0; top:8px;
       width:14px; height:9px;
@@ -644,8 +644,11 @@
     }
     .price-card.featured .plan,
     .price-card.featured .tag{color:#fff}
-    .price-card.featured li{color:rgba(255,255,255,.86)}
+    .price-card.featured li{color:rgba(255,255,255,.86); line-height:1.4}
     .price-card.featured li::before{border-color:var(--accent)}
+    .price-card:nth-child(2){background:linear-gradient(160deg, #f0f4ff 0%, #ffffff 60%)}
+    .price-card:nth-child(3){background:linear-gradient(160deg, #f5f0ff 0%, #ffffff 60%)}
+    .price-card:nth-child(4){background:linear-gradient(160deg, #fff8f0 0%, #ffffff 60%)}
     .price-card .plan-badge,
     .price-card .popular{
       position:absolute; top:-12px; left:50%; transform:translateX(-50%);
@@ -1255,11 +1258,11 @@
             <p class="price-anchor-note">Setup fee covers discovery, build &amp; integration — done for you.</p>
             <p style="margin:0 0 18px;font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.78)">Your AI rep answers every inbound call, qualifies the lead, and books the meeting — day and night.</p>
             <ul>
-              <li>Inbound & outbound voice agent</li>
+              <li>Inbound &amp; outbound calls</li>
               <li>Keep your existing phone number</li>
               <li>Lead qualification &amp; live booking</li>
               <li>CRM + calendar integration</li>
-              <li>Transcripts, summaries &amp; SMS follow-ups</li>
+              <li>Transcripts &amp; SMS follow-ups</li>
               <li>Auto QA + weekly performance tuning</li>
             </ul>
             <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-voice-cta">Book a demo</a>
@@ -1274,11 +1277,11 @@
             <p style="margin:0 0 18px;font-size:14.5px;line-height:1.55;color:var(--ink-2)">Turn your website and social channels into a lead machine that never sleeps.</p>
             <ul>
               <li>Web chat + SMS + WhatsApp agent</li>
-              <li>Knowledge base auto-trained on your site</li>
+              <li>Auto-trained knowledge base</li>
               <li>Lead capture, scoring &amp; CRM sync</li>
               <li>Calendar booking in chat</li>
-              <li>31+ languages with consistent tone &amp; terminology</li>
-              <li>Smart human handoff when the bot hits its limit</li>
+              <li>31+ languages</li>
+              <li>Smart human handoff</li>
             </ul>
             <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-chat-cta">Get a quote</a>
           </div>
