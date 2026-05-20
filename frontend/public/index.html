@@ -234,9 +234,14 @@
     }
     .founding-cta:hover{background:var(--accent-hov); transform:translateY(-1px)}
     /* Founding offer: price tag, details, retainer, talk link */
+    @keyframes pulse-glow{
+      0%,100%{text-shadow:0 0 8px rgba(255,0,102,.4)}
+      50%{text-shadow:0 0 20px rgba(255,0,102,.9)}
+    }
     .founding-price-tag{
       margin:12px 0 0;
       font-size:28px; font-weight:800; color:#fff;
+      animation:pulse-glow 2s ease-in-out infinite;
     }
     .founding-price-tag .strikethrough{
       text-decoration:line-through; opacity:.5; font-size:20px; font-weight:500;
