@@ -632,9 +632,10 @@
     @media (max-width: 1200px){ .price-grid{grid-template-columns:repeat(2, 1fr)} }
     @media (max-width: 950px){ .price-grid{grid-template-columns:1fr} }
     .price-card{
-      position:relative; display:flex;
+      position:relative;
       background:#fff; border:1px solid var(--line); border-radius:24px;
       padding:34px 28px;
+      display:flex;
       flex-direction:column;
       justify-content:space-between;
       box-shadow:var(--shadow-card); height:100%;
@@ -1005,15 +1006,6 @@
       </div>
     </section>
 
-    <!-- ===================== TRANSITION: NEVER MISS A CALL ===================== -->
-    <section class="never-miss-cta" aria-label="Never miss a call">
-      <div class="wrap">
-        <div class="never-miss-inner">
-          <p class="never-miss-scribble">Every missed call is a lost client. Sound familiar? ↓</p>
-        </div>
-      </div>
-    </section>
-
     <!-- ===================== FOUNDING OFFER ===================== -->
     <section class="social-proof" id="founding-offer" aria-label="Founding client offer">
       <div class="wrap">
@@ -1031,6 +1023,26 @@
           <p class="founding-spots" data-testid="founding-spots">⚡ Only 3 spots remaining</p>
           <a class="founding-cta" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="founding-offer-cta">Claim Your Founding Spot →</a>
           <p class="founding-talk">Not ready to book? <a href="#demo-card" class="founding-talk-link">Talk to the AI first →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOUNDING BOTTOM CTA ===================== -->
+    <section class="founding-bottom-cta" aria-label="Founding offer closing call to action">
+      <h2 class="founding-bottom-title">Still here? So is your free setup — barely.</h2>
+      <div class="founding-bottom-sub">
+        <div><span class="price-strike">$599 setup</span> <strong>$0</strong> for 3 more businesses.</div>
+        <div>First 30 days free, then a simple monthly retainer.</div>
+        <div>No lock-in. Cancel anytime.</div>
+      </div>
+      <a class="founding-bottom-btn" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="founding-bottom-cta">Claim Your Spot Now →</a>
+    </section>
+
+    <!-- ===================== TRANSITION: NEVER MISS A CALL ===================== -->
+    <section class="never-miss-cta" aria-label="Never miss a call">
+      <div class="wrap">
+        <div class="never-miss-inner">
+          <p class="never-miss-scribble">Every missed call is a lost client. Sound familiar? ↓</p>
         </div>
       </div>
     </section>
@@ -1350,16 +1362,6 @@
       </div>
     </section>
 
-    <!-- ===================== FOUNDING BOTTOM CTA ===================== -->
-    <section class="founding-bottom-cta" aria-label="Founding offer closing call to action">
-      <h2 class="founding-bottom-title">Still here? So is your free setup — barely.</h2>
-      <div class="founding-bottom-sub">
-        <div><span class="price-strike">$599 setup</span> <strong>$0</strong> for 3 more businesses.</div>
-        <div>First 30 days free, then a simple monthly retainer.</div>
-        <div>No lock-in. Cancel anytime.</div>
-      </div>
-      <a class="founding-bottom-btn" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="founding-bottom-cta">Claim Your Spot Now →</a>
-    </section>
   </main>
 
   <!-- ===================== FOOTER ===================== -->
