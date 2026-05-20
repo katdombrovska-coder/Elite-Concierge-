@@ -1036,7 +1036,7 @@
         <div class="founding-card reveal" data-testid="founding-offer-card">
           <p class="founding-card-label">Limited Founding Offer</p>
           <h2 class="founding-card-title">Only 3 Founding Spots Left.</h2>
-          <div class="founding-price-tag" data-testid="founding-price"><s>$599</s> setup fee <strong>$0 — Founding clients only</strong></div>
+          <div class="founding-price-tag" data-testid="founding-price"><s>€599</s> setup fee <strong>€0 — Founding clients only</strong></div>
           <div class="founding-pills">
             <span class="founding-pill">✓ Done-for-you setup</span>
             <span class="founding-pill">✓ Live in &lt; 1 week</span>
@@ -1055,7 +1055,7 @@
     <section class="founding-bottom-cta" aria-label="Founding offer closing call to action">
       <h2 class="founding-bottom-title">Still here? So is your free setup — barely.</h2>
       <div class="founding-bottom-sub">
-        <div><span class="price-strike">$599 setup</span> <strong>$0</strong> for 3 more businesses.</div>
+        <div><span class="price-strike">€599 setup</span> <strong>€0</strong> for 3 more businesses.</div>
         <div>First 30 days free, then a simple monthly retainer.</div>
         <div>No lock-in. Cancel anytime.</div>
       </div>
@@ -1229,10 +1229,10 @@
             <div class="calc-field">
               <div class="calc-field-head">
                 <label for="calc-value">Average customer value</label>
-                <output id="calc-value-out" data-testid="calc-value-out">$120</output>
+                <output id="calc-value-out" data-testid="calc-value-out">€120</output>
               </div>
               <input type="range" id="calc-value" min="50" max="10000" step="10" value="120" data-testid="calc-value"/>
-              <div class="calc-range-marks"><span>$50</span><span>$2.5k</span><span>$5k</span><span>$10k+</span></div>
+              <div class="calc-range-marks"><span>€50</span><span>€2.5k</span><span>€5k</span><span>€10k+</span></div>
             </div>
 
             <div class="calc-field">
@@ -1254,11 +1254,11 @@
             <div class="calc-result-inner">
               <div class="calc-result-label">You're leaving on the table</div>
               <div class="calc-result-big">
-                <span id="calc-annual" data-testid="calc-annual">$195,686</span>
+                <span id="calc-annual" data-testid="calc-annual">€195,686</span>
                 <span class="calc-result-unit">/ year</span>
               </div>
               <div class="calc-result-sub">
-                That's roughly <b><span id="calc-monthly" data-testid="calc-monthly">$16,307</span></b> a month walking past your front door.
+                That's roughly <b><span id="calc-monthly" data-testid="calc-monthly">€16,307</span></b> a month walking past your front door.
               </div>
               <a class="btn btn-primary btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="calc-cta" style="margin-top:22px">Stop Losing Money Every Day</a>
             </div>
@@ -1281,7 +1281,7 @@
             <span class="popular">Most Popular</span>
             <div class="plan">Voice Agent</div>
             <div class="tag">Never miss a sales call again.</div>
-            <p class="price-anchor price-anchor--accent">From $499/mo + one-time setup fee</p>
+            <p class="price-anchor price-anchor--accent">From €499/mo + one-time setup fee</p>
             <p class="price-anchor-note">Setup fee covers discovery, build &amp; integration — done for you.</p>
             <p style="margin:0 0 12px;font-size:12.5px;line-height:1.4;color:rgba(255,255,255,.78)">Your AI rep answers every inbound call, qualifies the lead, and books the meeting — day and night.</p>
             <ul>
@@ -1304,7 +1304,7 @@
             <span class="plan-badge plan-badge--popular">Most Feature-Rich</span>
             <div class="plan">Chat Agent</div>
             <div class="tag">Reply on every channel. 24/7.</div>
-            <p class="price-anchor price-anchor--accent">From $249/mo</p>
+            <p class="price-anchor price-anchor--accent">From €249/mo</p>
             <p class="price-anchor-note">Quoted based on message volume and channels.</p>
             <p style="margin:0 0 12px;font-size:12.5px;line-height:1.4;color:var(--ink-2)">Turn your website and social channels into a lead machine that never sleeps.</p>
             <ul>
@@ -1327,7 +1327,7 @@
             <span class="plan-badge plan-badge--popular">Everything Included</span>
             <div class="plan">Full Suite</div>
             <div class="tag">Voice + chat, one shared brain.</div>
-            <p class="price-anchor price-anchor--accent">From $999/mo — everything included</p>
+            <p class="price-anchor price-anchor--accent">From €999/mo — everything included</p>
             <p class="price-anchor-note">One price. Voice, chat, compliance, and a dedicated success engineer.</p>
             <ul>
               <li>Everything in Voice & Chat</li>
@@ -1348,7 +1348,7 @@
             <span class="plan-badge plan-badge--popular">Enterprise</span>
             <div class="plan">Full Automation</div>
             <div class="tag">Built around your business. Everything, custom.</div>
-            <p class="price-anchor price-anchor--accent">From $2,997/mo</p>
+            <p class="price-anchor price-anchor--accent">From €2,997/mo</p>
             <p class="price-anchor-note">Custom scoped to your business size and goals.</p>
             <ul>
               <li>Everything in Full Suite</li>
@@ -1749,10 +1749,10 @@
 
     const fmtMoney = (n) => {
       const v = Math.round(n);
-      if (v >= 1000000) return "$" + (v / 1000000).toFixed(v >= 10000000 ? 0 : 1) + "M";
-      return "$" + v.toLocaleString("en-US");
+      if (v >= 1000000) return "€" + (v / 1000000).toFixed(v >= 10000000 ? 0 : 1) + "M";
+      return "€" + v.toLocaleString("en-US");
     };
-    const fmtValueLabel  = (v) => v >= 10000 ? "$10k+" : "$" + Number(v).toLocaleString("en-US");
+    const fmtValueLabel  = (v) => v >= 10000 ? "€10k+" : "€" + Number(v).toLocaleString("en-US");
     const fmtMissedLabel = (v) => v >= 200 ? "200+" : String(v);
 
     const setRangeFill = (el) => {
