@@ -1011,7 +1011,7 @@
               <h3>Experience the AI Live</h3>
               <p class="muted">A real conversation. No forms, no waiting, no robotic scripts.</p>
               <div id="retell-demo-widget">
-                <button class="btn btn-primary btn-lg" id="start-voice-demo" data-testid="start-voice-demo">Start Voice Demo</button>
+                <button class="btn btn-primary btn-lg" id="start-voice-demo" data-testid="start-voice-demo">Try it now</button>
               </div>
               <div class="demo-status" id="demo-status" aria-live="polite"></div>
             </div>
@@ -1678,7 +1678,7 @@
       activeCall = false;
       demoCard.classList.remove("is-live");
       startBtn.disabled = false;
-      startBtn.textContent = "Talk to the AI Live";
+      startBtn.textContent = "Try it now";
     };
 
     startBtn.addEventListener("click", async () => {
@@ -1720,7 +1720,7 @@
         const msg = (err && err.message) ? err.message : String(err);
         setStatus(`Could not start demo: ${msg}`);
         startBtn.disabled = false;
-        startBtn.textContent = "Talk to the AI Live";
+        startBtn.textContent = "Try it now";
       }
     });
 
