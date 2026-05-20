@@ -666,32 +666,19 @@
     .price-card .plan-trust .trust-badge svg{width:9px; height:9px; color:var(--accent); flex-shrink:0}
     .price-card .btn{margin-top:auto; justify-content:center}
     .price-card.featured{
-      background:var(--dark); color:#fff; border-color:var(--ink);
+      background:linear-gradient(180deg, #1a0a2e 0%, #2d0a2e 25%, #4a1040 60%, #6b1050 100%);
+      color:#fff; border-color:#3a1040;
       box-shadow:0 30px 60px -30px rgba(36,0,41,.6);
-      overflow:hidden;
     }
-    .price-card.featured::before, .price-card.featured::after{
-      content:""; position:absolute; width:320px; height:320px; border-radius:50%;
-      filter:blur(70px); opacity:.5; pointer-events:none;
-    }
-    .price-card.featured::before{background:var(--accent); top:-80px; left:-60px}
-    .price-card.featured::after{background:#ff6cb6; bottom:-80px; right:-60px}
     .price-card.featured .plan,
     .price-card.featured .tag{color:#fff}
-    .price-card.featured li{color:rgba(255,255,255,.86); line-height:1.4}
+    .price-card.featured li{color:rgba(255,255,255,.88); line-height:1.4}
     .price-card.featured li::before{border-color:var(--accent)}
     .price-card:nth-child(2){background:linear-gradient(160deg, #f0f4ff 0%, #ffffff 60%)}
     .price-card:nth-child(3){background:linear-gradient(160deg, #f5f0ff 0%, #ffffff 60%)}
     .price-card:nth-child(4){
-      background:linear-gradient(160deg, #fff8f0 0%, #ffffff 60%);
-      overflow:hidden;
+      background:linear-gradient(180deg, #ffe4ed 0%, #fff 100%);
     }
-    .price-card:nth-child(4)::before, .price-card:nth-child(4)::after{
-      content:""; position:absolute; width:280px; height:280px; border-radius:50%;
-      filter:blur(60px); opacity:.2; pointer-events:none;
-    }
-    .price-card:nth-child(4)::before{background:var(--accent); top:-60px; left:-40px}
-    .price-card:nth-child(4)::after{background:#ff6cb6; bottom:-60px; right:-40px}
     .price-card .plan-badge,
     .price-card .popular{
       position:absolute; top:-12px; left:50%; transform:translateX(-50%);
