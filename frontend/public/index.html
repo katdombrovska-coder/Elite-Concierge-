@@ -644,93 +644,60 @@
     }
 
     /* ===================== Pricing ===================== */
-    .price-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:22px; align-items:stretch}
-    @media (max-width: 1200px){ .price-grid{grid-template-columns:repeat(2, 1fr)} }
-    @media (max-width: 950px){ .price-grid{grid-template-columns:1fr} }
+    .price-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; align-items:stretch}
+    @media (max-width: 1000px){ .price-grid{grid-template-columns:1fr; max-width:480px; margin-left:auto; margin-right:auto} }
     .price-card{
       position:relative;
       background:#fff; border:1px solid var(--line); border-radius:24px;
-      padding:24px 20px;
+      padding:32px 28px;
       display:flex;
       flex-direction:column;
-      justify-content:space-between;
       box-shadow:var(--shadow-card); height:100%;
+      transition:transform .25s ease, box-shadow .25s ease;
     }
+    .price-card:hover{transform:translateY(-4px); box-shadow:0 8px 40px -20px rgba(36,0,41,.18)}
     .price-card .plan{font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-weight:700}
     .price-card .tag{
       font-family:'Bricolage Grotesque', serif; font-weight:700;
-      font-size:22px; letter-spacing:-.01em; margin:6px 0 10px; color:var(--ink);
+      font-size:20px; letter-spacing:-.01em; margin:8px 0 6px; color:var(--ink); line-height:1.2;
     }
-    .price-card ul{list-style:none; padding:0; margin:0 0 16px; display:flex; flex-direction:column; gap:6px; flex:1}
-    .price-card li{font-size:12.5px; color:var(--ink-2); padding-left:22px; position:relative; line-height:1.35}
+    .price-card .card-subtitle{font-size:13.5px; color:var(--muted); line-height:1.45; margin:0 0 20px}
+    .price-card .price-block{margin-bottom:20px}
+    .price-card .price-setup{font-size:14px; font-weight:600; color:var(--accent); margin:0 0 2px}
+    .price-card .price-monthly{font-family:'Bricolage Grotesque', serif; font-size:32px; font-weight:800; color:var(--ink); letter-spacing:-.02em; margin:0}
+    .price-card ul{list-style:none; padding:0; margin:0 0 24px; display:flex; flex-direction:column; gap:10px; flex:1}
+    .price-card li{font-size:14px; color:var(--ink-2); padding-left:24px; position:relative; line-height:1.4}
     .price-card li::before{
-      content:""; position:absolute; left:0; top:6px;
-      width:12px; height:8px;
-      border-left:2px solid var(--accent);
-      border-bottom:2px solid var(--accent);
-      transform:rotate(-45deg);
-      transform-origin:left center;
+      content:"✓"; position:absolute; left:0; top:0;
+      font-size:13px; font-weight:700; color:var(--accent);
     }
-    .price-card .plan-trust{
-      display:flex; flex-wrap:wrap; gap:6px; margin:0 0 12px;
-      justify-content:flex-start;
-    }
-    .price-card .plan-trust .trust-badge{
-      display:inline-flex; align-items:center; gap:4px;
-      padding:4px 10px; border-radius:999px;
-      font-size:9px; letter-spacing:.1em; text-transform:uppercase;
-      background:#fff1f7; border:1px solid rgba(236,28,140,.14);
-      color:var(--accent); font-weight:600; white-space:nowrap;
-    }
-    .price-card .plan-trust .trust-badge svg{width:9px; height:9px; color:var(--accent); flex-shrink:0}
-    .price-card .btn{margin-top:auto; justify-content:center}
+    .price-card .btn{margin-top:auto; justify-content:center; width:100%}
     .price-card.featured{
       background:linear-gradient(180deg, #1a0a2e 0%, #2d0a2e 25%, #4a1040 60%, #6b1050 100%);
-      color:#fff; border-color:#3a1040;
-      box-shadow:0 30px 60px -30px rgba(36,0,41,.6);
+      color:#fff; border-color:transparent;
+      box-shadow:0 30px 60px -30px rgba(36,0,41,.6), 0 0 0 2px var(--accent);
+      transform:scale(1.04);
+      z-index:2;
     }
-    .price-card.featured .plan,
+    .price-card.featured:hover{transform:scale(1.04) translateY(-4px)}
+    .price-card.featured .plan{color:rgba(255,255,255,.6)}
     .price-card.featured .tag{color:#fff}
-    .price-card.featured li{color:rgba(255,255,255,.88); line-height:1.4}
-    .price-card.featured li::before{border-color:var(--accent)}
-    .price-card:nth-child(2){background:linear-gradient(160deg, #f0f4ff 0%, #ffffff 60%)}
-    .price-card:nth-child(3){background:linear-gradient(160deg, #f5f0ff 0%, #ffffff 60%)}
-    .price-card:nth-child(4){
-      background:linear-gradient(180deg, #ffe4ed 0%, #fff 100%);
-    }
-    .price-card:nth-child(4) .plan,
-    .price-card:nth-child(4) .tag,
-    .price-card:nth-child(4) li,
-    .price-card:nth-child(4) .price-anchor-note{color:#1a1a1a}
-    .price-card:nth-child(4) li::before{border-color:#1a1a1a}
-    .price-card .plan-badge,
+    .price-card.featured .card-subtitle{color:rgba(255,255,255,.65)}
+    .price-card.featured .price-setup{color:var(--accent)}
+    .price-card.featured .price-monthly{color:#fff}
+    .price-card.featured li{color:rgba(255,255,255,.85); line-height:1.4}
+    .price-card.featured li::before{color:var(--accent)}
     .price-card .popular{
-      position:absolute; top:-12px; left:50%; transform:translateX(-50%);
-      padding:6px 14px; border-radius:var(--radius-pill);
+      position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+      padding:7px 18px; border-radius:var(--radius-pill);
       font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:700;
       white-space:nowrap; z-index:1;
+      background:var(--accent); color:#fff;
+      box-shadow:0 4px 14px -4px rgba(236,28,140,.5);
     }
-    .price-card .popular,
-    .plan-badge--popular,
-    .plan-badge--value,
-    .plan-badge--premium{background:var(--accent); color:#fff}
-    .price-anchor{
-      font-size:15px; font-weight:600; line-height:1.3;
-      margin:0 0 2px;
-    }
-    .price-anchor--accent{color:var(--accent)}
-    .price-anchor--ink{color:var(--ink)}
-    .price-anchor--value{color:#0d9488; font-weight:600}
-    .price-anchor--premium{color:#7c3aed; font-weight:600}
-    .price-anchor--light{color:#fff}
-    .price-anchor-note{
-      font-size:11.5px; line-height:1.35; color:var(--muted);
-      margin:0 0 12px;
-    }
-    .price-card.featured .price-anchor-note{color:rgba(255,255,255,.55)}
     .pricing-note{
-      text-align:center; font-size:13px; color:var(--muted);
-      margin:28px 0 0; line-height:1.5;
+      text-align:center; font-size:12px; color:var(--muted);
+      margin:24px 0 0; line-height:1.5; opacity:.7;
     }
 
     /* ===================== CTA strip ===================== */
@@ -932,7 +899,7 @@
   <div class="founding-sticky-bar" id="founding-sticky-bar" role="region" aria-label="Founding offer reminder">
     <p class="founding-sticky-bar-text">
       ⚡ Only 3 founding spots left —
-      <a href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" id="founding-bar-link">Claim yours before they're gone →</a>
+      <a href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" id="founding-bar-link">Claim yours before they're gone →</a>
     </p>
     <button type="button" class="founding-sticky-bar-close" id="founding-sticky-bar-close" aria-label="Dismiss notification">×</button>
   </div>
@@ -950,7 +917,7 @@
         <a href="#pricing" data-testid="nav-link-pricing">Pricing</a>
       </nav>
       <div class="nav-cta">
-        <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="nav-cta-sales">Speak With Us</a>
+        <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="nav-cta-sales">Speak With Us</a>
         <a class="btn btn-primary" href="#demo-card" data-testid="nav-cta-demo">Try the AI</a>
         <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" data-testid="nav-burger">
           <span></span><span></span><span></span>
@@ -963,7 +930,7 @@
         <a href="#how" class="nav-drawer-link" data-testid="mobile-link-how">How it Works</a>
         <a href="#features" class="nav-drawer-link" data-testid="mobile-link-features">Features</a>
         <a href="#pricing" class="nav-drawer-link" data-testid="mobile-link-pricing">Pricing</a>
-        <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="mobile-cta-sales">Speak With Us</a>
+        <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="mobile-cta-sales">Speak With Us</a>
         <a class="btn btn-primary" href="#demo-card" data-testid="mobile-cta-demo">Try the AI</a>
       </div>
     </div>
@@ -979,10 +946,10 @@
               <span class="label">For hospitality · legal · real estate · healthcare</span>
             </div>
             <h1 class="reveal">
-              Never miss another call, lead, or booking.
+              AI Employees<br>for Modern<br>Businesses.
             </h1>
             <p class="sub reveal">
-              Human-like AI employees that answer calls, book appointments, qualify leads, and handle customer conversations 24/7.
+              Human-like AI systems that automate communication, qualify leads, and support business operations 24/7.
             </p>
             <div class="hero-ctas reveal">
               <a class="btn btn-primary btn-lg btn-arrow" href="#demo-card" data-testid="hero-cta-demo">Experience the AI Live</a>
@@ -1045,7 +1012,7 @@
           <p class="founding-clean-line">Full setup, integration &amp; first 30 days — completely free. No card needed.</p>
           <p class="founding-retainer"><strong>Most clients pay between €297–€497/month.</strong> Cancel anytime. No contracts.</p>
           <p class="founding-spots" data-testid="founding-spots">⚡ Only 3 spots remaining</p>
-          <a class="founding-cta" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="founding-offer-cta">Claim Your Founding Spot →</a>
+          <a class="founding-cta" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="founding-offer-cta">Claim Your Founding Spot →</a>
           <p class="founding-talk">Not ready to book? <a href="#demo-card" class="founding-talk-link">Talk to the AI first →</a></p>
         </div>
       </div>
@@ -1059,7 +1026,7 @@
         <div>First 30 days free, then a simple monthly retainer.</div>
         <div>No lock-in. Cancel anytime.</div>
       </div>
-      <a class="founding-bottom-btn" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="founding-bottom-cta">Claim Your Spot Now →</a>
+      <a class="founding-bottom-btn" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="founding-bottom-cta">Claim Your Spot Now →</a>
     </section>
 
     <!-- ===================== HOW IT WORKS ===================== -->
@@ -1158,47 +1125,6 @@
       </div>
     </section>
 
-    <!-- ===================== INDUSTRIES ===================== -->
-    <section class="who-for" id="industries">
-      <div class="wrap">
-        <div class="who-for-head reveal">
-          <h2 class="who-for-title">Built for Modern Businesses</h2>
-          <p class="who-for-sub">Every industry gets the same AI. Different outcomes.</p>
-        </div>
-        <div class="who-for-grid reveal">
-          <div class="who-for-card">
-            <h3>Salons &amp; Beauty</h3>
-            <p class="who-for-outcome">Never miss another appointment request.</p>
-            <a class="who-for-cta" href="#demo-card">Try it →</a>
-          </div>
-          <div class="who-for-card">
-            <h3>Dental &amp; Medical</h3>
-            <p class="who-for-outcome">Handle after-hours calls without overwhelming staff.</p>
-            <a class="who-for-cta" href="#demo-card">Try it →</a>
-          </div>
-          <div class="who-for-card">
-            <h3>Real Estate</h3>
-            <p class="who-for-outcome">Respond instantly and qualify leads automatically.</p>
-            <a class="who-for-cta" href="#demo-card">Try it →</a>
-          </div>
-          <div class="who-for-card">
-            <h3>Hospitality</h3>
-            <p class="who-for-outcome">Deliver 24/7 guest communication that actually feels human.</p>
-            <a class="who-for-cta" href="#demo-card">Try it →</a>
-          </div>
-          <div class="who-for-card">
-            <h3>Home Services</h3>
-            <p class="who-for-outcome">Capture leads and bookings while your team is busy on the job.</p>
-            <a class="who-for-cta" href="#demo-card">Try it →</a>
-          </div>
-          <div class="who-for-card">
-            <h3>Fitness &amp; Wellness</h3>
-            <p class="who-for-outcome">Handle memberships, bookings, and customer questions automatically.</p>
-            <a class="who-for-cta" href="#demo-card">Try it →</a>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- ===================== REVENUE RECOVERY CALCULATOR ===================== -->
     <section class="block" id="calculator">
@@ -1278,7 +1204,7 @@
               <div class="calc-result-sub">
                 That's roughly <b><span id="calc-monthly" data-testid="calc-monthly">€16,307</span></b> a month walking past your front door.
               </div>
-              <a class="btn btn-primary btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="calc-cta" style="margin-top:22px">Stop Losing Money Every Day</a>
+              <a class="btn btn-primary btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="calc-cta" style="margin-top:22px">Stop Losing Money Every Day</a>
             </div>
           </div>
         </div>
@@ -1290,104 +1216,80 @@
       <div class="wrap">
         <div class="section-head reveal" style="text-align:center; margin-left:auto; margin-right:auto">
           <span class="label">Pricing</span>
-          <h2>Built Around Your Business,<br/>Not a Generic Plan.</h2>
-          <p style="margin-left:auto; margin-right:auto">Every business handles calls differently. Pick the surface your customers actually use — we price around the volume that matches your stage.</p>
+          <h2>Simple Plans.<br/>Real Business Results.</h2>
+          <p style="margin-left:auto; margin-right:auto">No hidden fees. No long-term contracts. Pick what fits your business today — upgrade anytime.</p>
         </div>
 
         <div class="price-grid">
-          <div class="price-card featured reveal" data-testid="plan-voice">
+          <!-- CARD 1: STARTER -->
+          <div class="price-card reveal" data-testid="plan-starter">
+            <div class="plan">Starter</div>
+            <div class="tag">AI Receptionist</div>
+            <p class="card-subtitle">Never miss another customer call.</p>
+            <div class="price-block">
+              <p class="price-setup">Setup from €99</p>
+              <p class="price-monthly">€79–149<span style="font-size:16px;font-weight:400;color:var(--muted)">/mo</span></p>
+            </div>
+            <p class="card-subtitle" style="margin-bottom:16px;font-size:12.5px">Perfect for solo specialists & small local businesses.</p>
+            <ul>
+              <li>AI voice receptionist</li>
+              <li>FAQ answering</li>
+              <li>Missed-call recovery</li>
+              <li>Basic call routing</li>
+              <li>1 language included</li>
+              <li>200+ AI minutes/month</li>
+            </ul>
+            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="plan-starter-cta">Start Simple</a>
+          </div>
+
+          <!-- CARD 2: MOST POPULAR -->
+          <div class="price-card featured reveal" data-testid="plan-growth">
             <span class="popular">Most Popular</span>
-            <div class="plan">Voice Agent</div>
-            <div class="tag">Never miss a sales call again.</div>
-            <p class="price-anchor price-anchor--accent">Founding setup from €499</p>
-            <p class="price-anchor-note">One-time build + flexible monthly retainer</p>
-            <p style="margin:0 0 12px;font-size:12.5px;line-height:1.4;color:rgba(255,255,255,.78)">Your AI rep answers every inbound call, qualifies leads, and books meetings — day and night.</p>
-            <ul>
-              <li>Inbound &amp; outbound calls</li>
-              <li>Keep your existing phone number</li>
-              <li>Lead qualification &amp; live booking</li>
-              <li>CRM + calendar integration</li>
-              <li>Transcripts &amp; SMS follow-ups</li>
-              <li>Auto QA + weekly performance tuning</li>
-            </ul>
-            <div class="plan-trust footer-trust" data-testid="plan-voice-trust">
-              <span class="trust-badge" data-testid="trust-soc2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SOC 2</span>
-              <span class="trust-badge" data-testid="trust-hipaa"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>HIPAA</span>
-              <span class="trust-badge" data-testid="trust-gdpr"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>GDPR</span>
+            <div class="plan">Growth</div>
+            <div class="tag">Smart Booking Assistant</div>
+            <p class="card-subtitle">Turn calls into booked appointments.</p>
+            <div class="price-block">
+              <p class="price-setup">Setup from €249</p>
+              <p class="price-monthly">€199–349<span style="font-size:16px;font-weight:400;color:rgba(255,255,255,.6)">/mo</span></p>
             </div>
-            <a class="btn btn-primary" href="#demo-card" data-testid="plan-voice-cta">Try the AI</a>
+            <p class="card-subtitle" style="margin-bottom:16px;font-size:12.5px">Best for busy salons, barbershops & growing teams.</p>
+            <ul>
+              <li>AI booking assistant</li>
+              <li>Calendar integration</li>
+              <li>SMS reminders</li>
+              <li>Multilingual support</li>
+              <li>Lead capture & transcripts</li>
+              <li>Basic analytics dashboard</li>
+              <li>500+ AI minutes/month</li>
+            </ul>
+            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="plan-growth-cta">Get Started</a>
           </div>
 
-          <div class="price-card reveal" data-testid="plan-chat">
-            <span class="plan-badge plan-badge--popular">Most Feature-Rich</span>
-            <div class="plan">Chat Agent</div>
-            <div class="tag">Reply on every channel. 24/7.</div>
-            <p class="price-anchor price-anchor--accent">Founding setup from €249</p>
-            <p class="price-anchor-note">One-time build + flexible monthly retainer</p>
-            <p style="margin:0 0 12px;font-size:12.5px;line-height:1.4;color:var(--ink-2)">Turn your website and social channels into a lead machine that never sleeps.</p>
-            <ul>
-              <li>Web, SMS &amp; WhatsApp chat</li>
-              <li>Auto-trained knowledge base</li>
-              <li>Lead capture &amp; CRM sync</li>
-              <li>Calendar booking in chat</li>
-              <li>31+ languages</li>
-              <li>Smart human handoff</li>
-            </ul>
-            <div class="plan-trust footer-trust" data-testid="plan-chat-trust">
-              <span class="trust-badge" data-testid="trust-soc2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SOC 2</span>
-              <span class="trust-badge" data-testid="trust-hipaa"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>HIPAA</span>
-              <span class="trust-badge" data-testid="trust-gdpr"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>GDPR</span>
+          <!-- CARD 3: PREMIUM -->
+          <div class="price-card reveal" data-testid="plan-premium">
+            <div class="plan">Premium</div>
+            <div class="tag">Full AI Front Desk</div>
+            <p class="card-subtitle">Your complete AI customer communication system.</p>
+            <div class="price-block">
+              <p class="price-setup">Setup from €499</p>
+              <p class="price-monthly">€399+<span style="font-size:16px;font-weight:400;color:var(--muted)">/mo</span></p>
             </div>
-            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-chat-cta">Get a quote</a>
-          </div>
-
-          <div class="price-card reveal" data-testid="plan-full">
-            <span class="plan-badge plan-badge--popular">Everything Included</span>
-            <div class="plan">Full Suite</div>
-            <div class="tag">Voice + chat, one shared brain.</div>
-            <p class="price-anchor price-anchor--accent">Founding setup from €999</p>
-            <p class="price-anchor-note">One-time build + flexible monthly retainer</p>
-            <p style="margin:0 0 12px;font-size:12.5px;line-height:1.4;color:var(--ink-2)">One build. Voice, chat, automations, and advanced workflows — all connected together.</p>
+            <p class="card-subtitle" style="margin-bottom:16px;font-size:12.5px">Built for clinics, restaurants & high-volume businesses.</p>
             <ul>
-              <li>Everything in Voice & Chat</li>
-              <li>Unified conversation history across channels</li>
-              <li>Smart warm transfer to humans</li>
-              <li>Dedicated success engineer</li>
-              <li>Sentiment analysis &amp; escalation rules</li>
+              <li>Voice + chat AI agents</li>
+              <li>Outbound follow-ups</li>
+              <li>CRM & workflow automation</li>
+              <li>WhatsApp integration</li>
+              <li>Advanced analytics</li>
+              <li>Reactivation campaigns</li>
+              <li>Custom workflows</li>
+              <li>1000+ AI minutes/month</li>
             </ul>
-            <div class="plan-trust footer-trust" data-testid="plan-full-trust">
-              <span class="trust-badge" data-testid="trust-soc2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SOC 2</span>
-              <span class="trust-badge" data-testid="trust-hipaa"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>HIPAA</span>
-              <span class="trust-badge" data-testid="trust-gdpr"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>GDPR</span>
-            </div>
-            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-full-cta">Let's Build</a>
-          </div>
-
-          <div class="price-card reveal" data-testid="plan-enterprise">
-            <span class="plan-badge plan-badge--popular">Enterprise</span>
-            <div class="plan">Full Automation</div>
-            <div class="tag">Custom. Private. Yours.</div>
-            <p style="margin:0 0 12px;font-size:12.5px;line-height:1.4;color:var(--ink-2)">Bespoke AI infrastructure built around your business — private deployments, advanced integrations, custom workflows, and dedicated support.</p>
-            <ul>
-              <li>Everything in Full Suite</li>
-              <li>Sales &amp; lead gen agents</li>
-              <li>Outbound calling campaigns</li>
-              <li>CRM &amp; workflow automation</li>
-              <li>Dedicated account manager</li>
-              <li>Weekly strategy calls</li>
-              <li>Priority build &amp; support</li>
-              <li>White-glove onboarding</li>
-            </ul>
-            <div class="plan-trust footer-trust" data-testid="plan-enterprise-trust">
-              <span class="trust-badge" data-testid="trust-soc2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SOC 2</span>
-              <span class="trust-badge" data-testid="trust-hipaa"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>HIPAA</span>
-              <span class="trust-badge" data-testid="trust-gdpr"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>GDPR</span>
-            </div>
-            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-enterprise-cta">Book a Discovery Call</a>
+            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="plan-premium-cta">Book a Strategy Call</a>
           </div>
         </div>
 
-        <p class="pricing-note">Every solution is custom-scoped based on usage, integrations, and support needs.</p>
+        <p class="pricing-note">Additional usage & custom automations billed separately.</p>
       </div>
     </section>
 
@@ -1398,8 +1300,8 @@
           <h2>Always on. Never on hold.<br/>Never on payroll.</h2>
           <p>Join businesses cutting call handling costs by 80 percent while answering every inbound — voice, chat, after hours, in 31 languages.</p>
           <div class="row">
-            <a class="btn btn-light btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="strip-cta-strategy">Book a Strategy Call</a>
-            <a class="btn btn-outline-light btn-lg" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="strip-cta-message">Speak With Us →</a>
+            <a class="btn btn-light btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="strip-cta-strategy">Book a Strategy Call</a>
+            <a class="btn btn-outline-light btn-lg" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="strip-cta-message">Speak With Us →</a>
           </div>
         </div>
       </div>
@@ -1503,12 +1405,8 @@
 
   <!-- ===================== APP SCRIPT (module) ===================== -->
   <script type="module">
-    // CRA substitutes %REACT_APP_BACKEND_URL% in public/index.html at build/dev time.
-    // Falls back to window.location.origin if substitution was skipped.
-    const RAW_BACKEND = "%REACT_APP_BACKEND_URL%";
-    const BACKEND = (RAW_BACKEND && !RAW_BACKEND.includes("REACT_APP_BACKEND_URL"))
-      ? RAW_BACKEND
-      : window.location.origin;
+    // Backend API — Vercel serverless function at /api/create-web-call
+    const BACKEND = window.location.origin;
 
     // ---------- Sticky navbar shade on scroll ----------
     const nav = document.getElementById("nav");

@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/api/create-web-call", "destination": "/api/create-web-call" },
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/(.*)", "destination": "/build/$1" }
+  ]
+}
