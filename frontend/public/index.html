@@ -662,6 +662,8 @@
       font-size:20px; letter-spacing:-.01em; margin:8px 0 6px; color:var(--ink); line-height:1.2;
     }
     .price-card .card-subtitle{font-size:13.5px; color:var(--muted); line-height:1.45; margin:0 0 14px}
+    .price-card .card-head{min-height:80px}
+    .price-card .card-desc{min-height:36px}
     .price-card .price-block{margin-bottom:18px}
     .price-main{font-family:'Bricolage Grotesque', serif; font-size:38px; font-weight:800; color:var(--ink); letter-spacing:-.02em; margin:0; line-height:1}
     .price-setup-line{font-size:12.5px; color:var(--muted); margin:8px 0 0; font-weight:500}
@@ -1229,15 +1231,17 @@
         <div class="price-grid">
           <!-- CARD 1: STARTER -->
           <div class="price-card reveal" data-testid="plan-starter">
-            <div class="plan">Starter</div>
-            <div class="tag">AI Receptionist</div>
-            <p class="card-subtitle">Never miss another customer call.</p>
+            <div class="card-head">
+              <div class="plan">Starter</div>
+              <div class="tag">AI Receptionist</div>
+              <p class="card-subtitle">Never miss another customer call.</p>
+            </div>
             <div class="price-block">
               <p class="price-main">€99<span style="font-size:16px;font-weight:400;color:var(--muted)">/mo</span></p>
               <p class="price-setup-line">€149 one-time setup</p>
               <p class="price-helper">Includes AI usage, hosting & support</p>
             </div>
-            <p class="card-subtitle" style="margin-bottom:16px;font-size:12.5px">Perfect for solo specialists & small local businesses.</p>
+            <p class="card-desc" style="margin-bottom:16px;font-size:12.5px;color:var(--muted)">Perfect for solo specialists & small local businesses.</p>
             <ul>
               <li>AI voice receptionist</li>
               <li>FAQ answering</li>
@@ -1252,15 +1256,17 @@
           <!-- CARD 2: MOST POPULAR -->
           <div class="price-card featured reveal" data-testid="plan-growth">
             <span class="popular">Most Popular</span>
-            <div class="plan">Growth</div>
-            <div class="tag">Smart Booking Assistant</div>
-            <p class="card-subtitle">Turn calls into booked appointments.</p>
+            <div class="card-head">
+              <div class="plan">Growth</div>
+              <div class="tag">Smart Booking Assistant</div>
+              <p class="card-subtitle">Turn calls into booked appointments.</p>
+            </div>
             <div class="price-block">
               <p class="price-main">€249<span style="font-size:16px;font-weight:400;color:rgba(255,255,255,.6)">/mo</span></p>
               <p class="price-setup-line">€299 one-time setup</p>
               <p class="price-helper">Includes AI usage, support & optimization</p>
             </div>
-            <p class="card-subtitle" style="margin-bottom:16px;font-size:12.5px">Best for busy salons, barbershops & growing teams.</p>
+            <p class="card-desc" style="margin-bottom:16px;font-size:12.5px;color:rgba(255,255,255,.65)">Best for busy salons, barbershops & growing teams.</p>
             <ul>
               <li>AI booking assistant</li>
               <li>Calendar integration</li>
@@ -1275,15 +1281,17 @@
 
           <!-- CARD 3: PREMIUM -->
           <div class="price-card reveal" data-testid="plan-premium">
-            <div class="plan">Premium</div>
-            <div class="tag">Full AI Front Desk</div>
-            <p class="card-subtitle">Your complete AI customer communication system.</p>
+            <div class="card-head">
+              <div class="plan">Premium</div>
+              <div class="tag">Full AI Front Desk</div>
+              <p class="card-subtitle">Your complete AI customer communication system.</p>
+            </div>
             <div class="price-block">
               <p class="price-main">€499+<span style="font-size:16px;font-weight:400;color:var(--muted)">/mo</span></p>
               <p class="price-setup-line">Custom setup included</p>
               <p class="price-helper">Advanced automation, support & scaling</p>
             </div>
-            <p class="card-subtitle" style="margin-bottom:16px;font-size:12.5px">Built for clinics, restaurants & high-volume businesses.</p>
+            <p class="card-desc" style="margin-bottom:16px;font-size:12.5px;color:var(--muted)">Built for clinics, restaurants & high-volume businesses.</p>
             <ul>
               <li>Voice + chat AI agents</li>
               <li>Outbound follow-ups</li>
