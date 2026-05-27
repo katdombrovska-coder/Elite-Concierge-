@@ -662,7 +662,12 @@
       font-size:20px; letter-spacing:-.01em; margin:8px 0 6px; color:var(--ink); line-height:1.2;
     }
     .price-card .card-subtitle{font-size:13.5px; color:var(--muted); line-height:1.45; margin:0 0 20px}
-    .price-card .price-block{margin-bottom:20px}
+    .price-card .price-block{margin-bottom:20px; display:flex; flex-direction:column; gap:14px}
+    .price-row{display:flex; flex-direction:column; gap:2px}
+    .price-row-label{font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0}
+    .price-row-amount{font-family:'Bricolage Grotesque', serif; font-size:30px; font-weight:800; color:var(--ink); letter-spacing:-.02em; margin:0}
+    .price-row-desc{font-size:12px; color:var(--muted); line-height:1.4; margin:2px 0 0}
+    .price-divider{height:1px; background:var(--line); margin:2px 0}
     .price-card .price-setup{font-size:14px; font-weight:600; color:var(--accent); margin:0 0 2px}
     .price-card .price-monthly{font-family:'Bricolage Grotesque', serif; font-size:32px; font-weight:800; color:var(--ink); letter-spacing:-.02em; margin:0}
     .price-card ul{list-style:none; padding:0; margin:0 0 24px; display:flex; flex-direction:column; gap:10px; flex:1}
@@ -685,6 +690,10 @@
     .price-card.featured .card-subtitle{color:rgba(255,255,255,.65)}
     .price-card.featured .price-setup{color:var(--accent)}
     .price-card.featured .price-monthly{color:#fff}
+    .price-card.featured .price-row-label{color:rgba(255,255,255,.5)}
+    .price-card.featured .price-row-amount{color:#fff}
+    .price-card.featured .price-row-desc{color:rgba(255,255,255,.5)}
+    .price-card.featured .price-divider{background:rgba(255,255,255,.12)}
     .price-card.featured li{color:rgba(255,255,255,.85); line-height:1.4}
     .price-card.featured li::before{color:var(--accent)}
     .price-card .popular{
@@ -1227,8 +1236,17 @@
             <div class="tag">AI Receptionist</div>
             <p class="card-subtitle">Never miss another customer call.</p>
             <div class="price-block">
-              <p class="price-setup">Setup from €99</p>
-              <p class="price-monthly">€79–149<span style="font-size:16px;font-weight:400;color:var(--muted)">/mo</span></p>
+              <div class="price-row">
+                <p class="price-row-label">One-time setup</p>
+                <p class="price-row-amount">€149</p>
+                <p class="price-row-desc">Includes onboarding, setup & integrations</p>
+              </div>
+              <div class="price-divider"></div>
+              <div class="price-row">
+                <p class="price-row-label">Monthly AI management</p>
+                <p class="price-row-amount">€99</p>
+                <p class="price-row-desc">Includes AI usage, hosting & support</p>
+              </div>
             </div>
             <p class="card-subtitle" style="margin-bottom:16px;font-size:12.5px">Perfect for solo specialists & small local businesses.</p>
             <ul>
@@ -1249,8 +1267,17 @@
             <div class="tag">Smart Booking Assistant</div>
             <p class="card-subtitle">Turn calls into booked appointments.</p>
             <div class="price-block">
-              <p class="price-setup">Setup from €249</p>
-              <p class="price-monthly">€199–349<span style="font-size:16px;font-weight:400;color:rgba(255,255,255,.6)">/mo</span></p>
+              <div class="price-row">
+                <p class="price-row-label">One-time setup</p>
+                <p class="price-row-amount">€299</p>
+                <p class="price-row-desc">Includes onboarding, booking flows & integrations</p>
+              </div>
+              <div class="price-divider"></div>
+              <div class="price-row">
+                <p class="price-row-label">Monthly AI management</p>
+                <p class="price-row-amount">€249</p>
+                <p class="price-row-desc">Includes AI usage, support & optimization</p>
+              </div>
             </div>
             <p class="card-subtitle" style="margin-bottom:16px;font-size:12.5px">Best for busy salons, barbershops & growing teams.</p>
             <ul>
@@ -1271,8 +1298,17 @@
             <div class="tag">Full AI Front Desk</div>
             <p class="card-subtitle">Your complete AI customer communication system.</p>
             <div class="price-block">
-              <p class="price-setup">Setup from €499</p>
-              <p class="price-monthly">€399+<span style="font-size:16px;font-weight:400;color:var(--muted)">/mo</span></p>
+              <div class="price-row">
+                <p class="price-row-label">One-time setup</p>
+                <p class="price-row-amount">€599+</p>
+                <p class="price-row-desc">Custom AI infrastructure & workflow setup</p>
+              </div>
+              <div class="price-divider"></div>
+              <div class="price-row">
+                <p class="price-row-label">Monthly AI operations</p>
+                <p class="price-row-amount">€499+</p>
+                <p class="price-row-desc">Advanced automation, support & scaling</p>
+              </div>
             </div>
             <p class="card-subtitle" style="margin-bottom:16px;font-size:12.5px">Built for clinics, restaurants & high-volume businesses.</p>
             <ul>
@@ -1289,7 +1325,7 @@
           </div>
         </div>
 
-        <p class="pricing-note">Additional usage & custom automations billed separately.</p>
+        <p class="pricing-note">Need higher usage, outbound campaigns or custom workflows? Contact us for scaling options.</p>
       </div>
     </section>
 
