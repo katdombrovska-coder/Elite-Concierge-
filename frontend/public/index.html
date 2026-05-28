@@ -236,7 +236,7 @@
     .founding-card-title{
       font-family:'Bricolage Grotesque', serif; font-weight:800;
       font-size:42px; line-height:1.1; letter-spacing:-.02em;
-      color:#fff; margin:0 0 10px;
+      color:#fff; margin:0 0 10px; max-width:600px;
     }
     .founding-card-sub{
       font-size:16px; line-height:1.5; color:rgba(255,255,255,.5);
@@ -248,8 +248,18 @@
     }
     .founding-pill{
       padding:6px 12px; border-radius:999px;
-      background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
-      color:rgba(255,255,255,.7); font-size:12px; font-weight:400; line-height:1.3;
+      background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+      color:rgba(255,255,255,.8); font-size:12px; font-weight:400; line-height:1.3;
+    }
+    .founding-price-line{
+      font-size:18px; color:rgba(255,255,255,.85); margin:8px 0 14px;
+      letter-spacing:-.01em;
+    }
+    .founding-price-line s{
+      opacity:.5; text-decoration:line-through; margin-right:8px;
+    }
+    .founding-price-line strong{
+      color:#fff; font-weight:600;
     }
     .founding-spots{
       font-size:15px; font-weight:500; color:var(--accent);
@@ -1065,12 +1075,13 @@
           <p class="founding-card-label">Limited Founding Access</p>
           <h2 class="founding-card-title">Only 10 Founding Clients Accepted.</h2>
           <p class="founding-card-sub">We build and launch your AI receptionist for free.</p>
+          <p class="founding-price-line"><s>€499 setup</s> <strong>€0 for founding clients</strong></p>
           <div class="founding-pills">
             <span class="founding-pill">Done-for-you setup</span>
             <span class="founding-pill">Live in under 7 days</span>
             <span class="founding-pill">AI tuned after real calls</span>
           </div>
-          <a class="founding-cta" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="founding-offer-cta">Apply for Founding Access</a>
+          <a class="founding-cta" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="founding-offer-cta">Claim Founding Spot</a>
           <p class="founding-talk"><a href="#how" class="founding-talk-link">See how it works →</a></p>
         </div>
       </div>
