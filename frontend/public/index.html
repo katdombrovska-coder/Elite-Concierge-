@@ -230,17 +230,28 @@
     .social-proof{padding:20px 0 48px}
     .founding-card{
       background:linear-gradient(180deg, #0a0008 0%, #1a0a1f 50%, #0a0008 100%);
+      background-size:200% 200%;
+      animation:founding-drift 25s ease infinite;
       color:#fff; border-radius:24px;
       padding:40px 60px; text-align:center;
       display:flex; flex-direction:column; align-items:center;
       max-width:860px; margin:0 auto;
       position:relative; overflow:hidden;
     }
+    @keyframes founding-drift{
+      0%,100%{background-position:50% 50%}
+      50%{background-position:55% 45%}
+    }
     .founding-card::before{
       content:""; position:absolute; width:500px; height:500px; border-radius:50%;
       background:radial-gradient(circle, rgba(236,28,140,.12) 0%, transparent 70%);
       top:-150px; right:-100px;
       filter:blur(80px); pointer-events:none;
+      animation:founding-glow 20s ease-in-out infinite;
+    }
+    @keyframes founding-glow{
+      0%,100%{opacity:.6; transform:translate(0,0)}
+      50%{opacity:.9; transform:translate(20px,10px)}
     }
     .founding-card::after{display:none}
     .founding-card > *{position:relative; z-index:1}
@@ -285,10 +296,21 @@
       padding:14px 36px; border-radius:999px; border:none;
       background:var(--accent); color:#fff;
       font-size:15px; font-weight:600; text-decoration:none;
-      transition:all .3s cubic-bezier(.25,.8,.25,1);
+      transition:all .4s cubic-bezier(.25,.8,.25,1);
       box-shadow:0 8px 24px rgba(236,28,140,.25);
+      position:relative; overflow:hidden;
     }
-    .founding-cta:hover{transform:translateY(-2px); box-shadow:0 12px 32px rgba(236,28,140,.35)}
+    .founding-cta::before{
+      content:""; position:absolute; top:0; left:-100%;
+      width:100%; height:100%;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+      transition:left .6s ease;
+    }
+    .founding-cta:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 32px rgba(236,28,140,.4), 0 0 0 1px rgba(255,255,255,.1);
+    }
+    .founding-cta:hover::before{left:100%}
     /* Founding offer: price tag, details, retainer, talk link */
     @keyframes pulse-glow{
       0%,100%{text-shadow:0 0 8px rgba(255,0,102,.4)}
@@ -1296,7 +1318,7 @@
     </section>
 
     <!-- ===================== FOUNDING OFFER ===================== -->
-    <section class="social-proof" id="founding-offer" aria-label="Founding client offer">
+    <section class="social-proof" id="founding-offer" aria-label="Founding client offer" data-scroll-reveal>
       <div class="wrap">
         <div class="founding-card reveal" data-testid="founding-offer-card">
           <p class="founding-card-label">Limited Founding Access</p>
