@@ -101,29 +101,61 @@
     .nav-drawer .btn{justify-content:center; margin-top:4px}
 
     /* Legal page layout */
-    main.legal{padding:80px 0}
-    .legal-col{max-width:720px; margin:0 auto; padding:0 28px}
+    main.legal{padding:100px 0 80px}
+    .legal-col{max-width:800px; margin:0 auto; padding:0 28px}
     @media (max-width:700px){ .legal-col{padding:0 24px} }
     .legal-label{
       font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
-      font-weight:600; display:block;
+      font-weight:600; display:block; margin-bottom:8px;
     }
     .legal h1{
       font-family:'Bricolage Grotesque', serif; font-weight:800; color:var(--ink);
-      letter-spacing:-.025em; font-size:clamp(36px, 5vw, 56px); line-height:1.05;
+      letter-spacing:-.025em; font-size:clamp(40px, 5.5vw, 60px); line-height:1.05;
       margin:14px 0 18px;
     }
-    .legal-sub{color:var(--muted); font-size:16px; line-height:1.55; margin:0}
-    .legal section{padding:36px 0; border-top:1px solid var(--line)}
+    .legal-sub{color:var(--muted); font-size:16px; line-height:1.6; margin:0 0 32px}
+    .legal-anchor{display:flex; flex-wrap:wrap; gap:12px; margin:32px 0 48px; padding:0}
+    .legal-anchor a{
+      font-size:13px; color:var(--ink-2); font-weight:500;
+      padding:8px 16px; border-radius:var(--radius-pill);
+      background:rgba(255,255,255,.6); border:1px solid var(--line);
+      transition:all .3s ease;
+    }
+    .legal-anchor a:hover{
+      background:#fff; color:var(--accent); border-color:var(--accent);
+      transform:translateY(-2px); box-shadow:0 4px 12px rgba(36,0,41,.08);
+    }
+    .legal section{padding:40px 0; border-top:1px solid var(--line)}
     .legal section:first-of-type{border-top:none; padding-top:48px}
     .legal h2{
-      font-family:'Inter', sans-serif; font-size:22px; font-weight:700; color:var(--ink);
-      letter-spacing:-.005em; margin:0 0 18px;
+      font-family:'Inter', sans-serif; font-size:24px; font-weight:700; color:var(--ink);
+      letter-spacing:-.01em; margin:0 0 20px; line-height:1.3;
     }
-    .legal p{font-size:18px; line-height:28px; color:var(--ink-2); margin:0 0 16px}
+    .legal p{font-size:16px; line-height:1.7; color:var(--ink-2); margin:0 0 18px}
     .legal p:last-child{margin-bottom:0}
-    .legal a{color:var(--accent); font-weight:600}
+    .legal a{color:var(--accent); font-weight:600; text-decoration:none}
     .legal a:hover{color:var(--accent-hov); text-decoration:underline}
+    .legal-trust{
+      display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+      gap:16px; margin:48px 0;
+    }
+    .legal-trust-card{
+      padding:20px; border-radius:16px;
+      background:rgba(255,255,255,.7); border:1px solid var(--line);
+      display:flex; align-items:center; gap:12px;
+      transition:all .3s ease;
+    }
+    .legal-trust-card:hover{
+      background:#fff; transform:translateY(-2px);
+      box-shadow:0 8px 20px rgba(36,0,41,.08);
+    }
+    .legal-trust-icon{
+      width:36px; height:36px; border-radius:8px;
+      background:var(--accent); color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      font-size:18px; flex-shrink:0;
+    }
+    .legal-trust-text{font-size:13px; font-weight:600; color:var(--ink); line-height:1.4}
 
     /* Footer (identical to landing minus LinkedIn, new tagline) */
     footer.site{background:var(--dark); color:#fff; margin-top:48px; padding:80px 0 32px}
@@ -202,26 +234,35 @@
     <div class="legal-col">
       <span class="legal-label">Legal</span>
       <h1>Privacy Policy</h1>
-      <p class="legal-sub">Last updated: May 2025. This policy applies to all users of Elite Concierge services.</p>
+      <p class="legal-sub">Last updated: May 2026. This policy applies to all users of Elite Concierge services.</p>
 
-      <section>
+      <nav class="legal-anchor">
+        <a href="#who-we-are">Who We Are</a>
+        <a href="#data-collection">Data Collection</a>
+        <a href="#gdpr-rights">GDPR Rights</a>
+        <a href="#call-chat-data">Call & Chat Data</a>
+        <a href="#security">Security</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <section id="who-we-are">
         <h2>1. Who We Are</h2>
-        <p>Elite Concierge is an AI-powered Voice and Chat Assistant product operated by Elite AI, a company registered in Portugal. We provide custom-configured Elite Concierge agents for businesses. For all privacy matters contact us at <a href="mailto:hello@eliteai.space">hello@eliteai.space</a>.</p>
+        <p>Elite Concierge is an AI-powered voice and chat assistant platform operated by Elite AI, a company registered in Portugal. We provide custom-configured Elite Concierge agents for businesses. For all privacy matters contact us at <a href="mailto:hello@eliteai.space">hello@eliteai.space</a>.</p>
       </section>
 
-      <section>
+      <section id="data-collection">
         <h2>2. What Data We Collect</h2>
         <p>We collect data you provide directly including your name, email address, company name, phone number, and any information submitted through our contact or booking forms.</p>
         <p>We also collect data automatically during service delivery including call recordings and transcripts generated by AI agents deployed on behalf of our clients, chat conversation logs, metadata including call duration and timestamps, and website usage data collected via cookies and analytics tools.</p>
       </section>
 
-      <section>
+      <section id="legal-basis">
         <h2>3. Why We Collect It and Our Legal Basis Under GDPR</h2>
         <p>We process your data for the following purposes. To provide and operate our services, lawful basis is performance of a contract. To respond to enquiries and onboard new clients, lawful basis is legitimate interests. To send service-related communications, lawful basis is performance of a contract. To comply with legal obligations, lawful basis is legal obligation. To improve and monitor AI agent performance, lawful basis is legitimate interests.</p>
         <p>We do not use your data for automated decision-making that produces legal or similarly significant effects without human review.</p>
       </section>
 
-      <section>
+      <section id="call-chat-data">
         <h2>4. Call and Chat Data</h2>
         <p>Elite AI deploys Elite Concierge AI voice and chat agents on behalf of business clients. Calls and chats handled by these agents may be recorded and transcribed for quality assurance, compliance, and performance improvement purposes. Where required by applicable law, callers and chat users are informed of recording at the start of the interaction.</p>
         <p>Call and chat data is stored securely and is accessible only to Elite AI and the relevant business client. Retention periods are defined in individual client agreements with a default maximum retention of 12 months unless a longer period is required by law.</p>
@@ -238,7 +279,7 @@
         <p>All processors are bound by data processing agreements and are required to maintain appropriate security measures. Where processors are located outside the European Economic Area, transfers are governed by Standard Contractual Clauses approved by the European Commission.</p>
       </section>
 
-      <section>
+      <section id="gdpr-rights">
         <h2>7. Your Rights Under GDPR</h2>
         <p>If you are located in the European Economic Area you have the following rights regarding your personal data: the right to access a copy of the data we hold about you, the right to rectification of inaccurate data, the right to erasure in certain circumstances, the right to restrict processing, the right to data portability, the right to object to processing based on legitimate interests, and the right to lodge a complaint with the Portuguese data protection authority the Comissao Nacional de Protecao de Dados at <a href="https://www.cnpd.pt" target="_blank" rel="noopener noreferrer">www.cnpd.pt</a>.</p>
         <p>To exercise any of these rights contact us at <a href="mailto:hello@eliteai.space">hello@eliteai.space</a>. We will respond within 30 days.</p>
@@ -249,19 +290,39 @@
         <p>Our website uses essential cookies required for the site to function and optional analytics cookies to understand how visitors use the site. We do not use advertising or tracking cookies. You can manage cookie preferences through your browser settings at any time.</p>
       </section>
 
-      <section>
+      <section id="security">
         <h2>9. Security</h2>
         <p>We implement appropriate technical and organisational measures to protect personal data against unauthorised access, loss, destruction, or alteration. Our underlying infrastructure is SOC 2 Type II and GDPR compliant.</p>
         <p>Elite Concierge is built on infrastructure that is SOC 2 Type II, HIPAA, and GDPR compliant. These certifications apply to the underlying platform and data infrastructure used to deliver our services.</p>
+        
+        <div class="legal-trust">
+          <div class="legal-trust-card">
+            <div class="legal-trust-icon">✓</div>
+            <div class="legal-trust-text">GDPR Compliant</div>
+          </div>
+          <div class="legal-trust-card">
+            <div class="legal-trust-icon">✓</div>
+            <div class="legal-trust-text">SOC 2 Infrastructure</div>
+          </div>
+          <div class="legal-trust-card">
+            <div class="legal-trust-icon">✓</div>
+            <div class="legal-trust-text">Secure Cloud</div>
+          </div>
+          <div class="legal-trust-card">
+            <div class="legal-trust-icon">✓</div>
+            <div class="legal-trust-text">EU-Based Company</div>
+          </div>
+        </div>
+
         <p>In the event of a personal data breach that poses a risk to individuals we will notify the relevant supervisory authority within 72 hours as required by Article 33 of the GDPR.</p>
       </section>
 
       <section>
         <h2>10. Changes to This Policy</h2>
-        <p>We may update this Privacy Policy from time to time. We will notify active clients of material changes by email. The date at the top of this page reflects the most recent update. Continued use of our services after an update constitutes acceptance of the revised policy.</p>
+        <p>We may update this Privacy Policy from time to time. We will notify active clients of material changes by email. The date at the top of this page reflects the most recent update. Continued use of our services following updates indicates acceptance of the revised policy.</p>
       </section>
 
-      <section>
+      <section id="contact">
         <h2>11. Contact</h2>
         <p>For any privacy-related questions or to exercise your rights contact us at <a href="mailto:hello@eliteai.space">hello@eliteai.space</a>. We aim to respond within 30 days of receiving your request.</p>
       </section>
