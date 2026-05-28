@@ -750,11 +750,12 @@
 
     /* ===================== Sections shared ===================== */
     section.block{padding:96px 0}
-    @media (max-width: 800px){ section.block{padding:72px 0} }
+    @media (max-width: 800px){ section.block{padding:56px 0} }
     /* Subtle alternating section tones */
     section.block:nth-of-type(even){background:rgba(255,245,238,.5)}
     section.block:nth-of-type(odd){background:transparent}
     .section-head{max-width:760px; margin-bottom:72px}
+    @media (max-width: 800px){ .section-head{margin-bottom:48px} }
     .section-head h2{margin-top:10px}
     .section-head p{margin-top:18px; color:var(--ink-2); font-size:18px; max-width:60ch}
 
