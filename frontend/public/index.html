@@ -393,13 +393,14 @@
       gap:16px;
     }
     .demo-scribble{
-      position:absolute; right:16px; top:-6px;
-      transform:rotate(-5deg);
-      font-size:20px;
+      position:absolute; right:18px; top:-8px;
+      transform:rotate(-4deg);
+      font-size:18px;
       max-width:100%;
       overflow:hidden;
       white-space:nowrap;
-      opacity:.7;
+      opacity:.55;
+      letter-spacing:.01em;
     }
     .waveform{
       display:flex; gap:10px; justify-content:center; align-items:end;
@@ -421,9 +422,15 @@
     }
     .demo-card h3{font-size:clamp(22px, 2.4vw, 28px); margin-bottom:8px}
     .demo-card .muted{color:var(--muted); margin-bottom:24px; font-size:15px}
-    .demo-live-badge{display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#e04080; margin-bottom:12px}
-    .demo-live-dot{width:7px; height:7px; border-radius:50%; background:#e04080; animation:pulse-dot 1.8s ease-in-out infinite}
-    @keyframes pulse-dot{0%,100%{opacity:1; transform:scale(1)}50%{opacity:.4; transform:scale(.8)}}
+    /* Subtle breathing glow on demo card */
+    .demo-card::after{
+      content:""; position:absolute; inset:-2px; border-radius:inherit;
+      background:radial-gradient(ellipse at 50% 80%, rgba(236,28,140,.08), transparent 70%);
+      animation:demo-breathe 4s ease-in-out infinite;
+      pointer-events:none; z-index:0;
+    }
+    .demo-card > *{position:relative; z-index:1}
+    @keyframes demo-breathe{0%,100%{opacity:.4}50%{opacity:.9}}
     .demo-card .powered{margin-top:18px; font-size:12px; color:var(--muted); letter-spacing:.04em}
     .demo-card.is-live{box-shadow:0 0 0 2px var(--accent), var(--shadow-card)}
     .demo-status{margin-top:14px; font-size:13px; color:var(--ink-2); min-height:18px}
@@ -983,11 +990,11 @@
               AI Employees<br>for Modern<br>Businesses.
             </h1>
             <p class="sub reveal">
-              AI employees that answer calls, qualify leads, and book customers automatically — day and night.
+              AI employees that answer calls, qualify leads, and book customers automatically — 24/7.
             </p>
             <div class="hero-ctas reveal">
               <a class="btn btn-primary btn-lg btn-arrow" href="#demo-card" data-testid="hero-cta-demo">Hear the AI Live</a>
-              <a class="btn btn-ghost btn-lg" href="#how">How It Works</a>
+              <a class="btn btn-ghost btn-lg" href="#how" style="transition:all .3s ease; border-color:var(--line)">How It Works</a>
             </div>
             <div class="chips reveal">
               <span class="chip" data-testid="chip-always-on">
@@ -1007,7 +1014,6 @@
           <div class="hero-right">
             <div class="demo-card reveal" id="demo-card" data-testid="demo-card">
               <span class="scribble demo-scribble">what your customers hear ↓</span>
-              <span class="demo-live-badge"><span class="demo-live-dot"></span>Live Demo</span>
               <div class="waveform" aria-hidden="true">
                 <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
               </div>
@@ -1027,7 +1033,7 @@
     <section class="never-miss-cta" aria-label="Transition">
       <div class="wrap">
         <div class="never-miss-inner">
-          <p style="font-size:14px; color:var(--muted); opacity:.65; letter-spacing:.01em">Most businesses reply too late. AI doesn't.</p>
+          <p style="font-size:13.5px; color:var(--muted); opacity:.5; letter-spacing:.02em; font-style:italic; font-weight:500">Every missed call is a missed opportunity.</p>
         </div>
       </div>
     </section>
