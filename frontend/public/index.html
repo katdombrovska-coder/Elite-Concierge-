@@ -203,43 +203,44 @@
     @media (max-width: 700px){.chips{flex-wrap:nowrap; gap:6px; margin-top:24px}.chip{padding:8px 10px}}
 
     /* ===================== Founding offer card ===================== */
-    .social-proof{padding:24px 0 56px}
+    .social-proof{padding:20px 0 48px}
     .founding-card{
-      background:linear-gradient(165deg, #1a0014 0%, var(--dark) 35%, #2d0a3a 65%, var(--dark) 100%);
-      color:#fff; border-radius:28px;
-      padding:48px 80px; text-align:center;
+      background:linear-gradient(180deg, #0a0008 0%, #1a0a1f 50%, #0a0008 100%);
+      color:#fff; border-radius:24px;
+      padding:40px 60px; text-align:center;
       display:flex; flex-direction:column; align-items:center;
-      max-width:920px; margin:0 auto;
+      max-width:860px; margin:0 auto;
       position:relative; overflow:hidden;
     }
-    .founding-card::before, .founding-card::after{
-      content:""; position:absolute; width:420px; height:420px; border-radius:50%;
-      filter:blur(100px); opacity:.4; pointer-events:none;
+    .founding-card::before{
+      content:""; position:absolute; width:500px; height:500px; border-radius:50%;
+      background:radial-gradient(circle, rgba(236,28,140,.12) 0%, transparent 70%);
+      top:-150px; right:-100px;
+      filter:blur(80px); pointer-events:none;
     }
-    .founding-card::before{background:var(--accent); top:-120px; left:-80px}
-    .founding-card::after{background:#ff6cb6; bottom:-120px; right:-80px}
+    .founding-card::after{display:none}
     .founding-card > *{position:relative; z-index:1}
     .founding-card-label{
-      font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
-      color:var(--accent); margin:0 0 12px;
+      font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--accent); margin:0 0 10px; opacity:.9;
     }
     .founding-card-title{
       font-family:'Bricolage Grotesque', serif; font-weight:800;
-      font-size:48px; line-height:1.05; letter-spacing:-.02em;
-      color:#fff; margin:0 0 12px;
+      font-size:42px; line-height:1.1; letter-spacing:-.02em;
+      color:#fff; margin:0 0 10px;
     }
     .founding-card-sub{
-      font-size:18px; line-height:1.5; color:#a0a0a0;
-      max-width:600px; margin:0 0 12px;
+      font-size:16px; line-height:1.5; color:rgba(255,255,255,.5);
+      max-width:500px; margin:0 0 14px;
     }
     .founding-pills{
-      display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
-      margin:0 0 24px;
+      display:flex; flex-wrap:wrap; justify-content:center; gap:8px;
+      margin:16px 0 20px;
     }
     .founding-pill{
-      padding:8px 16px; border-radius:999px;
-      background:#1e1e1e; border:1px solid #333;
-      color:#fff; font-size:13px; font-weight:500; line-height:1.3;
+      padding:6px 12px; border-radius:999px;
+      background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
+      color:rgba(255,255,255,.7); font-size:12px; font-weight:400; line-height:1.3;
     }
     .founding-spots{
       font-size:15px; font-weight:500; color:var(--accent);
@@ -247,12 +248,13 @@
     }
     .founding-cta{
       display:inline-flex; align-items:center; justify-content:center;
-      padding:16px 40px; border-radius:999px; border:none;
-      background:#fff; color:#EC1C8C;
-      font-size:17px; font-weight:600; text-decoration:none;
-      transition:background-color .2s ease, transform .18s ease;
+      padding:14px 36px; border-radius:999px; border:none;
+      background:var(--accent); color:#fff;
+      font-size:15px; font-weight:600; text-decoration:none;
+      transition:all .3s cubic-bezier(.25,.8,.25,1);
+      box-shadow:0 8px 24px rgba(236,28,140,.25);
     }
-    .founding-cta:hover{background:#f5f5f5; transform:translateY(-1px)}
+    .founding-cta:hover{transform:translateY(-2px); box-shadow:0 12px 32px rgba(236,28,140,.35)}
     /* Founding offer: price tag, details, retainer, talk link */
     @keyframes pulse-glow{
       0%,100%{text-shadow:0 0 8px rgba(255,0,102,.4)}
@@ -1054,13 +1056,11 @@
           <p class="founding-card-label">Limited Founding Access</p>
           <h2 class="founding-card-title">Only 10 Founding Clients Accepted.</h2>
           <p class="founding-card-sub">We build and launch your AI receptionist for free.</p>
-          <div class="founding-price-tag" data-testid="founding-price"><s>€499</s> setup <strong>€0 for founding clients</strong></div>
           <div class="founding-pills">
-            <span class="founding-pill">✓ Done-for-you setup</span>
-            <span class="founding-pill">✓ Live in under 7 days</span>
-            <span class="founding-pill">✓ AI tuned after real customer calls</span>
+            <span class="founding-pill">Done-for-you setup</span>
+            <span class="founding-pill">Live in under 7 days</span>
+            <span class="founding-pill">AI tuned after real calls</span>
           </div>
-          <p class="founding-spots" data-testid="founding-spots">Pay only once your system goes live.<br/><strong>No contracts. Cancel anytime.</strong></p>
           <a class="founding-cta" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="founding-offer-cta">Apply for Founding Access</a>
           <p class="founding-talk"><a href="#how" class="founding-talk-link">See how it works →</a></p>
         </div>
