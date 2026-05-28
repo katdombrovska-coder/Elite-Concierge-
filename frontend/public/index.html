@@ -182,6 +182,21 @@
     .nav-drawer .btn{justify-content:center; margin-top:4px}
 
     /* ===================== Hero ===================== */
+
+    /* Smooth section transitions */
+
+    /* Smooth section blending */
+    section + section{
+      margin-top:-1px;
+    }
+    section{
+      position:relative;
+    }
+    section::before{
+      content:""; position:absolute; top:0; left:0; right:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent 0%, rgba(236,28,140,.08) 50%, transparent 100%);
+    }
     .hero{padding:80px 0 10px}
     @media (max-width: 700px){ .hero{padding:52px 0 28px} }
     .hero-layout{display:flex; align-items:center; gap:60px}
@@ -399,6 +414,105 @@
 
     /* ===================== Demo card ===================== */
     .demo-wrap{position:relative; padding:24px 0 80px}
+    
+    /* Live indicator */
+    .demo-live-indicator{
+      position:absolute; top:24px; right:24px;
+      display:flex; align-items:center; gap:6px;
+      font-size:11px; font-weight:600; letter-spacing:.05em;
+      color:rgba(36,0,41,.6); text-transform:uppercase;
+    }
+    .demo-live-dot{
+      width:6px; height:6px; border-radius:50%;
+      background:#ec1c8c;
+      animation:pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot{
+      0%,100%{opacity:1; transform:scale(1)}
+      50%{opacity:.5; transform:scale(1.2)}
+    }
+    
+    .demo-live-text{opacity:.7}
+    
+    /* Enhanced waveform */
+    .demo-waveform{
+      display:flex; align-items:center; justify-content:center;
+      gap:4px; height:48px; margin:40px auto 20px;
+    }
+    .wave-bar{
+      width:3px; border-radius:2px;
+      background:linear-gradient(180deg, #ec1c8c 0%, #240029 100%);
+      animation:wave-pulse 1.4s ease-in-out infinite;
+    }
+    .wave-bar:nth-child(1){height:20px; animation-delay:0s}
+    .wave-bar:nth-child(2){height:32px; animation-delay:0.1s}
+    .wave-bar:nth-child(3){height:28px; animation-delay:0.2s}
+    .wave-bar:nth-child(4){height:36px; animation-delay:0.3s}
+    .wave-bar:nth-child(5){height:24px; animation-delay:0.4s}
+    
+    
+    /* Premium fade-up animations */
+    @keyframes fadeUp{
+      from{opacity:0; transform:translateY(20px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+    
+    .hero h1, .hero h2, .hero p, .hero-cta, .demo-card,
+    .features h2, .features p, .feature-card,
+    .pricing h2, .pricing p, .pricing-card,
+    .founding-card, .cta-strip h2, .cta-strip p{
+      animation:fadeUp .8s cubic-bezier(.25,.8,.25,1) backwards;
+    }
+    
+    .hero h1{animation-delay:.1s}
+    .hero h2{animation-delay:.2s}
+    .hero p{animation-delay:.3s}
+    .hero-cta{animation-delay:.4s}
+    .demo-card{animation-delay:.5s}
+    
+    .feature-card:nth-child(1){animation-delay:.1s}
+    .feature-card:nth-child(2){animation-delay:.2s}
+    .feature-card:nth-child(3){animation-delay:.3s}
+    .feature-card:nth-child(4){animation-delay:.4s}
+    .feature-card:nth-child(5){animation-delay:.5s}
+    .feature-card:nth-child(6){animation-delay:.6s}
+    
+    .pricing-card:nth-child(1){animation-delay:.1s}
+    .pricing-card:nth-child(2){animation-delay:.2s}
+    .pricing-card:nth-child(3){animation-delay:.3s}
+    @keyframes wave-pulse{
+      0%,100%{transform:scaleY(1); opacity:.7}
+      50%{transform:scaleY(1.4); opacity:1}
+    }
+    
+    /* Status text */
+    .demo-status{
+      text-align:center;
+      font-size:12px; font-weight:500;
+      color:rgba(36,0,41,.5);
+      letter-spacing:.02em;
+      margin-bottom:16px;
+    }
+    
+    /* Transcript preview */
+    .demo-transcript{
+      background:rgba(36,0,41,.03);
+      border-radius:8px;
+      padding:12px 14px;
+      margin:0 auto 20px;
+      max-width:280px;
+    }
+    .transcript-line{
+      display:flex; gap:8px;
+      font-size:12px; line-height:1.5;
+    }
+    .transcript-speaker{
+      font-weight:600; color:#ec1c8c;
+      flex-shrink:0;
+    }
+    .transcript-text{
+      color:rgba(36,0,41,.7);
+    }
     .demo-card{
       position:relative;
       background:#fff;
@@ -451,6 +565,105 @@
       pointer-events:none; z-index:0;
     }
     /* Gentle floating motion */
+    
+    /* Live indicator */
+    .demo-live-indicator{
+      position:absolute; top:24px; right:24px;
+      display:flex; align-items:center; gap:6px;
+      font-size:11px; font-weight:600; letter-spacing:.05em;
+      color:rgba(36,0,41,.6); text-transform:uppercase;
+    }
+    .demo-live-dot{
+      width:6px; height:6px; border-radius:50%;
+      background:#ec1c8c;
+      animation:pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot{
+      0%,100%{opacity:1; transform:scale(1)}
+      50%{opacity:.5; transform:scale(1.2)}
+    }
+    
+    .demo-live-text{opacity:.7}
+    
+    /* Enhanced waveform */
+    .demo-waveform{
+      display:flex; align-items:center; justify-content:center;
+      gap:4px; height:48px; margin:40px auto 20px;
+    }
+    .wave-bar{
+      width:3px; border-radius:2px;
+      background:linear-gradient(180deg, #ec1c8c 0%, #240029 100%);
+      animation:wave-pulse 1.4s ease-in-out infinite;
+    }
+    .wave-bar:nth-child(1){height:20px; animation-delay:0s}
+    .wave-bar:nth-child(2){height:32px; animation-delay:0.1s}
+    .wave-bar:nth-child(3){height:28px; animation-delay:0.2s}
+    .wave-bar:nth-child(4){height:36px; animation-delay:0.3s}
+    .wave-bar:nth-child(5){height:24px; animation-delay:0.4s}
+    
+    
+    /* Premium fade-up animations */
+    @keyframes fadeUp{
+      from{opacity:0; transform:translateY(20px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+    
+    .hero h1, .hero h2, .hero p, .hero-cta, .demo-card,
+    .features h2, .features p, .feature-card,
+    .pricing h2, .pricing p, .pricing-card,
+    .founding-card, .cta-strip h2, .cta-strip p{
+      animation:fadeUp .8s cubic-bezier(.25,.8,.25,1) backwards;
+    }
+    
+    .hero h1{animation-delay:.1s}
+    .hero h2{animation-delay:.2s}
+    .hero p{animation-delay:.3s}
+    .hero-cta{animation-delay:.4s}
+    .demo-card{animation-delay:.5s}
+    
+    .feature-card:nth-child(1){animation-delay:.1s}
+    .feature-card:nth-child(2){animation-delay:.2s}
+    .feature-card:nth-child(3){animation-delay:.3s}
+    .feature-card:nth-child(4){animation-delay:.4s}
+    .feature-card:nth-child(5){animation-delay:.5s}
+    .feature-card:nth-child(6){animation-delay:.6s}
+    
+    .pricing-card:nth-child(1){animation-delay:.1s}
+    .pricing-card:nth-child(2){animation-delay:.2s}
+    .pricing-card:nth-child(3){animation-delay:.3s}
+    @keyframes wave-pulse{
+      0%,100%{transform:scaleY(1); opacity:.7}
+      50%{transform:scaleY(1.4); opacity:1}
+    }
+    
+    /* Status text */
+    .demo-status{
+      text-align:center;
+      font-size:12px; font-weight:500;
+      color:rgba(36,0,41,.5);
+      letter-spacing:.02em;
+      margin-bottom:16px;
+    }
+    
+    /* Transcript preview */
+    .demo-transcript{
+      background:rgba(36,0,41,.03);
+      border-radius:8px;
+      padding:12px 14px;
+      margin:0 auto 20px;
+      max-width:280px;
+    }
+    .transcript-line{
+      display:flex; gap:8px;
+      font-size:12px; line-height:1.5;
+    }
+    .transcript-speaker{
+      font-weight:600; color:#ec1c8c;
+      flex-shrink:0;
+    }
+    .transcript-text{
+      color:rgba(36,0,41,.7);
+    }
     .demo-card{
       animation:demo-float 6s ease-in-out infinite;
     }
@@ -952,7 +1165,21 @@
       /* Pricing cards on mobile */
       .price-card{padding:24px 20px}
     }
-    </style>
+    
+    /* Cinematic film grain texture */
+    body::before{
+      content:""; position:fixed; top:0; left:0; width:100%; height:100%;
+      pointer-events:none; z-index:9999;
+      opacity:0.015;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+    /* Subtle vignette */
+    body::after{
+      content:""; position:fixed; top:0; left:0; width:100%; height:100%;
+      pointer-events:none; z-index:9998;
+      background:radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.02) 100%);
+    }
+  </style>
     <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=3">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=3">
