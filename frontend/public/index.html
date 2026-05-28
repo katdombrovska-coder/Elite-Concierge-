@@ -1054,7 +1054,7 @@
 
     /* ===================== Footer ===================== */
     footer.site{
-      background:var(--dark); color:#fff; margin-top:0; padding:80px 0 32px;
+      background:var(--dark); color:#fff; margin-top:0; padding:74px 0 32px;
     }
     footer.site .cols{
       display:grid; grid-template-columns:1.2fr 1fr 1.6fr; gap:48px;
@@ -1064,24 +1064,26 @@
       color:rgba(255,255,255,.55); margin:0 0 18px; font-weight:700;
     }
     footer.site ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px}
-    footer.site a{color:rgba(255,255,255,.82); font-size:14.5px}
-    footer.site a:hover{color:#fff}
+    footer.site a{color:rgba(255,255,255,.87); font-size:14.5px; transition:color .3s cubic-bezier(.25,.8,.25,1), opacity .3s ease}
+    footer.site a:hover{color:#fff; opacity:.95}
     footer.site .brand-col p{color:rgba(255,255,255,.7); margin-top:14px; max-width:42ch; line-height:1.55}
     footer.site .brand-col .links{margin-top:18px; display:flex; flex-direction:column; gap:8px}
     footer.site .brand-col .footer-location{color:rgba(255,255,255,.82); font-size:14.5px; line-height:1.55}
-    footer.site .rule{height:1px; background:rgba(255,255,255,.12); margin:48px 0 24px}
+    footer.site .rule{height:1px; background:rgba(255,255,255,.18); margin:56px 0 24px}
     footer.site .footer-trust{
       display:flex; justify-content:center; align-items:center;
       gap:10px; flex-wrap:wrap; margin:0 0 22px;
     }
     footer.site .trust-badge{
       display:inline-flex; align-items:center; gap:6px;
-      padding:7px 14px; border-radius:999px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.15);
+      padding:5px 12px; border-radius:999px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.12);
       font-size:11px; letter-spacing:.12em; text-transform:uppercase;
       color:rgba(255,255,255,.78); font-weight:600; white-space:nowrap;
+      transition:background .3s ease, border-color .3s ease;
     }
+    footer.site .trust-badge:hover{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.2)}
     footer.site .trust-badge svg{color:var(--accent); flex-shrink:0}
     footer.site .bottom{display:flex; justify-content:space-between; align-items:center; color:rgba(255,255,255,.55); font-size:13px; gap:18px}
     footer.site .bottom a{color:rgba(255,255,255,.55)}
@@ -1655,7 +1657,7 @@
             <img src="/android-chrome-192x192.png?v=3" alt="Elite AI" width="26" height="26" style="width:26px;height:26px;border-radius:6px" aria-hidden="true">
             <span>Elite AI</span>
           </div>
-          <p style="color:rgba(255,255,255,.5); font-size:12.5px; margin-top:10px; letter-spacing:.02em">AI Receptionists for Modern Businesses</p>
+          <p style="color:rgba(255,255,255,.4); font-size:11.5px; margin-top:10px; letter-spacing:.02em">AI Receptionists for Modern Businesses</p>
           <div class="links">
             <a href="mailto:hello@eliteai.space" data-testid="footer-email">hello@eliteai.space</a>
             <span class="footer-location">Based in Lisbon, Portugal — serving clients globally</span>
