@@ -399,7 +399,7 @@
       max-width:100%;
       overflow:hidden;
       white-space:nowrap;
-      opacity:.55;
+      opacity:.45;
       letter-spacing:.01em;
     }
     .waveform{
@@ -429,8 +429,13 @@
       animation:demo-breathe 4s ease-in-out infinite;
       pointer-events:none; z-index:0;
     }
+    /* Gentle floating motion */
+    .demo-card{
+      animation:demo-float 6s ease-in-out infinite;
+    }
     .demo-card > *{position:relative; z-index:1}
     @keyframes demo-breathe{0%,100%{opacity:.4}50%{opacity:.9}}
+    @keyframes demo-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
     .demo-card .powered{margin-top:18px; font-size:12px; color:var(--muted); letter-spacing:.04em}
     .demo-card.is-live{box-shadow:0 0 0 2px var(--accent), var(--shadow-card)}
     .demo-status{margin-top:14px; font-size:13px; color:var(--ink-2); min-height:18px}
@@ -990,11 +995,11 @@
               AI Employees<br>for Modern<br>Businesses.
             </h1>
             <p class="sub reveal">
-              AI employees that answer calls, qualify leads, and book customers automatically — 24/7.
+              AI employees that answer calls, qualify leads, and book customers — 24/7.
             </p>
             <div class="hero-ctas reveal">
               <a class="btn btn-primary btn-lg btn-arrow" href="#demo-card" data-testid="hero-cta-demo">Hear the AI Live</a>
-              <a class="btn btn-ghost btn-lg" href="#how" style="transition:all .3s ease; border-color:var(--line)">How It Works</a>
+              <a class="btn btn-ghost btn-lg" href="#how" style="transition:all .4s cubic-bezier(.25,.8,.25,1); border-color:var(--line)">How It Works</a>
             </div>
             <div class="chips reveal">
               <span class="chip" data-testid="chip-always-on">
@@ -1010,6 +1015,7 @@
                 <span class="chip-value">31+</span>
               </span>
             </div>
+            <p style="font-size:13px; color:var(--muted); opacity:.35; letter-spacing:.03em; font-style:italic; font-weight:500; margin-top:18px">Every missed call is a missed opportunity.</p>
           </div>
           <div class="hero-right">
             <div class="demo-card reveal" id="demo-card" data-testid="demo-card">
