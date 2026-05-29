@@ -2057,5 +2057,15 @@
     applyIndustryPreset();
     recompute();
   </script>
+  <!-- Elite AI CTA Click Tracking -->
+  <script>
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('[data-testid]');
+      if (!el) return;
+      var id = el.getAttribute('data-testid');
+      var label = (el.textContent || '').trim().slice(0, 60);
+      plausible('CTA Click', {props: {button: id, label: label}});
+    });
+  </script>
 </body>
 </html>
