@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   // Hardcoded for now (works locally, env var issues on Vercel)
-  const RETELL_API_KEY = 'key_b6068865c90b2674d3143206156d';
+  const RETELL_API_KEY = 'key_631a6e889dfcfa38df342ad86221';
   const RETELL_AGENT_ID = 'agent_3f3c271c4814e6f07278f7db49';
 
   try {
