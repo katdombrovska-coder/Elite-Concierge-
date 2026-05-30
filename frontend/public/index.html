@@ -16,6 +16,13 @@
   <meta name="twitter:image" content="https://eliteai.space/android-chrome-512x512.png" />
   <title>Elite AI — AI Employees for Your Business</title>
 
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://plausible.io/js/pa-Mz4Fv5Oin1CKZzC-Fsygf.js"></script>
+  <script>
+   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+   plausible.init()
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -1304,7 +1311,7 @@
               <h3>Hear the AI Live</h3>
               <p class="muted">Real conversations. No forms. No waiting.</p>
               <div id="retell-demo-widget">
-                <button class="btn btn-primary btn-lg" id="start-voice-demo" data-testid="start-voice-demo">Try it now</button>
+                <a href="https://agent.retellai.com/orb/agent_31127e7697afbaefd07602b2ab?token=619808989b3df47d14a8d2ac86df8d47" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" id="start-voice-demo" data-testid="start-voice-demo">Try it now</a>
               </div>
               <div class="demo-status" id="demo-status" aria-live="polite"></div>
             </div>
@@ -2049,6 +2056,16 @@
 
     applyIndustryPreset();
     recompute();
+  </script>
+  <!-- Elite AI CTA Click Tracking -->
+  <script>
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('[data-testid]');
+      if (!el) return;
+      var id = el.getAttribute('data-testid');
+      var label = (el.textContent || '').trim().slice(0, 60);
+      plausible('CTA Click', {props: {button: id, label: label}});
+    });
   </script>
 </body>
 </html>
