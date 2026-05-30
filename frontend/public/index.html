@@ -1305,16 +1305,15 @@
           <div class="hero-right">
             <div class="demo-card reveal" id="demo-card" data-testid="demo-card">
               <span class="scribble demo-scribble">what your customers hear ↓</span>
+              <div class="waveform" aria-hidden="true">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+              </div>
               <h3>Hear the AI Live</h3>
               <p class="muted">Real conversations. No forms. No waiting.</p>
-              <iframe 
-                src="https://agent.retellai.com/orb/agent_31127e7697afbaefd07602b2ab?token=619808989b3df47d14a8d2ac86df8d47" 
-                width="100%" 
-                height="500px" 
-                frameborder="0" 
-                allow="microphone" 
-                style="border-radius: 12px; border: none; margin-top: 16px;">
-              </iframe>
+              <div id="retell-demo-widget">
+                <button class="btn btn-primary btn-lg" id="start-voice-demo" data-testid="start-voice-demo">Try it now</button>
+              </div>
+              <div class="demo-status" id="demo-status" aria-live="polite"></div>
             </div>
           </div>
         </div>
