@@ -1,335 +1,182 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#fff7eb" />
-  <meta name="description" content="Terms of Service — Elite AI (Elite Concierge voice and chat agents)." />
-  <title>Terms of Service — Elite AI</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Caveat+Brush&display=swap"
-    rel="stylesheet"
-  />
-  <style>
-    :root{
-      --bg:#fff7eb; --ink:#240029; --ink-2:#3a1240; --muted:#6b4f6f;
-      --line:#e9d9d4; --accent:#ec1c8c; --accent-hov:#c8146f; --dark:#240029;
-      --radius-pill:999px;
-      --shadow-pink:0 14px 30px -10px rgba(236,28,140,.55), 0 0 0 1px rgba(236,28,140,.05) inset;
-    }
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color:var(--ink); background:var(--bg);
-      background-image:
-        radial-gradient(1100px 600px at 8% -10%, #ffd6e7, transparent 55%),
-        radial-gradient(1200px 700px at 110% -5%, #fff1b0, transparent 60%),
-        radial-gradient(900px 600px at 50% 0%, #fcd9bd, transparent 70%);
-      background-attachment:fixed;
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-      line-height:1.55;
-    }
-    a{color:inherit; text-decoration:none}
-    button{font-family:inherit}
-    .wrap{max-width:1200px; margin:0 auto; padding:0 28px}
-    @media (max-width:700px){ .wrap{padding:0 20px} }
-
-    .btn{
-      display:inline-flex; align-items:center; gap:10px; padding:14px 26px; border-radius:var(--radius-pill);
-      font-weight:600; font-size:15px; border:1px solid transparent; cursor:pointer; white-space:nowrap;
-      transition:transform .18s ease, background-color .18s ease, color .18s ease, box-shadow .25s ease, border-color .18s ease;
-    }
-    .btn-primary{background:var(--accent); color:#fff; box-shadow:none}
-    .btn-primary:hover{
-      background:var(--accent); color:#fff;
-      box-shadow:none;
-      transform:translateY(-2px); cursor:pointer;
-    }
-    .btn-primary:active,
-    .btn-primary:focus-visible{
-      background:var(--accent); color:#fff; box-shadow:none;
-      transform:none;
-    }
-    .btn-ghost{background:transparent; color:var(--ink); border-color:var(--ink)}
-    .btn-ghost:hover{background:var(--ink); color:#fff}
-
-    .nav{
-      position:sticky; top:0; z-index:50; padding:18px 0;
-      transition:background-color .25s ease, backdrop-filter .25s ease, border-color .25s ease;
-      border-bottom:1px solid transparent;
-    }
-    .nav.scrolled{
-      background:rgba(255,247,235,.78);
-      backdrop-filter:saturate(140%) blur(14px); -webkit-backdrop-filter:saturate(140%) blur(14px);
-      border-bottom-color:var(--line);
-    }
-    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:24px}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:-.01em; font-size:18px; color:var(--ink)}
-    .brand svg{width:26px; height:26px}
-    .nav-links{display:flex; gap:28px; align-items:center}
-    .nav-links a{font-size:14px; color:var(--ink-2); font-weight:500}
-    .nav-links a:hover{color:var(--accent)}
-    .nav-cta{display:flex; gap:10px; align-items:center}
-    @media (max-width:900px){
-      .nav-links{display:none}
-      .nav-cta .btn-ghost{display:none}
-      .nav-cta .btn-primary{display:none}
-      .nav-burger{display:inline-flex !important}
-    }
-    .nav-burger{
-      display:none; width:42px; height:42px; padding:0;
-      border-radius:var(--radius-pill); background:transparent;
-      border:1px solid var(--ink); cursor:pointer;
-      align-items:center; justify-content:center; gap:4px; flex-direction:column;
-      transition:background-color .18s ease;
-    }
-    .nav-burger:hover{background:rgba(36,0,41,.06)}
-    .nav-burger span{display:block; width:18px; height:2px; background:var(--ink); border-radius:2px; transition:transform .25s ease, opacity .2s ease}
-    .nav-burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-    .nav-burger.open span:nth-child(2){opacity:0}
-    .nav-burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-    .nav-drawer{display:none; background:rgba(255,247,235,.96); backdrop-filter:saturate(140%) blur(14px); border-bottom:1px solid var(--line)}
-    .nav-drawer.open{display:block}
-    .nav-drawer .wrap{display:flex; flex-direction:column; gap:14px; padding-top:18px; padding-bottom:22px}
-    .nav-drawer-link{font-size:18px; color:var(--ink); font-weight:600; padding:10px 0; border-bottom:1px solid var(--line)}
-    .nav-drawer-link:hover{color:var(--accent)}
-    .nav-drawer .btn{justify-content:center; margin-top:4px}
-
-    main.legal{padding:80px 0}
-    .legal-col{max-width:720px; margin:0 auto; padding:0 28px}
-    @media (max-width:700px){ .legal-col{padding:0 24px} }
-    .legal-label{font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; display:block}
-    .legal h1{
-      font-family:'Bricolage Grotesque', serif; font-weight:800; color:var(--ink);
-      letter-spacing:-.025em; font-size:clamp(36px, 5vw, 56px); line-height:1.05;
-      margin:14px 0 18px;
-    }
-    .legal-sub{color:var(--muted); font-size:16px; line-height:1.55; margin:0}
-    .legal section{padding:36px 0; border-top:1px solid var(--line)}
-    .legal section:first-of-type{border-top:none; padding-top:48px}
-    .legal h2{
-      font-family:'Inter', sans-serif; font-size:22px; font-weight:700; color:var(--ink);
-      letter-spacing:-.005em; margin:0 0 18px;
-    }
-    .legal p{font-size:18px; line-height:28px; color:var(--ink-2); margin:0 0 16px}
-    .legal p:last-child{margin-bottom:0}
-    .legal a{color:var(--accent); font-weight:600}
-    .legal a:hover{color:var(--accent-hov); text-decoration:underline}
-
-    footer.site{background:var(--dark); color:#fff; margin-top:48px; padding:80px 0 32px}
-    footer.site .cols{display:grid; grid-template-columns:1.2fr 1fr 1.6fr; gap:48px}
-    footer.site h4{font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.55); margin:0 0 18px; font-weight:700}
-    footer.site ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px}
-    footer.site a{color:rgba(255,255,255,.82); font-size:14.5px}
-    footer.site a:hover{color:#fff}
-    footer.site .brand-col p{color:rgba(255,255,255,.7); margin-top:14px; max-width:42ch; line-height:1.55}
-    footer.site .brand-col .links{margin-top:18px; display:flex; flex-direction:column; gap:8px}
-    footer.site .rule{height:1px; background:rgba(255,255,255,.12); margin:48px 0 24px}
-    footer.site .footer-trust{
-      display:flex; justify-content:center; align-items:center;
-      gap:10px; flex-wrap:wrap; margin:0 0 22px;
-    }
-    footer.site .trust-badge{
-      display:inline-flex; align-items:center; gap:6px;
-      padding:7px 14px; border-radius:999px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.15);
-      font-size:11px; letter-spacing:.12em; text-transform:uppercase;
-      color:rgba(255,255,255,.78); font-weight:600; white-space:nowrap;
-    }
-    footer.site .trust-badge svg{color:var(--accent); flex-shrink:0}
-    footer.site .bottom{display:flex; justify-content:space-between; align-items:center; color:rgba(255,255,255,.55); font-size:13px; gap:18px}
-    footer.site .bottom a{color:rgba(255,255,255,.55)}
-    footer.site .bottom a:hover{color:#fff}
-    @media (max-width:800px){
-      footer.site .cols{grid-template-columns:1fr 1fr; gap:36px}
-      footer.site .brand-col{grid-column:1 / -1}
-      footer.site .bottom{flex-direction:column; align-items:flex-start; gap:8px}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service — Elite AI Space</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; line-height: 1.7; color: #333; background: #f9f9f9; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h1 { color: #1a1a1a; margin-bottom: 8px; font-size: 2.2em; }
+        .updated { color: #666; font-size: 0.9em; margin-bottom: 30px; }
+        h2 { color: #1a1a1a; margin-top: 35px; margin-bottom: 12px; font-size: 1.4em; }
+        p { margin-bottom: 14px; color: #444; }
+        ul { margin-bottom: 14px; margin-left: 24px; }
+        li { margin-bottom: 6px; color: #444; }
+        hr { border: none; border-top: 1px solid #e0e0e0; margin: 30px 0; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .back-link { display: inline-block; margin-bottom: 24px; color: #0066cc; font-weight: 500; }
+    </style>
 </head>
 <body>
-  <header class="nav" id="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="/" data-testid="nav-brand">
-        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <rect x="2"  y="13" width="3" height="6"  rx="1.5" fill="#ec1c8c"/>
-          <rect x="7"  y="9"  width="3" height="14" rx="1.5" fill="#ec1c8c"/>
-          <rect x="12" y="5"  width="3" height="22" rx="1.5" fill="#ec1c8c"/>
-          <rect x="17" y="9"  width="3" height="14" rx="1.5" fill="#ec1c8c"/>
-          <rect x="22" y="13" width="3" height="6"  rx="1.5" fill="#ec1c8c"/>
-          <rect x="27" y="15" width="3" height="2"  rx="1"   fill="#ec1c8c"/>
-        </svg>
-        <span>Elite AI</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="/#how" data-testid="nav-link-how">How it Works</a>
-        <a href="/#features" data-testid="nav-link-features">Features</a>
-        <a href="/#pricing" data-testid="nav-link-pricing">Pricing</a>
-      </nav>
-      <div class="nav-cta">
-        <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="nav-cta-sales">Talk to Sales</a>
-        <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="nav-cta-demo">Book a Demo</a>
-        <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" data-testid="nav-burger">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-    <div class="nav-drawer" id="nav-drawer" data-testid="nav-drawer" aria-hidden="true">
-      <div class="wrap">
-        <a href="/#how" class="nav-drawer-link">How it Works</a>
-        <a href="/#features" class="nav-drawer-link">Features</a>
-        <a href="/#pricing" class="nav-drawer-link">Pricing</a>
-        <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer">Talk to Sales</a>
-        <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer">Book a Demo</a>
-      </div>
-    </div>
-  </header>
+    <div class="container">
+        <a href="/" class="back-link">← Back to Home</a>
 
-  <main class="legal" data-testid="legal-main">
-    <div class="legal-col">
-      <span class="legal-label">Legal</span>
-      <h1>Terms of Service</h1>
-      <p class="legal-sub">Last updated: May 2025. Please read these terms carefully before using Elite Concierge services.</p>
+        <h1>Terms of Service</h1>
+        <p class="updated">Last updated: June 2026</p>
 
-      <section>
+        <p>Please read these Terms of Service carefully before using Elite AI Space services.</p>
+
+        <hr>
+
         <h2>1. Acceptance of Terms</h2>
-        <p>By accessing the Elite AI website or engaging our services you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree do not use our services. These terms constitute a legally binding agreement between you and Elite AI, a company registered in Portugal.</p>
-      </section>
+        <p>By accessing the Elite AI Space website or using our services, you agree to these Terms of Service and our Privacy Policy.</p>
+        <p>If you do not agree with these terms, you should not use our services.</p>
+        <p>These Terms constitute a legally binding agreement between you and Elite AI, a company operating in Portugal.</p>
 
-      <section>
+        <hr>
+
         <h2>2. Description of Services</h2>
-        <p>Elite AI provides custom-configured Elite Concierge AI-powered Voice and Chat Agent services for businesses. This includes the setup, configuration, deployment, and ongoing management of AI agents that handle inbound and outbound calls, web chat, SMS follow-ups, and integrations with third-party platforms including CRM systems, telephony providers, and booking tools. The specific scope of services for each client is defined in a separate service agreement or order form.</p>
-      </section>
+        <p>Elite AI Space provides AI-powered communication and automation systems for businesses.</p>
+        <p>Services may include:</p>
+        <ul>
+            <li>AI voice agents</li>
+            <li>AI receptionists</li>
+            <li>AI chat systems</li>
+            <li>workflow automations</li>
+            <li>appointment booking systems</li>
+            <li>CRM and calendar integrations</li>
+            <li>SMS and WhatsApp communication</li>
+            <li>inbound and outbound AI communication infrastructure</li>
+        </ul>
+        <p>Service scope may vary depending on the selected plan, onboarding requirements, integrations, and custom agreements.</p>
 
-      <section>
+        <hr>
+
         <h2>3. Client Responsibilities</h2>
-        <p>You are responsible for providing accurate information during onboarding including your business details, call scripts, knowledge base content, and integration credentials.</p>
-        <p>You are responsible for ensuring that your use of Elite Concierge agents complies with all applicable laws in your jurisdiction including laws governing call recording, data protection, and consumer communications. You must inform your customers when calls are being handled or recorded by an AI agent where required by law.</p>
-        <p>You must not use Elite Concierge services for any unlawful, harmful, or deceptive purpose.</p>
-      </section>
+        <p>Clients are responsible for providing accurate business information, onboarding materials, integration credentials, and operational instructions required for service configuration.</p>
+        <p>Clients are also responsible for ensuring their use of AI systems complies with applicable laws and regulations, including laws related to:</p>
+        <ul>
+            <li>call recording</li>
+            <li>customer notifications</li>
+            <li>consumer communication</li>
+            <li>privacy and data protection</li>
+        </ul>
+        <p>Where legally required, clients must inform users that conversations may be recorded or processed by AI systems.</p>
+        <p>Clients may not use Elite AI Space services for unlawful, deceptive, abusive, or harmful activities.</p>
 
-      <section>
-        <h2>4. Custom Pricing and Payment</h2>
-        <p>Elite Concierge services are priced on a custom basis depending on scope, volume, and integrations. Pricing is agreed in writing before any work begins. Invoices are issued monthly or as otherwise agreed. Payment is due within 14 days of the invoice date unless otherwise specified. Late payment may result in suspension of services. All prices are exclusive of VAT which will be applied where required under Portuguese and European tax law.</p>
-      </section>
+        <hr>
 
-      <section>
-        <h2>5. Intellectual Property</h2>
-        <p>All content on the Elite AI website including copy, design, and code is the intellectual property of Elite AI. Elite Concierge agents configured for your business remain the intellectual property of Elite AI.</p>
-        <p>You retain ownership of all content and data you provide including scripts, knowledge base materials, and customer data. You grant Elite AI a limited licence to use that content solely for the purpose of providing the services.</p>
-      </section>
+        <h2>4. Pricing, Billing &amp; Payments</h2>
+        <p>Pricing may include:</p>
+        <ul>
+            <li>one-time setup or implementation fees</li>
+            <li>recurring monthly or annual subscription fees</li>
+            <li>usage-based charges where applicable</li>
+        </ul>
+        <p>Pricing depends on factors including:</p>
+        <ul>
+            <li>communication volume</li>
+            <li>integrations</li>
+            <li>workflow complexity</li>
+            <li>AI usage</li>
+            <li>support requirements</li>
+        </ul>
+        <p>Invoices and subscription billing terms are agreed during onboarding or through the selected plan.</p>
+        <p>Failure to complete payment may result in suspension or limitation of services.</p>
+        <p>Unless otherwise stated, prices do not include applicable VAT or taxes.</p>
 
-      <section>
-        <h2>6. Data Processing</h2>
-        <p>Where Elite AI processes personal data on your behalf as part of delivering the services we act as data processor and you act as data controller. A Data Processing Agreement will be provided as part of the client onboarding process in accordance with Article 28 of the GDPR. Each party agrees to comply with its obligations under applicable data protection law.</p>
-        <p>Elite Concierge is built on infrastructure that is SOC 2 Type II, HIPAA, and GDPR compliant. These certifications apply to the underlying platform and data infrastructure used to deliver our services.</p>
-      </section>
+        <hr>
 
-      <section>
-        <h2>7. Limitation of Liability</h2>
-        <p>Elite AI will use reasonable skill and care in providing the services. However to the maximum extent permitted by law we are not liable for any indirect, consequential, or incidental losses arising from your use of the services including lost revenue, lost data, or business interruption. Our total liability to you in any 12-month period is limited to the total fees paid by you to Elite AI during that period.</p>
-      </section>
+        <h2>5. Service Usage &amp; Fair Use</h2>
+        <p>Elite AI Space services may include usage limits, communication quotas, or fair use policies depending on the selected plan.</p>
+        <p>Excessive, abusive, fraudulent, or technically harmful usage may result in:</p>
+        <ul>
+            <li>temporary suspension</li>
+            <li>service limitations</li>
+            <li>additional usage charges</li>
+            <li>account termination</li>
+        </ul>
+        <p>We reserve the right to protect platform stability, infrastructure integrity, and service availability.</p>
 
-      <section>
+        <hr>
+
+        <h2>6. Intellectual Property</h2>
+        <p>All platform materials, branding, website content, software configurations, automations, prompts, workflows, and system architectures developed by Elite AI Space remain the intellectual property of Elite AI unless otherwise agreed in writing.</p>
+        <p>Clients retain ownership of their business data, customer data, scripts, and uploaded materials.</p>
+        <p>Clients grant Elite AI Space a limited right to process and use such materials solely for the purpose of delivering services.</p>
+
+        <hr>
+
+        <h2>7. Data Processing &amp; Privacy</h2>
+        <p>Where Elite AI Space processes personal data on behalf of clients, clients act as data controllers and Elite AI Space acts as a data processor where applicable under GDPR.</p>
+        <p>Our services may rely on third-party providers including cloud infrastructure, telephony, AI, CRM, analytics, and payment providers.</p>
+        <p>Additional Data Processing Agreements may be provided where required.</p>
+        <p>For more information, please review our <a href="/privacy.html">Privacy Policy</a>.</p>
+
+        <hr>
+
         <h2>8. Service Availability</h2>
-        <p>We aim to maintain high availability of our services in line with the underlying infrastructure SLA of 99.99 percent uptime. However we do not guarantee uninterrupted service and are not liable for downtime caused by third-party providers, force majeure events, or circumstances outside our reasonable control.</p>
-      </section>
+        <p>We aim to maintain reliable service availability and infrastructure performance.</p>
+        <p>However, we do not guarantee uninterrupted or error-free operation at all times.</p>
+        <p>Service interruptions may occur due to:</p>
+        <ul>
+            <li>maintenance</li>
+            <li>third-party outages</li>
+            <li>telecom provider issues</li>
+            <li>infrastructure failures</li>
+            <li>force majeure events</li>
+            <li>external platform limitations</li>
+        </ul>
+        <p>Elite AI Space is not liable for downtime outside our reasonable control.</p>
 
-      <section>
-        <h2>9. Termination</h2>
-        <p>Either party may terminate the service agreement with 30 days written notice unless otherwise agreed. Elite AI reserves the right to suspend or terminate services immediately in the event of a material breach of these terms, non-payment, or use of the services for unlawful purposes. Upon termination client data will be returned or deleted in accordance with the agreed data retention terms.</p>
-      </section>
+        <hr>
 
-      <section>
-        <h2>10. Governing Law and Disputes</h2>
-        <p>These Terms of Service are governed by the laws of Portugal. Any disputes arising from these terms or the use of Elite Concierge services will be subject to the exclusive jurisdiction of the courts of Portugal. If you are a consumer you may also have rights under the law of your country of residence that cannot be excluded by this clause.</p>
-      </section>
+        <h2>9. Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law, Elite AI Space is not liable for indirect, incidental, special, or consequential damages including:</p>
+        <ul>
+            <li>lost profits</li>
+            <li>lost revenue</li>
+            <li>business interruption</li>
+            <li>data loss</li>
+            <li>reputational damage</li>
+        </ul>
+        <p>Total liability related to the services will not exceed the total amount paid by the client during the previous 12 months.</p>
 
-      <section>
-        <h2>11. Changes to These Terms</h2>
-        <p>We may update these Terms of Service from time to time. We will notify active clients of material changes by email at least 14 days before they take effect. Continued use of the services after that date constitutes acceptance of the revised terms.</p>
-      </section>
+        <hr>
 
-      <section>
-        <h2>12. Contact</h2>
-        <p>For any questions about these terms contact us at <a href="mailto:hello@eliteai.space">hello@eliteai.space</a>.</p>
-      </section>
+        <h2>10. Suspension &amp; Termination</h2>
+        <p>We reserve the right to suspend or terminate services in cases including:</p>
+        <ul>
+            <li>non-payment</li>
+            <li>abuse of the platform</li>
+            <li>unlawful usage</li>
+            <li>violation of these Terms</li>
+            <li>security or infrastructure risks</li>
+        </ul>
+        <p>Clients may cancel services according to their subscription or agreement terms.</p>
+        <p>Upon termination, data may be deleted or retained according to applicable legal obligations and retention policies.</p>
+
+        <hr>
+
+        <h2>11. Governing Law</h2>
+        <p>These Terms are governed by the laws of Portugal.</p>
+        <p>Any disputes arising from these Terms or the use of Elite AI Space services will be subject to the jurisdiction of Portuguese courts unless otherwise required by applicable consumer protection laws.</p>
+
+        <hr>
+
+        <h2>12. Changes to These Terms</h2>
+        <p>We may update these Terms periodically.</p>
+        <p>Material changes may be communicated through email or platform notifications.</p>
+        <p>Continued use of the services after updates constitutes acceptance of the revised Terms.</p>
+
+        <hr>
+
+        <h2>13. Contact</h2>
+        <p>For legal or service-related inquiries contact:</p>
+        <p><a href="mailto:hello@eliteai.space">hello@eliteai.space</a></p>
     </div>
-  </main>
-
-  <footer class="site">
-    <div class="wrap">
-      <div class="cols">
-        <div>
-          <h4>Features</h4>
-          <ul>
-            <li><a href="/#features">Voice Agents</a></li>
-            <li><a href="/#features">Web Chat</a></li>
-            <li><a href="/#features">CRM Integrations</a></li>
-            <li><a href="/#features">Calendar Booking</a></li>
-            <li><a href="/#features">Multilingual</a></li>
-            <li><a href="/#features">Compliance</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Company</h4>
-          <ul>
-            <li><a href="/#how">About</a></li>
-            <li><a href="/" data-testid="footer-contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="brand-col">
-          <div class="brand" style="color:#fff">
-            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-              <rect x="2"  y="13" width="3" height="6"  rx="1.5" fill="#ec1c8c"/>
-              <rect x="7"  y="9"  width="3" height="14" rx="1.5" fill="#ec1c8c"/>
-              <rect x="12" y="5"  width="3" height="22" rx="1.5" fill="#ec1c8c"/>
-              <rect x="17" y="9"  width="3" height="14" rx="1.5" fill="#ec1c8c"/>
-              <rect x="22" y="13" width="3" height="6"  rx="1.5" fill="#ec1c8c"/>
-              <rect x="27" y="15" width="3" height="2"  rx="1"   fill="#ec1c8c"/>
-            </svg>
-            <span>Elite AI</span>
-          </div>
-          <p>Always on. Never on hold. Never on payroll.</p>
-          <div class="links">
-            <a href="mailto:hello@eliteai.space" data-testid="footer-email">hello@eliteai.space</a>
-          </div>
-        </div>
-      </div>
-      <div class="rule"></div>
-      <div class="footer-trust" data-testid="footer-trust">
-        <span class="trust-badge" data-testid="trust-soc2"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SOC 2</span>
-        <span class="trust-badge" data-testid="trust-hipaa"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>HIPAA</span>
-        <span class="trust-badge" data-testid="trust-gdpr"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>GDPR</span>
-        <span class="trust-badge" data-testid="trust-uptime"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>99.99% Uptime</span>
-      </div>
-      <div class="bottom">
-        <span>© 2026 Elite AI</span>
-        <span><a href="/privacy.html" data-testid="footer-privacy">Privacy</a> &nbsp;·&nbsp; <a href="/terms.html" data-testid="footer-terms">Terms</a></span>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    const nav = document.getElementById("nav");
-    const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-
-    const burger = document.getElementById("nav-burger");
-    const drawer = document.getElementById("nav-drawer");
-    const setDrawer = (open) => {
-      burger.classList.toggle("open", open);
-      drawer.classList.toggle("open", open);
-      burger.setAttribute("aria-expanded", String(open));
-      drawer.setAttribute("aria-hidden", String(!open));
-    };
-    burger.addEventListener("click", () => setDrawer(!drawer.classList.contains("open")));
-    drawer.querySelectorAll("a, button").forEach(el => el.addEventListener("click", () => setDrawer(false)));
-  </script>
 </body>
 </html>
