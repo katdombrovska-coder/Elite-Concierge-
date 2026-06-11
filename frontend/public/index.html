@@ -204,34 +204,57 @@
       height:1px;
       background:linear-gradient(90deg, transparent 0%, rgba(236,28,140,.08) 50%, transparent 100%);
     }
-    .hero{padding:80px 0 10px}
-    @media (max-width: 700px){ .hero{padding:52px 0 28px} .hero .sub{font-size:17px} }
-    .hero-layout{display:flex; align-items:center; gap:60px}
-    .hero-left{flex:1; display:flex; flex-direction:column}
-    .hero-right{width:40%; flex-shrink:0}
-    @media (max-width: 1000px){
-      .hero-layout{flex-direction:column; gap:36px}
-      .hero-right{width:100%; max-width:500px}
-    }
-    .hero h1{margin:18px 0 22px}
-    .hero h1 .pink{color:var(--accent)}
-    .hero .sub b{color:var(--ink); font-weight:700}
-    .hero .label{text-transform:none; letter-spacing:.06em; font-size:15px; color:#888; margin-left:0; padding-left:0}
-    .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-top:32px}
-    .hero-ctas .btn-ghost{border-color:var(--line)}
-    .hero-ctas .btn-ghost:hover,
-    .hero-ctas .btn-ghost:focus-visible{
-      background:var(--accent); color:#fff; border-color:var(--accent);
-    }
-    .chips{display:flex; gap:10px; flex-wrap:wrap; margin-top:30px}
-    .chip{
-      display:inline-flex; flex-direction:column; align-items:center; gap:2px;
-      padding:8px 14px; border-radius:var(--radius-pill);
-      background:rgba(255,255,255,.7); border:1px solid var(--line);
-    }
+    .hero{padding:48px 0 36px}
+    .hero-wrap{max-width:1320px;margin:0 auto;padding:0 32px}
+    @media(max-width:700px){.hero-wrap{padding:0 20px}.hero{padding:36px 0 28px}}
+    .hero-layout{display:flex; align-items:flex-start; gap:40px}
+    .hero-left{flex:0 1 57%; display:flex; flex-direction:column}
+    .hero-right{flex:0 1 43%; flex-shrink:0; margin-top:28px}
+    .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:inline-block;margin-bottom:4px}
+    .hero h1,.hero-headline{font-family:'Bricolage Grotesque',serif !important;font-size:clamp(34px,4vw,48px) !important;font-weight:800 !important;line-height:1.15 !important;letter-spacing:-.025em !important;color:var(--ink) !important;margin:10px 0 14px !important}
+    .hero-highlight{background:linear-gradient(120deg,var(--accent) 0%,#ff6cb6 60%,#ffb347 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-sub{font-size:16px;line-height:1.6;color:var(--ink-2);max-width:54ch;margin:0}
+    .hero-chips{display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 0}
+    .chip{display:inline-flex; flex-direction:column; align-items:center; gap:2px;padding:8px 14px; border-radius:var(--radius-pill);background:rgba(255,255,255,.7); border:1px solid var(--line)}
     .chip-label{font-size:11px; color:var(--muted); font-weight:500; line-height:1.2}
     .chip-value{font-size:15px; color:var(--ink); font-weight:700; line-height:1.2}
     @media (max-width: 700px){.chips{flex-wrap:nowrap; gap:6px; margin-top:24px}.chip{padding:8px 10px}}
+    .hero-ctas{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+    .hero-ctas .btn{padding:12px 22px; font-size:14px; line-height:1}
+    .hero-ctas .btn-ghost{border-color:var(--line); color:var(--ink-2)}
+    .hero-ctas .btn-ghost:hover{background:var(--accent); color:#fff; border-color:var(--accent)}
+    .hero-micro{margin-top:10px;font-size:12.5px;color:var(--muted);opacity:.85}
+    .hero-offer-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px 22px;box-shadow:var(--shadow-card)}
+    .card-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+    .hero-offer-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f3ece9}
+    .hero-offer-row:last-of-type{border-bottom:none}
+    .hero-offer-text{display:flex;flex-direction:column;gap:2px}
+    .row-label{font-size:14px;font-weight:600;color:var(--ink)}
+    .row-sub{font-size:12.5px;color:var(--muted)}
+    .row-value{font-size:21px;font-weight:800;color:var(--ink);text-align:right;white-space:nowrap}
+    .row-value-pink{color:var(--accent) !important;font-size:28px}
+    .row-value-small{font-size:12px;font-weight:500;color:var(--muted);text-align:right}
+    .hero-offer-foot{font-size:13px;color:var(--muted);margin:14px 0 0}
+    .hero-card-note{font-size:11.5px;color:var(--muted);margin:6px 0 0;opacity:.75}
+    @media(max-width:1000px){.hero-layout{flex-direction:column;gap:36px}.hero-right{width:100%;max-width:500px}}
+
+    /* ===================== Voice Demo Section ===================== */
+    .voice-demo-section{padding:60px 0 80px;position:relative}
+    .voice-demo-wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+    .voice-demo-pill{display:inline-block;align-self:center;padding:6px 16px;border-radius:999px;border:1px solid var(--accent);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:32px;width:auto}
+    .voice-demo-card{background:radial-gradient(circle at 85% 50%,rgba(255,0,120,0.35) 0%,transparent 35%),radial-gradient(circle at 70% 30%,rgba(180,0,120,0.25) 0%,transparent 40%),linear-gradient(135deg,#050008 0%,#120014 30%,#2a002b 65%,#4b003f 100%);color:#fff;border-radius:24px;padding:40px 60px;text-align:center;position:relative;overflow:hidden;max-width:1200px;margin:0 auto;min-height:220px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 14px 30px -10px rgba(236,28,140,.35),0 0 0 1px rgba(236,28,140,.15) inset,0 0 80px rgba(255,0,120,0.08) inset}
+    .voice-demo-card::before{content:"";position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(236,28,140,.15) 0%,transparent 70%);top:-150px;right:-100px;filter:blur(80px);pointer-events:none;animation:founding-glow 20s ease-in-out infinite}
+    .voice-demo-card>*{position:relative;z-index:1}
+    .voice-demo-title{font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:clamp(32px,4.5vw,48px);line-height:1.15;letter-spacing:-.02em;color:#fff;margin:0 0 32px;max-width:680px;margin-left:auto;margin-right:auto}
+    .voice-demo-subtitle{font-size:17px;line-height:1.6;color:rgba(255,255,255,.65);margin:0 auto 56px;max-width:580px}
+    .voice-demo-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .voice-demo-buttons .btn{padding:16px 30px;border-radius:999px;font-size:15px;font-weight:600;transition:transform .2s ease,box-shadow .2s ease}
+    .voice-demo-buttons .btn-primary{background:var(--accent);color:#fff;border:1px solid var(--accent);box-shadow:0 8px 24px rgba(236,28,140,.4)}
+    .voice-demo-buttons .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(236,28,140,.5)}
+    .voice-demo-buttons .btn-outline-light{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+    .voice-demo-buttons .btn-outline-light:hover{background:rgba(255,255,255,.08);color:#fff;transform:translateY(-2px)}
+    .voice-demo-footer{font-size:13px;color:rgba(255,255,255,.45);margin:32px 0 0}
+    @media(max-width:700px){.voice-demo-section{padding:40px 0 60px}.voice-demo-card{padding:36px 24px;border-radius:20px}.voice-demo-title{font-size:28px}.voice-demo-subtitle{font-size:15px}.voice-demo-buttons{flex-direction:column;gap:12px}.voice-demo-buttons .btn{width:100%;justify-content:center}}
 
     /* ===================== Founding offer card ===================== */
     .social-proof{padding:20px 0 48px}
@@ -1269,53 +1292,68 @@
 
   <main id="top">
     <!-- ===================== HERO ===================== -->
-    <section class="hero">
-      <div class="wrap">
+    <section class="hero" data-testid="hero-section">
+      <div class="hero-wrap">
         <div class="hero-layout">
           <div class="hero-left">
-            <div class="reveal">
-              <span class="label">For hospitality · legal · real estate · healthcare</span>
+            <div class="reveal"><span class="hero-eyebrow">ELITE AI FOUNDING 30 · LISBON</span></div>
+            <h1 class="hero-headline reveal" data-testid="hero-headline">AI Employees for Modern Businesses</h1>
+            <p class="hero-sub reveal" data-testid="hero-subheadline">Launch your first AI receptionist with <span class="hero-highlight">€0 setup</span>. Human-like AI that answers calls, captures leads, supports bookings, and sends summaries — 24/7.</p>
+            <div class="hero-chips reveal">
+              <div class="chip"><span class="chip-label">Availability</span><span class="chip-value">Always on 24/7</span></div>
+              <div class="chip"><span class="chip-label">Response speed</span><span class="chip-value">Instant responses</span></div>
+              <div class="chip"><span class="chip-label">Languages</span><span class="chip-value">31+</span></div>
             </div>
-            <h1 class="reveal">
-              AI Employees<br>for Modern<br>Businesses
-            </h1>
-            <p class="sub reveal">
-              Human-like AI employees<br/>that answer and book customers 24/7.
-            </p>
             <div class="hero-ctas reveal">
-              <a class="btn btn-primary btn-lg btn-arrow" href="#demo-card" data-testid="hero-cta-demo">Hear the AI Live</a>
-              <a class="btn btn-ghost btn-lg" href="#how" style="transition:all .4s cubic-bezier(.25,.8,.25,1); border-color:var(--line)">How It Works</a>
+              <a class="btn btn-primary btn-arrow" href="#offer" data-testid="hero-primary-cta">Create My AI Receptionist</a>
+              <a class="btn btn-ghost" href="#offer" data-testid="hero-secondary-cta">See Founding Offer</a>
             </div>
-            <div class="chips reveal">
-              <span class="chip" data-testid="chip-always-on">
-                <span class="chip-label">Always on</span>
-                <span class="chip-value">24/7</span>
-              </span>
-              <span class="chip" data-testid="chip-response">
-                <span class="chip-label">Response speed</span>
-                <span class="chip-value">Instant responses</span>
-              </span>
-              <span class="chip" data-testid="chip-languages">
-                <span class="chip-label">Languages</span>
-                <span class="chip-value">31+</span>
-              </span>
-            </div>
-
+            <p class="hero-micro reveal">Only 30 founding businesses accepted. Cancel during onboarding.</p>
           </div>
           <div class="hero-right">
-            <div class="demo-card reveal" id="demo-card" data-testid="demo-card">
-              <span class="scribble demo-scribble">what your customers hear ↓</span>
-              <div class="waveform" aria-hidden="true">
-                <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            <div class="hero-offer-card reveal" data-testid="hero-offer-card">
+              <p class="card-label">FOUNDING 30 INCLUDES</p>
+              <div class="hero-offer-row">
+                <div class="hero-offer-text">
+                  <div class="row-label">Setup Fee</div>
+                  <div class="row-sub">Normally €299–€499</div>
+                </div>
+                <div class="row-value row-value-pink">€0</div>
               </div>
-              <h3>Hear the AI Live</h3>
-              <p class="muted">Real conversations. No forms. No waiting.</p>
-              <div id="retell-demo-widget">
-                <button type="button" class="btn btn-primary btn-lg" id="start-voice-demo" data-testid="start-voice-demo">Try it now</button>
+              <div class="hero-offer-row">
+                <div class="hero-offer-text">
+                  <div class="row-label">Live AI Minutes</div>
+                  <div class="row-sub">77 min included</div>
+                </div>
+                <div class="row-value row-value-small">For launch testing</div>
               </div>
-              <div class="demo-status" id="demo-status" aria-live="polite"></div>
+              <div class="hero-offer-row">
+                <div class="hero-offer-text">
+                  <div class="row-label">AI Preview Ready</div>
+                  <div class="row-sub">Within 1 hour after setup</div>
+                </div>
+                <div class="row-value row-value-small">Demo preview</div>
+              </div>
+              <p class="hero-offer-foot">Plans start from €79/month.</p>
+              <p class="hero-card-note">Final activation happens after review.</p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== LIVE VOICE DEMO ===================== -->
+    <section class="voice-demo-section" data-testid="voice-demo-section">
+      <div class="voice-demo-wrap">
+        <div class="voice-demo-card reveal">
+          <div class="voice-demo-pill">LIVE VOICE DEMO</div>
+          <h2 class="voice-demo-title">Want to hear how your<br>AI receptionist could sound?</h2>
+          <p class="voice-demo-subtitle">Speak with the Elite AI receptionist first. She can explain the Founding 30 offer, answer questions, and guide you toward the next step.</p>
+          <div class="voice-demo-buttons">
+            <a href="#offer" class="btn btn-primary btn-lg btn-arrow">Create My AI Receptionist</a>
+            <a href="#offer" class="btn btn-outline-light btn-lg">Hear the AI Receptionist</a>
+          </div>
+          <p class="voice-demo-footer">Powered by Elite AI · Available 24/7</p>
         </div>
       </div>
     </section>
