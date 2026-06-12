@@ -142,16 +142,15 @@
       -webkit-backdrop-filter:saturate(140%) blur(14px);
       border-bottom-color:var(--line);
     }
-    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:24px}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:-.01em; font-size:18px}
-    .brand svg{width:26px; height:26px}
-    .nav-links{display:flex; gap:28px; align-items:center}
-    .nav-links a{font-size:14px; color:var(--ink-2); font-weight:500}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em;font-size:18px}
+    .brand svg{width:26px;height:26px}
+    .nav-links{display:flex;gap:28px;align-items:center}
+    .nav-links a{font-size:14px;color:var(--ink-2);font-weight:500}
     .nav-links a:hover{color:var(--accent)}
-    .nav-cta{display:flex; gap:10px; align-items:center}
+    .nav-cta{display:flex;gap:10px;align-items:center}
     @media (max-width: 900px){
       .nav-links{display:none}
-      .nav-cta .btn-ghost{display:none}
       .nav-cta .btn-primary{display:none}
       .nav-burger{display:inline-flex !important}
     }
@@ -207,22 +206,22 @@
     .hero{padding:48px 0 36px}
     .hero-wrap{max-width:1320px;margin:0 auto;padding:0 32px}
     @media(max-width:700px){.hero-wrap{padding:0 20px}.hero{padding:36px 0 28px}}
-    .hero-layout{display:flex; align-items:flex-start; gap:40px}
-    .hero-left{flex:0 1 57%; display:flex; flex-direction:column}
-    .hero-right{flex:0 1 43%; flex-shrink:0; margin-top:28px}
+    .hero-layout{display:flex;align-items:flex-start;gap:40px}
+    .hero-left{flex:0 1 57%;display:flex;flex-direction:column}
+    .hero-right{flex:0 1 43%;flex-shrink:0;margin-top:28px}
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:inline-block;margin-bottom:4px}
     .hero h1,.hero-headline{font-family:'Bricolage Grotesque',serif !important;font-size:clamp(34px,4vw,48px) !important;font-weight:800 !important;line-height:1.15 !important;letter-spacing:-.025em !important;color:var(--ink) !important;margin:10px 0 14px !important}
-    .hero-highlight{background:linear-gradient(120deg,var(--accent) 0%,#ff6cb6 60%,#ffb347 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-highlight{background:linear-gradient(120deg,var(--accent) 0%,#ff6cb6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900}
     .hero-sub{font-size:16px;line-height:1.6;color:var(--ink-2);max-width:54ch;margin:0}
-    .hero-chips{display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 0}
-    .chip{display:inline-flex; flex-direction:column; align-items:center; gap:2px;padding:8px 14px; border-radius:var(--radius-pill);background:rgba(255,255,255,.7); border:1px solid var(--line)}
-    .chip-label{font-size:11px; color:var(--muted); font-weight:500; line-height:1.2}
-    .chip-value{font-size:15px; color:var(--ink); font-weight:700; line-height:1.2}
-    @media (max-width: 700px){.chips{flex-wrap:nowrap; gap:6px; margin-top:24px}.chip{padding:8px 10px}}
-    .hero-ctas{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
-    .hero-ctas .btn{padding:12px 22px; font-size:14px; line-height:1}
-    .hero-ctas .btn-ghost{border-color:var(--line); color:var(--ink-2)}
-    .hero-ctas .btn-ghost:hover{background:var(--accent); color:#fff; border-color:var(--accent)}
+    .hero-chips{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 0}
+    .chip{display:inline-flex;flex-direction:column;align-items:center;gap:2px;padding:8px 14px;border-radius:var(--radius-pill);background:rgba(255,255,255,.7);border:1px solid var(--line)}
+.chip-label{font-size:11px;color:var(--muted);font-weight:500;line-height:1.2}
+    .chip-value{font-size:15px;color:var(--ink);font-weight:700;line-height:1.2}
+    @media(max-width:700px){.chips{flex-wrap:nowrap;gap:6px;margin-top:24px}.chip{padding:8px 10px}}
+    .hero-ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .hero-ctas .btn{padding:12px 22px;font-size:14px;line-height:1}
+    .hero-ctas .btn-ghost{border-color:var(--line);color:var(--ink-2)}
+    .hero-ctas .btn-ghost:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
     .hero-micro{margin-top:10px;font-size:12.5px;color:var(--muted);opacity:.85}
     .hero-offer-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px 22px;box-shadow:var(--shadow-card)}
     .card-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
@@ -1258,6 +1257,7 @@
     <button type="button" class="founding-sticky-bar-close" id="founding-sticky-bar-close" aria-label="Dismiss notification">×</button>
   </div>
 
+
   <!-- ===================== NAVBAR ===================== -->
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
@@ -1266,26 +1266,23 @@
         <span>Elite AI</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="#how" data-testid="nav-link-how">How it Works</a>
-        <a href="#features" data-testid="nav-link-features">Features</a>
-        <a href="#pricing" data-testid="nav-link-pricing">Pricing</a>
+        <a href="#offer" data-testid="nav-offer">Offer</a>
+        <a href="#pricing" data-testid="nav-pricing">Pricing</a>
+        <a href="#how" data-testid="nav-how-it-works">How it works</a>
       </nav>
       <div class="nav-cta">
-        <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="nav-cta-sales">Speak With Us</a>
-        <a class="btn btn-primary" href="#demo-card" data-testid="nav-cta-demo">Try the AI</a>
+        <a class="btn btn-primary" href="#offer" data-testid="nav-cta-button">Create My AI Receptionist</a>
         <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" data-testid="nav-burger">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
-    <!-- Mobile menu drawer -->
     <div class="nav-drawer" id="nav-drawer" data-testid="nav-drawer" aria-hidden="true">
       <div class="wrap">
-        <a href="#how" class="nav-drawer-link" data-testid="mobile-link-how">How it Works</a>
-        <a href="#features" class="nav-drawer-link" data-testid="mobile-link-features">Features</a>
-        <a href="#pricing" class="nav-drawer-link" data-testid="mobile-link-pricing">Pricing</a>
-        <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="mobile-cta-sales">Speak With Us</a>
-        <a class="btn btn-primary" href="#demo-card" data-testid="mobile-cta-demo">Try the AI</a>
+        <a href="#offer" class="nav-drawer-link">Offer</a>
+        <a href="#pricing" class="nav-drawer-link">Pricing</a>
+        <a href="#how" class="nav-drawer-link">How it works</a>
+        <a class="btn btn-primary" href="#offer">Create My AI Receptionist</a>
       </div>
     </div>
   </header>
@@ -1296,9 +1293,9 @@
       <div class="hero-wrap">
         <div class="hero-layout">
           <div class="hero-left">
-            <div class="reveal"><span class="hero-eyebrow">ELITE AI FOUNDING 30 · LISBON</span></div>
-            <h1 class="hero-headline reveal" data-testid="hero-headline">AI Employees for Modern Businesses</h1>
-            <p class="hero-sub reveal" data-testid="hero-subheadline">Launch your first AI receptionist with <span class="hero-highlight">€0 setup</span>. Human-like AI that answers calls, captures leads, supports bookings, and sends summaries — 24/7.</p>
+            <div class="reveal"><span class="hero-eyebrow">ONLY 30 FOUNDING CLIENTS</span></div>
+            <h1 class="hero-headline reveal" data-testid="hero-headline">AI Employees for Modern<br>Businesses</h1>
+            <p class="hero-sub reveal" data-testid="hero-subheadline">Launch your first AI receptionist with <span class="hero-highlight"><strong>€0 setup</strong></span>. Human-like AI that answers calls, captures leads, books appointments, and works 24/7</p>
             <div class="hero-chips reveal">
               <div class="chip"><span class="chip-label">Availability</span><span class="chip-value">Always on 24/7</span></div>
               <div class="chip"><span class="chip-label">Response speed</span><span class="chip-value">Instant responses</span></div>
@@ -1329,13 +1326,13 @@
               </div>
               <div class="hero-offer-row">
                 <div class="hero-offer-text">
-                  <div class="row-label">AI Preview Ready</div>
-                  <div class="row-sub">Within 1 hour after setup</div>
+                  <div class="row-label">Custom AI Preview</div>
+                  <div class="row-sub">Ready within 1 hour</div>
                 </div>
                 <div class="row-value row-value-small">Demo preview</div>
               </div>
               <p class="hero-offer-foot">Plans start from €79/month.</p>
-              <p class="hero-card-note">Final activation happens after review.</p>
+              <p class="hero-card-note">Built around your business workflow.</p>
             </div>
           </div>
         </div>
@@ -1368,23 +1365,7 @@
     </section>
 
     <!-- ===================== FOUNDING OFFER ===================== -->
-    <section class="social-proof" id="founding-offer" aria-label="Founding client offer" data-scroll-reveal>
-      <div class="wrap">
-        <div class="founding-card reveal" data-testid="founding-offer-card">
-          <p class="founding-card-label">Limited Founding Access</p>
-          <h2 class="founding-card-title">Only 10 Founding Clients Accepted</h2>
-          <p class="founding-card-sub">We build and launch your AI receptionist for free</p>
-          <p class="founding-price-line"><s>€499 setup</s> <strong>€0 for founding clients</strong></p>
-          <div class="founding-pills">
-            <span class="founding-pill">Done-for-you setup</span>
-            <span class="founding-pill">Live in under 7 days</span>
-            <span class="founding-pill">AI tuned after real calls</span>
-          </div>
-          <a class="founding-cta" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="founding-offer-cta">Claim Founding Spot</a>
-          <p class="founding-talk"><a href="#how" class="founding-talk-link">See how it works →</a></p>
-        </div>
-      </div>
-    </section>
+
 
 
 
@@ -1392,8 +1373,8 @@
     <section class="block" id="how">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="label">How It Works</span>
-          <h2>How Your AI Front Desk<br/>Works</h2>
+          <span class="label">How it works</span>
+          <h2>From setup chat to<br>live AI receptionist</h2>
         </div>
 
         <div class="steps">
@@ -1402,8 +1383,8 @@
               <div class="num">01</div>
             </div>
             <div>
-              <h3>Every customer gets an instant response</h3>
-              <p>Calls, chats, and customer inquiries are answered immediately — without delays or missed opportunities.</p>
+              <h3>Create your setup</h3>
+              <p>Answer a few questions in the Elite AI setup chat.</p>
             </div>
           </div>
           <div class="step reveal">
@@ -1411,8 +1392,8 @@
               <div class="num">02</div>
             </div>
             <div>
-              <h3>Customers book, ask, and get help automatically</h3>
-              <p>Appointments, questions, and lead qualification happen smoothly through natural conversations.</p>
+              <h3>We review your flow</h3>
+              <p>We turn your business details into a custom AI receptionist structure.</p>
             </div>
           </div>
           <div class="step reveal">
@@ -1420,8 +1401,8 @@
               <div class="num">03</div>
             </div>
             <div>
-              <h3>Leads and bookings sync automatically</h3>
-              <p>Customer details, appointments, and inquiries flow directly into your existing systems.</p>
+              <h3>Test your AI voice demo</h3>
+              <p>You test how your AI answers using your own business information.</p>
             </div>
           </div>
           <div class="step reveal">
@@ -1429,8 +1410,17 @@
               <div class="num">04</div>
             </div>
             <div>
-              <h3>Your team focuses on real customers</h3>
-              <p>Less manual admin. Fewer interruptions. More time spent where it actually matters.</p>
+              <h3>Go live</h3>
+              <p>Once approved, your AI receptionist starts handling real customer conversations.</p>
+            </div>
+          </div>
+          <div class="step reveal">
+            <div class="step-num-col">
+              <div class="num">05</div>
+            </div>
+            <div>
+              <h3>Optimize</h3>
+              <p>We refine the flow based on calls, leads, and customer behavior.</p>
             </div>
           </div>
         </div>
