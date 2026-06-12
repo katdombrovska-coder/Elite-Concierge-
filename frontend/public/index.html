@@ -1235,6 +1235,46 @@
       pointer-events:none; z-index:9998;
       background:radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.02) 100%);
     }
+
+    /* ===================== Founding 30 Launch Sprint ===================== */
+    .founding-offer{padding:80px 0 88px;position:relative;background:linear-gradient(180deg,transparent 0%,rgba(255,247,235,0.5) 50%,transparent 100%)}
+    .fo-outer-wrap{max-width:1320px;margin:0 auto;padding:0 32px}
+    .fo-section-head{text-align:center;margin-bottom:48px;display:flex;flex-direction:column;align-items:center}
+    .fo-badge{display:inline-flex;padding:8px 18px;border-radius:999px;border:1px solid var(--accent);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+    .fo-headline{font-family:'Bricolage Grotesque',serif;font-size:clamp(32px,4.5vw,48px);font-weight:800;line-height:1.1;letter-spacing:-.02em;color:var(--ink);margin:0 0 12px}
+    .fo-sub{font-size:15px;line-height:1.6;color:var(--muted);margin:0;max-width:520px}
+    .fo-card{display:flex;gap:0;border-radius:24px;overflow:hidden;border:1px solid rgba(236,28,140,0.15);background:linear-gradient(135deg,#ffffff 0%,#fff9f5 100%);box-shadow:0 2px 8px rgba(236,28,140,0.08),0 12px 40px rgba(36,0,41,0.06);max-width:1320px;margin:0 auto;position:relative}
+    .fo-card::before{content:"";position:absolute;inset:-1px;border-radius:24px;padding:1px;background:linear-gradient(135deg,rgba(236,28,140,0.3),rgba(236,28,140,0.05),rgba(236,28,140,0.2));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:1}
+    .fo-card-left{flex:1;padding:48px 48px 48px 64px;border-right:1px solid var(--line);position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center}
+    .fo-card-right{flex:1;padding:40px 48px;display:flex;flex-direction:column;justify-content:space-between;position:relative;z-index:2}
+    .fo-col-label{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 22px}
+    .fo-checklist{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;justify-content:center;height:100%}
+    .fo-checklist li{font-size:16px;color:var(--ink);display:flex;align-items:center;gap:12px;line-height:1.5}
+    .fo-checklist svg{flex-shrink:0;stroke:var(--accent);width:16px;height:16px}
+    .fo-pricing{margin-bottom:20px}
+    .fo-price-row{display:flex;justify-content:space-between;gap:24px;margin-bottom:16px}
+    .fo-price-left,.fo-price-right{display:flex;flex-direction:column;gap:4px}
+    .fo-price-label{font-size:12px;font-weight:500;color:var(--muted)}
+    .fo-price-was{font-size:18px;font-weight:500;color:var(--muted);text-decoration:line-through}
+    .fo-price-now{font-size:42px;font-weight:800;color:var(--accent);line-height:1}
+    .fo-detail-rows{display:flex;flex-direction:column;gap:8px;margin:16px 0}
+    .fo-detail-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f3ece9}
+    .fo-detail-row:last-of-type{border-bottom:none}
+    .fo-detail-label{font-size:13px;font-weight:500;color:var(--muted)}
+    .fo-detail-value{font-size:14px;font-weight:600;color:var(--ink)}
+    .fo-monthly{font-size:13px;color:var(--muted);margin:0}
+    .fo-fineprint{display:flex;flex-direction:column;gap:5px;margin:0 0 24px;padding:16px 0 0;border-top:1px solid #f3ece9}
+    .fo-fineprint span{font-size:12.5px;color:var(--muted);line-height:1.45;padding-left:14px;position:relative}
+    .fo-fineprint span::before{content:"•";position:absolute;left:0;color:var(--accent)}
+    .fo-cta-btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 32px;border-radius:999px;background:var(--accent);color:#fff;font-size:15px;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s;text-align:center;width:100%}
+    .fo-cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(236,28,140,.35)}
+    @media (max-width:900px){
+      .fo-card{flex-direction:column}
+      .fo-card-left{border-right:none;border-bottom:1px solid var(--line);padding:28px 24px}
+      .fo-card-right{padding:28px 24px}
+      .founding-offer{padding:60px 0 72px}
+      .fo-headline{font-size:28px}
+    }
   </style>
     <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=3">
@@ -1555,6 +1595,65 @@
               </div>
               <a class="btn btn-primary btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="calc-cta" style="margin-top:22px">Recover Lost Revenue</a>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOUNDING 30 LAUNCH SPRINT ===================== -->
+    <section class="founding-offer" id="offer" data-testid="offer-section">
+      <div class="fo-outer-wrap">
+        <div class="fo-section-head reveal">
+          <span class="fo-badge">ONLY 30 FOUNDING BUSINESSES ACCEPTED</span>
+          <h2 class="fo-headline">Founding 30 Launch Sprint</h2>
+          <p class="fo-sub">For the first 30 businesses, we waive the setup fee, include live AI minutes for launch testing, and prepare your AI receptionist preview after setup.</p>
+        </div>
+        <div class="fo-card reveal" data-testid="offer-card">
+          <div class="fo-card-left">
+            <p class="fo-col-label">INCLUDED</p>
+            <ul class="fo-checklist">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Custom AI receptionist setup</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Business knowledge configuration</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Call flow design</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Booking / lead capture logic</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>77 live AI minutes included</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>AI preview prepared after setup</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Testing before full activation</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Cancel during onboarding</li>
+            </ul>
+          </div>
+          <div class="fo-card-right">
+            <div class="fo-pricing">
+              <div class="fo-price-row">
+                <div class="fo-price-left">
+                  <span class="fo-price-label">Custom setup value</span>
+                  <span class="fo-price-was">€299–€499</span>
+                </div>
+                <div class="fo-price-right">
+                  <span class="fo-price-label">Founding setup</span>
+                  <span class="fo-price-now">€0</span>
+                </div>
+              </div>
+              <div class="fo-detail-rows">
+                <div class="fo-detail-row">
+                  <span class="fo-detail-label">Live AI minutes</span>
+                  <span class="fo-detail-value">77 min included</span>
+                </div>
+                <div class="fo-detail-row">
+                  <span class="fo-detail-label">AI preview</span>
+                  <span class="fo-detail-value">Within 1 hour after setup</span>
+                </div>
+              </div>
+              <p class="fo-monthly">Plans start from €79/month.</p>
+            </div>
+            <div class="fo-fineprint">
+              <span>Card required before activation</span>
+              <span>Subscription begins after onboarding / included minutes finish</span>
+              <span>Cancel during onboarding</span>
+              <span>Usage limits apply depending on plan</span>
+              <span>Final activation happens after review</span>
+            </div>
+            <a class="fo-cta-btn" href="#cta">Apply for Founding Access →</a>
           </div>
         </div>
       </div>
