@@ -1,29 +1,10 @@
-/* ===== Elite AI Submit API — Save final setup submission =====
- *
- * INTEGRATION PLACEHOLDERS:
- * - Supabase / Vercel Postgres for database
- * - Resend email integration (notify Kat of new submission)
- * - Google Sheets or Airtable sync
- * - Retell AI agent creation trigger
- * - Stripe activation
- * - WhatsApp notification
- *
- * MVP: Saves to Supabase. Later: trigger emails, Retell, Stripe, etc.
- */
+/* ===== Elite AI Submit API — Neon Postgres ===== */
+import { Pool } from 'pg';
 
-import { createClient } from '@supabase/supabase-js';
-
-const supabaseUrl = process.env.SUPABASE_URL || '';
-const supabaseKey = process.env.SUPABASE_KEY || '';
-const useSupabase = supabaseUrl && supabaseKey;
-
-let supabase = null;
-if (useSupabase) {
-  supabase = createClient(supabaseUrl, supabaseKey);
-}
-
-// Fallback memory store
-const submissions = [];
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
+});
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -34,57 +15,45 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const { sessionId, answers } = req.body;
+  if (!answers) return res.status(400).json({ error: 'Missing answers' });
 
-  if (!answers) {
-    return res.status(400).json({ error: 'Missing answers' });
+  const a = answers;
+  try {
+    await pool.query(
+      `INSERT INTO ai_receptionist_submissions (
+        session_id, business_name, industry, business_links, location_service_area,
+        main_services, pricing_info, opening_hours, languages, main_ai_goal,
+        booking_method, customer_info_to_collect, common_customer_questions,
+        escalation_rules, lead_destination, lead_destination_detail, tone_of_voice,
+        restrictions, special_business_rules, contact_name, contact_email,
+        contact_phone, final_summary, submission_status
+      ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24)
+      ON CONFLICT (session_id) DO UPDATE SET
+        submission_status='submitted',
+        final_summary=$23`,
+      [
+        sessionId,
+        a.business_name||'', a.industry||'', a.business_links||'',
+        a.location_service_area||'', a.main_services||'', a.pricing_info||'',
+        a.opening_hours||'', a.languages||'', a.main_ai_goal||'',
+        a.booking_method||'', a.customer_info_to_collect||'',
+        a.common_customer_questions||'', a.escalation_rules||'',
+        a.lead_destination||'', a.lead_destination_detail||'',
+        a.tone_of_voice||'', a.restrictions||'', a.special_business_rules||'',
+        a.contact_name||'', a.contact_email||'', a.contact_phone||'',
+        JSON.stringify(a), 'submitted'
+      ]
+    );
+
+    // PLACEHOLDERS:
+    // - Resend email notification
+    // - Google Sheets sync
+    // - Retell AI agent creation
+    // - Stripe activation
+    // - WhatsApp notification
+
+    return res.status(200).json({ success: true });
+  } catch (e) {
+    return res.status(500).json({ success: false, error: e.message });
   }
-
-  const record = {
-    session_id: sessionId,
-    created_at: new Date().toISOString(),
-    business_name: answers.business_name || '',
-    industry: answers.industry || '',
-    business_links: answers.business_links || '',
-    location_service_area: answers.location_service_area || '',
-    main_services: answers.main_services || '',
-    pricing_info: answers.pricing_info || '',
-    opening_hours: answers.opening_hours || '',
-    languages: answers.languages || '',
-    main_ai_goal: answers.main_ai_goal || '',
-    booking_method: answers.booking_method || '',
-    customer_info_to_collect: answers.customer_info_to_collect || '',
-    common_customer_questions: answers.common_customer_questions || '',
-    escalation_rules: answers.escalation_rules || '',
-    lead_destination: answers.lead_destination || '',
-    lead_destination_detail: answers.lead_destination_detail || '',
-    tone_of_voice: answers.tone_of_voice || '',
-    restrictions: answers.restrictions || '',
-    special_business_rules: answers.special_business_rules || '',
-    contact_name: answers.contact_name || '',
-    contact_email: answers.contact_email || '',
-    contact_phone: answers.contact_phone || '',
-    final_summary: JSON.stringify(answers, null, 2),
-    submission_status: 'submitted'
-  };
-
-  if (supabase) {
-    const { error } = await supabase.from('ai_receptionist_submissions').insert(record);
-    if (error) {
-      console.error('Supabase insert error:', error);
-      return res.status(500).json({ success: false, error: error.message });
-    }
-  } else {
-    submissions.push(record);
-  }
-
-  // INTEGRATION PLACEHOLDER: Send email notification via Resend
-  // await sendEmail({ to: 'kat@eliteai.space', subject: 'New AI Setup Submission', body: ... });
-
-  // INTEGRATION PLACEHOLDER: Sync to Google Sheets
-  // await syncToSheets(record);
-
-  // INTEGRATION PLACEHOLDER: WhatsApp notification
-  // await sendWhatsApp(process.env.KAT_WHATSAPP, 'New AI setup submission: ' + record.business_name);
-
-  return res.status(200).json({ success: true, id: sessionId });
 }

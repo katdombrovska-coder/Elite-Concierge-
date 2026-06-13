@@ -1,81 +1,15 @@
-/* ===== Elite AI Chat API — GPT-4o-mini + persistent storage =====
+/* ===== Elite AI Chat API — Neon Postgres + GPT-4o-mini =====
  *
- * Storage: Vercel KV (Redis) — never sleeps, reliable
- * Fallback: in-memory for development
+ * Storage: Neon Postgres (persistent, never sleeps)
  * LLM: OpenAI gpt-4o-mini
- *
- * PLACEHOLDERS:
- * - Resend email integration
- * - Google Sheets / Airtable sync
- * - Retell AI agent creation
- * - Stripe activation
- * - WhatsApp notification
  */
 
-import { kv } from '@vercel/kv';
+import { Pool } from 'pg';
 
-// Check if KV is configured
-const hasKV = process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN;
-
-async function getSession(sessionId) {
-  if (hasKV) {
-    const data = await kv.get('elite-ai:session:' + sessionId);
-    return data || null;
-  }
-  return null;
-}
-
-async function saveSession(sessionId, data) {
-  if (hasKV) {
-    const existing = await kv.get('elite-ai:session:' + sessionId);
-    const merged = { ...(existing || {}), ...data, updated_at: new Date().toISOString() };
-    await kv.set('elite-ai:session:' + sessionId, JSON.stringify(merged));
-
-    // Also add to submissions set for admin listing
-    if (data.submission_status === 'submitted') {
-      await kv.lpush('elite-ai:submissions', sessionId);
-    }
-  }
-}
-
-async function saveSubmission(sessionId, answers) {
-  if (hasKV) {
-    const record = {
-      session_id: sessionId,
-      created_at: new Date().toISOString(),
-      ...answers,
-      final_summary: JSON.stringify(answers),
-      submission_status: 'submitted'
-    };
-    await kv.set('elite-ai:submission:' + sessionId, JSON.stringify(record));
-    await kv.lpush('elite-ai:submissions', sessionId);
-  }
-}
-
-async function getAllSubmissions() {
-  if (!hasKV) return [];
-  const ids = await kv.lrange('elite-ai:submissions', 0, -1);
-  const unique = [...new Set(ids)];
-  const submissions = [];
-  for (const id of unique) {
-    const data = await kv.get('elite-ai:submission:' + id);
-    if (data) submissions.push(typeof data === 'string' ? JSON.parse(data) : data);
-  }
-  // Sort by date desc
-  submissions.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-  return submissions;
-}
-
-async function updateSubmissionStatus(sessionId, status) {
-  if (hasKV) {
-    const data = await kv.get('elite-ai:submission:' + sessionId);
-    if (data) {
-      const parsed = typeof data === 'string' ? JSON.parse(data) : data;
-      parsed.submission_status = status;
-      await kv.set('elite-ai:submission:' + sessionId, JSON.stringify(parsed));
-    }
-  }
-}
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
+});
 
 const SYSTEM_PROMPT = `You are the Elite AI Setup Assistant — a warm, professional onboarding specialist helping business owners create their custom AI receptionist setup.
 
@@ -103,8 +37,12 @@ export default async function handler(req, res) {
     const adminPassword = process.env.ADMIN_PASSWORD || 'elite-ai-admin';
     if (pwd !== adminPassword) return res.status(401).json({ error: 'Unauthorized' });
 
-    const submissions = await getAllSubmissions();
-    return res.status(200).json({ submissions });
+    try {
+      const { rows } = await pool.query('SELECT * FROM ai_receptionist_submissions ORDER BY created_at DESC');
+      return res.status(200).json({ submissions: rows });
+    } catch (e) {
+      return res.status(500).json({ error: e.message });
+    }
   }
 
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
@@ -113,24 +51,48 @@ export default async function handler(req, res) {
 
   // Admin: update status
   if (action === 'update_status') {
-    await updateSubmissionStatus(sessionId, answer);
+    await pool.query('UPDATE ai_receptionist_submissions SET submission_status = $1 WHERE session_id = $2', [answer, sessionId]);
     return res.status(200).json({ success: true });
   }
 
   // Submit final setup
   if (action === 'submit') {
-    await saveSubmission(sessionId, answers || {});
+    const a = answers || {};
+    try {
+      await pool.query(
+        `INSERT INTO ai_receptionist_submissions (
+          session_id, business_name, industry, business_links, location_service_area,
+          main_services, pricing_info, opening_hours, languages, main_ai_goal,
+          booking_method, customer_info_to_collect, common_customer_questions,
+          escalation_rules, lead_destination, lead_destination_detail, tone_of_voice,
+          restrictions, special_business_rules, contact_name, contact_email,
+          contact_phone, final_summary, submission_status
+        ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24)
+        ON CONFLICT (session_id) DO UPDATE SET submission_status='submitted', updated_at=NOW()`,
+        [
+          sessionId,
+          a.business_name || '', a.industry || '', a.business_links || '',
+          a.location_service_area || '', a.main_services || '', a.pricing_info || '',
+          a.opening_hours || '', a.languages || '', a.main_ai_goal || '',
+          a.booking_method || '', a.customer_info_to_collect || '',
+          a.common_customer_questions || '', a.escalation_rules || '',
+          a.lead_destination || '', a.lead_destination_detail || '',
+          a.tone_of_voice || '', a.restrictions || '', a.special_business_rules || '',
+          a.contact_name || '', a.contact_email || '', a.contact_phone || '',
+          JSON.stringify(a), 'submitted'
+        ]
+      );
 
-    // INTEGRATION PLACEHOLDER: Send email notification via Resend
-    // await fetch('https://api.resend.com/emails', { method: 'POST', ... });
+      // INTEGRATION PLACEHOLDER: Resend email notification
+      // INTEGRATION PLACEHOLDER: Google Sheets sync
+      // INTEGRATION PLACEHOLDER: Retell AI agent creation
+      // INTEGRATION PLACEHOLDER: Stripe activation
+      // INTEGRATION PLACEHOLDER: WhatsApp notification
 
-    // INTEGRATION PLACEHOLDER: Sync to Google Sheets
-    // await syncToSheets(answers);
-
-    // INTEGRATION PLACEHOLDER: WhatsApp notification
-    // await sendWhatsApp(process.env.KAT_WHATSAPP, 'New AI setup submission');
-
-    return res.status(200).json({ success: true });
+      return res.status(200).json({ success: true });
+    } catch (e) {
+      return res.status(500).json({ success: false, error: e.message });
+    }
   }
 
   // Chat: process answer
@@ -138,11 +100,34 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  // Save answer to session
-  const session = await getSession(sessionId);
-  const currentAnswers = (session && session.answers) || {};
-  currentAnswers[field] = answer;
-  await saveSession(sessionId, { answers: currentAnswers });
+  // Save answer to session (upsert)
+  try {
+    await pool.query(
+      `INSERT INTO ai_receptionist_submissions (session_id, created_at) VALUES ($1, NOW())
+       ON CONFLICT (session_id) DO NOTHING`
+    );
+
+    // Update the specific field
+    const fieldMap = {
+      business_name: 'business_name', industry: 'industry', business_links: 'business_links',
+      location_service_area: 'location_service_area', main_services: 'main_services',
+      pricing_info: 'pricing_info', opening_hours: 'opening_hours', languages: 'languages',
+      main_ai_goal: 'main_ai_goal', booking_method: 'booking_method',
+      customer_info_to_collect: 'customer_info_to_collect',
+      common_customer_questions: 'common_customer_questions',
+      escalation_rules: 'escalation_rules', lead_destination: 'lead_destination',
+      lead_destination_detail: 'lead_destination_detail', tone_of_voice: 'tone_of_voice',
+      restrictions: 'restrictions', special_business_rules: 'special_business_rules',
+      contact_name: 'contact_name', contact_email: 'contact_email', contact_phone: 'contact_phone'
+    };
+
+    const dbField = fieldMap[field];
+    if (dbField) {
+      await pool.query(`UPDATE ai_receptionist_submissions SET ${dbField} = $1 WHERE session_id = $2`, [answer, sessionId]);
+    }
+  } catch (e) {
+    console.error('DB save error:', e.message);
+  }
 
   const nextStep = step + 1;
 
