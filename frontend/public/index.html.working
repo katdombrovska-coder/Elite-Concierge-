@@ -214,9 +214,9 @@
     .hero-highlight{background:linear-gradient(120deg,var(--accent) 0%,#ff6cb6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900}
     .hero-sub{font-size:16px;line-height:1.6;color:var(--ink-2);max-width:54ch;margin:0}
     .hero-chips{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 0}
-    .chip{display:inline-flex;flex-direction:column;align-items:center;gap:2px;padding:6px 11px;border-radius:var(--radius-pill);background:rgba(255,255,255,.7);border:1px solid var(--line)}
-.chip-label{font-size:10px;color:var(--muted);font-weight:500;line-height:1.2}
-    .chip-value{font-size:13px;color:var(--ink);font-weight:700;line-height:1.2}
+    .chip{display:inline-flex;flex-direction:column;align-items:center;gap:2px;padding:8px 14px;border-radius:var(--radius-pill);background:rgba(255,255,255,.7);border:1px solid var(--line)}
+.chip-label{font-size:11px;color:var(--muted);font-weight:500;line-height:1.2}
+    .chip-value{font-size:15px;color:var(--ink);font-weight:700;line-height:1.2}
     @media(max-width:700px){.chips{flex-wrap:nowrap;gap:6px;margin-top:24px}.chip{padding:8px 10px}}
     .hero-ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
     .hero-ctas .btn{padding:12px 22px;font-size:14px;line-height:1}
@@ -1243,7 +1243,6 @@
     <link rel="manifest" href="/site.webmanifest?v=3">
     <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png?v=3">
     <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png?v=3">
-  <link rel="stylesheet" href="/css/chat-widget.css" />
 </head>
 <body>
   <!-- React mounts a hidden root; the real page is this static markup. -->
@@ -2097,6 +2096,5 @@
       plausible('CTA Click', {props: {button: id, label: label}});
     });
   </script>
-  <script src="/js/chat-widget.js"></script>
 </body>
 </html>

@@ -4,24 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#fff7eb" />
-  <meta name="description" content="Human-like AI employees that answer and book customers 24/7." />
-  <meta property="og:title" content="Elite AI — AI Employees for Your Business" />
-  <meta property="og:description" content="Human-like AI employees that answer and book customers 24/7." />
-  <meta property="og:image" content="https://eliteai.space/android-chrome-512x512.png" />
-  <meta property="og:url" content="https://eliteai.space" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Elite AI — AI Employees for Your Business" />
-  <meta name="twitter:description" content="Human-like AI employees that answer and book customers 24/7." />
-  <meta name="twitter:image" content="https://eliteai.space/android-chrome-512x512.png" />
-  <title>Elite AI — AI Employees for Your Business</title>
-
-  <!-- Privacy-friendly analytics by Plausible -->
-  <script async src="https://plausible.io/js/pa-Mz4Fv5Oin1CKZzC-Fsygf.js"></script>
-  <script>
-   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-   plausible.init()
-  </script>
+  <meta name="description" content="Elite AI — Elite Concierge voice and chat agents that answer every call, capture every lead, and book every appointment, 24/7." />
+  <title>Elite AI — Your Business Never Stops Answering</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -56,24 +40,15 @@
       color:var(--ink);
       background:var(--bg);
       background-image:
-        radial-gradient(1200px 700px at 8% -10%, #ffd6e7, transparent 55%),
-        radial-gradient(1300px 800px at 110% -5%, #fff1b0, transparent 60%),
-        radial-gradient(1000px 700px at 50% 0%,    #fcd9bd, transparent 70%);
+        radial-gradient(1100px 600px at 8% -10%, #ffd6e7, transparent 55%),
+        radial-gradient(1200px 700px at 110% -5%, #fff1b0, transparent 60%),
+        radial-gradient(900px 600px at 50% 0%,    #fcd9bd, transparent 70%);
       background-attachment:fixed;
-      position:relative;
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
       line-height:1.55;
       overflow-x:hidden;
     }
-    /* Ultra-subtle editorial paper texture */
-    body::before{
-      content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
-      opacity:.018;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size:180px 180px;
-    }
-    body > *{position:relative; z-index:1}
     ::selection{background:rgba(236,28,140,.25); color:var(--ink)}
     img,svg{display:block; max-width:100%}
     a{color:inherit; text-decoration:none}
@@ -142,15 +117,16 @@
       -webkit-backdrop-filter:saturate(140%) blur(14px);
       border-bottom-color:var(--line);
     }
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em;font-size:18px}
-    .brand svg{width:26px;height:26px}
-    .nav-links{display:flex;gap:28px;align-items:center}
-    .nav-links a{font-size:14px;color:var(--ink-2);font-weight:500}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:24px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:-.01em; font-size:18px}
+    .brand svg{width:26px; height:26px}
+    .nav-links{display:flex; gap:28px; align-items:center}
+    .nav-links a{font-size:14px; color:var(--ink-2); font-weight:500}
     .nav-links a:hover{color:var(--accent)}
-    .nav-cta{display:flex;gap:10px;align-items:center}
+    .nav-cta{display:flex; gap:10px; align-items:center}
     @media (max-width: 900px){
       .nav-links{display:none}
+      .nav-cta .btn-ghost{display:none}
       .nav-cta .btn-primary{display:none}
       .nav-burger{display:inline-flex !important}
     }
@@ -188,165 +164,71 @@
     .nav-drawer .btn{justify-content:center; margin-top:4px}
 
     /* ===================== Hero ===================== */
-
-    /* Smooth section transitions */
-
-    /* Smooth section blending */
-    section + section{
-      margin-top:-1px;
+    .hero{padding:80px 0 40px}
+    @media (max-width: 700px){ .hero{padding:52px 0 28px} }
+    .hero h1{margin:18px 0 22px}
+    .hero h1 .pink{color:var(--accent)}
+    .hero .sub b{color:var(--ink); font-weight:700}
+    .hero .label{text-transform:none; letter-spacing:.06em}
+    .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-top:32px}
+    .hero-ctas .btn-ghost{border-color:var(--line)}
+    .hero-ctas .btn-ghost:hover,
+    .hero-ctas .btn-ghost:focus-visible{
+      background:var(--accent); color:#fff; border-color:var(--accent);
     }
-    section{
-      position:relative;
+    .chips{display:flex; gap:10px; flex-wrap:wrap; margin-top:30px}
+    .chip{
+      display:inline-flex; flex-direction:column; align-items:center; gap:2px;
+      padding:8px 14px; border-radius:var(--radius-pill);
+      background:rgba(255,255,255,.7); border:1px solid var(--line);
     }
-    section::before{
-      content:""; position:absolute; top:0; left:0; right:0;
-      height:1px;
-      background:linear-gradient(90deg, transparent 0%, rgba(236,28,140,.08) 50%, transparent 100%);
-    }
-    .hero{padding:48px 0 36px}
-    .hero-wrap{max-width:1320px;margin:0 auto;padding:0 32px}
-    @media(max-width:700px){.hero-wrap{padding:0 20px}.hero{padding:36px 0 28px}}
-    .hero-layout{display:flex;align-items:flex-start;gap:40px}
-    .hero-left{flex:0 1 57%;display:flex;flex-direction:column}
-    .hero-right{flex:0 1 43%;flex-shrink:0;margin-top:28px}
-    .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:inline-block;margin-bottom:4px}
-    .hero h1,.hero-headline{font-family:'Bricolage Grotesque',serif !important;font-size:clamp(34px,4vw,48px) !important;font-weight:800 !important;line-height:1.15 !important;letter-spacing:-.025em !important;color:var(--ink) !important;margin:10px 0 14px !important}
-    .hero-highlight{background:linear-gradient(120deg,var(--accent) 0%,#ff6cb6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900}
-    .hero-sub{font-size:16px;line-height:1.6;color:var(--ink-2);max-width:54ch;margin:0}
-    .hero-chips{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 0}
-    .chip{display:inline-flex;flex-direction:column;align-items:center;gap:2px;padding:6px 11px;border-radius:var(--radius-pill);background:rgba(255,255,255,.7);border:1px solid var(--line)}
-.chip-label{font-size:10px;color:var(--muted);font-weight:500;line-height:1.2}
-    .chip-value{font-size:13px;color:var(--ink);font-weight:700;line-height:1.2}
-    @media(max-width:700px){.chips{flex-wrap:nowrap;gap:6px;margin-top:24px}.chip{padding:8px 10px}}
-    .hero-ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-    .hero-ctas .btn{padding:12px 22px;font-size:14px;line-height:1}
-    .hero-ctas .btn-ghost{border-color:var(--line);color:var(--ink-2)}
-    .hero-ctas .btn-ghost:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
-    .hero-micro{margin-top:10px;font-size:12.5px;color:var(--muted);opacity:.85}
-    .hero-offer-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px 22px;box-shadow:var(--shadow-card)}
-    .card-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
-    .hero-offer-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f3ece9}
-    .hero-offer-row:last-of-type{border-bottom:none}
-    .hero-offer-text{display:flex;flex-direction:column;gap:2px}
-    .row-label{font-size:14px;font-weight:600;color:var(--ink)}
-    .row-sub{font-size:12.5px;color:var(--muted)}
-    .row-value{font-size:21px;font-weight:800;color:var(--ink);text-align:right;white-space:nowrap}
-    .row-value-pink{color:var(--accent) !important;font-size:28px}
-    .row-value-small{font-size:12px;font-weight:500;color:var(--muted);text-align:right}
-    .hero-offer-foot{font-size:13px;color:var(--muted);margin:14px 0 0}
-    .hero-card-note{font-size:11.5px;color:var(--muted);margin:6px 0 0;opacity:.75}
-    @media(max-width:1000px){.hero-layout{flex-direction:column;gap:36px}.hero-right{width:100%;max-width:500px}}
-
-    /* ===================== Voice Demo Section ===================== */
-    .voice-demo-section{padding:60px 0 80px;position:relative}
-    .voice-demo-wrap{max-width:1200px;margin:0 auto;padding:0 28px}
-    .voice-demo-pill{display:inline-block;align-self:center;padding:6px 16px;border-radius:999px;border:1px solid var(--accent);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:32px;width:auto}
-    .voice-demo-card{background:radial-gradient(circle at 85% 50%,rgba(255,0,120,0.35) 0%,transparent 35%),radial-gradient(circle at 70% 30%,rgba(180,0,120,0.25) 0%,transparent 40%),linear-gradient(135deg,#050008 0%,#120014 30%,#2a002b 65%,#4b003f 100%);color:#fff;border-radius:24px;padding:40px 60px;text-align:center;position:relative;overflow:hidden;max-width:1200px;margin:0 auto;min-height:220px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 14px 30px -10px rgba(236,28,140,.35),0 0 0 1px rgba(236,28,140,.15) inset,0 0 80px rgba(255,0,120,0.08) inset}
-    .voice-demo-card::before{content:"";position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(236,28,140,.15) 0%,transparent 70%);top:-150px;right:-100px;filter:blur(80px);pointer-events:none;animation:founding-glow 20s ease-in-out infinite}
-    .voice-demo-card>*{position:relative;z-index:1}
-    .voice-demo-title{font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:clamp(32px,4.5vw,48px);line-height:1.15;letter-spacing:-.02em;color:#fff;margin:0 0 32px;max-width:680px;margin-left:auto;margin-right:auto}
-    .voice-demo-subtitle{font-size:17px;line-height:1.6;color:rgba(255,255,255,.65);margin:0 auto 56px;max-width:580px}
-    .voice-demo-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-    .voice-demo-buttons .btn{padding:16px 30px;border-radius:999px;font-size:15px;font-weight:600;transition:transform .2s ease,box-shadow .2s ease}
-    .voice-demo-buttons .btn-primary{background:var(--accent);color:#fff;border:1px solid var(--accent);box-shadow:0 8px 24px rgba(236,28,140,.4)}
-    .voice-demo-buttons .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(236,28,140,.5)}
-    .voice-demo-buttons .btn-outline-light{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
-    .voice-demo-buttons .btn-outline-light:hover{background:rgba(255,255,255,.08);color:#fff;transform:translateY(-2px)}
-    .voice-demo-footer{font-size:13px;color:rgba(255,255,255,.45);margin:32px 0 0}
-    @media(max-width:700px){.voice-demo-section{padding:40px 0 60px}.voice-demo-card{padding:36px 24px;border-radius:20px}.voice-demo-title{font-size:28px}.voice-demo-subtitle{font-size:15px}.voice-demo-buttons{flex-direction:column;gap:12px}.voice-demo-buttons .btn{width:100%;justify-content:center}}
+    .chip-label{font-size:11px; color:var(--muted); font-weight:500; line-height:1.2}
+    .chip-value{font-size:15px; color:var(--ink); font-weight:700; line-height:1.2}
 
     /* ===================== Founding offer card ===================== */
-    .social-proof{padding:20px 0 48px}
+    .social-proof{padding:0 0 56px}
     .founding-card{
-      background:linear-gradient(180deg, #0a0008 0%, #1a0a1f 50%, #0a0008 100%);
-      background-size:200% 200%;
-      animation:founding-drift 25s ease infinite;
-      color:#fff; border-radius:24px;
-      padding:40px 60px; text-align:center;
+      background:#0f0f0f; border-radius:20px;
+      padding:48px 64px; text-align:center;
       display:flex; flex-direction:column; align-items:center;
-      max-width:860px; margin:0 auto;
-      position:relative; overflow:hidden;
     }
-    @keyframes founding-drift{
-      0%,100%{background-position:50% 50%}
-      50%{background-position:55% 45%}
-    }
-    .founding-card::before{
-      content:""; position:absolute; width:500px; height:500px; border-radius:50%;
-      background:radial-gradient(circle, rgba(236,28,140,.12) 0%, transparent 70%);
-      top:-150px; right:-100px;
-      filter:blur(80px); pointer-events:none;
-      animation:founding-glow 20s ease-in-out infinite;
-    }
-    @keyframes founding-glow{
-      0%,100%{opacity:.6; transform:translate(0,0)}
-      50%{opacity:.9; transform:translate(20px,10px)}
-    }
-    .founding-card::after{display:none}
-    .founding-card > *{position:relative; z-index:1}
     .founding-card-label{
-      font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
-      color:var(--accent); margin:0 0 10px; opacity:.9;
+      font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--accent); margin:0 0 16px;
     }
     .founding-card-title{
       font-family:'Bricolage Grotesque', serif; font-weight:800;
-      font-size:42px; line-height:1.1; letter-spacing:-.02em;
-      color:#fff; margin:0 0 8px; max-width:600px;
+      font-size:clamp(36px, 5vw, 52px); line-height:1.05; letter-spacing:-.02em;
+      color:#fff; margin:0 0 16px;
     }
     .founding-card-sub{
-      font-size:16px; line-height:1.5; color:rgba(255,255,255,.5);
-      max-width:500px; margin:0 0 12px;
+      font-size:18px; line-height:1.5; color:#a0a0a0;
+      max-width:600px; margin:0 0 28px;
     }
     .founding-pills{
-      display:flex; flex-wrap:wrap; justify-content:center; gap:8px;
-      margin:14px 0 18px;
+      display:flex; flex-wrap:wrap; justify-content:center; gap:12px;
+      margin:0 0 24px;
     }
     .founding-pill{
-      padding:6px 12px; border-radius:999px;
-      background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
-      color:rgba(255,255,255,.8); font-size:12px; font-weight:400; line-height:1.3;
-    }
-    .founding-price-line{
-      font-size:18px; color:rgba(255,255,255,.85); margin:6px 0 12px;
-      letter-spacing:-.01em;
-    }
-    .founding-price-line s{
-      opacity:.5; text-decoration:line-through; margin-right:8px;
-    }
-    .founding-price-line strong{
-      color:#fff; font-weight:600;
+      padding:8px 20px; border-radius:999px;
+      background:#1e1e1e; border:1px solid #333;
+      color:#fff; font-size:14px; font-weight:500; line-height:1.3;
     }
     .founding-spots{
       font-size:15px; font-weight:500; color:var(--accent);
-      margin:0 0 12px;
+      margin:0 0 20px;
     }
     .founding-cta{
       display:inline-flex; align-items:center; justify-content:center;
-      padding:14px 36px; border-radius:999px; border:none;
+      padding:16px 40px; border-radius:999px; border:none;
       background:var(--accent); color:#fff;
-      font-size:15px; font-weight:600; text-decoration:none;
-      transition:all .4s cubic-bezier(.25,.8,.25,1);
-      box-shadow:0 8px 24px rgba(236,28,140,.25);
-      position:relative; overflow:hidden;
+      font-size:17px; font-weight:600; text-decoration:none;
+      transition:background-color .2s ease, transform .18s ease;
     }
-    .founding-cta::before{
-      content:""; position:absolute; top:0; left:-100%;
-      width:100%; height:100%;
-      background:linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
-      transition:left .6s ease;
-    }
-    .founding-cta:hover{
-      transform:translateY(-2px);
-      box-shadow:0 12px 32px rgba(236,28,140,.4), 0 0 0 1px rgba(255,255,255,.1);
-    }
-    .founding-cta:hover::before{left:100%}
+    .founding-cta:hover{background:var(--accent-hov); transform:translateY(-1px)}
     /* Founding offer: price tag, details, retainer, talk link */
-    @keyframes pulse-glow{
-      0%,100%{text-shadow:0 0 8px rgba(255,0,102,.4)}
-      50%{text-shadow:0 0 20px rgba(255,0,102,.9)}
-    }
     .founding-price-tag{
-      margin:12px 0 20px;
+      margin:18px 0 0;
       font-size:28px; font-weight:800; color:#fff;
     }
     .founding-price-tag .strikethrough{
@@ -357,7 +239,7 @@
       font-size:14px; font-weight:400; color:#a0a0a0; display:block; margin-top:4px;
     }
     .founding-details{
-      margin:12px 0 0; background:#1a1a1a; border-radius:12px; padding:16px 20px;
+      margin:24px 0 0; background:#1a1a1a; border-radius:12px; padding:16px 20px;
       display:flex; flex-direction:column; gap:10px; text-align:left;
     }
     .founding-detail-title{
@@ -375,32 +257,22 @@
     .founding-detail-price.free{color:var(--accent); font-weight:700}
     .founding-detail-label{font-size:14px; color:#c0c0c0; line-height:1.3}
     .founding-retainer{
-      margin:12px 0 0; font-size:14px; color:#fff; line-height:1.6; text-align:center;
+      margin:20px 0 0; font-size:14px; color:#a0a0a0; line-height:1.6; text-align:center;
     }
     .founding-retainer strong{color:#fff; font-weight:600}
-    .founding-clean-line{margin:12px 0 0; font-size:15px; color:#d0d0d0; text-align:center; line-height:1.5}
+    .founding-clean-line{margin:20px 0 0; font-size:15px; color:#d0d0d0; text-align:center; line-height:1.5}
     .founding-talk{
-      margin:12px 0 0; font-size:14px; color:#a0a0a0;
+      margin:14px 0 0; font-size:14px; color:#a0a0a0;
     }
     .founding-talk-link{
       color:var(--accent); font-weight:600; text-decoration:underline; text-underline-offset:3px;
     }
     .founding-talk-link:hover{opacity:.8}
     @media (max-width: 700px){
-      .founding-card{padding:28px 20px; border-radius:20px}
-      .founding-card::before{width:220px; height:220px; top:-60px; left:-40px; filter:blur(50px); opacity:.55}
-      .founding-card::after{width:220px; height:220px; bottom:-60px; right:-40px; filter:blur(50px); opacity:.55}
-      .founding-card-title{font-size:34px; line-height:1.05}
-      .founding-card-sub{font-size:15px}
-      .founding-price-tag{font-size:24px; margin-bottom:14px}
+      .founding-card{padding:40px 24px}
+      .founding-price-tag{font-size:24px}
       .founding-price-tag .strikethrough{font-size:16px}
       .founding-details{padding:14px 16px}
-      .founding-cta{padding:12px 24px; font-size:14px}
-      .founding-pills{gap:6px; margin:12px 0 16px}
-      .founding-pill{padding:5px 12px; font-size:11.5px}
-      .founding-clean-line{font-size:13px}
-      .founding-retainer{font-size:13px}
-      .founding-spots{font-size:13px}
     }
 
     /* ===================== Founding sticky bar ===================== */
@@ -433,17 +305,8 @@
 
     /* ===================== Founding bottom CTA ===================== */
     .founding-bottom-cta{
-      background:var(--dark); color:#fff;
-      padding:80px 28px; text-align:center;
-      position:relative; overflow:hidden;
+      background:var(--accent); padding:80px 28px; text-align:center;
     }
-    .founding-bottom-cta::before, .founding-bottom-cta::after{
-      content:""; position:absolute; width:600px; height:600px; border-radius:50%;
-      filter:blur(100px); opacity:.4; pointer-events:none;
-    }
-    .founding-bottom-cta::before{background:var(--accent); top:-200px; left:-100px}
-    .founding-bottom-cta::after{background:#ff6cb6; bottom:-200px; right:-100px}
-    .founding-bottom-cta > *{position:relative; z-index:1}
     .founding-bottom-title{
       font-family:'Bricolage Grotesque', serif; font-weight:800;
       font-size:clamp(28px, 4vw, 40px); line-height:1.1; letter-spacing:-.02em;
@@ -467,128 +330,18 @@
 
     /* ===================== Demo card ===================== */
     .demo-wrap{position:relative; padding:24px 0 80px}
-    
-    /* Live indicator */
-    .demo-live-indicator{
-      position:absolute; top:24px; right:24px;
-      display:flex; align-items:center; gap:6px;
-      font-size:11px; font-weight:600; letter-spacing:.05em;
-      color:rgba(36,0,41,.6); text-transform:uppercase;
-    }
-    .demo-live-dot{
-      width:6px; height:6px; border-radius:50%;
-      background:#ec1c8c;
-      animation:pulse-dot 2s ease-in-out infinite;
-    }
-    @keyframes pulse-dot{
-      0%,100%{opacity:1; transform:scale(1)}
-      50%{opacity:.5; transform:scale(1.2)}
-    }
-    
-    .demo-live-text{opacity:.7}
-    
-    /* Enhanced waveform */
-    .demo-waveform{
-      display:flex; align-items:center; justify-content:center;
-      gap:4px; height:48px; margin:40px auto 20px;
-    }
-    .wave-bar{
-      width:3px; border-radius:2px;
-      background:linear-gradient(180deg, #ec1c8c 0%, #240029 100%);
-      animation:wave-pulse 1.4s ease-in-out infinite;
-    }
-    .wave-bar:nth-child(1){height:20px; animation-delay:0s}
-    .wave-bar:nth-child(2){height:32px; animation-delay:0.1s}
-    .wave-bar:nth-child(3){height:28px; animation-delay:0.2s}
-    .wave-bar:nth-child(4){height:36px; animation-delay:0.3s}
-    .wave-bar:nth-child(5){height:24px; animation-delay:0.4s}
-    
-    
-    /* Premium fade-up animations */
-    @keyframes fadeUp{
-      from{opacity:0; transform:translateY(20px)}
-      to{opacity:1; transform:translateY(0)}
-    }
-    
-    .hero h1, .hero h2, .hero p, .hero-cta, .demo-card,
-    .features h2, .features p, .feature-card,
-    .pricing h2, .pricing p, .pricing-card,
-    .founding-card, .cta-strip h2, .cta-strip p{
-      animation:fadeUp .8s cubic-bezier(.25,.8,.25,1) backwards;
-    }
-    
-    .hero h1{animation-delay:.1s}
-    .hero h2{animation-delay:.2s}
-    .hero p{animation-delay:.3s}
-    .hero-cta{animation-delay:.4s}
-    .demo-card{animation-delay:.5s}
-    
-    .feature-card:nth-child(1){animation-delay:.1s}
-    .feature-card:nth-child(2){animation-delay:.2s}
-    .feature-card:nth-child(3){animation-delay:.3s}
-    .feature-card:nth-child(4){animation-delay:.4s}
-    .feature-card:nth-child(5){animation-delay:.5s}
-    .feature-card:nth-child(6){animation-delay:.6s}
-    
-    .pricing-card:nth-child(1){animation-delay:.1s}
-    .pricing-card:nth-child(2){animation-delay:.2s}
-    .pricing-card:nth-child(3){animation-delay:.3s}
-    @keyframes wave-pulse{
-      0%,100%{transform:scaleY(1); opacity:.7}
-      50%{transform:scaleY(1.4); opacity:1}
-    }
-    
-    /* Status text */
-    .demo-status{
-      text-align:center;
-      font-size:12px; font-weight:500;
-      color:rgba(36,0,41,.5);
-      letter-spacing:.02em;
-      margin-bottom:16px;
-    }
-    
-    /* Transcript preview */
-    .demo-transcript{
-      background:rgba(36,0,41,.03);
-      border-radius:8px;
-      padding:12px 14px;
-      margin:0 auto 20px;
-      max-width:280px;
-    }
-    .transcript-line{
-      display:flex; gap:8px;
-      font-size:12px; line-height:1.5;
-    }
-    .transcript-speaker{
-      font-weight:600; color:#ec1c8c;
-      flex-shrink:0;
-    }
-    .transcript-text{
-      color:rgba(36,0,41,.7);
-    }
     .demo-card{
       position:relative;
       background:#fff;
       border:1px solid var(--line);
       border-radius:28px;
-      padding:40px 28px;
+      padding:56px 28px;
       text-align:center;
       box-shadow:var(--shadow-card);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:16px;
     }
     .demo-scribble{
-      position:absolute; right:18px; top:-8px;
-      transform:rotate(-4deg);
-      font-size:18px;
-      max-width:100%;
-      overflow:hidden;
-      white-space:nowrap;
-      opacity:.45;
-      letter-spacing:.01em;
+      position:absolute; right:22px; top:-22px;
+      transform:rotate(-8deg);
     }
     .waveform{
       display:flex; gap:10px; justify-content:center; align-items:end;
@@ -610,135 +363,20 @@
     }
     .demo-card h3{font-size:clamp(22px, 2.4vw, 28px); margin-bottom:8px}
     .demo-card .muted{color:var(--muted); margin-bottom:24px; font-size:15px}
-    /* Subtle breathing glow on demo card */
-    .demo-card::after{
-      content:""; position:absolute; inset:-2px; border-radius:inherit;
-      background:radial-gradient(ellipse at 50% 80%, rgba(236,28,140,.08), transparent 70%);
-      animation:demo-breathe 4s ease-in-out infinite;
-      pointer-events:none; z-index:0;
-    }
-    /* Gentle floating motion */
-    
-    /* Live indicator */
-    .demo-live-indicator{
-      position:absolute; top:24px; right:24px;
-      display:flex; align-items:center; gap:6px;
-      font-size:11px; font-weight:600; letter-spacing:.05em;
-      color:rgba(36,0,41,.6); text-transform:uppercase;
-    }
-    .demo-live-dot{
-      width:6px; height:6px; border-radius:50%;
-      background:#ec1c8c;
-      animation:pulse-dot 2s ease-in-out infinite;
-    }
-    @keyframes pulse-dot{
-      0%,100%{opacity:1; transform:scale(1)}
-      50%{opacity:.5; transform:scale(1.2)}
-    }
-    
-    .demo-live-text{opacity:.7}
-    
-    /* Enhanced waveform */
-    .demo-waveform{
-      display:flex; align-items:center; justify-content:center;
-      gap:4px; height:48px; margin:40px auto 20px;
-    }
-    .wave-bar{
-      width:3px; border-radius:2px;
-      background:linear-gradient(180deg, #ec1c8c 0%, #240029 100%);
-      animation:wave-pulse 1.4s ease-in-out infinite;
-    }
-    .wave-bar:nth-child(1){height:20px; animation-delay:0s}
-    .wave-bar:nth-child(2){height:32px; animation-delay:0.1s}
-    .wave-bar:nth-child(3){height:28px; animation-delay:0.2s}
-    .wave-bar:nth-child(4){height:36px; animation-delay:0.3s}
-    .wave-bar:nth-child(5){height:24px; animation-delay:0.4s}
-    
-    
-    /* Premium fade-up animations */
-    @keyframes fadeUp{
-      from{opacity:0; transform:translateY(20px)}
-      to{opacity:1; transform:translateY(0)}
-    }
-    
-    .hero h1, .hero h2, .hero p, .hero-cta, .demo-card,
-    .features h2, .features p, .feature-card,
-    .pricing h2, .pricing p, .pricing-card,
-    .founding-card, .cta-strip h2, .cta-strip p{
-      animation:fadeUp .8s cubic-bezier(.25,.8,.25,1) backwards;
-    }
-    
-    .hero h1{animation-delay:.1s}
-    .hero h2{animation-delay:.2s}
-    .hero p{animation-delay:.3s}
-    .hero-cta{animation-delay:.4s}
-    .demo-card{animation-delay:.5s}
-    
-    .feature-card:nth-child(1){animation-delay:.1s}
-    .feature-card:nth-child(2){animation-delay:.2s}
-    .feature-card:nth-child(3){animation-delay:.3s}
-    .feature-card:nth-child(4){animation-delay:.4s}
-    .feature-card:nth-child(5){animation-delay:.5s}
-    .feature-card:nth-child(6){animation-delay:.6s}
-    
-    .pricing-card:nth-child(1){animation-delay:.1s}
-    .pricing-card:nth-child(2){animation-delay:.2s}
-    .pricing-card:nth-child(3){animation-delay:.3s}
-    @keyframes wave-pulse{
-      0%,100%{transform:scaleY(1); opacity:.7}
-      50%{transform:scaleY(1.4); opacity:1}
-    }
-    
-    /* Status text */
-    .demo-status{
-      text-align:center;
-      font-size:12px; font-weight:500;
-      color:rgba(36,0,41,.5);
-      letter-spacing:.02em;
-      margin-bottom:16px;
-    }
-    
-    /* Transcript preview */
-    .demo-transcript{
-      background:rgba(36,0,41,.03);
-      border-radius:8px;
-      padding:12px 14px;
-      margin:0 auto 20px;
-      max-width:280px;
-    }
-    .transcript-line{
-      display:flex; gap:8px;
-      font-size:12px; line-height:1.5;
-    }
-    .transcript-speaker{
-      font-weight:600; color:#ec1c8c;
-      flex-shrink:0;
-    }
-    .transcript-text{
-      color:rgba(36,0,41,.7);
-    }
-    .demo-card{
-      animation:demo-float 6s ease-in-out infinite;
-    }
-    .demo-card > *{position:relative; z-index:1}
-    @keyframes demo-breathe{0%,100%{opacity:.4}50%{opacity:.9}}
-    @keyframes demo-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
     .demo-card .powered{margin-top:18px; font-size:12px; color:var(--muted); letter-spacing:.04em}
     .demo-card.is-live{box-shadow:0 0 0 2px var(--accent), var(--shadow-card)}
     .demo-status{margin-top:14px; font-size:13px; color:var(--ink-2); min-height:18px}
 
     /* ===================== Never miss a call transition ===================== */
-    .never-miss-cta{padding:32px 0 32px}
-    .never-miss-inner{text-align:center; max-width:1200px; margin:0 auto}
-    .never-miss-scribble{
-      font-family:'Caveat Brush', cursive; color:var(--accent); font-weight:400;
-      font-size:28px; line-height:1; transform:rotate(-6deg); display:inline-block;
-      margin:24px 0;
-    }
-    @media (max-width:700px){.never-miss-cta{padding:20px 0 20px}.never-miss-scribble{font-size:22px}}
+    .never-miss-cta{padding:40px 0 30px}
+    .never-miss-inner{text-align:center; max-width:680px; margin:0 auto}
+    .never-miss-hook{font-size:20px; font-weight:600; color:var(--accent); margin-bottom:12px}
+    .never-miss-text{font-size:18px; color:var(--ink-2); line-height:1.6; margin-bottom:16px}
+    .never-miss-close{font-size:17px; color:var(--ink); font-weight:600; line-height:1.5}
+    @media (max-width:700px){.never-miss-cta{padding:40px 0 28px}.never-miss-hook{font-size:18px}.never-miss-text,.never-miss-close{font-size:16px}}
 
     /* ===================== Who it's for (industry cards) ===================== */
-    .who-for{padding:24px 0 40px}
+    .who-for{padding:24px 0 56px}
     .who-for-head{text-align:center; margin:0 0 18px; padding:0 28px}
     .who-for-title{
       font-family:'Bricolage Grotesque', serif; font-size:clamp(28px, 3.5vw, 40px);
@@ -778,13 +416,9 @@
     }
 
     /* ===================== Sections shared ===================== */
-    section.block{padding:96px 0}
-    @media (max-width: 800px){ section.block{padding:56px 0} }
-    /* Subtle alternating section tones */
-    section.block:nth-of-type(even){background:rgba(255,245,238,.5)}
-    section.block:nth-of-type(odd){background:transparent}
-    .section-head{max-width:760px; margin-bottom:72px}
-    @media (max-width: 800px){ .section-head{margin-bottom:48px} }
+    section.block{padding:120px 0}
+    @media (max-width: 800px){ section.block{padding:72px 0} }
+    .section-head{max-width:760px; margin-bottom:64px}
     .section-head h2{margin-top:10px}
     .section-head p{margin-top:18px; color:var(--ink-2); font-size:18px; max-width:60ch}
 
@@ -815,7 +449,7 @@
     /* ===================== Features (grid) ===================== */
     .feat-groups{display:block}
     .feat-board{
-      display:grid; grid-template-columns:repeat(3, 1fr);
+      display:grid; grid-template-columns:repeat(4, 1fr);
       background:#fff; border-radius:24px; overflow:hidden;
       border:1px solid var(--line); box-shadow:var(--shadow-card);
     }
@@ -825,8 +459,8 @@
       border-bottom:1px solid var(--line);
       background:#fff;
     }
-    .feat-board .feat-card:nth-child(3n){border-right:none}
-    .feat-board .feat-card:nth-child(n+7){border-bottom:none}
+    .feat-board .feat-card:nth-child(4n){border-right:none}
+    .feat-board .feat-card:nth-child(n+9){border-bottom:none}
     .feat-card .ico{
       width:36px; height:36px; border-radius:10px;
       background:#fff1f7; color:var(--accent);
@@ -838,10 +472,10 @@
     @media (max-width: 1024px){
       .feat-board{grid-template-columns:repeat(2, 1fr)}
       .feat-board .feat-card{border-right:1px solid var(--line); border-bottom:1px solid var(--line)}
-      .feat-board .feat-card:nth-child(3n){border-right:1px solid var(--line)}
+      .feat-board .feat-card:nth-child(4n){border-right:1px solid var(--line)}
       .feat-board .feat-card:nth-child(2n){border-right:none}
-      .feat-board .feat-card:nth-child(n+5){border-bottom:1px solid var(--line)}
-      .feat-board .feat-card:nth-child(n+7){border-bottom:none}
+      .feat-board .feat-card:nth-child(n+9){border-bottom:1px solid var(--line)}
+      .feat-board .feat-card:nth-child(n+11){border-bottom:none}
     }
     @media (max-width: 560px){
       .feat-board{grid-template-columns:1fr}
@@ -923,7 +557,7 @@
 
     .calc-result{
       position:relative; border-radius:24px; overflow:hidden;
-      background:var(--dark); color:#fff;
+      background:var(--ink); color:#fff;
       padding:40px 32px;
       display:flex; align-items:center; justify-content:flex-start;
       min-height:340px;
@@ -932,8 +566,8 @@
     .calc-result-bg{
       position:absolute; inset:0; pointer-events:none;
       background:
-        radial-gradient(480px 340px at 110% -10%, rgba(236,28,140,.75), transparent 60%),
-        radial-gradient(480px 340px at -10% 110%, rgba(255,108,182,.6), transparent 60%);
+        radial-gradient(380px 280px at 110% -10%, rgba(236,28,140,.55), transparent 60%),
+        radial-gradient(380px 280px at -10% 110%, rgba(255,108,182,.4), transparent 60%);
     }
     .calc-result-inner{position:relative; z-index:1; max-width:100%}
     .calc-result-label{
@@ -951,100 +585,90 @@
       margin-top:18px; color:rgba(255,255,255,.78); font-size:16px; line-height:1.55; max-width:38ch;
     }
     .calc-result-sub b{color:#fff}
-    .calc-result .btn-primary{
-      background:#fff; color:#EC1C8C;
-      box-shadow:none;
-    }
-    .calc-result .btn-primary:hover{
-      background:#f5f5f5; color:#EC1C8C;
-      transform:translateY(-2px);
-    }
 
     /* ===================== Pricing ===================== */
-    .price-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; align-items:stretch}
-    @media (max-width: 1000px){ .price-grid{grid-template-columns:1fr; max-width:480px; margin-left:auto; margin-right:auto} }
+    .price-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; align-items:stretch}
+    @media (max-width: 950px){ .price-grid{grid-template-columns:1fr} }
     .price-card{
       position:relative;
       background:#fff; border:1px solid var(--line); border-radius:24px;
-      padding:28px 26px;
-      display:flex;
-      flex-direction:column;
-      box-shadow:var(--shadow-card); height:100%;
-      transition:transform .25s ease, box-shadow .25s ease;
+      padding:34px 28px; display:flex; flex-direction:column;
+      box-shadow:var(--shadow-card);
     }
-    .price-card:hover{transform:translateY(-4px); box-shadow:0 8px 40px -20px rgba(36,0,41,.18)}
     .price-card .plan{font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-weight:700}
     .price-card .tag{
       font-family:'Bricolage Grotesque', serif; font-weight:700;
-      font-size:20px; letter-spacing:-.01em; margin:8px 0 6px; color:var(--ink); line-height:1.2;
+      font-size:28px; letter-spacing:-.01em; margin:10px 0 18px; color:var(--ink);
     }
-    .price-card .card-subtitle{font-size:13.5px; color:var(--muted); line-height:1.45; margin:0 0 14px}
-    .price-card .card-head{min-height:96px}
-    .price-card .card-desc{min-height:36px}
-    .price-card .price-block{margin-bottom:18px}
-    .price-main{font-family:'Bricolage Grotesque', serif; font-size:38px; font-weight:800; color:var(--ink); letter-spacing:-.02em; margin:0; line-height:1}
-    .price-setup-line{font-size:12.5px; color:var(--muted); margin:8px 0 0; font-weight:500}
-    .price-helper{font-size:12px; color:var(--muted); margin:4px 0 0; line-height:1.4}
-    .price-card .price-setup{font-size:14px; font-weight:600; color:var(--accent); margin:0 0 2px}
-    .price-card .price-monthly{font-family:'Bricolage Grotesque', serif; font-size:32px; font-weight:800; color:var(--ink); letter-spacing:-.02em; margin:0}
-    .price-card ul{list-style:none; padding:0; margin:0 0 20px; display:flex; flex-direction:column; gap:8px; flex:1}
-    .price-card li{font-size:14px; color:var(--ink-2); padding-left:24px; position:relative; line-height:1.4}
+    .price-card ul{list-style:none; padding:0; margin:0 0 24px; display:flex; flex-direction:column; gap:10px}
+    .price-card li{font-size:14.5px; color:var(--ink-2); padding-left:26px; position:relative}
     .price-card li::before{
-      content:"✓"; position:absolute; left:0; top:0;
-      font-size:13px; font-weight:700; color:var(--accent);
+      content:""; position:absolute; left:0; top:8px;
+      width:14px; height:9px;
+      border-left:2px solid var(--accent);
+      border-bottom:2px solid var(--accent);
+      transform:rotate(-45deg);
+      transform-origin:left center;
     }
-    .price-card .btn{margin-top:auto; justify-content:center; width:100%}
+    .price-card .plan-trust{
+      display:flex; flex-wrap:wrap; gap:6px; margin:0 0 18px;
+      justify-content:flex-start;
+    }
+    .price-card .plan-trust .trust-badge{
+      display:inline-flex; align-items:center; gap:4px;
+      padding:4px 10px; border-radius:999px;
+      font-size:9px; letter-spacing:.1em; text-transform:uppercase;
+      background:#fff1f7; border:1px solid rgba(236,28,140,.14);
+      color:var(--accent); font-weight:600; white-space:nowrap;
+    }
+    .price-card .plan-trust .trust-badge svg{width:9px; height:9px; color:var(--accent); flex-shrink:0}
+    .price-card .btn{margin-top:auto; justify-content:center}
     .price-card.featured{
-      background:linear-gradient(180deg, #1a0a2e 0%, #2d0a2e 25%, #4a1040 60%, #6b1050 100%);
-      color:#fff; border-color:transparent;
-      box-shadow:0 30px 60px -30px rgba(36,0,41,.6), 0 0 0 2px var(--accent);
-      transform:scale(1.04);
-      z-index:2;
+      background:var(--ink); color:#fff; border-color:var(--ink);
+      box-shadow:0 30px 60px -30px rgba(36,0,41,.6);
     }
-    .price-card.featured:hover{transform:scale(1.04) translateY(-4px)}
-    .price-card.featured .plan{color:rgba(255,255,255,.6)}
+    .price-card.featured .plan,
     .price-card.featured .tag{color:#fff}
-    .price-card.featured .card-subtitle{color:rgba(255,255,255,.65)}
-    .price-card.featured .price-setup{color:var(--accent)}
-    .price-card.featured .price-monthly{color:#fff}
-    .price-card.featured .price-main{color:#fff}
-    .price-card.featured .price-setup-line{color:rgba(255,255,255,.6)}
-    .price-card.featured .price-helper{color:rgba(255,255,255,.5)}
-    .price-card.featured li{color:rgba(255,255,255,.85); line-height:1.4}
-    .price-card.featured li::before{color:var(--accent)}
+    .price-card.featured li{color:rgba(255,255,255,.86)}
+    .price-card.featured li::before{border-color:var(--accent)}
+    .price-card .plan-badge,
     .price-card .popular{
-      position:absolute; top:-13px; left:50%; transform:translateX(-50%);
-      padding:7px 18px; border-radius:var(--radius-pill);
+      position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+      padding:6px 14px; border-radius:var(--radius-pill);
       font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:700;
       white-space:nowrap; z-index:1;
-      background:var(--accent); color:#fff;
-      box-shadow:0 4px 14px -4px rgba(236,28,140,.5);
     }
+    .price-card .popular,
+    .plan-badge--popular,
+    .plan-badge--value,
+    .plan-badge--premium{background:var(--accent); color:#fff}
+    .price-anchor{
+      font-size:15px; font-weight:500; line-height:1.35;
+      margin:0 0 4px;
+    }
+    .price-anchor--accent{color:var(--accent)}
+    .price-anchor--ink{color:var(--ink)}
+    .price-anchor--value{color:#0d9488; font-weight:600}
+    .price-anchor--premium{color:#7c3aed; font-weight:600}
+    .price-anchor--light{color:#fff}
+    .price-anchor-note{
+      font-size:12px; line-height:1.4; color:var(--muted);
+      margin:0 0 14px;
+    }
+    .price-card.featured .price-anchor-note{color:rgba(255,255,255,.55)}
     .pricing-note{
-      text-align:center; font-size:13px; color:var(--ink-2);
-      margin:32px 0 0; line-height:1.5; font-weight:500;
-    }
-    .pricing-note a{
-      color:var(--accent); font-weight:600; text-decoration:none;
-      border-bottom:1px solid transparent;
-      transition:border-color .25s ease, opacity .25s ease;
-    }
-    .pricing-note a:hover{
-      border-bottom-color:var(--accent); opacity:.85;
+      text-align:center; font-size:13px; color:var(--muted);
+      margin:28px 0 0; line-height:1.5;
     }
 
     /* ===================== CTA strip ===================== */
     .cta-strip{
       margin:0 auto; max-width:1200px;
-      padding:72px 28px;
-      background:linear-gradient(160deg, var(--dark) 0%, #2a0530 40%, #3d0e48 70%, var(--dark) 100%);
-      background-size:200% 200%;
-      animation:cta-gradient 12s ease infinite;
-      color:#fff;
+      padding:80px 28px;
+      background:var(--dark); color:#fff;
       border-radius:28px; position:relative; overflow:hidden;
       text-align:center;
     }
-    @keyframes cta-gradient{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
     .cta-strip::before, .cta-strip::after{
       content:""; position:absolute; width:520px; height:520px; border-radius:50%;
       filter:blur(70px); opacity:.5; pointer-events:none;
@@ -1053,12 +677,12 @@
     .cta-strip::after{background:#ff6cb6; bottom:-100px; right:-80px}
     .cta-strip > *{position:relative; z-index:1}
     .cta-strip h2{color:#fff}
-    .cta-strip p{margin:18px auto 0; max-width:44ch; color:rgba(255,255,255,.72); font-size:16.5px; line-height:1.7}
-    .cta-strip .row{margin-top:32px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+    .cta-strip p{margin:18px auto 0; max-width:60ch; color:rgba(255,255,255,.78); font-size:18px}
+    .cta-strip .row{margin-top:34px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
     .cta-strip .btn-light{
       background:#fff; color:var(--ink);
       box-shadow:0 4px 18px rgba(0,0,0,.14);
-      transition:transform .35s cubic-bezier(.25,.8,.25,1), box-shadow .4s ease, background-color .25s ease;
+      transition:transform .18s ease, box-shadow .25s ease, background-color .18s ease;
     }
     .cta-strip .btn-light:hover,
     .cta-strip .btn-light:focus-visible{
@@ -1075,7 +699,7 @@
       .cta-strip::before{top:-100px; left:-50px; width:250px; height:250px; opacity:.7}
       .cta-strip::after{bottom:-100px; right:-50px; width:250px; height:250px; opacity:.7}
       .cta-strip h2{font-size:clamp(24px, 7vw, 40px)}
-      .cta-strip p{font-size:15.5px; max-width:36ch}
+      .cta-strip p{font-size:16px; max-width:38ch}
       .cta-strip .row{flex-direction:column; gap:12px; align-items:center}
       .cta-strip .btn{width:100%; max-width:300px; justify-content:center}
     }
@@ -1086,7 +710,7 @@
 
     /* ===================== Footer ===================== */
     footer.site{
-      background:var(--dark); color:#fff; margin-top:0; padding:74px 0 32px;
+      background:var(--dark); color:#fff; margin-top:0; padding:80px 0 32px;
     }
     footer.site .cols{
       display:grid; grid-template-columns:1.2fr 1fr 1.6fr; gap:48px;
@@ -1096,26 +720,24 @@
       color:rgba(255,255,255,.55); margin:0 0 18px; font-weight:700;
     }
     footer.site ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px}
-    footer.site a{color:rgba(255,255,255,.87); font-size:14.5px; transition:color .3s cubic-bezier(.25,.8,.25,1), opacity .3s ease}
-    footer.site a:hover{color:#fff; opacity:.95}
+    footer.site a{color:rgba(255,255,255,.82); font-size:14.5px}
+    footer.site a:hover{color:#fff}
     footer.site .brand-col p{color:rgba(255,255,255,.7); margin-top:14px; max-width:42ch; line-height:1.55}
     footer.site .brand-col .links{margin-top:18px; display:flex; flex-direction:column; gap:8px}
     footer.site .brand-col .footer-location{color:rgba(255,255,255,.82); font-size:14.5px; line-height:1.55}
-    footer.site .rule{height:1px; background:rgba(255,255,255,.18); margin:56px 0 24px}
+    footer.site .rule{height:1px; background:rgba(255,255,255,.12); margin:48px 0 24px}
     footer.site .footer-trust{
       display:flex; justify-content:center; align-items:center;
       gap:10px; flex-wrap:wrap; margin:0 0 22px;
     }
     footer.site .trust-badge{
       display:inline-flex; align-items:center; gap:6px;
-      padding:5px 12px; border-radius:999px;
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.12);
+      padding:7px 14px; border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.15);
       font-size:11px; letter-spacing:.12em; text-transform:uppercase;
       color:rgba(255,255,255,.78); font-weight:600; white-space:nowrap;
-      transition:background .3s ease, border-color .3s ease;
     }
-    footer.site .trust-badge:hover{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.2)}
     footer.site .trust-badge svg{color:var(--accent); flex-shrink:0}
     footer.site .bottom{display:flex; justify-content:space-between; align-items:center; color:rgba(255,255,255,.55); font-size:13px; gap:18px}
     footer.site .bottom a{color:rgba(255,255,255,.55)}
@@ -1221,29 +843,7 @@
       /* Pricing cards on mobile */
       .price-card{padding:24px 20px}
     }
-    
-    /* Cinematic film grain texture */
-    body::before{
-      content:""; position:fixed; top:0; left:0; width:100%; height:100%;
-      pointer-events:none; z-index:9999;
-      opacity:0.015;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-    /* Subtle vignette */
-    body::after{
-      content:""; position:fixed; top:0; left:0; width:100%; height:100%;
-      pointer-events:none; z-index:9998;
-      background:radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.02) 100%);
-    }
-  </style>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=3">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=3">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3">
-    <link rel="manifest" href="/site.webmanifest?v=3">
-    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png?v=3">
-    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png?v=3">
-  <link rel="stylesheet" href="/css/chat-widget.css" />
+    </style>
 </head>
 <body>
   <!-- React mounts a hidden root; the real page is this static markup. -->
@@ -1252,176 +852,210 @@
   <!-- ===================== FOUNDING STICKY BAR ===================== -->
   <div class="founding-sticky-bar" id="founding-sticky-bar" role="region" aria-label="Founding offer reminder">
     <p class="founding-sticky-bar-text">
-      ⚡ Only 10 founding spots available —
-      <a href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" id="founding-bar-link">Apply for founding access →</a>
+      ⚡ Only 3 founding spots left —
+      <a href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" id="founding-bar-link">Claim yours before they're gone →</a>
     </p>
     <button type="button" class="founding-sticky-bar-close" id="founding-sticky-bar-close" aria-label="Dismiss notification">×</button>
   </div>
-
 
   <!-- ===================== NAVBAR ===================== -->
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
       <a class="brand" href="#top" data-testid="nav-brand">
-        <img src="/android-chrome-192x192.png?v=3" alt="Elite AI" width="26" height="26" style="width:26px;height:26px;border-radius:6px" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect x="2"  y="13" width="3" height="6"  rx="1.5" fill="#ec1c8c"/>
+          <rect x="7"  y="9"  width="3" height="14" rx="1.5" fill="#ec1c8c"/>
+          <rect x="12" y="5"  width="3" height="22" rx="1.5" fill="#ec1c8c"/>
+          <rect x="17" y="9"  width="3" height="14" rx="1.5" fill="#ec1c8c"/>
+          <rect x="22" y="13" width="3" height="6"  rx="1.5" fill="#ec1c8c"/>
+          <rect x="27" y="15" width="3" height="2"  rx="1"   fill="#ec1c8c"/>
+        </svg>
         <span>Elite AI</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="#offer" data-testid="nav-offer">Offer</a>
-        <a href="#pricing" data-testid="nav-pricing">Pricing</a>
-        <a href="#how" data-testid="nav-how-it-works">How it works</a>
+        <a href="#how" data-testid="nav-link-how">How it Works</a>
+        <a href="#features" data-testid="nav-link-features">Features</a>
+        <a href="#pricing" data-testid="nav-link-pricing">Pricing</a>
       </nav>
       <div class="nav-cta">
-        <a class="btn btn-primary" href="#offer" data-testid="nav-cta-button">Create My AI Receptionist</a>
+        <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="nav-cta-sales">Talk to Sales</a>
+        <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="nav-cta-demo">Book a Demo</a>
         <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" data-testid="nav-burger">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
+    <!-- Mobile menu drawer -->
     <div class="nav-drawer" id="nav-drawer" data-testid="nav-drawer" aria-hidden="true">
       <div class="wrap">
-        <a href="#offer" class="nav-drawer-link">Offer</a>
-        <a href="#pricing" class="nav-drawer-link">Pricing</a>
-        <a href="#how" class="nav-drawer-link">How it works</a>
-        <a class="btn btn-primary" href="#offer">Create My AI Receptionist</a>
+        <a href="#how" class="nav-drawer-link" data-testid="mobile-link-how">How it Works</a>
+        <a href="#features" class="nav-drawer-link" data-testid="mobile-link-features">Features</a>
+        <a href="#pricing" class="nav-drawer-link" data-testid="mobile-link-pricing">Pricing</a>
+        <a class="btn btn-ghost" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="mobile-cta-sales">Talk to Sales</a>
+        <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="mobile-cta-demo">Book a Demo</a>
       </div>
     </div>
   </header>
 
   <main id="top">
     <!-- ===================== HERO ===================== -->
-    <section class="hero" data-testid="hero-section">
-      <div class="hero-wrap">
-        <div class="hero-layout">
-          <div class="hero-left">
-            <div class="reveal"><span class="hero-eyebrow">ONLY 30 FOUNDING CLIENTS</span></div>
-            <h1 class="hero-headline reveal" data-testid="hero-headline">AI Employees for Modern<br>Businesses</h1>
-            <p class="hero-sub reveal" data-testid="hero-subheadline">Launch your first AI receptionist with <span class="hero-highlight"><strong>€0 setup</strong></span>. Human-like AI that answers calls, captures leads, books appointments, and works 24/7</p>
-            <div class="hero-chips reveal">
-              <div class="chip"><span class="chip-label">Availability</span><span class="chip-value">Always on 24/7</span></div>
-              <div class="chip"><span class="chip-label">Response speed</span><span class="chip-value">Instant responses</span></div>
-              <div class="chip"><span class="chip-label">Languages</span><span class="chip-value">31+</span></div>
-            </div>
-            <div class="hero-ctas reveal">
-              <a class="btn btn-primary btn-arrow" href="#offer" data-testid="hero-primary-cta">Create My AI Receptionist</a>
-              <a class="btn btn-ghost" href="#offer" data-testid="hero-secondary-cta">See Founding Offer</a>
-            </div>
-            <p class="hero-micro reveal">Only 30 founding businesses accepted. Cancel during onboarding.</p>
-          </div>
-          <div class="hero-right">
-            <div class="hero-offer-card reveal" data-testid="hero-offer-card">
-              <p class="card-label">FOUNDING 30 INCLUDES</p>
-              <div class="hero-offer-row">
-                <div class="hero-offer-text">
-                  <div class="row-label">Setup Fee</div>
-                  <div class="row-sub">Normally €299–€499</div>
-                </div>
-                <div class="row-value row-value-pink">€0</div>
-              </div>
-              <div class="hero-offer-row">
-                <div class="hero-offer-text">
-                  <div class="row-label">Live AI Minutes</div>
-                  <div class="row-sub">77 min included</div>
-                </div>
-                <div class="row-value row-value-small">For launch testing</div>
-              </div>
-              <div class="hero-offer-row">
-                <div class="hero-offer-text">
-                  <div class="row-label">Custom AI Preview</div>
-                  <div class="row-sub">Ready within 1 hour</div>
-                </div>
-                <div class="row-value row-value-small">Demo preview</div>
-              </div>
-              <p class="hero-offer-foot">Plans start from €79/month.</p>
-              <p class="hero-card-note">Built around your business workflow.</p>
-            </div>
-          </div>
+    <section class="hero">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="label">For hospitality · legal · real estate · healthcare</span>
+        </div>
+        <h1 class="reveal">
+          Your Business <br/>
+          Never Stops <span class="pink">Answering</span>
+        </h1>
+        <p class="sub reveal">
+          Built for service businesses that can't afford to miss a lead. Your AI rep handles voice, chat, and booking — while you focus on the work.
+        </p>
+        <div class="hero-ctas reveal">
+          <a class="btn btn-primary btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="hero-cta-demo">Book a Demo Call</a>
+          <button class="btn btn-ghost btn-lg" id="hero-hear-it" data-testid="hero-cta-hear">See How It Works</button>
+        </div>
+        <div class="chips reveal">
+          <span class="chip" data-testid="chip-always-on">
+            <span class="chip-label">Always on</span>
+            <span class="chip-value">24/7</span>
+          </span>
+          <span class="chip" data-testid="chip-response">
+            <span class="chip-label">Response time</span>
+            <span class="chip-value">600ms</span>
+          </span>
+          <span class="chip" data-testid="chip-languages">
+            <span class="chip-label">Languages</span>
+            <span class="chip-value">31+</span>
+          </span>
         </div>
       </div>
     </section>
 
-    <!-- ===================== LIVE VOICE DEMO ===================== -->
-    <section class="voice-demo-section" data-testid="voice-demo-section">
-      <div class="voice-demo-wrap">
-        <div class="voice-demo-card reveal">
-          <div class="voice-demo-pill">LIVE VOICE DEMO</div>
-          <h2 class="voice-demo-title">Want to hear how your<br>AI receptionist could sound?</h2>
-          <p class="voice-demo-subtitle">Speak with the Elite AI receptionist first. She can explain the Founding 30 offer, answer questions, and guide you toward the next step.</p>
-          <div class="voice-demo-buttons">
-            <a href="#offer" class="btn btn-primary btn-lg btn-arrow">Create My AI Receptionist</a>
-            <a href="#offer" class="btn btn-outline-light btn-lg">Hear the AI Receptionist</a>
+    <!-- ===================== DEMO CARD ===================== -->
+    <section class="demo-wrap">
+      <div class="wrap">
+        <div class="demo-card reveal" id="demo-card" data-testid="demo-card">
+          <span class="scribble demo-scribble">try it live ↓</span>
+          <div class="waveform" aria-hidden="true">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
           </div>
-          <p class="voice-demo-footer">Powered by Elite AI · Available 24/7</p>
+          <h3>Talk to Elite Concierge — Live Demo</h3>
+          <p class="muted">Have an actual conversation with our AI agent. No forms, no waiting.</p>
+          <div id="retell-demo-widget">
+            <button class="btn btn-primary btn-lg" id="start-voice-demo" data-testid="start-voice-demo">Start Voice Demo</button>
+          </div>
+          <div class="demo-status" id="demo-status" aria-live="polite"></div>
         </div>
       </div>
     </section>
 
-    <!-- ===================== TRANSITION ===================== -->
-    <section class="never-miss-cta" aria-label="Transition">
+    <!-- ===================== TRANSITION: NEVER MISS A CALL ===================== -->
+    <section class="never-miss-cta" aria-label="Never miss a call">
       <div class="wrap">
         <div class="never-miss-inner">
-          <p style="font-size:13.5px; color:var(--ink-2); opacity:.4; letter-spacing:.03em; font-style:italic; font-weight:500">Most leads disappear before businesses reply.</p>
+          <p class="never-miss-hook">Just experienced that?</p>
+          <p class="never-miss-text">That's exactly what your customers hear when you miss a call — instead of voicemail, instead of nothing.</p>
+          <p class="never-miss-close">Every missed call is a lost client. Now imagine that never happening again.</p>
         </div>
       </div>
     </section>
 
     <!-- ===================== FOUNDING OFFER ===================== -->
+    <section class="social-proof" id="founding-offer" aria-label="Founding client offer">
+      <div class="wrap">
+        <div class="founding-card reveal" data-testid="founding-offer-card">
+          <p class="founding-card-label">Limited Founding Offer</p>
+          <h2 class="founding-card-title">Only 3 Founding Spots Left.</h2>
+          <p class="founding-card-sub">Your AI agent — built, integrated, and live in under a week.<br/>Handled personally by our founding team.</p>
+          <div class="founding-price-tag" data-testid="founding-price"><s>$599</s> setup fee <strong>$0 — Founding clients only</strong></div>
+          <div class="founding-pills">
+            <span class="founding-pill">✓ Done-for-you setup</span>
+            <span class="founding-pill">✓ Live in &lt; 1 week</span>
+            <span class="founding-pill">✓ 4 out of 5 missed calls recovered</span>
+          </div>
+          <p class="founding-clean-line">Full setup, integration &amp; first 30 days — completely free. No card needed.</p>
+          <p class="founding-retainer">After that, a simple monthly retainer based on your business size.<br/><strong>Most clients pay between €97–€297/month.</strong> Cancel anytime. No contracts.</p>
+          <p class="founding-spots" data-testid="founding-spots">⚡ Only 3 spots remaining</p>
+          <a class="founding-cta" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="founding-offer-cta">Claim Your Founding Spot →</a>
+          <p class="founding-talk">Not ready to book? <a href="#demo-card" class="founding-talk-link">Talk to the AI first →</a></p>
+        </div>
+      </div>
+    </section>
 
-
-
+    <!-- ===================== WHO IT'S FOR ===================== -->
+    <section class="who-for" aria-label="Industries we serve">
+      <div class="wrap">
+        <div class="who-for-head">
+          <h2 class="who-for-title">Sound familiar?</h2>
+          <p class="who-for-sub">Pick your situation — see exactly how it plays out.</p>
+        </div>
+        <div class="who-for-grid" data-testid="who-for-grid">
+          <article class="who-for-card">
+            <h3>Restaurant</h3>
+            <p class="who-for-problem">Reservation calls hit voicemail during the dinner rush.</p>
+            <p class="who-for-outcome">"Every table inquiry gets answered — even when the floor is packed."</p>
+            <a class="who-for-cta" href="#demo-card">See how it works for restaurants →</a>
+          </article>
+          <article class="who-for-card">
+            <h3>Law Firm</h3>
+            <p class="who-for-problem">New client intakes get missed on weekends.</p>
+            <p class="who-for-outcome">"Every potential case gets a real response, 24/7."</p>
+            <a class="who-for-cta" href="#demo-card">See how it works for law firms →</a>
+          </article>
+          <article class="who-for-card">
+            <h3>Real Estate Agency</h3>
+            <p class="who-for-problem">Leads go cold in minutes if you don't answer.</p>
+            <p class="who-for-outcome">"Your agent qualifies and books viewings while you're showing another property."</p>
+            <a class="who-for-cta" href="#demo-card">See how it works for real estate agencies →</a>
+          </article>
+          <article class="who-for-card">
+            <h3>Beauty Salon</h3>
+            <p class="who-for-problem">Clients call while you're mid-appointment and book elsewhere.</p>
+            <p class="who-for-outcome">"Keep filling your chair without stopping mid-service."</p>
+            <a class="who-for-cta" href="#demo-card">See how it works for beauty salons →</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <!-- ===================== HOW IT WORKS ===================== -->
     <section class="block" id="how">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="label">How it works</span>
-          <h2>From setup chat to<br>live AI receptionist</h2>
+          <span class="label">How It Works</span>
+          <h2>Live in Days,<br/>Not Months.</h2>
         </div>
 
         <div class="steps">
           <div class="step reveal">
             <div class="step-num-col">
               <div class="num">01</div>
+              <span class="step-when">Day 1</span>
             </div>
             <div>
-              <h3>Create your setup</h3>
-              <p>Answer a few questions in the Elite AI setup chat.</p>
+              <h3>Discovery & blueprint</h3>
+              <p>We map your current call flows, FAQs, and booking systems in a single 30-minute session. You leave with a one-page agent blueprint — every intent, every fallback, every handoff.</p>
             </div>
           </div>
           <div class="step reveal">
             <div class="step-num-col">
               <div class="num">02</div>
+              <span class="step-when">Days 2–5</span>
             </div>
             <div>
-              <h3>We review your flow</h3>
-              <p>We turn your business details into a custom AI receptionist structure.</p>
+              <h3>Build & integrate</h3>
+              <p>Our team writes your agent's voice, plugs into your CRM and calendar, and connects your existing phone number. You review a working agent within 3–5 business days.</p>
             </div>
           </div>
           <div class="step reveal">
             <div class="step-num-col">
               <div class="num">03</div>
+              <span class="step-when">Day 6 onwards</span>
             </div>
             <div>
-              <h3>Test your AI voice demo</h3>
-              <p>You test how your AI answers using your own business information.</p>
-            </div>
-          </div>
-          <div class="step reveal">
-            <div class="step-num-col">
-              <div class="num">04</div>
-            </div>
-            <div>
-              <h3>Go live</h3>
-              <p>Once approved, your AI receptionist starts handling real customer conversations.</p>
-            </div>
-          </div>
-          <div class="step reveal">
-            <div class="step-num-col">
-              <div class="num">05</div>
-            </div>
-            <div>
-              <h3>Optimize</h3>
-              <p>We refine the flow based on calls, leads, and customer behavior.</p>
+              <h3>Go live & optimize</h3>
+              <p>We launch in shadow mode, then go live. Every call is auto-transcribed, scored, and tuned weekly — your agent improves without you lifting a finger.</p>
             </div>
           </div>
         </div>
@@ -1432,42 +1066,72 @@
     <section class="block" id="features">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="label">Why Businesses Automate Customer Communication</span>
-          <h2>Never Miss Another<br/>Customer Opportunity</h2>
-          <p>AI reception systems that answer instantly and book customers automatically</p>
+          <span class="label">Features</span>
+          <h2>The infrastructure behind every Elite conversation.</h2>
+          <p>Enterprise-grade voice AI — built for businesses where every conversation is a revenue opportunity.</p>
         </div>
 
         <div class="feat-groups reveal" data-testid="features-grid">
           <div class="feat-board">
             <article class="feat-card">
               <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div>
-              <h3>Never Miss Calls</h3>
-              <p>Every customer inquiry gets answered — even after hours, on weekends, or during peak business hours.</p>
-            </article>
-            <article class="feat-card">
-              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-              <h3>Instant Lead Response</h3>
-              <p>Respond to new inquiries in seconds instead of losing leads to slow follow-ups.</p>
-            </article>
-            <article class="feat-card">
-              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-              <h3>More Booked Appointments</h3>
-              <p>Customers book directly into your calendar without unnecessary back-and-forth.</p>
-            </article>
-            <article class="feat-card">
-              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg></div>
-              <h3>Less Manual Work</h3>
-              <p>Automate summaries, follow-ups, and repetitive customer communication tasks.</p>
-            </article>
-            <article class="feat-card">
-              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-              <h3>24/7 Customer Availability</h3>
-              <p>Your business keeps answering customers even when your team is offline.</p>
+              <h3>Inbound &amp; outbound</h3>
+              <p>Take calls and run callbacks from one agent — no extra setup, no extra license.</p>
             </article>
             <article class="feat-card">
               <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-              <h3>Natural Customer Conversations</h3>
-              <p>Fast, human-like conversations designed to feel smooth and professional.</p>
+              <h3>Web chat</h3>
+              <p>Drop a single script on your site and your agent picks up chats with the same brain.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+              <h3>CRM sync</h3>
+              <p>HubSpot, Salesforce, Pipedrive, GoHighLevel — every call lands as a fully attributed contact.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+              <h3>Calendar booking</h3>
+              <p>Reads availability and books straight into Google, Outlook, or Calendly — confirmed.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+              <h3>31+ languages</h3>
+              <p>Native-sounding voices across every major market, with auto language detection mid-call.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="4" x2="9" y2="20"/><line x1="15" y1="4" x2="15" y2="20"/><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/></svg></div>
+              <h3>Your phone number</h3>
+              <p>Keep your existing line via SIP, or pick a new local or toll-free number in minutes.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+              <h3>Smart warm transfer</h3>
+              <p>When a human is needed, the agent briefs the rep before connecting — no &ldquo;let me repeat that.&rdquo;</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></div>
+              <h3>Transcripts &amp; summary</h3>
+              <p>Every call is transcribed, summarized, and tagged with next-step actions automatically.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+              <h3>SMS follow-ups</h3>
+              <p>Triggered texts after every call — reminders, links, no-show recovery, all rule-driven.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+              <h3>SOC 2 / HIPAA / GDPR</h3>
+              <p>Enterprise-grade compliance baked in. Regional data residency on request.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+              <h3>600ms latency</h3>
+              <p>Sub-second response times that feel like a real conversation — not a robot pause.</p>
+            </article>
+            <article class="feat-card">
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg></div>
+              <h3>Auto QA</h3>
+              <p>Every call scored against your playbook so you see drift before customers do.</p>
             </article>
           </div>
         </div>
@@ -1475,21 +1139,20 @@
       </div>
     </section>
 
-
     <!-- ===================== REVENUE RECOVERY CALCULATOR ===================== -->
-    <section class="block" id="calculator">
+    <section class="block" id="calculator" style="padding-top:0">
       <div class="wrap">
         <div class="section-head reveal" style="margin-bottom:44px">
           <span class="label">Revenue Recovery Calculator</span>
-          <h2>How Much Revenue Are Missed Calls<br/>Costing You?</h2>
-          <p style="font-size:17px; line-height:1.6; max-width:50ch; color:var(--muted); margin-top:14px; font-weight:500">Estimate lost revenue from missed calls and bookings</p>
+          <h2>See What You're Losing<br/>to Missed Calls.</h2>
+          <p>Drop in your numbers. We'll show you the money walking out the door every month — and how much of it Elite Concierge gets back.</p>
         </div>
 
         <div class="calc reveal" data-testid="calc">
           <div class="calc-form" data-testid="calc-form">
             <div class="calc-field calc-field-industry">
               <div class="calc-field-head">
-                <label for="calc-industry">What type of business do you run?</label>
+                <label for="calc-industry">I run a&hellip;</label>
               </div>
               <div class="calc-select-wrap">
                 <select id="calc-industry" data-testid="calc-industry">
@@ -1523,15 +1186,15 @@
             <div class="calc-field">
               <div class="calc-field-head">
                 <label for="calc-value">Average customer value</label>
-                <output id="calc-value-out" data-testid="calc-value-out">€120</output>
+                <output id="calc-value-out" data-testid="calc-value-out">$120</output>
               </div>
               <input type="range" id="calc-value" min="50" max="10000" step="10" value="120" data-testid="calc-value"/>
-              <div class="calc-range-marks"><span>€50</span><span>€2.5k</span><span>€5k</span><span>€10k+</span></div>
+              <div class="calc-range-marks"><span>$50</span><span>$2.5k</span><span>$5k</span><span>$10k+</span></div>
             </div>
 
             <div class="calc-field">
               <div class="calc-field-head">
-                <label for="calc-close">Customer conversion rate</label>
+                <label for="calc-close">Close rate</label>
                 <output id="calc-close-out" data-testid="calc-close-out">40%</output>
               </div>
               <input type="range" id="calc-close" min="1" max="100" step="1" value="40" data-testid="calc-close"/>
@@ -1539,22 +1202,22 @@
             </div>
 
             <div class="calc-assumption">
-              Businesses using our AI systems recover up to <b>80%</b> of previously missed customer calls and inquiries.
+              Assumes Elite Concierge recovers <b>80%</b> of currently-missed calls — our average across active clients.
             </div>
           </div>
 
           <div class="calc-result" data-testid="calc-result">
             <div class="calc-result-bg" aria-hidden="true"></div>
             <div class="calc-result-inner">
-              <div class="calc-result-label">Estimated lost revenue</div>
+              <div class="calc-result-label">You're leaving on the table</div>
               <div class="calc-result-big">
-                <span id="calc-annual" data-testid="calc-annual">€195,686</span>
+                <span id="calc-annual" data-testid="calc-annual">$195,686</span>
                 <span class="calc-result-unit">/ year</span>
               </div>
               <div class="calc-result-sub">
-                That's roughly <b><span id="calc-monthly" data-testid="calc-monthly">€16,307</span></b> a month walking past your front door.
+                That's roughly <b><span id="calc-monthly" data-testid="calc-monthly">$16,307</span></b> a month walking past your front door.
               </div>
-              <a class="btn btn-primary btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="calc-cta" style="margin-top:22px">Recover Lost Revenue</a>
+              <a class="btn btn-primary btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="calc-cta" style="margin-top:22px">Stop Losing Money Every Day</a>
             </div>
           </div>
         </div>
@@ -1566,89 +1229,70 @@
       <div class="wrap">
         <div class="section-head reveal" style="text-align:center; margin-left:auto; margin-right:auto">
           <span class="label">Pricing</span>
-          <h2>AI That Fits<br/>Your Business</h2>
-          <p style="margin-left:auto; margin-right:auto; max-width:48ch; opacity:0.85; margin-top:16px">From missed-call recovery to full AI front desks. Choose the setup that fits your business.</p>
+          <h2>Built Around Your Business,<br/>Not a Generic Plan.</h2>
+          <p style="margin-left:auto; margin-right:auto">Every business handles calls differently. Pick the surface your customers actually use — we price around the volume that matches your stage.</p>
         </div>
 
         <div class="price-grid">
-          <!-- CARD 1: STARTER -->
-          <div class="price-card reveal" data-testid="plan-starter">
-            <div class="card-head">
-              <div class="plan">Starter</div>
-              <div class="tag">AI Receptionist</div>
-              <p class="card-subtitle">Never miss another customer call.</p>
-            </div>
-            <div class="price-block">
-              <p class="price-main">€99<span style="font-size:16px;font-weight:400;color:var(--muted)">/mo</span></p>
-              <p class="price-setup-line">€149 one-time setup</p>
-              <p class="price-helper">Includes AI usage, hosting & support</p>
-            </div>
-            <p class="card-desc" style="margin-bottom:16px;font-size:12.5px;color:var(--muted)">Perfect for solo specialists & small local businesses.</p>
-            <ul>
-              <li>AI voice receptionist</li>
-              <li>FAQ answering</li>
-              <li>Missed-call recovery</li>
-              <li>Basic call routing</li>
-              <li>1 language included</li>
-              <li>200+ AI minutes/month</li>
-            </ul>
-            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="plan-starter-cta">Start Simple</a>
-          </div>
-
-          <!-- CARD 2: MOST POPULAR -->
-          <div class="price-card featured reveal" data-testid="plan-growth">
+          <div class="price-card featured reveal" data-testid="plan-voice">
             <span class="popular">Most Popular</span>
-            <div class="card-head">
-              <div class="plan">Growth</div>
-              <div class="tag">Smart Booking Assistant</div>
-              <p class="card-subtitle">Turn calls into booked appointments.</p>
-            </div>
-            <div class="price-block">
-              <p class="price-main">€249<span style="font-size:16px;font-weight:400;color:rgba(255,255,255,.6)">/mo</span></p>
-              <p class="price-setup-line">€299 one-time setup</p>
-              <p class="price-helper">Includes AI usage, support & optimization</p>
-            </div>
-            <p class="card-desc" style="margin-bottom:16px;font-size:12.5px;color:rgba(255,255,255,.65)">Best for busy salons, barbershops & growing teams.</p>
+            <div class="plan">Voice Agent</div>
+            <div class="tag">Never miss a sales call again.</div>
+            <p class="price-anchor price-anchor--accent">From $499/mo + one-time setup fee</p>
+            <p class="price-anchor-note">Setup fee covers discovery, build &amp; integration — done for you.</p>
+            <p style="margin:0 0 18px;font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.78)">Your AI rep answers every inbound call, qualifies the lead, and books the meeting — day and night.</p>
             <ul>
-              <li>AI booking assistant</li>
-              <li>Calendar integration</li>
-              <li>SMS reminders</li>
-              <li>Multilingual support</li>
-              <li>Lead capture</li>
-              <li>Analytics dashboard</li>
-              <li>500+ AI minutes/month</li>
+              <li>Inbound & outbound voice agent</li>
+              <li>Keep your existing phone number</li>
+              <li>Lead qualification &amp; live booking</li>
+              <li>CRM + calendar integration</li>
+              <li>Transcripts, summaries &amp; SMS follow-ups</li>
+              <li>Auto QA + weekly performance tuning</li>
             </ul>
-            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="plan-growth-cta">Get Started</a>
+            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-voice-cta">Book a demo</a>
           </div>
 
-          <!-- CARD 3: PREMIUM -->
-          <div class="price-card reveal" data-testid="plan-premium">
-            <div class="card-head">
-              <div class="plan">Premium</div>
-              <div class="tag">Full AI Front Desk</div>
-              <p class="card-subtitle">Your complete AI customer communication system.</p>
-            </div>
-            <div class="price-block">
-              <p class="price-main">€499+<span style="font-size:16px;font-weight:400;color:var(--muted)">/mo</span></p>
-              <p class="price-setup-line">Custom onboarding & setup</p>
-              <p class="price-helper">Advanced automation, support & scaling</p>
-            </div>
-            <p class="card-desc" style="margin-bottom:16px;font-size:12.5px;color:var(--muted)">Built for clinics, restaurants & high-volume businesses.</p>
+          <div class="price-card reveal" data-testid="plan-chat">
+            <span class="plan-badge plan-badge--popular">Most Feature-Rich</span>
+            <div class="plan">Chat Agent</div>
+            <div class="tag">Reply on every channel, instantly — 24/7.</div>
+            <p class="price-anchor price-anchor--accent">From $249/mo</p>
+            <p class="price-anchor-note">Quoted based on message volume and channels.</p>
+            <p style="margin:0 0 18px;font-size:14.5px;line-height:1.55;color:var(--ink-2)">Turn your website and social channels into a lead machine that never sleeps.</p>
             <ul>
-              <li>Voice + chat AI agents</li>
-              <li>Outbound follow-ups</li>
-              <li>CRM automation</li>
-              <li>WhatsApp integration</li>
-              <li>Advanced analytics</li>
-              <li>Reactivation campaigns</li>
-              <li>Custom workflows</li>
-              <li>1000+ AI minutes/month</li>
+              <li>Web chat + SMS + WhatsApp agent</li>
+              <li>Knowledge base auto-trained on your site</li>
+              <li>Lead capture, scoring &amp; CRM sync</li>
+              <li>Calendar booking in chat</li>
+              <li>31+ languages with consistent tone &amp; terminology</li>
+              <li>Smart human handoff when the bot hits its limit</li>
             </ul>
-            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="plan-premium-cta">Book a Strategy Call</a>
+            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-chat-cta">Get a quote</a>
+          </div>
+
+          <div class="price-card reveal" data-testid="plan-full">
+            <span class="plan-badge plan-badge--popular">Everything Included</span>
+            <div class="plan">Full Suite</div>
+            <div class="tag">Voice + chat, one shared brain.</div>
+            <p class="price-anchor price-anchor--accent">From $999/mo — everything included</p>
+            <p class="price-anchor-note">One price. Voice, chat, compliance, and a dedicated success engineer.</p>
+            <ul>
+              <li>Everything in Voice & Chat</li>
+              <li>Unified conversation history across channels</li>
+              <li>Smart warm transfer to humans</li>
+              <li>Dedicated success engineer</li>
+              <li>Sentiment analysis &amp; escalation rules</li>
+            </ul>
+            <div class="plan-trust footer-trust" data-testid="plan-full-trust">
+              <span class="trust-badge" data-testid="trust-soc2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SOC 2</span>
+              <span class="trust-badge" data-testid="trust-hipaa"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>HIPAA</span>
+              <span class="trust-badge" data-testid="trust-gdpr"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>GDPR</span>
+            </div>
+            <a class="btn btn-primary" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="plan-full-cta">Let's Build</a>
           </div>
         </div>
 
-        <p class="pricing-note">Need custom workflows or higher usage? <a href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer">Talk to us →</a></p>
+        <p class="pricing-note">All plans include onboarding. No long-term contracts required.</p>
       </div>
     </section>
 
@@ -1656,16 +1300,26 @@
     <section class="cta-section">
       <div class="wrap">
         <div class="cta-strip reveal">
-          <h2>Always on. Never on hold.<br/><span style="opacity:.7; font-weight:600">Never on payroll.</span></h2>
-          <p>Handle more customers without hiring staff<br/>Calls, bookings, and inquiries answered instantly</p>
+          <h2>Always on. Never on hold.<br/>Never on payroll.</h2>
+          <p>Join businesses cutting call handling costs by 80 percent while answering every inbound — voice, chat, after hours, in 31 languages.</p>
           <div class="row">
-            <a class="btn btn-light btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer" data-testid="strip-cta-strategy">Book a Strategy Call</a>
-            <a class="btn btn-outline-light btn-lg" href="#how" data-testid="strip-cta-how">See How It Works</a>
+            <a class="btn btn-light btn-lg btn-arrow" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="strip-cta-strategy">Book a Strategy Call</a>
+            <a class="btn btn-outline-light btn-lg" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="strip-cta-message">Talk to Sales →</a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ===================== FOUNDING BOTTOM CTA ===================== -->
+    <section class="founding-bottom-cta" aria-label="Founding offer closing call to action">
+      <h2 class="founding-bottom-title">Still here? So is your free setup — barely.</h2>
+      <div class="founding-bottom-sub">
+        <div><span class="price-strike">$599 setup</span> <strong>$0</strong> for 3 more businesses.</div>
+        <div>First 30 days free, then a simple monthly retainer.</div>
+        <div>No lock-in. Cancel anytime.</div>
+      </div>
+      <a class="founding-bottom-btn" href="https://calendly.com/dombrovskakate/30min" target="_blank" rel="noopener noreferrer" data-testid="founding-bottom-cta">Claim Your Spot Now →</a>
+    </section>
   </main>
 
   <!-- ===================== FOOTER ===================== -->
@@ -1673,47 +1327,51 @@
     <div class="wrap">
       <div class="cols">
         <div>
-          <h4>Solutions</h4>
+          <h4>Features</h4>
           <ul>
-            <li><a href="#features">AI Receptionists</a></li>
-            <li><a href="#industries">Industries</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#calculator">Revenue Calculator</a></li>
-            <li><a href="#demo-card">Demo</a></li>
+            <li><a href="#features">Voice Agents</a></li>
+            <li><a href="#features">Web Chat</a></li>
+            <li><a href="#features">CRM Integrations</a></li>
+            <li><a href="#features">Calendar Booking</a></li>
+            <li><a href="#features">Multilingual</a></li>
+            <li><a href="#features">Compliance</a></li>
           </ul>
         </div>
         <div>
           <h4>Company</h4>
           <ul>
+            <li><a href="#how">About</a></li>
             <li><a href="#" data-intent="message" data-testid="footer-contact">Contact</a></li>
-            <li><a href="https://calendly.com/dombrovskakate/strategy-call" target="_blank" rel="noopener noreferrer">Book a Strategy Call</a></li>
-            <li><a href="/privacy.html" data-testid="footer-privacy">Privacy</a></li>
-            <li><a href="/terms.html" data-testid="footer-terms">Terms</a></li>
           </ul>
         </div>
         <div class="brand-col">
           <div class="brand" style="color:#fff">
-            <img src="/android-chrome-192x192.png?v=3" alt="Elite AI" width="26" height="26" style="width:26px;height:26px;border-radius:6px" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <rect x="2"  y="13" width="3" height="6"  rx="1.5" fill="#ec1c8c"/>
+              <rect x="7"  y="9"  width="3" height="14" rx="1.5" fill="#ec1c8c"/>
+              <rect x="12" y="5"  width="3" height="22" rx="1.5" fill="#ec1c8c"/>
+              <rect x="17" y="9"  width="3" height="14" rx="1.5" fill="#ec1c8c"/>
+              <rect x="22" y="13" width="3" height="6"  rx="1.5" fill="#ec1c8c"/>
+              <rect x="27" y="15" width="3" height="2"  rx="1"   fill="#ec1c8c"/>
+            </svg>
             <span>Elite AI</span>
           </div>
-          <p style="color:rgba(255,255,255,.4); font-size:11.5px; margin-top:10px; letter-spacing:.02em">AI Receptionists for Modern Businesses</p>
           <div class="links">
             <a href="mailto:hello@eliteai.space" data-testid="footer-email">hello@eliteai.space</a>
-            <span class="footer-location">Based in Lisbon, Portugal — serving clients globally</span>
+            <span class="footer-location">Based in Lisbon, Portugal, serving clients globally</span>
           </div>
         </div>
       </div>
       <div class="rule"></div>
       <div class="footer-trust" data-testid="footer-trust">
+        <span class="trust-badge" data-testid="trust-soc2"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SOC 2</span>
+        <span class="trust-badge" data-testid="trust-hipaa"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>HIPAA</span>
+        <span class="trust-badge" data-testid="trust-gdpr"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>GDPR</span>
         <span class="trust-badge" data-testid="trust-uptime"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>99.99% Uptime</span>
-        <span class="trust-badge" data-testid="trust-availability"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>24/7 Availability</span>
-        <span class="trust-badge" data-testid="trust-voice-chat"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Voice + Chat</span>
-        <span class="trust-badge" data-testid="trust-multilingual"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Multilingual</span>
-        <span class="trust-badge" data-testid="trust-setup"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Fast Setup</span>
       </div>
       <div class="bottom">
         <span>© 2026 Elite AI</span>
-        <span></span>
+        <span><a href="/privacy.html" data-testid="footer-privacy">Privacy</a> &nbsp;·&nbsp; <a href="/terms.html" data-testid="footer-terms">Terms</a></span>
       </div>
     </div>
   </footer>
@@ -1767,8 +1425,12 @@
 
   <!-- ===================== APP SCRIPT (module) ===================== -->
   <script type="module">
-    // Backend API — Vercel serverless function at /api/create-web-call
-    const BACKEND = window.location.origin;
+    // CRA substitutes %REACT_APP_BACKEND_URL% in public/index.html at build/dev time.
+    // Falls back to window.location.origin if substitution was skipped.
+    const RAW_BACKEND = "%REACT_APP_BACKEND_URL%";
+    const BACKEND = (RAW_BACKEND && !RAW_BACKEND.includes("REACT_APP_BACKEND_URL"))
+      ? RAW_BACKEND
+      : window.location.origin;
 
     // ---------- Sticky navbar shade on scroll ----------
     const nav = document.getElementById("nav");
@@ -1917,15 +1579,12 @@
       }
     });
 
-    // ---------- Retell voice demo ----------
-    document.querySelectorAll('.who-for-cta[href="#demo-card"]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = document.getElementById('demo-card');
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      });
+    // ---------- "See How It Works" smooth-scrolls to demo card ----------
+    document.getElementById("hero-hear-it").addEventListener("click", () => {
+      document.getElementById("demo-card").scrollIntoView({ behavior: "smooth", block: "center" });
     });
 
+    // ---------- Retell voice demo ----------
     const startBtn = document.getElementById("start-voice-demo");
     const demoCard = document.getElementById("demo-card");
     const statusEl = document.getElementById("demo-status");
@@ -1939,11 +1598,10 @@
       activeCall = false;
       demoCard.classList.remove("is-live");
       startBtn.disabled = false;
-      startBtn.textContent = "Try it now";
+      startBtn.textContent = "Start Voice Demo";
     };
 
-    startBtn.addEventListener("click", async (e) => {
-      e.preventDefault();
+    startBtn.addEventListener("click", async () => {
       if (activeCall) { await endCall(); setStatus("Call ended."); return; }
 
       startBtn.disabled = true;
@@ -1982,7 +1640,7 @@
         const msg = (err && err.message) ? err.message : String(err);
         setStatus(`Could not start demo: ${msg}`);
         startBtn.disabled = false;
-        startBtn.textContent = "Try it now";
+        startBtn.textContent = "Start Voice Demo";
       }
     });
 
@@ -2021,10 +1679,10 @@
 
     const fmtMoney = (n) => {
       const v = Math.round(n);
-      if (v >= 1000000) return "€" + (v / 1000000).toFixed(v >= 10000000 ? 0 : 1) + "M";
-      return "€" + v.toLocaleString("en-US");
+      if (v >= 1000000) return "$" + (v / 1000000).toFixed(v >= 10000000 ? 0 : 1) + "M";
+      return "$" + v.toLocaleString("en-US");
     };
-    const fmtValueLabel  = (v) => v >= 10000 ? "€10k+" : "€" + Number(v).toLocaleString("en-US");
+    const fmtValueLabel  = (v) => v >= 10000 ? "$10k+" : "$" + Number(v).toLocaleString("en-US");
     const fmtMissedLabel = (v) => v >= 200 ? "200+" : String(v);
 
     const setRangeFill = (el) => {
@@ -2087,16 +1745,5 @@
     applyIndustryPreset();
     recompute();
   </script>
-  <!-- Elite AI CTA Click Tracking -->
-  <script>
-    document.addEventListener('click', function(e) {
-      var el = e.target.closest('[data-testid]');
-      if (!el) return;
-      var id = el.getAttribute('data-testid');
-      var label = (el.textContent || '').trim().slice(0, 60);
-      plausible('CTA Click', {props: {button: id, label: label}});
-    });
-  </script>
-  <script src="/js/chat-widget.js"></script>
 </body>
 </html>
