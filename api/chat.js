@@ -95,7 +95,7 @@ export default async function handler(req, res) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: 'gpt-5.5', // will update to actual model when available
+          model: 'gpt-4o-mini', // will update to actual model when available
           messages: [
             { role: 'system', content: SYSTEM_PROMPT },
             { role: 'user', content: `User answered: "${answer}". Now ask the next question. Keep it warm and brief (2 sentences max).` }
