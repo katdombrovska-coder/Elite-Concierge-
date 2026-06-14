@@ -7,21 +7,21 @@
     apiBase: '/api',
     questions: [
       { step: 1, question: "What's the name of your business?", field: 'business_name', type: 'text' },
-      { step: 2, question: "What type of business is it?", field: 'industry', type: 'options', options: ['Beauty salon / spa','Clinic / dental / medical','Real estate','Restaurant / hospitality','Home services','Gym / wellness','Agency / consulting','Ecommerce','Other'] },
-      { step: 3, question: "Do you have a website, Instagram, or Google Maps link we should use?", field: 'business_links', type: 'text' },
+      { step: 2, question: "What type of business is it?", field: 'industry', type: 'options-multi', options: ['Beauty salon / spa','Clinic / dental / medical','Real estate','Restaurant / hospitality','Home services','Gym / wellness','Agency / consulting','Ecommerce','Other'] },
+      { step: 3, question: "Do you have a website, Instagram, or Google Maps link we should use? Please paste the URL.", field: 'business_links', type: 'link' },
       { step: 4, question: "Where is your business located, and do you serve clients locally, online, or both?", field: 'location_service_area', type: 'text' },
       { step: 5, question: "What are the main services your business offers?", field: 'main_services', type: 'text' },
       { step: 6, question: "Do you want the AI to mention prices or price ranges? If yes, please add them here.", field: 'pricing_info', type: 'text' },
       { step: 7, question: "What are your opening hours?", field: 'opening_hours', type: 'text' },
-      { step: 8, question: "Which languages should your AI speak?", field: 'languages', type: 'options', options: ['English','Portuguese','Ukrainian','Russian','Spanish','French','Other'] },
-      { step: 9, question: "What should your AI employee mainly do?", field: 'main_ai_goal', type: 'options-multi', options: ['Answer common questions','Book appointments','Qualify leads','Handle missed calls','Take messages','Transfer urgent calls','Follow up on leads','Other'] },
-      { step: 10, question: "How should bookings work?", field: 'booking_method', type: 'options', options: ['Calendar link','WhatsApp confirmation','Phone confirmation','Manual approval','CRM integration','I don\'t know yet','No booking needed'] },
-      { step: 11, question: "What information should the AI collect from your customers?", field: 'customer_info_to_collect', type: 'options-multi', options: ['Name','Phone number','Email','Service needed','Preferred date/time','Budget','Location','Urgency','Notes / special request'] },
+      { step: 8, question: "Which languages should your AI speak? (Choose up to 2)", field: 'languages', type: 'options-limited', options: ['English','Portuguese','Ukrainian','Russian','Spanish','French','Other'], maxSelect: 2 },
+      { step: 9, question: "What should your AI employee mainly do? (Choose all that apply)", field: 'main_ai_goal', type: 'options-multi', options: ['Answer common questions','Book appointments','Qualify leads','Handle missed calls','Take messages','Transfer urgent calls','Follow up on leads','Other'] },
+      { step: 10, question: "How should bookings work?", field: 'booking_method', type: 'options-multi', options: ['Calendar link','WhatsApp confirmation','Phone confirmation','Manual approval','CRM integration','I don\'t know yet','No booking needed'] },
+      { step: 11, question: "What information should the AI collect from your customers? (Choose all that apply)", field: 'customer_info_to_collect', type: 'options-multi', options: ['Name','Phone number','Email','Service needed','Preferred date/time','Budget','Location','Urgency','Notes / special request'] },
       { step: 12, question: "What questions do customers usually ask before booking or buying?", field: 'common_customer_questions', type: 'text' },
       { step: 13, question: "When should the AI transfer or escalate to a human? (e.g. urgent cases, angry customer, special request, high-value lead)", field: 'escalation_rules', type: 'text' },
-      { step: 14, question: "Where should new leads or call summaries be sent?", field: 'lead_destination', type: 'options', options: ['Email','WhatsApp','Telegram','CRM','Google Sheet','Other'] },
-      { step: 14.5, question: "Please add the destination detail — for example the email address, WhatsApp number, Telegram username, CRM name, or Google Sheet info.", field: 'lead_destination_detail', type: 'text', skipCondition: function(answers) { return !answers.lead_destination; } },
-      { step: 15, question: "How should your AI sound?", field: 'tone_of_voice', type: 'options', options: ['Professional','Warm','Luxury','Friendly','Calm','Direct','Energetic'] },
+      { step: 14, question: "Where should new leads or call summaries be sent?", field: 'lead_destination', type: 'options-multi', options: ['Email','WhatsApp','Telegram','CRM','Google Sheet','Other'] },
+      { step: 14.5, question: "Please add the destination detail — for example the email address, WhatsApp number, Telegram username, CRM name, or Google Sheet info.", field: 'lead_destination_detail', type: 'text', skipCondition: function(answers) { return !answers.lead_destination || answers.lead_destination === ''; } },
+      { step: 15, question: "How should your AI sound?", field: 'tone_of_voice', type: 'options-multi', options: ['Professional','Warm','Luxury','Friendly','Calm','Direct','Energetic'] },
       { step: 16, question: "Is there anything your AI must never say, promise, or do?", field: 'restrictions', type: 'text' },
       { step: 17, question: "Any special rules we should know? For example cancellation policy, deposits, emergency cases, service limits, or important notes.", field: 'special_business_rules', type: 'text' },
       { step: 18, question: "Where should we send your AI receptionist preview? Please provide your name, email, and WhatsApp/phone.", field: 'contact_details', type: 'contact', fields: ['contact_name','contact_email','contact_phone'] },
@@ -85,21 +85,78 @@
     text.textContent = 'Step ' + currentStep + ' of ' + CONFIG.totalSteps;
   }
 
-  function showOptions(options, multi, callback) {
+  function showOptions(options, multi, maxSelect, callback) {
     const container = document.getElementById('chat-messages');
     const wrapper = document.createElement('div');
     wrapper.className = 'chat-options';
+    const selected = [];
 
     options.forEach(opt => {
       const btn = document.createElement('button');
       btn.className = 'chat-option-btn';
       btn.textContent = opt;
+      btn.dataset.value = opt;
+
       btn.onclick = () => {
-        wrapper.querySelectorAll('.chat-option-btn').forEach(b => b.disabled = true);
-        callback(opt);
+        if (multi) {
+          const idx = selected.indexOf(opt);
+          if (idx >= 0) {
+            // Deselect
+            selected.splice(idx, 1);
+            btn.style.background = '';
+            btn.style.color = '';
+            btn.style.borderColor = '';
+          } else {
+            // Check max limit
+            if (maxSelect && selected.length >= maxSelect) {
+              // Deselect the first selected one
+              const first = selected.shift();
+              const firstBtn = wrapper.querySelector('.chat-option-btn[data-value="' + first + '"]');
+              if (firstBtn) {
+                firstBtn.style.background = '';
+                firstBtn.style.color = '';
+                firstBtn.style.borderColor = '';
+              }
+            }
+            selected.push(opt);
+            btn.style.background = 'var(--accent)';
+            btn.style.color = '#fff';
+            btn.style.borderColor = 'var(--accent)';
+          }
+        } else {
+          selected.length = 0;
+          selected.push(opt);
+          wrapper.querySelectorAll('.chat-option-btn').forEach(b => {
+            b.style.background = '';
+            b.style.color = '';
+            b.style.borderColor = '';
+          });
+          btn.style.background = 'var(--accent)';
+          btn.style.color = '#fff';
+          btn.style.borderColor = 'var(--accent)';
+          callback(opt);
+          return;
+        }
       };
+
       wrapper.appendChild(btn);
     });
+
+    // Done button for multi-select
+    const doneBtn = document.createElement('button');
+    doneBtn.className = 'chat-option-btn';
+    doneBtn.textContent = 'Done ✓';
+    doneBtn.style.fontWeight = '700';
+    doneBtn.style.background = 'rgba(236,28,140,.15)';
+    doneBtn.onclick = () => {
+      if (selected.length === 0) {
+        callback('not specified');
+      } else {
+        callback(selected.join(', '));
+      }
+      wrapper.remove();
+    };
+    wrapper.appendChild(doneBtn);
 
     container.appendChild(wrapper);
     container.scrollTop = container.scrollHeight;
@@ -114,48 +171,16 @@
     const q = CONFIG.questions[idx];
     addMessage(q.question, 'bot');
 
-    if (q.type === 'options' || q.type === 'options-multi') {
-      const selected = [];
-      const selectHandler = function(opt) {
-        if (q.type === 'options-multi') {
-          const b = Array.from(document.querySelectorAll('.chat-options .chat-option-btn')).find(b2 => b2.textContent === opt);
-          if (b) {
-            if (selected.includes(opt)) {
-              selected.splice(selected.indexOf(opt), 1);
-              b.style.background = '';
-              b.style.color = '';
-              b.style.borderColor = '';
-            } else {
-              selected.push(opt);
-              b.style.background = 'var(--accent)';
-              b.style.color = '#fff';
-              b.style.borderColor = 'var(--accent)';
-            }
-          }
-        } else {
-          submitAnswer(opt);
-        }
-      };
-
-      showOptions(q.options, q.type === 'options-multi', selectHandler);
-
-      if (q.type === 'options-multi') {
-        const container = document.getElementById('chat-messages');
-        const doneBtn = document.createElement('button');
-        doneBtn.className = 'chat-option-btn';
-        doneBtn.textContent = 'Done ✓';
-        doneBtn.style.fontWeight = '700';
-        doneBtn.style.background = 'rgba(236,28,140,.15)';
-        doneBtn.onclick = () => {
-          if (selected.length === 0) {
-            submitAnswer('not specified');
-          } else {
-            submitAnswer(selected.join(', '));
-          }
-          doneBtn.remove();
-        };
-        container.appendChild(doneBtn);
-      }
+    if (q.type === 'options-multi' || q.type === 'options-limited') {
+      showOptions(q.options, true, q.maxSelect || 0, (val) => submitAnswer(val));
+    } else if (q.type === 'link') {
+      // Link input — require an actual URL
+      enableInput();
+      document.getElementById('chat-input').placeholder = 'Paste your URL here...';
+      // Add a gentle reminder
+      setTimeout(() => {
+        addMessage('💡 Please paste the actual link (e.g. https://yourbusiness.com). This helps us build a better AI for you.', 'bot');
+      }, 1500);
     } else if (q.type === 'contact') {
       showContactForm();
     } else if (q.type === 'final') {
@@ -203,7 +228,7 @@
   }
 
   function showFinalOptions() {
-    showOptions(['Submit Setup for Review','Edit Answers','Book a Demo Call'], false, (opt) => {
+    showOptions(['Submit Setup for Review','Edit Answers','Book a Demo Call'], false, 0, (opt) => {
       if (opt === 'Submit Setup for Review') {
         submitSetup();
       } else if (opt === 'Edit Answers') {
@@ -295,12 +320,7 @@
     const q = CONFIG.questions.find(q2 => q2.step === currentStep);
     if (!q) { isProcessing = false; return; }
 
-    if (q.type !== 'contact' && q.type !== 'final') {
-      answers[q.field] = val;
-    } else if (q.type === 'final') {
-      answers[q.field] = val;
-    }
-
+    answers[q.field] = val;
     addMessage(val, 'user');
     disableInput();
     showTyping();
@@ -312,36 +332,31 @@
         body: JSON.stringify({ sessionId, step: currentStep, field: q.field, answer: val, answers })
       });
 
-      if (!resp.ok) {
-        throw new Error('Server error: ' + resp.status);
-      }
-
+      if (!resp.ok) throw new Error('Server error: ' + resp.status);
       const data = await resp.json();
       removeTyping();
 
-      if (data.llmResponse) {
-        addMessage(data.llmResponse, 'bot');
-      }
+      // Don't show LLM acknowledgment — frontend handles the next question directly
+      // This prevents the "two message" and "wrong question" bugs
 
       setTimeout(() => {
         isProcessing = false;
         askQuestion();
-      }, 800);
+      }, 400);
     } catch(e) {
       removeTyping();
       console.error('Chat API error:', e);
-      // Fallback: continue without LLM
       setTimeout(() => {
         isProcessing = false;
         askQuestion();
-      }, 800);
+      }, 400);
     }
   }
 
   function enableInput() {
     const inp = document.getElementById('chat-input');
     const btn = document.getElementById('chat-send-btn');
-    if (inp) { inp.disabled = false; inp.focus(); }
+    if (inp) { inp.disabled = false; inp.focus(); inp.placeholder = 'Type your answer...'; }
     if (btn) btn.disabled = false;
   }
   function disableInput() {

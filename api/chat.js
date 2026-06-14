@@ -2,6 +2,8 @@
  *
  * Storage: Neon Postgres (persistent, never sleeps)
  * LLM: Google Gemini 2.5 Flash (free tier)
+ * NOTE: LLM is NOT used for acknowledgments. Frontend asks next question directly.
+ * This prevents double-message and out-of-order question bugs.
  */
 
 import { Pool } from 'pg';
@@ -12,50 +14,6 @@ const pool = new Pool({
 });
 
 const GEMINI_KEY = process.env.GEMINI_API_KEY || '';
-
-const SYSTEM_PROMPT = `You are the Elite AI Setup Assistant — a warm, professional onboarding specialist helping business owners create their custom AI receptionist setup.
-
-RULES:
-- Be warm, calm, premium, and concise (2-3 sentences max).
-- Acknowledge their answer naturally, then ask the next question.
-- Never skip questions.
-- Never invent missing information.
-- Never promise the AI is already live or guaranteed revenue.
-- Never change offer terms (€0 founding setup, 77 testing minutes, from €79/mo).
-- Sound human, not robotic.
-- If their answer is vague, ask one gentle clarification.
-- If they say "skip" or "I don't know", acknowledge and move on smoothly.
-- Keep responses short — 1-2 sentences.`;
-
-async function callGemini(answer) {
-  if (!GEMINI_KEY) return null;
-
-  try {
-    const resp = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [
-            { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
-            { role: 'model', parts: [{ text: 'I understand. I will be warm, concise, and helpful.' }] },
-            { role: 'user', parts: [{ text: `User answered: "${answer}". Acknowledge their answer in 1 short warm sentence and move to the next question. Keep it to 1-2 sentences max.` }] }
-          ],
-          generationConfig: { maxOutputTokens: 150, temperature: 0.7 }
-        })
-      }
-    );
-
-    const data = await resp.json();
-    if (data.candidates && data.candidates[0] && data.candidates[0].content) {
-      return data.candidates[0].content.parts[0].text.trim();
-    }
-  } catch (e) {
-    console.error('Gemini error:', e.message);
-  }
-  return null;
-}
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -121,12 +79,11 @@ export default async function handler(req, res) {
     }
   }
 
-  // Chat: process answer
+  // Chat: process answer — just save to DB, no LLM response needed
   if (!sessionId || !step || !answer) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  // Save answer to session
   try {
     await pool.query(
       `INSERT INTO ai_receptionist_submissions (session_id, created_at) VALUES ($1, NOW())
@@ -154,38 +111,10 @@ export default async function handler(req, res) {
     console.error('DB save error:', e.message);
   }
 
-  // LLM response via Gemini
-  let llmResponse = await callGemini(answer);
-
-  // Fallback when Gemini unavailable
-  if (!llmResponse) {
-    const fallbacks = {
-      1: `Great — ${answer} is noted! Let me ask a few more things.`,
-      2: `Perfect, ${answer} — that helps us tailor everything.`,
-      3: answer !== 'not specified' ? `Got the links — helpful context for your AI.` : `No worries, we'll work with what we have.`,
-      4: `Location noted: ${answer}. This helps with local optimization.`,
-      5: `Excellent — these will be core to the AI's knowledge.`,
-      6: answer !== 'not specified' ? `Pricing info saved. The AI will reference these.` : `We can add pricing later.`,
-      7: `Opening hours set. The AI will respect these.`,
-      8: `Languages: ${answer}. The AI will be fluent in all of them.`,
-      9: `Goal: ${answer}. This will be the AI's primary focus.`,
-      10: `Booking method: ${answer}. We'll configure it accordingly.`,
-      11: `Customer info to collect: ${answer}. Noted.`,
-      12: answer !== 'not specified' ? `Common questions noted — the AI will handle them.` : `We'll build a strong FAQ base.`,
-      13: answer !== 'not specified' ? `Escalation rules set.` : `We'll set sensible defaults.`,
-      14: `Lead destination: ${answer}. Perfect.`,
-      14.5: answer !== 'not specified' ? `Destination detail saved.` : `We'll configure this during onboarding.`,
-      15: `Tone: ${answer}. The AI will match this perfectly.`,
-      16: answer !== 'not specified' ? `Restrictions noted.` : `We'll apply sensible guardrails.`,
-      17: answer !== 'not specified' ? `Special rules saved. Very helpful.` : `We'll cover the essentials.`,
-      18: `Contact details received. We'll reach out with your AI preview.`
-    };
-    llmResponse = fallbacks[step] || 'Got it, thanks!';
-  }
-
+  // Return empty llmResponse — frontend handles next question directly
   return res.status(200).json({
     success: true,
     nextStep: step + 1,
-    llmResponse
+    llmResponse: null
   });
 }
