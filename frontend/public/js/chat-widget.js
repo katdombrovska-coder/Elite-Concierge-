@@ -432,11 +432,25 @@
     document.getElementById('chat-window').classList.add('open');
     document.getElementById('chat-fab').classList.add('hidden');
     document.body.classList.add('widget-open');
-    if (currentIdx === 0) {
-      getSessionId();
-      addMsg("Hi, I'm the Elite AI Setup Assistant. I'll ask a few simple questions and prepare the first version of your AI receptionist setup. You don't need any technical knowledge — just answer naturally.", 'bot');
-      setTimeout(ask, 1200);
-    }
+
+    // Reset everything for a fresh session
+    currentIdx = 0;
+    answers = {};
+    history = [];
+    sessionId = '';
+    isSubmitting = false;
+
+    // Clear all messages
+    const c = document.getElementById('chat-messages');
+    c.innerHTML = '';
+
+    // Restore input area
+    const inputArea = document.getElementById('chat-input-area');
+    if (inputArea) inputArea.style.display = '';
+
+    getSessionId();
+    addMsg("Hi, I'm the Elite AI Setup Assistant. I'll ask a few simple questions and prepare the first version of your AI receptionist setup. You don't need any technical knowledge — just answer naturally.", 'bot');
+    setTimeout(ask, 1200);
   }
 
   function closeChat() {
