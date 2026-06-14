@@ -395,3 +395,48 @@
     font-size: 14px;
   }
 }
+
+/* Other input field */
+.other-input-wrap {
+  width: 100%;
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+  align-items: center;
+}
+.other-input-wrap input {
+  flex: 1;
+  padding: 8px 14px;
+  border: 1px solid #e9d9d4;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color .2s;
+}
+.other-input-wrap input:focus {
+  border-color: var(--accent);
+}
+.other-input-wrap button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: transform .18s;
+}
+.other-input-wrap button:hover {
+  transform: scale(1.1);
+}
+
+/* Back button hover */
+.chat-header-back:hover {
+  background: rgba(255,255,255,.2) !important;
+}
