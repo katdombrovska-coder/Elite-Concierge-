@@ -1,10 +1,47 @@
-/* ===== Elite AI Submit API — Neon Postgres ===== */
+/* ===== Elite AI Submit API — Neon Postgres + Resend Email ===== */
 import { Pool } from 'pg';
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false }
 });
+
+async function sendNotificationEmail(answers) {
+  const RESEND_KEY = process.env.RESEND_API_KEY;
+  if (!RESEND_KEY) return;
+
+  const fields = Object.entries(answers)
+    .filter(([k, v]) => v && v !== 'not specified' && !['final_summary','submission_status'].includes(k))
+    .map(([k, v]) => `<strong>${k.replace(/_/g, ' ')}:</strong> ${v}`)
+    .join('<br>');
+
+  try {
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${RESEND_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        from: 'Elite AI <onboarding@eliteai.space>',
+        to: ['kat@eliteai.space'],
+        subject: '🎉 New AI Receptionist Setup — ' + (answers.business_name || 'Unknown'),
+        html: `
+          <h2>New AI Setup Submission</h2>
+          <p><strong>Business:</strong> ${answers.business_name || 'N/A'}</p>
+          <p><strong>Industry:</strong> ${answers.industry || 'N/A'}</p>
+          <p><strong>Contact:</strong> ${answers.contact_name || 'N/A'} | ${answers.contact_email || 'N/A'} | ${answers.contact_phone || 'N/A'}</p>
+          <hr>
+          <p>${fields}</p>
+          <hr>
+          <p><em>Submitted via eliteai.space</em></p>
+        `
+      })
+    });
+  } catch (e) {
+    console.error('Resend error:', e.message);
+  }
+}
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -28,9 +65,7 @@ export default async function handler(req, res) {
         restrictions, special_business_rules, contact_name, contact_email,
         contact_phone, final_summary, submission_status
       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24)
-      ON CONFLICT (session_id) DO UPDATE SET
-        submission_status='submitted',
-        final_summary=$23`,
+      ON CONFLICT (session_id) DO UPDATE SET submission_status='submitted', updated_at=NOW()`,
       [
         sessionId,
         a.business_name||'', a.industry||'', a.business_links||'',
@@ -45,15 +80,12 @@ export default async function handler(req, res) {
       ]
     );
 
-    // PLACEHOLDERS:
-    // - Resend email notification
-    // - Google Sheets sync
-    // - Retell AI agent creation
-    // - Stripe activation
-    // - WhatsApp notification
+    // Send email notification to Kat
+    await sendNotificationEmail(a);
 
     return res.status(200).json({ success: true });
   } catch (e) {
+    console.error('Submit error:', e.message);
     return res.status(500).json({ success: false, error: e.message });
   }
 }
