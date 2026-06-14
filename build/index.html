@@ -2117,65 +2117,104 @@
   <script src="/js/chat-widget.js"></script>
 
     <!-- ===== Retell AI Voice Demo ===== -->
-    <script src="https://cdn.jsdelivr.net/npm/@retell/retell-web-widget@latest/dist/retell-web-widget.min.js"></script>
     <script>
       (function() {
         var btn = document.getElementById('demo-start-btn');
         var waveform = document.getElementById('demo-waveform');
         var status = document.getElementById('demo-status');
-        var widgetStarted = false;
+        var retellClient = null;
+        var activeCall = false;
+        var callStream = null;
 
         if (!btn) return;
 
-        btn.addEventListener('click', function() {
-          if (!widgetStarted) {
-            if (typeof RetellWebWidget === 'undefined') {
-              status.textContent = 'Loading voice demo...';
-              var script = document.createElement('script');
-              script.src = 'https://cdn.jsdelivr.net/npm/@retell/retell-web-widget@latest/dist/retell-web-widget.min.js';
-              script.onload = initRetell;
-              script.onerror = function() { status.textContent = 'Unable to load. Please try again.'; };
-              document.head.appendChild(script);
-            } else {
-              initRetell();
-            }
+        btn.addEventListener('click', async function() {
+          if (activeCall) {
+            try { if (retellClient) await retellClient.stopCall(); } catch(e) {}
+            if (callStream) callStream.getTracks().forEach(t => t.stop());
+            activeCall = false;
+            status.textContent = 'Call ended. Tap to try again.';
+            status.className = 'voice-demo-status';
+            waveform.classList.add('paused');
+            btn.disabled = false;
+            btn.textContent = 'Hear the AI Receptionist';
+            return;
           }
-        });
 
-        function initRetell() {
-          widgetStarted = true;
-          status.textContent = 'Connecting...';
           btn.disabled = true;
-          btn.textContent = 'Connecting...';
+          btn.textContent = 'Requesting mic...';
+          status.textContent = 'Requesting microphone access...';
 
-          RetellWebWidget.createCall({
-            agentId: 'agent_3f3c271c4814e6f07278f7db49',
-            accessToken: 'key_631a6e889dfcfa38df342ad86221',
-            onCallStart: function() {
-              status.textContent = 'Listening...';
+          try {
+            callStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            callStream.getTracks().forEach(t => t.stop());
+
+            status.textContent = 'Starting secure session...';
+            btn.textContent = 'Starting...';
+
+            var res = await fetch('/api/create-web-call', { method: 'POST' });
+            if (!res.ok) {
+              var t = await res.text();
+              throw new Error(t || 'Backend error (' + res.status + ')');
+            }
+            var data = await res.json();
+            var accessToken = data.access_token;
+            if (!accessToken) throw new Error('No access token returned');
+
+            status.textContent = 'Loading AI agent...';
+            btn.textContent = 'Loading...';
+
+            var mod = await import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm');
+            var RetellWebClient = mod.RetellWebClient || mod.default?.RetellWebClient || mod.default;
+            retellClient = new RetellWebClient();
+
+            retellClient.on('call_started', function() {
+              status.textContent = 'Connecting to agent...';
+            });
+            retellClient.on('call_ready', function() {
+              status.textContent = 'Live — AI receptionist is speaking';
               status.className = 'voice-demo-status speaking';
               waveform.classList.remove('paused');
-              btn.textContent = 'In Call';
-            },
-            onCallEnd: function() {
+              btn.disabled = false;
+              btn.textContent = 'End Call';
+              activeCall = true;
+            });
+            retellClient.on('agent_start_talking', function() {
+              status.textContent = 'AI receptionist is speaking...';
+            });
+            retellClient.on('user_start_talking', function() {
+              status.textContent = 'Listening to you...';
+            });
+            retellClient.on('error', function(err) {
+              var msg = err && err.message ? err.message : String(err);
+              status.textContent = 'Error: ' + msg;
+              status.className = 'voice-demo-status';
+              waveform.classList.add('paused');
+              btn.disabled = false;
+              btn.textContent = 'Hear the AI Receptionist';
+              activeCall = false;
+              console.error('Retell error:', err);
+            });
+            retellClient.on('call_ended', function() {
               status.textContent = 'Call ended. Tap to try again.';
               status.className = 'voice-demo-status';
               waveform.classList.add('paused');
               btn.disabled = false;
               btn.textContent = 'Hear the AI Receptionist';
-              widgetStarted = false;
-            },
-            onError: function(err) {
-              status.textContent = 'Connection error. Please try again.';
-              status.className = 'voice-demo-status';
-              waveform.classList.add('paused');
-              btn.disabled = false;
-              btn.textContent = 'Hear the AI Receptionist';
-              widgetStarted = false;
-              console.error('Voice demo error:', err);
-            }
-          });
-        }
+              activeCall = false;
+            });
+
+            await retellClient.startCall({ accessToken: accessToken });
+          } catch(err) {
+            var msg = (err && err.message) ? err.message : String(err);
+            status.textContent = 'Could not start: ' + msg;
+            status.className = 'voice-demo-status';
+            waveform.classList.add('paused');
+            btn.disabled = false;
+            btn.textContent = 'Hear the AI Receptionist';
+            activeCall = false;
+          }
+        });
       })();
     </script>
 
