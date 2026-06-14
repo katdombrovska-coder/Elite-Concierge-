@@ -245,14 +245,27 @@
     .voice-demo-card::before{content:"";position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(236,28,140,.15) 0%,transparent 70%);top:-150px;right:-100px;filter:blur(80px);pointer-events:none;animation:founding-glow 20s ease-in-out infinite}
     .voice-demo-card>*{position:relative;z-index:1}
     .voice-demo-title{font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:clamp(32px,4.5vw,48px);line-height:1.15;letter-spacing:-.02em;color:#fff;margin:0 0 32px;max-width:680px;margin-left:auto;margin-right:auto}
-    .voice-demo-subtitle{font-size:17px;line-height:1.6;color:rgba(255,255,255,.65);margin:0 auto 56px;max-width:580px}
+    .voice-demo-subtitle{font-size:17px;line-height:1.6;color:rgba(255,255,255,.65);margin:0 auto 24px;max-width:580px}
+    .voice-demo-waveform{display:flex;gap:5px;align-items:center;justify-content:center;height:48px;margin:0 auto 32px}
+    .voice-demo-waveform .wbar{width:4px;border-radius:4px;background:var(--accent);animation:retell-wave 1.2s ease-in-out infinite}
+    .voice-demo-waveform .wbar:nth-child(1){height:20px;animation-delay:0s}
+    .voice-demo-waveform .wbar:nth-child(2){height:36px;animation-delay:.1s}
+    .voice-demo-waveform .wbar:nth-child(3){height:48px;animation-delay:.2s}
+    .voice-demo-waveform .wbar:nth-child(4){height:32px;animation-delay:.3s}
+    .voice-demo-waveform .wbar:nth-child(5){height:44px;animation-delay:.4s}
+    .voice-demo-waveform .wbar:nth-child(6){height:28px;animation-delay:.5s}
+    .voice-demo-waveform .wbar:nth-child(7){height:40px;animation-delay:.6s}
+    .voice-demo-waveform .wbar:nth-child(8){height:24px;animation-delay:.7s}
+    .voice-demo-waveform .wbar:nth-child(9){height:38px;animation-delay:.8s}
+    @keyframes retell-wave{0%,100%{transform:scaleY(.4);opacity:.5}50%{transform:scaleY(1);opacity:1}}
+    .voice-demo-waveform.paused .wbar{animation-play-state:paused;opacity:.3}
     .voice-demo-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
     .voice-demo-buttons .btn{padding:16px 30px;border-radius:999px;font-size:15px;font-weight:600;transition:transform .2s ease,box-shadow .2s ease}
     .voice-demo-buttons .btn-primary{background:var(--accent);color:#fff;border:1px solid var(--accent);box-shadow:0 8px 24px rgba(236,28,140,.4)}
     .voice-demo-buttons .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(236,28,140,.5)}
-    .voice-demo-buttons .btn-outline-light{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
-    .voice-demo-buttons .btn-outline-light:hover{background:rgba(255,255,255,.08);color:#fff;transform:translateY(-2px)}
     .voice-demo-footer{font-size:13px;color:rgba(255,255,255,.45);margin:32px 0 0}
+    .voice-demo-status{font-size:13px;color:rgba(255,255,255,.55);margin:0 auto 18px;min-height:20px}
+    .voice-demo-status.speaking{color:var(--accent);font-weight:600}
     @media(max-width:700px){.voice-demo-section{padding:40px 0 60px}.voice-demo-card{padding:36px 24px;border-radius:20px}.voice-demo-title{font-size:28px}.voice-demo-subtitle{font-size:15px}.voice-demo-buttons{flex-direction:column;gap:12px}.voice-demo-buttons .btn{width:100%;justify-content:center}}
 
     /* ===================== Founding offer card ===================== */
@@ -1343,15 +1356,19 @@
     <!-- ===================== LIVE VOICE DEMO ===================== -->
     <section class="voice-demo-section" data-testid="voice-demo-section">
       <div class="voice-demo-wrap">
-        <div class="voice-demo-card reveal">
+        <div class="voice-demo-card reveal" id="voice-demo-card">
           <div class="voice-demo-pill">LIVE VOICE DEMO</div>
           <h2 class="voice-demo-title">Want to hear how your<br>AI receptionist could sound?</h2>
-          <p class="voice-demo-subtitle">Speak with the Elite AI receptionist first. She can explain the Founding 30 offer, answer questions, and guide you toward the next step.</p>
-          <div class="voice-demo-buttons">
-            <a href="#offer" class="btn btn-primary btn-lg btn-arrow">Create My AI Receptionist</a>
-            <a href="#offer" class="btn btn-outline-light btn-lg">Hear the AI Receptionist</a>
+          <p class="voice-demo-subtitle">Listen to your Elite AI receptionist in action.</p>
+          <div class="voice-demo-waveform paused" id="demo-waveform">
+            <div class="wbar"></div><div class="wbar"></div><div class="wbar"></div>
+            <div class="wbar"></div><div class="wbar"></div><div class="wbar"></div>
+            <div class="wbar"></div><div class="wbar"></div><div class="wbar"></div>
           </div>
-          <p class="voice-demo-footer">Powered by Elite AI · Available 24/7</p>
+          <p class="voice-demo-status" id="demo-status">Tap below to start the demo call</p>
+          <div class="voice-demo-buttons">
+            <button class="btn btn-primary btn-lg btn-arrow" id="demo-start-btn">Hear the AI Receptionist</button>
+          </div>
         </div>
       </div>
     </section>
@@ -2098,5 +2115,69 @@
     });
   </script>
   <script src="/js/chat-widget.js"></script>
+
+    <!-- ===== Retell AI Voice Demo ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/@retell/retell-web-widget@latest/dist/retell-web-widget.min.js"></script>
+    <script>
+      (function() {
+        var btn = document.getElementById('demo-start-btn');
+        var waveform = document.getElementById('demo-waveform');
+        var status = document.getElementById('demo-status');
+        var widgetStarted = false;
+
+        if (!btn) return;
+
+        btn.addEventListener('click', function() {
+          if (!widgetStarted) {
+            if (typeof RetellWebWidget === 'undefined') {
+              status.textContent = 'Loading voice demo...';
+              var script = document.createElement('script');
+              script.src = 'https://cdn.jsdelivr.net/npm/@retell/retell-web-widget@latest/dist/retell-web-widget.min.js';
+              script.onload = initRetell;
+              script.onerror = function() { status.textContent = 'Unable to load. Please try again.'; };
+              document.head.appendChild(script);
+            } else {
+              initRetell();
+            }
+          }
+        });
+
+        function initRetell() {
+          widgetStarted = true;
+          status.textContent = 'Connecting...';
+          btn.disabled = true;
+          btn.textContent = 'Connecting...';
+
+          RetellWebWidget.createCall({
+            agentId: 'agent_3f3c271c4814e6f07278f7db49',
+            accessToken: 'key_631a6e889dfcfa38df342ad86221',
+            onCallStart: function() {
+              status.textContent = 'Listening...';
+              status.className = 'voice-demo-status speaking';
+              waveform.classList.remove('paused');
+              btn.textContent = 'In Call';
+            },
+            onCallEnd: function() {
+              status.textContent = 'Call ended. Tap to try again.';
+              status.className = 'voice-demo-status';
+              waveform.classList.add('paused');
+              btn.disabled = false;
+              btn.textContent = 'Hear the AI Receptionist';
+              widgetStarted = false;
+            },
+            onError: function(err) {
+              status.textContent = 'Connection error. Please try again.';
+              status.className = 'voice-demo-status';
+              waveform.classList.add('paused');
+              btn.disabled = false;
+              btn.textContent = 'Hear the AI Receptionist';
+              widgetStarted = false;
+              console.error('Voice demo error:', err);
+            }
+          });
+        }
+      })();
+    </script>
+
 </body>
 </html>
