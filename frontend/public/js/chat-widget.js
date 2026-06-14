@@ -431,6 +431,7 @@
     isOpen = true;
     document.getElementById('chat-window').classList.add('open');
     document.getElementById('chat-fab').classList.add('hidden');
+    document.body.classList.add('widget-open');
     if (currentIdx === 0) {
       getSessionId();
       addMsg("Hi, I'm the Elite AI Setup Assistant. I'll ask a few simple questions and prepare the first version of your AI receptionist setup. You don't need any technical knowledge — just answer naturally.", 'bot');
@@ -442,6 +443,7 @@
     isOpen = false;
     document.getElementById('chat-window').classList.remove('open');
     document.getElementById('chat-fab').classList.remove('hidden');
+    document.body.classList.remove('widget-open');
   }
 
   function handleSend() {
