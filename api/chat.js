@@ -1,7 +1,7 @@
-/* ===== Elite AI Chat API — Neon Postgres + GPT-4o-mini =====
+/* ===== Elite AI Chat API — Google Gemini (free) + Neon Postgres =====
  *
  * Storage: Neon Postgres (persistent, never sleeps)
- * LLM: OpenAI gpt-4o-mini
+ * LLM: Google Gemini 2.5 Flash (free tier)
  */
 
 import { Pool } from 'pg';
@@ -10,6 +10,8 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false }
 });
+
+const GEMINI_KEY = process.env.GEMINI_API_KEY || '';
 
 const SYSTEM_PROMPT = `You are the Elite AI Setup Assistant — a warm, professional onboarding specialist helping business owners create their custom AI receptionist setup.
 
@@ -22,7 +24,38 @@ RULES:
 - Never change offer terms (€0 founding setup, 77 testing minutes, from €79/mo).
 - Sound human, not robotic.
 - If their answer is vague, ask one gentle clarification.
-- If they say "skip" or "I don't know", acknowledge and move on smoothly.`;
+- If they say "skip" or "I don't know", acknowledge and move on smoothly.
+- Keep responses short — 1-2 sentences.`;
+
+async function callGemini(answer) {
+  if (!GEMINI_KEY) return null;
+
+  try {
+    const resp = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [
+            { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
+            { role: 'model', parts: [{ text: 'I understand. I will be warm, concise, and helpful.' }] },
+            { role: 'user', parts: [{ text: `User answered: "${answer}". Acknowledge their answer in 1 short warm sentence and move to the next question. Keep it to 1-2 sentences max.` }] }
+          ],
+          generationConfig: { maxOutputTokens: 150, temperature: 0.7 }
+        })
+      }
+    );
+
+    const data = await resp.json();
+    if (data.candidates && data.candidates[0] && data.candidates[0].content) {
+      return data.candidates[0].content.parts[0].text.trim();
+    }
+  } catch (e) {
+    console.error('Gemini error:', e.message);
+  }
+  return null;
+}
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -82,13 +115,6 @@ export default async function handler(req, res) {
           JSON.stringify(a), 'submitted'
         ]
       );
-
-      // INTEGRATION PLACEHOLDER: Resend email notification
-      // INTEGRATION PLACEHOLDER: Google Sheets sync
-      // INTEGRATION PLACEHOLDER: Retell AI agent creation
-      // INTEGRATION PLACEHOLDER: Stripe activation
-      // INTEGRATION PLACEHOLDER: WhatsApp notification
-
       return res.status(200).json({ success: true });
     } catch (e) {
       return res.status(500).json({ success: false, error: e.message });
@@ -100,14 +126,13 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  // Save answer to session (upsert)
+  // Save answer to session
   try {
     await pool.query(
       `INSERT INTO ai_receptionist_submissions (session_id, created_at) VALUES ($1, NOW())
        ON CONFLICT (session_id) DO NOTHING`
     );
 
-    // Update the specific field
     const fieldMap = {
       business_name: 'business_name', industry: 'industry', business_links: 'business_links',
       location_service_area: 'location_service_area', main_services: 'main_services',
@@ -129,60 +154,30 @@ export default async function handler(req, res) {
     console.error('DB save error:', e.message);
   }
 
-  const nextStep = step + 1;
+  // LLM response via Gemini
+  let llmResponse = await callGemini(answer);
 
-  // OpenAI GPT-4o-mini response
-  let llmResponse = null;
-  const openaiKey = process.env.OPENAI_API_KEY;
-
-  if (openaiKey) {
-    try {
-      const openaiResp = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${openaiKey}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          model: 'gpt-4o-mini',
-          messages: [
-            { role: 'system', content: SYSTEM_PROMPT },
-            { role: 'user', content: `User answered: "${answer}". Now ask the next question. Keep it warm and brief (2 sentences max).` }
-          ],
-          max_tokens: 150,
-          temperature: 0.7
-        })
-      });
-      const data = await openaiResp.json();
-      if (data.choices && data.choices[0]) {
-        llmResponse = data.choices[0].message.content.trim();
-      }
-    } catch (e) {
-      console.error('OpenAI error:', e.message);
-    }
-  }
-
-  // Fallback responses when OpenAI is unavailable
+  // Fallback when Gemini unavailable
   if (!llmResponse) {
     const fallbacks = {
       1: `Great — ${answer} is noted! Let me ask a few more things.`,
       2: `Perfect, ${answer} — that helps us tailor everything.`,
-      3: answer !== 'not specified' && answer !== 'not provided' ? `Got the links — helpful context for your AI.` : `No worries, we'll work with what we have.`,
+      3: answer !== 'not specified' ? `Got the links — helpful context for your AI.` : `No worries, we'll work with what we have.`,
       4: `Location noted: ${answer}. This helps with local optimization.`,
       5: `Excellent — these will be core to the AI's knowledge.`,
-      6: answer !== 'not specified' ? `Pricing info saved. The AI will reference these accurately.` : `We can add pricing later — no problem.`,
-      7: `Opening hours set: ${answer}. The AI will respect these.`,
+      6: answer !== 'not specified' ? `Pricing info saved. The AI will reference these.` : `We can add pricing later.`,
+      7: `Opening hours set. The AI will respect these.`,
       8: `Languages: ${answer}. The AI will be fluent in all of them.`,
       9: `Goal: ${answer}. This will be the AI's primary focus.`,
       10: `Booking method: ${answer}. We'll configure it accordingly.`,
       11: `Customer info to collect: ${answer}. Noted.`,
-      12: answer !== 'not specified' ? `Common questions noted — the AI will handle them smoothly.` : `We'll build a strong FAQ base for your AI.`,
-      13: answer !== 'not specified' ? `Escalation rules set. The AI knows when to hand off.` : `We'll set sensible defaults for escalation.`,
+      12: answer !== 'not specified' ? `Common questions noted — the AI will handle them.` : `We'll build a strong FAQ base.`,
+      13: answer !== 'not specified' ? `Escalation rules set.` : `We'll set sensible defaults.`,
       14: `Lead destination: ${answer}. Perfect.`,
       14.5: answer !== 'not specified' ? `Destination detail saved.` : `We'll configure this during onboarding.`,
       15: `Tone: ${answer}. The AI will match this perfectly.`,
-      16: answer !== 'not specified' ? `Restrictions noted. The AI will strictly follow these.` : `We'll apply sensible default guardrails.`,
-      17: answer !== 'not specified' ? `Special rules saved. Very helpful.` : `We'll cover the essentials in the build.`,
+      16: answer !== 'not specified' ? `Restrictions noted.` : `We'll apply sensible guardrails.`,
+      17: answer !== 'not specified' ? `Special rules saved. Very helpful.` : `We'll cover the essentials.`,
       18: `Contact details received. We'll reach out with your AI preview.`
     };
     llmResponse = fallbacks[step] || 'Got it, thanks!';
@@ -190,7 +185,7 @@ export default async function handler(req, res) {
 
   return res.status(200).json({
     success: true,
-    nextStep,
+    nextStep: step + 1,
     llmResponse
   });
 }
