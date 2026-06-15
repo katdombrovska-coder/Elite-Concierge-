@@ -421,9 +421,9 @@
 
 /* Bottom back bar */
 .chat-back-bar {
-  padding: 6px 18px;
-  background: #f5f0ed;
-  border-top: 1px solid rgba(236,28,140,.08);
+  padding: 4px 18px;
+  background: transparent;
+  border-top: 1px solid rgba(236,28,140,.05);
   flex-shrink: 0;
   position: relative;
   z-index: 1;
@@ -432,10 +432,10 @@
   background: none;
   border: none;
   color: var(--accent);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  padding: 6px 0;
+  padding: 4px 0;
   font-family: 'Inter', sans-serif;
   transition: opacity .2s;
 }
