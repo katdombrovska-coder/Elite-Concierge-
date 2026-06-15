@@ -2398,14 +2398,14 @@
         const { access_token } = await res.json();
 
         // 3. Load Retell SDK (ESM via jsDelivr)
-        setStatus("Loading agent…");
+        setStatus("Loading AI Receptionist…");
         const mod = await import("https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm");
         const RetellWebClient = mod.RetellWebClient || mod.default?.RetellWebClient || mod.default;
         retellClient = new RetellWebClient();
 
-        retellClient.on("call_started",       () => { setStatus("Connecting to agent…"); });
+        retellClient.on("call_started",       () => { setStatus("Connecting to AI Receptionist…"); });
         retellClient.on("call_ready",         () => { setStatus("Live — speak naturally."); demoCard.classList.add("is-live"); startBtn.disabled = false; startBtn.textContent = "End Call"; activeCall = true; });
-        retellClient.on("agent_start_talking",() => { setStatus("Agent is speaking…"); });
+        retellClient.on("agent_start_talking",() => { setStatus("AI Receptionist is speaking…"); });
         retellClient.on("update",             () => {});
         retellClient.on("error",              (err) => { setStatus(`Error: ${err?.message || err}`); endCall(); });
         retellClient.on("call_ended",         () => { setStatus("Call ended."); endCall(); });
@@ -2633,7 +2633,7 @@
             var accessToken = data.access_token;
             if (!accessToken) throw new Error('No access token returned');
 
-            status.textContent = 'Loading AI agent...';
+            status.textContent = 'Loading AI Receptionist...';
             btn.textContent = 'Loading...';
 
             var mod = await import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm');
@@ -2641,7 +2641,7 @@
             retellClient = new RetellWebClient();
 
             retellClient.on('call_started', function() {
-              status.textContent = 'Connecting to agent...';
+              status.textContent = 'Connecting to AI Receptionist...';
             });
             retellClient.on('call_ready', function() {
               status.textContent = 'Live — AI receptionist is speaking';
