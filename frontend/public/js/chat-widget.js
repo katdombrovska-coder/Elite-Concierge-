@@ -442,7 +442,7 @@
 
     const np = 'Not provided';
     const sections = [
-      { title: '🏢 Business Profile', fields: [
+      { title: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-right:6px"><path d="M3 21h18M3 7v14M21 7v14M6 11h4M6 15h4M14 11h4M14 15h4M10 21V3h4v18"/></svg> Business Profile', fields: [
         { key: 'business_name', label: 'Business Name' },
         { key: 'industry', label: 'Industry' },
         { key: 'business_description', label: 'Description' },
@@ -454,7 +454,7 @@
         { key: 'opening_hours', label: 'Hours' },
         { key: 'languages', label: 'Languages' }
       ]},
-      { title: '🤖 AI Configuration', fields: [
+      { title: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-right:6px"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 16h0M16 16h0"/></svg> AI Configuration', fields: [
         { key: 'main_ai_goal', label: 'AI Goals' },
         { key: 'booking_method', label: 'Booking Method' },
         { key: 'customer_info_to_collect', label: 'Info to Collect' },
@@ -466,7 +466,7 @@
         { key: 'tone_of_voice', label: 'Tone of Voice' },
         { key: 'restrictions_rules', label: 'Rules & Restrictions' }
       ]},
-      { title: '👤 Contact', fields: [
+      { title: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-right:6px"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Contact', fields: [
         { key: 'contact_name', label: 'Name' },
         { key: 'contact_email', label: 'Email' },
         { key: 'contact_phone', label: 'Phone' }
@@ -501,11 +501,11 @@
     html += '<div class="chat-summary-offer" style="background:linear-gradient(135deg,rgba(236,28,140,.06),rgba(236,28,140,.02));border:1px solid rgba(236,28,140,.15);border-radius:14px;padding:18px 16px;margin-top:16px;text-align:left">' +
       '<div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#ec1c8c;font-weight:700;margin-bottom:10px">Founding 30 Preview</div>' +
       '<div style="font-size:13px;color:#3a1240;line-height:1.8">' +
-      '✅ No payment required today<br>' +
-      '✅ Free AI setup preview<br>' +
-      '✅ 77 testing minutes included<br>' +
-      '✅ Guided onboarding<br>' +
-      '✅ Activate only if you\'re happy with the result' +
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ec1c8c" stroke-width="3" style="display:inline-block;vertical-align:middle;margin-right:6px"><polyline points="20 6 9 17 4 12"/></svg> No payment required today<br>' +
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ec1c8c" stroke-width="3" style="display:inline-block;vertical-align:middle;margin-right:6px"><polyline points="20 6 9 17 4 12"/></svg> Free AI setup preview<br>' +
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ec1c8c" stroke-width="3" style="display:inline-block;vertical-align:middle;margin-right:6px"><polyline points="20 6 9 17 4 12"/></svg> 77 testing minutes included<br>' +
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ec1c8c" stroke-width="3" style="display:inline-block;vertical-align:middle;margin-right:6px"><polyline points="20 6 9 17 4 12"/></svg> Guided onboarding<br>' +
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ec1c8c" stroke-width="3" style="display:inline-block;vertical-align:middle;margin-right:6px"><polyline points="20 6 9 17 4 12"/></svg> Activate only if you\'re happy with the result' +
       '</div>' +
       '<div style="font-size:12px;color:#6b4f6f;margin-top:10px;padding-top:10px;border-top:1px solid rgba(236,28,140,.12)">Plans start from €79/month after activation.</div>' +
       '</div></div>';
@@ -655,7 +655,7 @@
       '<h3 style="font-family:\'Bricolage Grotesque\',serif;font-size:20px;font-weight:800;color:#240029;margin:0 0 10px;letter-spacing:-.02em;line-height:1.1">We\'re Building Your AI Preview</h3>' +
       '<p style="font-size:14px;color:#3a1240;line-height:1.6;margin:0 0 12px">We\'ve received your setup and will start building your custom AI receptionist shortly.</p>' +
       '<p style="font-size:14px;color:#3a1240;line-height:1.6;margin:0 0 16px">We\'ll send the preview and next steps to<br><strong style="color:#ec1c8c">' + (answers.contact_email || 'your email') + '</strong></p>' +
-      '<div style="background:rgba(236,28,140,.08);border-radius:12px;padding:12px 16px;margin-top:8px"><p style="font-size:13px;color:#6b4f6f;margin:0">📬 Watch your inbox — we\'ll be in touch within the next hour!</p></div></div>';
+      '<div style="background:rgba(236,28,140,.08);border-radius:12px;padding:12px 16px;margin-top:8px"><p style="font-size:13px;color:#6b4f6f;margin:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ec1c8c" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-right:6px"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg> Watch your inbox — we\'ll be in touch within the next hour!</p></div></div>';
     addMsg('', 'bot', successCard, true);
 
     // Fire API call in background (don't block UI)

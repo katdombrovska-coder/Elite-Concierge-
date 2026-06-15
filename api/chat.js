@@ -26,7 +26,7 @@ function generateBusinessSummaryHTML(answers) {
   
   // Business Information
   html += `<div style="${sectionStyle}">`;
-  html += `<h3 style="${sectionTitle}">🏢 Business Information</h3>`;
+  html += `<h3 style="${sectionTitle}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ec1c8c" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-right:8px"><path d="M3 21h18M3 7v14M21 7v14M6 11h4M6 15h4M14 11h4M14 15h4M10 21V3h4v18"/></svg> Business Information</h3>`;
   html += field('Business Name', answers.business_name);
   html += field('Industry', answers.industry);
   html += field('Description', answers.business_description);
@@ -41,7 +41,7 @@ function generateBusinessSummaryHTML(answers) {
   
   // AI Configuration
   html += `<div style="${sectionStyle}">`;
-  html += `<h3 style="${sectionTitle}">🤖 AI Configuration</h3>`;
+  html += `<h3 style="${sectionTitle}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ec1c8c" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-right:8px"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 16h0M16 16h0"/></svg> AI Configuration</h3>`;
   html += field('AI Goals', answers.main_ai_goal);
   html += field('Booking Method', answers.booking_method);
   html += field('Info to Collect', answers.customer_info_to_collect);
@@ -62,12 +62,12 @@ async function sendNotificationEmail(answers, businessSummary) {
   if (!RESEND_KEY) return;
 
   const summaryHtml = generateBusinessSummaryHTML(answers);
-  const packageInfo = answers.selected_package ? `<div style="background:#fff3cd;border-left:4px solid #ffc107;padding:12px 16px;margin:16px 0;border-radius:4px;"><strong>📦 Selected Package:</strong> ${answers.selected_package}</div>` : '';
+  const packageInfo = answers.selected_package ? `<div style="background:#fff3cd;border-left:4px solid #ffc107;padding:12px 16px;margin:16px 0;border-radius:4px;"><strong><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#856404" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-right:6px"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg> Selected Package:</strong> ${answers.selected_package}</div>` : '';
 
   const emailHtml = `
     <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:700px;margin:0 auto;background:#fff;">
       <div style="background:#ffffff;padding:32px;text-align:center;border-bottom:2px solid #ec1c8c;">
-        <h1 style="color:#333;margin:0;font-size:28px;font-weight:800;">🎉 New AI Receptionist Setup</h1>
+        <h1 style="color:#333;margin:0;font-size:28px;font-weight:800;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ec1c8c" stroke-width="2.5" style="display:inline-block;vertical-align:middle;margin-right:10px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> New AI Receptionist Setup</h1>
         <p style="color:#666;margin:8px 0 0;font-size:15px;">${answers.business_name || 'New Lead'}</p>
       </div>
       
