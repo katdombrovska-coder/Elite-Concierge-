@@ -562,7 +562,7 @@
       const btn = document.createElement('button');
       btn.className = 'chat-option-btn';
       const hasAnswer = answers[q.field] ? 'border-left:3px solid #ec1c8c;' : '';
-      btn.style.cssText = 'text-align:left;justify-content:flex-start;width:100%;padding:10px 14px;white-space:normal;line-height:1.4;box-sizing:border-box;word-wrap:break-word;overflow-wrap:break-word;' + hasAnswer;
+      btn.style.cssText = 'text-align:left;justify-content:flex-start;width:100%;padding:10px 14px;white-space:normal;line-height:1.4;box-sizing:border-box;word-wrap:break-word;overflow-wrap:break-word;display:block;margin-bottom:6px;' + hasAnswer;
       btn.innerHTML = '<strong>' + q.id + '.</strong> ' + q.question;
       btn.onclick = () => {
         wrap.remove(); editingFromSummary = true;
