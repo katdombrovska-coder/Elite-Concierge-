@@ -24,7 +24,7 @@ async function sendNotificationEmail(answers) {
       },
       body: JSON.stringify({
         from: 'Elite AI <onboarding@eliteai.space>',
-        to: ['kat@eliteai.space'],
+        to: ['kate@eliteai.space'],
         subject: '🎉 New AI Receptionist Setup — ' + (answers.business_name || 'Unknown'),
         html: `
           <h2>New AI Setup Submission</h2>
