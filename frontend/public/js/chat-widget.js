@@ -526,7 +526,15 @@
     editBtn.className = 'chat-option-btn';
     editBtn.style.cssText = 'padding:12px 20px;font-size:14px;background:rgba(236,28,140,.1);color:#ec1c8c;border:1px solid #ec1c8c;';
     editBtn.textContent = 'Edit Answers';
-    editBtn.onclick = () => { actions.remove(); const msgs = c.querySelectorAll('.chat-msg'); if (msgs.length > 0) msgs[msgs.length-1].remove(); showEditList(); };
+    editBtn.onclick = () => {
+      editingFromSummary = true;
+      // Clear everything in messages area
+      c.innerHTML = '';
+      // Show input area again
+      var ia = document.getElementById('chat-input-area');
+      if (ia) ia.style.display = '';
+      showEditList();
+    };
 
     const bookBtn = document.createElement('button');
     bookBtn.className = 'chat-option-btn';
@@ -644,8 +652,8 @@
     const successCard = '<div style="background:#ffffff;border-radius:16px;padding:24px 20px;text-align:center;border:1px solid rgba(236,28,140,.12);box-shadow:0 4px 20px rgba(236,28,140,.1);margin:4px 0">' +
       '<div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#ec1c8c,#ff4da6);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(236,28,140,.3)">' +
       '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>' +
-      '<h3 style="font-family:\'Bricolage Grotesque\',serif;font-size:20px;font-weight:800;color:#240029;margin:0 0 10px;letter-spacing:-.02em;line-height:1.1">Your AI Preview is Being Created!</h3>' +
-      '<p style="font-size:14px;color:#3a1240;line-height:1.6;margin:0 0 12px">Your setup has been received and your custom AI receptionist is being prepared.</p>' +
+      '<h3 style="font-family:\'Bricolage Grotesque\',serif;font-size:20px;font-weight:800;color:#240029;margin:0 0 10px;letter-spacing:-.02em;line-height:1.1">We\'re Building Your AI Preview</h3>' +
+      '<p style="font-size:14px;color:#3a1240;line-height:1.6;margin:0 0 12px">We\'ve received your setup and will start building your custom AI receptionist shortly.</p>' +
       '<p style="font-size:14px;color:#3a1240;line-height:1.6;margin:0 0 16px">We\'ll send the preview and next steps to<br><strong style="color:#ec1c8c">' + (answers.contact_email || 'your email') + '</strong></p>' +
       '<div style="background:rgba(236,28,140,.08);border-radius:12px;padding:12px 16px;margin-top:8px"><p style="font-size:13px;color:#6b4f6f;margin:0">📬 Watch your inbox — we\'ll be in touch within the next hour!</p></div></div>';
     addMsg('', 'bot', successCard, true);

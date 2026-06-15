@@ -420,10 +420,12 @@
 
 /* Bottom back bar */
 .chat-back-bar {
-  padding: 8px 18px;
+  padding: 6px 18px;
   background: #f5f0ed;
   border-top: 1px solid rgba(236,28,140,.08);
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 .chat-back-btn {
   background: none;
