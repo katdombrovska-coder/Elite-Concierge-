@@ -785,6 +785,8 @@
   function resetState() { currentIdx=0; answers={}; history=[]; sessionId=''; isSubmitting=false; optionsWrap=null; if (selectedPackageBackup) { answers.selected_package = selectedPackageBackup; } }
 
   function openChat(selectedPackage) {
+    // Only accept string package names, ignore event objects
+    if (selectedPackage && typeof selectedPackage !== 'string') selectedPackage = null;
     const chatWindow = document.getElementById('chat-window');
     const chatFab = document.getElementById('chat-fab');
     resetState(); getSessionId();
@@ -890,7 +892,7 @@
     const headerBack = document.getElementById('chat-header-back');
     if (headerBack) headerBack.style.display = 'none';
 
-    document.getElementById('chat-fab').addEventListener('click', openChat);
+    document.getElementById('chat-fab').addEventListener('click', function() { openChat(); });
     document.getElementById('chat-header-close').addEventListener('click', closeChat);
     document.getElementById('chat-send-btn').addEventListener('click', handleSend);
 
