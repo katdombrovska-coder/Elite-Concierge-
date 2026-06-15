@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/api/create-web-call", "destination": "/api/create-web-call" }
+  ],
+  "buildCommand": "npm install && npm run build",
+  "outputDirectory": "build",
+  "installCommand": "npm install"
+}

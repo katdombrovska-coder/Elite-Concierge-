@@ -561,7 +561,7 @@
       const idx = QUESTIONS.indexOf(q);
       const btn = document.createElement('button');
       btn.className = 'chat-option-btn';
-      btn.style.cssText = 'text-align:left;justify-content:flex-start;width:100%;padding:10px 14px;white-space:normal;line-height:1.4;box-sizing:border-box;word-wrap:break-word;overflow-wrap:break-word;';
+      btn.style.cssText = 'text-align:center;justify-content:center;width:100%;padding:10px 14px;white-space:normal;line-height:1.4;box-sizing:border-box;word-wrap:break-word;overflow-wrap:break-word;';
       btn.innerHTML = '<strong>' + q.id + '.</strong> ' + q.question;
       btn.onclick = () => {
         wrap.remove(); editingFromSummary = true;
