@@ -639,46 +639,30 @@
 
     console.log('[DEBUG] Sending to API:', {sessionId: getSessionId(), action: 'submit'});
 
-    try {
-      const resp = await fetch('https://eliteai.space/api/chat', {
-        method: 'POST', mode: 'cors',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({
-          sessionId: getSessionId(),
-          answers: aiPromptData,
-          action: 'submit',
-          ai_prompt_data: aiPromptData,
-          business_summary: businessSummary,
-          ai_prompt: aiPrompt
-        })
-      });
-      
-      removeTyping();
-      
-      // Always show success card regardless of API response
-      const successCard = '<div style="background:#ffffff;border-radius:16px;padding:24px 20px;text-align:center;border:1px solid rgba(236,28,140,.12);box-shadow:0 4px 20px rgba(236,28,140,.1);margin:4px 0">' +
-        '<div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#ec1c8c,#ff4da6);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(236,28,140,.3)">' +
-        '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>' +
-        '<h3 style="font-family:\'Bricolage Grotesque\',serif;font-size:20px;font-weight:800;color:#240029;margin:0 0 10px;letter-spacing:-.02em;line-height:1.1">Your AI Preview is Being Created!</h3>' +
-        '<p style="font-size:14px;color:#3a1240;line-height:1.6;margin:0 0 12px">Your setup has been received and your custom AI receptionist is being prepared.</p>' +
-        '<p style="font-size:14px;color:#3a1240;line-height:1.6;margin:0 0 16px">We\'ll send the preview and next steps to<br><strong style="color:#ec1c8c">' + (answers.contact_email || 'your email') + '</strong></p>' +
-        '<div style="background:rgba(236,28,140,.08);border-radius:12px;padding:12px 16px;margin-top:8px"><p style="font-size:13px;color:#6b4f6f;margin:0">📬 Watch your inbox — we\'ll be in touch within the next hour!</p></div></div>';
-      addMsg('', 'bot', successCard, true);
-      setTimeout(closeChat, 10000);
-    } catch(e) {
-      console.error('[DEBUG] Submit error:', e);
-      removeTyping();
-      // Fallback: still show success message
-      const successCard = '<div style="background:#ffffff;border-radius:16px;padding:24px 20px;text-align:center;border:1px solid rgba(236,28,140,.12);box-shadow:0 4px 20px rgba(236,28,140,.1);margin:4px 0">' +
-        '<div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#ec1c8c,#ff4da6);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(236,28,140,.3)">' +
-        '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>' +
-        '<h3 style="font-family:\'Bricolage Grotesque\',serif;font-size:20px;font-weight:800;color:#240029;margin:0 0 10px;letter-spacing:-.02em;line-height:1.1">Your AI Preview is Being Created!</h3>' +
-        '<p style="font-size:14px;color:#3a1240;line-height:1.6;margin:0 0 12px">Your setup has been received and your custom AI receptionist is being prepared.</p>' +
-        '<p style="font-size:14px;color:#3a1240;line-height:1.6;margin:0 0 16px">We\'ll send the preview and next steps to<br><strong style="color:#ec1c8c">' + (answers.contact_email || 'your email') + '</strong></p>' +
-        '<div style="background:rgba(236,28,140,.08);border-radius:12px;padding:12px 16px;margin-top:8px"><p style="font-size:13px;color:#6b4f6f;margin:0">📬 Watch your inbox — we\'ll be in touch within the next hour!</p></div></div>';
-      addMsg('', 'bot', successCard, true);
-      setTimeout(closeChat, 10000);
-    }
+    // Show success card IMMEDIATELY before API call
+    removeTyping();
+    const successCard = '<div style="background:#ffffff;border-radius:16px;padding:24px 20px;text-align:center;border:1px solid rgba(236,28,140,.12);box-shadow:0 4px 20px rgba(236,28,140,.1);margin:4px 0">' +
+      '<div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#ec1c8c,#ff4da6);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(236,28,140,.3)">' +
+      '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>' +
+      '<h3 style="font-family:\'Bricolage Grotesque\',serif;font-size:20px;font-weight:800;color:#240029;margin:0 0 10px;letter-spacing:-.02em;line-height:1.1">Your AI Preview is Being Created!</h3>' +
+      '<p style="font-size:14px;color:#3a1240;line-height:1.6;margin:0 0 12px">Your setup has been received and your custom AI receptionist is being prepared.</p>' +
+      '<p style="font-size:14px;color:#3a1240;line-height:1.6;margin:0 0 16px">We\'ll send the preview and next steps to<br><strong style="color:#ec1c8c">' + (answers.contact_email || 'your email') + '</strong></p>' +
+      '<div style="background:rgba(236,28,140,.08);border-radius:12px;padding:12px 16px;margin-top:8px"><p style="font-size:13px;color:#6b4f6f;margin:0">📬 Watch your inbox — we\'ll be in touch within the next hour!</p></div></div>';
+    addMsg('', 'bot', successCard, true);
+
+    // Fire API call in background (don't block UI)
+    fetch('https://eliteai.space/api/chat', {
+      method: 'POST', mode: 'cors',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        sessionId: getSessionId(),
+        answers: aiPromptData,
+        action: 'submit',
+        ai_prompt_data: aiPromptData,
+        business_summary: businessSummary,
+        ai_prompt: aiPrompt
+      })
+    }).then(r => console.log('[DEBUG] Submit response:', r.status)).catch(e => console.error('[DEBUG] Submit error:', e));
   }
 
   async function submit(val) {
