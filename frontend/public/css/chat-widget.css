@@ -484,10 +484,10 @@
   .chat-window {
     width: calc(100vw - 24px);
     max-width: 400px;
-    height: 70vh;
-    height: 70dvh;
-    max-height: 70vh;
-    max-height: 70dvh;
+    height: 80vh;
+    height: 80dvh;
+    max-height: 80vh;
+    max-height: 80dvh;
     top: 50%;
     left: 50%;
     right: auto;
@@ -498,6 +498,9 @@
   }
   .chat-window.open {
     transform: translate(-50%, -50%) scale(1);
+  }
+  .chat-messages {
+    padding: 16px 12px 80px;
   }
   .chat-header {
     padding: 16px 18px 12px;
@@ -550,7 +553,10 @@
     height: 44px;
   }
   .chat-back-bar {
-    padding: 10px 16px;
+    padding: 8px 14px;
+  }
+  .chat-messages {
+    padding-top: 60px;
   }
   .chat-fab {
     bottom: 24px;
@@ -576,6 +582,28 @@
     font-size: 13px;
     padding: 10px 14px;
   }
+  .chat-msg-center {
+    align-self: center !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .chat-msg-center .chat-msg-bubble {
+    max-width: 100% !important;
+  }
+  .chat-summary {
+    padding: 12px;
+  }
+  .chat-summary-section h4 {
+    font-size: 12px;
+  }
+  .chat-summary-row {
+    font-size: 12px;
+  }
+  .chat-success-card {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
   .chat-option-btn {
     font-size: 12px;
     padding: 7px 12px;
@@ -600,6 +628,14 @@
   /* Prevent background scroll when widget is open */
   body.widget-open {
     overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+  }
+  .chat-window {
+    overscroll-behavior: contain;
+  }
+  .chat-messages {
+    overscroll-behavior: contain;
   }
   body.widget-open::before {
     content: '';
