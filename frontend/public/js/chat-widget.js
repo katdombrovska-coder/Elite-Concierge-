@@ -555,15 +555,13 @@
     addMsg("Which question would you like to edit? Tap the number:", 'bot');
     const wrap = document.createElement('div');
     wrap.className = 'chat-options';
-    wrap.style.flexDirection = 'column';
-    wrap.style.maxHeight = '300px';
-    wrap.style.overflowY = 'auto';
+    wrap.style.cssText = 'flex-direction:column;max-height:300px;overflow-y:auto;overflow-x:hidden;width:100%;box-sizing:border-box;';
 
     QUESTIONS.filter(q => q.type !== 'contact' && answers[q.field]).forEach(q => {
       const idx = QUESTIONS.indexOf(q);
       const btn = document.createElement('button');
       btn.className = 'chat-option-btn';
-      btn.style.cssText = 'text-align:left;justify-content:flex-start;width:100%;padding:10px 14px;white-space:normal;line-height:1.4;';
+      btn.style.cssText = 'text-align:left;justify-content:flex-start;width:100%;padding:10px 14px;white-space:normal;line-height:1.4;box-sizing:border-box;word-wrap:break-word;overflow-wrap:break-word;';
       btn.innerHTML = '<strong>' + q.id + '.</strong> ' + q.question;
       btn.onclick = () => {
         wrap.remove(); editingFromSummary = true;
