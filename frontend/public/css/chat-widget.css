@@ -482,22 +482,22 @@
 /* Mobile responsive */
 @media (max-width: 768px) {
   .chat-window {
-    width: 100vw;
-    max-width: 100vw;
-    height: 85vh;
-    height: 85dvh;
-    max-height: 85vh;
-    max-height: 85dvh;
-    top: auto;
-    bottom: 0;
-    left: 0;
+    width: calc(100vw - 24px);
+    max-width: 400px;
+    height: 70vh;
+    height: 70dvh;
+    max-height: 70vh;
+    max-height: 70dvh;
+    top: 50%;
+    left: 50%;
     right: auto;
-    transform: translateY(100%);
-    transform-origin: bottom center;
-    border-radius: 20px 20px 0 0;
+    bottom: auto;
+    transform: translate(-50%, -50%) scale(0.3);
+    transform-origin: center center;
+    border-radius: 20px;
   }
   .chat-window.open {
-    transform: translateY(0);
+    transform: translate(-50%, -50%) scale(1);
   }
   .chat-header {
     padding: 16px 18px 12px;
@@ -553,8 +553,9 @@
     padding: 10px 16px;
   }
   .chat-fab {
-    bottom: 16px;
-    right: 14px;
+    bottom: 24px;
+    right: 50%;
+    transform: translateX(50%);
     padding: 12px 20px;
     font-size: 13px;
     box-shadow: none;
@@ -599,5 +600,13 @@
   /* Prevent background scroll when widget is open */
   body.widget-open {
     overflow: hidden !important;
+  }
+  body.widget-open::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(36, 0, 41, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 999;
   }
 }
