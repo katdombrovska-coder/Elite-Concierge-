@@ -66,9 +66,9 @@ async function sendNotificationEmail(answers, businessSummary) {
 
   const emailHtml = `
     <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:700px;margin:0 auto;background:#fff;">
-      <div style="background:linear-gradient(135deg,#240029 0%,#4a0e4e 100%);padding:32px;text-align:center;">
-        <h1 style="color:#fff;margin:0;font-size:28px;font-weight:800;">🎉 New AI Receptionist Setup</h1>
-        <p style="color:rgba(255,255,255,0.8);margin:8px 0 0;font-size:15px;">${answers.business_name || 'New Lead'}</p>
+      <div style="background:#ffffff;padding:32px;text-align:center;border-bottom:2px solid #ec1c8c;">
+        <h1 style="color:#333;margin:0;font-size:28px;font-weight:800;">🎉 New AI Receptionist Setup</h1>
+        <p style="color:#666;margin:8px 0 0;font-size:15px;">${answers.business_name || 'New Lead'}</p>
       </div>
       
       <div style="padding:24px;">
