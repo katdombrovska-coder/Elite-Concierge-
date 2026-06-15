@@ -811,7 +811,13 @@
     }
     
     chatWindow.classList.add('open'); chatFab.classList.add('hidden');
-    document.body.classList.add('widget-open'); isOpen = true;
+    document.body.classList.add('widget-open');
+    // Hide navbar and sticky bar on mobile when widget opens
+    var nav = document.getElementById('nav');
+    var stickyBar = document.getElementById('founding-sticky-bar');
+    if (nav) nav.style.display = 'none';
+    if (stickyBar) stickyBar.style.display = 'none';
+    isOpen = true;
     addMsg("Welcome to Elite AI.\n\nI'll ask a few questions about your business and prepare your custom AI receptionist preview.\n\nMost setups take less than 3 minutes.", 'bot');
     setTimeout(ask, 1200);
   }
@@ -821,6 +827,11 @@
     document.getElementById('chat-window').classList.remove('open');
     document.getElementById('chat-fab').classList.remove('hidden');
     document.body.classList.remove('widget-open');
+    // Show navbar and sticky bar when widget closes
+    var nav = document.getElementById('nav');
+    var stickyBar = document.getElementById('founding-sticky-bar');
+    if (nav) nav.style.display = '';
+    if (stickyBar) stickyBar.style.display = '';
     disableInput();
   }
 
