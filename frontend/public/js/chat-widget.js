@@ -5,10 +5,10 @@
   const QUESTIONS = [
     { id: 1,  question: "What's the name of your business?", field: 'business_name', type: 'text', placeholder: 'e.g. Quantum AI Labs' },
     { id: 2,  question: "What type of business is it?", field: 'industry', type: 'options', options: ['Beauty salon / spa','Clinic / dental / medical','Real estate','Restaurant / hospitality','Home services','Gym / wellness','Agency / consulting','Ecommerce','Car dealership','Law firm','Other'] },
-    { id: 3,  question: "Describe your business in a few sentences.", field: 'business_description', type: 'text', placeholder: 'e.g. AI agent development studio in Lisbon', required: true },
+    { id: 3,  question: "Describe your business in a few sentences.", field: 'business_description', type: 'text', placeholder: 'e.g. AI studio in Lisbon', required: true },
     { id: 4,  question: "Please share your website, Instagram, Google Maps, booking page, or another business link.", field: 'business_links', type: 'links', placeholder: 'Paste your URL here...' },
     { id: 5,  question: "Where is your business located, and do you serve clients locally, online, or both?", field: 'location_service_area', type: 'text', placeholder: 'e.g. Lisbon, local clients' },
-    { id: 6,  question: "What are the main services your business offers?", field: 'main_services', type: 'text', placeholder: 'e.g. Custom AI agents, chatbot development, voice AI' },
+    { id: 6,  question: "What are the main services your business offers?", field: 'main_services', type: 'text', placeholder: 'e.g. AI agents, chatbots, voice AI' },
     { id: 7,  question: "Do you want the AI to mention prices or price ranges? If yes, please add them here.", field: 'pricing_info', type: 'text', placeholder: 'e.g. Starter €2k, Enterprise custom' },
     { id: 8,  question: "What makes your business different from competitors?", field: 'differentiator', type: 'options', options: ['Luxury / premium service','Same-day appointments','Multilingual support','Affordable pricing','Fast response times','Specialized expertise','Family-friendly','Eco-friendly / sustainable','24/7 availability','Personalized approach','Other'] },
     { id: 9,  question: "What are your opening hours?", field: 'opening_hours', type: 'text', placeholder: 'e.g. Mon-Fri 9-18, Sat 10-14' },

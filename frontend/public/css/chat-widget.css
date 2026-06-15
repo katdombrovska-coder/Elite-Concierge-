@@ -619,6 +619,8 @@
   .chat-input {
     padding: 10px 14px;
     font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .chat-send-btn {
     width: 38px;
