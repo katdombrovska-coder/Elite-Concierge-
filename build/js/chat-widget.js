@@ -1,4 +1,4 @@
-/* ===== Elite AI Setup Chat Widget — Full Rewrite ===== */
+/* ===== Elite AI Setup Chat Widget — v2 Fix ===== */
 (function() {
   'use strict';
 
@@ -31,6 +31,8 @@
   let history = [];
   let isOpen = false;
   let isSubmitting = false;
+  let optionsWrap = null; // track current options container for cleanup
+  let editingFromSummary = false; // flag: after edit, go back to summary not continue
 
   function getSessionId() {
     if (!sessionId) sessionId = 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
@@ -54,9 +56,9 @@
   }
 
   function updateBackButton() {
-    const btn = document.getElementById('chat-header-back');
-    if (!btn) return;
-    btn.style.visibility = history.length > 0 ? 'visible' : 'hidden';
+    const bar = document.getElementById('chat-back-bar');
+    if (!bar) return;
+    bar.style.display = history.length > 0 ? '' : 'none';
   }
 
   function addMsg(text, type, html) {
@@ -67,6 +69,7 @@
     d.innerHTML = '<div class="chat-msg-bubble">' + (html || text.replace(/\n/g, '<br>')) + '</div><div class="chat-msg-time">' + timeNow() + '</div>';
     c.appendChild(d);
     c.scrollTop = c.scrollHeight;
+    return d;
   }
 
   function showTyping() {
@@ -84,10 +87,18 @@
     if (el) el.remove();
   }
 
+  function clearOptions() {
+    if (optionsWrap && optionsWrap.parentNode) {
+      optionsWrap.remove();
+    }
+    optionsWrap = null;
+  }
+
   function showOptions(q, callback) {
     const c = document.getElementById('chat-messages');
     const wrap = document.createElement('div');
     wrap.className = 'chat-options';
+    optionsWrap = wrap;
     const sel = [];
 
     q.options.forEach(opt => {
@@ -97,7 +108,6 @@
 
       if (opt === 'Other') {
         btn.onclick = () => {
-          // Replace options with text input
           wrap.innerHTML = '';
           const row = document.createElement('div');
           row.style.cssText = 'width:100%;display:flex;gap:6px;';
@@ -105,18 +115,25 @@
           inp.type = 'text';
           inp.placeholder = 'Type your answer...';
           inp.style.cssText = 'flex:1;padding:8px 14px;border:1px solid #e9d9d4;border-radius:999px;font-size:13px;outline:none;font-family:Inter,sans-serif;';
-          inp.onfocus = () => inp.style.borderColor = 'var(--accent)';
+          inp.onfocus = () => inp.style.borderColor = '#ec1c8c';
           inp.onblur = () => inp.style.borderColor = '#e9d9d4';
           const ok = document.createElement('button');
           ok.textContent = '✓';
-          ok.style.cssText = 'background:var(--accent);color:#fff;border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;flex-shrink:0;';
-          const doSend = () => { callback(inp.value.trim() || 'not specified'); wrap.remove(); };
+          ok.style.cssText = 'background:#ec1c8c;color:#fff;border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;flex-shrink:0;';
+          const doSend = () => {
+            const val = inp.value.trim();
+            if (!val) { inp.style.borderColor = '#ff0000'; inp.focus(); return; }
+            callback(val);
+            wrap.remove();
+            optionsWrap = null;
+          };
           ok.onclick = doSend;
           inp.addEventListener('keydown', e => { if (e.key === 'Enter') doSend(); });
           row.appendChild(inp);
           row.appendChild(ok);
           wrap.appendChild(row);
-          inp.focus();
+          c.scrollTop = c.scrollHeight;
+          setTimeout(() => inp.focus(), 100);
         };
       } else {
         btn.onclick = () => {
@@ -128,13 +145,13 @@
             if (q.maxSelect && sel.length >= q.maxSelect) {
               const first = sel.shift();
               wrap.querySelectorAll('.chat-option-btn').forEach(b => {
-                if (b.textContent === first && !b.querySelector('input')) {
+                if (b.textContent === first && b !== btn) {
                   b.style.background = ''; b.style.color = ''; b.style.borderColor = '';
                 }
               });
             }
             sel.push(opt);
-            btn.style.background = 'var(--accent)'; btn.style.color = '#fff'; btn.style.borderColor = 'var(--accent)';
+            btn.style.background = '#ec1c8c'; btn.style.color = '#fff'; btn.style.borderColor = '#ec1c8c';
           }
         };
       }
@@ -150,6 +167,7 @@
       if (sel.length === 0) callback('not specified');
       else callback(sel.join(', '));
       wrap.remove();
+      optionsWrap = null;
     };
     wrap.appendChild(doneBtn);
     c.appendChild(wrap);
@@ -162,6 +180,8 @@
 
     updateProgress();
     updateBackButton();
+    disableInput();
+
     addMsg(q.question, 'bot');
 
     if (q.type === 'options') {
@@ -171,14 +191,14 @@
     } else if (q.type === 'final') {
       showFinal();
     } else {
-      enableInput(q.type === 'text' ? 'Type your answer...' : 'Paste your URL here...');
+      enableInput(q.field === 'business_links' ? 'Paste your URL here...' : 'Type your answer...');
     }
   }
 
   function showContactForm() {
     const c = document.getElementById('chat-messages');
     const form = document.createElement('div');
-    form.id = 'contact-form';
+    form.id = 'contact-form-widget';
     form.style.cssText = 'display:flex;flex-direction:column;gap:8px;max-width:90%;padding:8px 0;';
 
     ['Your name','Email','WhatsApp / phone'].forEach((label, i) => {
@@ -195,10 +215,14 @@
     const btn = document.createElement('button');
     btn.textContent = 'Continue →';
     btn.className = 'chat-option-btn';
-    btn.style.cssText = 'background:var(--accent);color:#fff;font-weight:600;border:none;align-self:flex-end;margin-top:4px;';
+    btn.style.cssText = 'background:#ec1c8c;color:#fff;font-weight:600;border:none;align-self:flex-end;margin-top:4px;padding:10px 20px;';
     btn.onclick = () => {
       const vals = {};
       form.querySelectorAll('input').forEach(f => vals[f.dataset.field] = f.value.trim() || '');
+      if (!vals.contact_name || !vals.contact_email) {
+        addMsg('Please fill in at least your name and email.', 'bot');
+        return;
+      }
       answers.contact_name = vals.contact_name;
       answers.contact_email = vals.contact_email;
       answers.contact_phone = vals.contact_phone;
@@ -206,84 +230,98 @@
       form.remove();
       history.push(currentIdx);
       currentIdx++;
-      ask();
+      setTimeout(ask, 300);
     };
     form.appendChild(btn);
     c.appendChild(form);
     c.scrollTop = c.scrollHeight;
+    setTimeout(() => form.querySelector('input').focus(), 100);
   }
 
   function showFinal() {
-    const c = document.getElementById('chat-messages');
-    const wrap = document.createElement('div');
-    wrap.className = 'chat-options';
+    // Hide input and back bar during final step
+    const inputArea = document.getElementById('chat-input-area');
+    if (inputArea) inputArea.style.display = 'none';
+    const backBar = document.getElementById('chat-back-bar');
+    if (backBar) backBar.style.display = 'none';
 
-    ['Submit Setup for Review','Edit Answers','Book a Demo Call'].forEach(opt => {
-      const btn = document.createElement('button');
-      btn.className = 'chat-option-btn';
-      btn.textContent = opt;
-      btn.onclick = () => {
-        wrap.querySelectorAll('.chat-option-btn').forEach(b => b.disabled = true);
-        if (opt === 'Submit Setup for Review') { submitFinal(); }
-        else if (opt === 'Edit Answers') { showEditList(); }
-        else {
-          addMsg("Opening booking link...", 'bot');
-          window.open('https://calendly.com/dombrovskakate/strategy-call', '_blank');
-          submitFinal();
-        }
-      };
-      wrap.appendChild(btn);
-    });
-    c.appendChild(wrap);
-    c.scrollTop = c.scrollHeight;
+    // Show summary first, then add the action buttons
+    showSummary();
   }
 
   function showEditList() {
     const c = document.getElementById('chat-messages');
+    clearOptions();
     addMsg("Which question would you like to edit? Tap the number:", 'bot');
 
     const wrap = document.createElement('div');
     wrap.className = 'chat-options';
     wrap.style.flexDirection = 'column';
+    wrap.style.maxHeight = '300px';
+    wrap.style.overflowY = 'auto';
 
-    QUESTIONS.forEach((q, idx) => {
-      if (q.type === 'final') return;
-      if (q.field === 'lead_destination_detail' && !answers.lead_destination) return;
+    const answeredQuestions = QUESTIONS.filter(q => q.type !== 'final' && answers[q.field]);
+
+    answeredQuestions.forEach((q) => {
+      const idx = QUESTIONS.indexOf(q);
       const btn = document.createElement('button');
       btn.className = 'chat-option-btn';
-      btn.textContent = q.id + '. ' + q.question.substring(0, 50) + (q.question.length > 50 ? '...' : '');
-      btn.style.textAlign = 'left';
-      btn.style.justifyContent = 'flex-start';
-      btn.style.width = '100%';
+      btn.style.cssText = 'text-align:left;justify-content:flex-start;width:100%;padding:10px 14px;white-space:normal;line-height:1.4;';
+      btn.innerHTML = '<strong>' + q.id + '.</strong> ' + q.question;
       btn.onclick = () => {
         wrap.remove();
-        // Go back to that question
-        while (history.length > 0 && history[history.length - 1] !== idx) history.pop();
-        if (history.length === 0) {
-          // Remove messages back to this question and re-ask
-          currentIdx = idx;
-          // Clear messages from this point
-          const msgs = c.querySelectorAll('.chat-msg');
-          for (let i = msgs.length - 1; i >= 0; i--) msgs[i].remove();
-          ask();
-        } else {
-          currentIdx = idx;
-          history.pop(); // remove current from history since we'll re-add it
-          // Clear messages from this point
-          const msgs = c.querySelectorAll('.chat-msg');
-          for (let i = msgs.length - 1; i >= 0; i--) msgs[i].remove();
-          ask();
+        // Set editing flag — after answer, go back to summary
+        editingFromSummary = true;
+        // Rebuild history up to this point
+        const newHistory = [];
+        for (let i = 0; i < idx; i++) {
+          if (answers[QUESTIONS[i].field]) newHistory.push(i);
         }
+        history = newHistory;
+        currentIdx = idx;
+
+        // Clear all messages and re-render from scratch
+        c.innerHTML = '';
+        addMsg('You\'re editing question #' + q.id + ':', 'bot');
+        addMsg(q.question, 'bot');
+
+        // Show current answer as placeholder or enable input
+        if (q.type === 'options') {
+          showOptions(q, val => submitEdit(val));
+        } else if (q.type === 'contact') {
+          showContactFormEdit();
+        } else {
+          const inp = document.getElementById('chat-input');
+          if (inp) inp.value = answers[q.field] || '';
+          enableInput('Edit your answer...');
+        }
+        updateBackButton();
       };
       wrap.appendChild(btn);
     });
+
+    // Add "Cancel" button
+    const cancelBtn = document.createElement('button');
+    cancelBtn.className = 'chat-option-btn';
+    cancelBtn.textContent = '← Back to summary';
+    cancelBtn.style.fontWeight = '600';
+    cancelBtn.style.marginTop = '8px';
+    cancelBtn.onclick = () => {
+      wrap.remove();
+      showSummary();
+    };
+    wrap.appendChild(cancelBtn);
+
     c.appendChild(wrap);
     c.scrollTop = c.scrollHeight;
   }
 
   function showSummary() {
-    document.getElementById('chat-input-area').style.display = 'none';
+    const inputArea = document.getElementById('chat-input-area');
+    if (inputArea) inputArea.style.display = 'none';
+
     const c = document.getElementById('chat-messages');
+    clearOptions();
 
     const sections = [
       { title: 'Business Profile', fields: ['business_name','industry','business_links','location_service_area','main_services','pricing_info','opening_hours','languages'] },
@@ -312,15 +350,43 @@
       html += '</div>';
     });
     html += '<div class="chat-summary-offer"><strong>Founding 30 Offer:</strong><br>€0 setup, guided onboarding, 77 AI testing min. From €79/mo.</div></div>';
-    addMsg('Here\'s your AI receptionist setup summary:', 'bot', html);
+    addMsg("Here's your AI receptionist setup summary:", 'bot', html);
 
     const actions = document.createElement('div');
     actions.className = 'chat-summary-actions';
-    actions.innerHTML = '<button class="chat-option-btn" id="submit-final-btn" style="padding:14px 20px;font-size:15px;font-weight:700;background:var(--accent);color:#fff;border:none;">Submit Setup for Review</button>' +
-      '<button class="chat-option-btn" style="padding:12px 20px;font-size:14px;background:rgba(236,28,140,.1);color:var(--accent);border:1px solid var(--accent);" onclick="window.open(\'https://calendly.com/dombrovskakate/strategy-call\',\'_blank\')">Book a Demo Call</button>';
-    c.appendChild(actions);
 
-    document.getElementById('submit-final-btn').onclick = submitFinal;
+    const submitBtn = document.createElement('button');
+    submitBtn.className = 'chat-option-btn';
+    submitBtn.id = 'submit-final-btn';
+    submitBtn.style.cssText = 'padding:14px 20px;font-size:15px;font-weight:700;background:#ec1c8c;color:#fff;border:none;';
+    submitBtn.textContent = 'Submit Setup for Review';
+    submitBtn.onclick = submitFinal;
+
+    const editBtn = document.createElement('button');
+    editBtn.className = 'chat-option-btn';
+    editBtn.style.cssText = 'padding:12px 20px;font-size:14px;background:rgba(236,28,140,.1);color:#ec1c8c;border:1px solid #ec1c8c;';
+    editBtn.textContent = 'Edit Answers';
+    editBtn.onclick = () => {
+      // Remove summary and actions, show edit list
+      actions.remove();
+      // Remove summary message
+      const summaryMsgs = c.querySelectorAll('.chat-msg');
+      if (summaryMsgs.length > 0) summaryMsgs[summaryMsgs.length - 1].remove();
+      showEditList();
+    };
+
+    const bookBtn = document.createElement('button');
+    bookBtn.className = 'chat-option-btn';
+    bookBtn.style.cssText = 'padding:12px 20px;font-size:14px;background:rgba(236,28,140,.1);color:#ec1c8c;border:1px solid #ec1c8c;';
+    bookBtn.textContent = 'Book a Strategy Call';
+    bookBtn.onclick = () => {
+      window.open('https://calendly.com/dombrovskakate/strategy-call', '_blank');
+    };
+
+    actions.appendChild(submitBtn);
+    actions.appendChild(editBtn);
+    actions.appendChild(bookBtn);
+    c.appendChild(actions);
     c.scrollTop = c.scrollHeight;
   }
 
@@ -331,7 +397,6 @@
     addMsg('Submitting your setup for review...', 'bot');
     showTyping();
 
-    // Disable the submit button to prevent double-click
     const btn = document.getElementById('submit-final-btn');
     if (btn) { btn.disabled = true; btn.textContent = 'Submitting...'; }
 
@@ -344,20 +409,29 @@
 
       removeTyping();
 
-      if (resp.ok) {
-        const data = await resp.json();
-        if (data.success) {
-          addMsg('✅ <strong>Application Submitted!</strong><br><br>Thank you! Your AI receptionist setup has been received.<br><br>Elite AI will prepare a custom AI preview based on your information and send the next step to <strong>' + (answers.contact_email || 'your email') + '</strong>.<br><br>Watch your inbox — we\'ll be in touch within the next hour! 🎉', 'bot');
-          // Close after 8 seconds
-          setTimeout(closeChat, 8000);
-          return;
-        }
+      const data = await resp.json().catch(() => ({}));
+      if (resp.ok && data.success) {
+        addMsg('✅ <strong>Application Submitted!</strong><br><br>Thank you! Your AI receptionist setup has been received.<br><br>Elite AI will prepare a custom AI preview based on your information and send the next step to <strong>' + (answers.contact_email || 'your email') + '</strong>.<br><br>Watch your inbox — we\'ll be in touch within the next hour! 🎉', 'bot');
+        setTimeout(closeChat, 8000);
+        return;
       }
-      throw new Error('Server error');
+      // Retry once after short delay
+      const retry = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ sessionId: getSessionId(), answers, action: 'submit' })
+      });
+      const retryData = await retry.json().catch(() => ({}));
+      removeTyping();
+      if (retry.ok && retryData.success) {
+        addMsg('✅ <strong>Application Submitted!</strong><br><br>Thank you! Your AI receptionist setup has been received.<br><br>Elite AI will prepare a custom AI preview and contact you at <strong>' + (answers.contact_email || 'your email') + '</strong> within the next hour! 🎉', 'bot');
+        setTimeout(closeChat, 8000);
+        return;
+      }
+      throw new Error(retryData.error || 'Server error');
     } catch(e) {
       removeTyping();
       addMsg('⚠️ Submission failed. Please try again or <a href="https://calendly.com/dombrovskakate/strategy-call" target="_blank">book a demo call</a>.', 'bot');
-      // Re-enable
       isSubmitting = false;
       if (btn) { btn.disabled = false; btn.textContent = 'Submit Setup for Review'; }
     }
@@ -370,75 +444,186 @@
     answers[q.field] = val;
     addMsg(val, 'user');
     disableInput();
+    clearOptions();
 
-    // Save to DB in background
-    try {
-      await fetch('/api/chat', {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({ sessionId: getSessionId(), step: q.id, field: q.field, answer: val, answers })
-      });
-    } catch(e) { /* silent fail */ }
+    // Save to DB in background (non-blocking, silent fail)
+    fetch('/api/chat', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ sessionId: getSessionId(), step: q.id, field: q.field, answer: val, answers })
+    }).catch(() => {});
 
     history.push(currentIdx);
     currentIdx++;
-    setTimeout(ask, 300);
+
+    // If editing from summary, jump back to summary after this answer
+    if (editingFromSummary) {
+      editingFromSummary = false;
+      setTimeout(() => {
+        const c = document.getElementById('chat-messages');
+        c.innerHTML = '';
+        const inputArea = document.getElementById('chat-input-area');
+        if (inputArea) inputArea.style.display = '';
+        showSummary();
+      }, 500);
+      return;
+    }
+
+    setTimeout(ask, 350);
+  }
+
+  function submitEdit(val) {
+    const q = getQuestion();
+    if (!q) return;
+
+    answers[q.field] = val;
+    addMsg(val, 'user');
+    disableInput();
+    clearOptions();
+
+    // Save to DB
+    fetch('/api/chat', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ sessionId: getSessionId(), step: q.id, field: q.field, answer: val, answers })
+    }).catch(() => {});
+
+    // If editing from summary, go back to summary
+    if (editingFromSummary) {
+      editingFromSummary = false;
+      currentIdx = QUESTIONS.length;
+      setTimeout(() => {
+        const c = document.getElementById('chat-messages');
+        c.innerHTML = '';
+        const inputArea = document.getElementById('chat-input-area');
+        if (inputArea) inputArea.style.display = '';
+        showSummary();
+      }, 500);
+    }
+  }
+
+  function showContactFormEdit() {
+    const c = document.getElementById('chat-messages');
+    const form = document.createElement('div');
+    form.id = 'contact-form-widget';
+    form.style.cssText = 'display:flex;flex-direction:column;gap:8px;max-width:90%;padding:8px 0;';
+
+    ['Your name','Email','WhatsApp / phone'].forEach((label, i) => {
+      const inp = document.createElement('input');
+      inp.type = i === 1 ? 'email' : 'text';
+      inp.placeholder = label;
+      inp.value = answers[['contact_name','contact_email','contact_phone'][i]] || '';
+      inp.dataset.field = ['contact_name','contact_email','contact_phone'][i];
+      inp.style.cssText = 'padding:10px 14px;border:1px solid #e9d9d4;border-radius:12px;font-size:14px;font-family:Inter,sans-serif;outline:none;';
+      inp.onfocus = () => inp.style.borderColor = '#ec1c8c';
+      inp.onblur = () => inp.style.borderColor = '#e9d9d4';
+      form.appendChild(inp);
+    });
+
+    const btn = document.createElement('button');
+    btn.textContent = 'Save changes →';
+    btn.className = 'chat-option-btn';
+    btn.style.cssText = 'background:#ec1c8c;color:#fff;font-weight:600;border:none;align-self:flex-end;margin-top:4px;padding:10px 20px;';
+    btn.onclick = () => {
+      const vals = {};
+      form.querySelectorAll('input').forEach(f => vals[f.dataset.field] = f.value.trim() || '');
+      answers.contact_name = vals.contact_name;
+      answers.contact_email = vals.contact_email;
+      answers.contact_phone = vals.contact_phone;
+      addMsg('Name: ' + vals.contact_name + '\nEmail: ' + vals.contact_email + '\nPhone: ' + vals.contact_phone, 'user');
+      form.remove();
+
+      if (editingFromSummary) {
+        editingFromSummary = false;
+        currentIdx = QUESTIONS.length;
+        setTimeout(() => {
+          c.innerHTML = '';
+          const inputArea = document.getElementById('chat-input-area');
+          if (inputArea) inputArea.style.display = '';
+          showSummary();
+        }, 500);
+      }
+    };
+    form.appendChild(btn);
+    c.appendChild(form);
+    c.scrollTop = c.scrollHeight;
+    setTimeout(() => form.querySelector('input').focus(), 100);
   }
 
   function goBack() {
     if (history.length === 0) return;
+    clearOptions();
+    editingFromSummary = false;
+
     const prevIdx = history.pop();
+
+    // Remove the answer for the current question
+    const currentQ = QUESTIONS[currentIdx];
+    if (currentQ) delete answers[currentQ.field];
+
     currentIdx = prevIdx;
 
-    // Remove last bot message + options + user answer from DOM
+    // Rebuild the chat display cleanly
+    rebuildChat();
+  }
+
+  function rebuildChat() {
     const c = document.getElementById('chat-messages');
-    // Remove last user message
-    const msgs = c.querySelectorAll('.chat-msg');
-    let lastUser = null, lastBot = null;
-    for (let i = msgs.length - 1; i >= 0; i--) {
-      if (!lastUser && msgs[i].classList.contains('chat-msg-user')) lastUser = msgs[i];
-      if (!lastBot && msgs[i].classList.contains('chat-msg-bot') && !lastUser) lastBot = msgs[i];
+    c.innerHTML = '';
+
+    // Show welcome
+    addMsg("Hi, I'm the Elite AI Setup Assistant. I'll ask a few simple questions and prepare the first version of your AI receptionist setup.", 'bot');
+
+    // Replay all answered questions
+    for (let i = 0; i < currentIdx; i++) {
+      const q = QUESTIONS[i];
+      if (answers[q.field]) {
+        addMsg(q.question, 'bot');
+        if (q.type === 'contact') {
+          addMsg('Name: ' + answers.contact_name + '\nEmail: ' + answers.contact_email + '\nPhone: ' + (answers.contact_phone || 'not specified'), 'user');
+        } else {
+          addMsg(answers[q.field], 'user');
+        }
+      }
     }
-    // Remove everything after lastBot
-    if (lastBot) {
-      let next = lastBot.nextSibling;
-      while (next) { const n = next.nextSibling; if (next.parentNode) next.parentNode.removeChild(next); next = n; }
-      lastBot.remove();
-    }
-    // Also remove the user message
-    if (lastUser && lastUser.parentNode) lastUser.parentNode.removeChild(lastUser);
 
     updateProgress();
     updateBackButton();
-    ask();
+
+    // Ask current question
+    setTimeout(() => ask(), 200);
   }
 
   function enableInput(placeholder) {
     const inp = document.getElementById('chat-input');
     const btn = document.getElementById('chat-send-btn');
-    if (inp) { inp.disabled = false; inp.focus(); if (placeholder) inp.placeholder = placeholder; }
+    if (inp) { inp.disabled = false; inp.placeholder = placeholder || 'Type your answer...'; inp.focus(); }
     if (btn) btn.disabled = false;
   }
+
   function disableInput() {
     const inp = document.getElementById('chat-input');
     const btn = document.getElementById('chat-send-btn');
-    if (inp) inp.disabled = true;
+    if (inp) { inp.disabled = true; inp.value = ''; }
     if (btn) btn.disabled = true;
   }
 
-  function openChat() {
-    if (isOpen) return;
-    isOpen = true;
-    document.getElementById('chat-window').classList.add('open');
-    document.getElementById('chat-fab').classList.add('hidden');
-    document.body.classList.add('widget-open');
-
-    // Reset everything for a fresh session
+  function resetState() {
     currentIdx = 0;
     answers = {};
     history = [];
     sessionId = '';
     isSubmitting = false;
+    optionsWrap = null;
+  }
+
+  function openChat() {
+    const chatWindow = document.getElementById('chat-window');
+    const chatFab = document.getElementById('chat-fab');
+
+    // Always reset for a fresh session when opening
+    resetState();
+    getSessionId();
 
     // Clear all messages
     const c = document.getElementById('chat-messages');
@@ -448,7 +633,13 @@
     const inputArea = document.getElementById('chat-input-area');
     if (inputArea) inputArea.style.display = '';
 
-    getSessionId();
+    // Open the window
+    chatWindow.classList.add('open');
+    chatFab.classList.add('hidden');
+    document.body.classList.add('widget-open');
+    isOpen = true;
+
+    // Welcome message + first question
     addMsg("Hi, I'm the Elite AI Setup Assistant. I'll ask a few simple questions and prepare the first version of your AI receptionist setup. You don't need any technical knowledge — just answer naturally.", 'bot');
     setTimeout(ask, 1200);
   }
@@ -458,6 +649,7 @@
     document.getElementById('chat-window').classList.remove('open');
     document.getElementById('chat-fab').classList.remove('hidden');
     document.body.classList.remove('widget-open');
+    disableInput();
   }
 
   function handleSend() {
@@ -468,35 +660,86 @@
     submit(val);
   }
 
+  function hookCTAs() {
+    // Hook all CTA buttons that should open the widget
+    const ctaSelectors = [
+      '[data-testid="hero-cta-demo"]',
+      '[data-testid="nav-cta-demo"]',
+      '[data-testid="mobile-cta-demo"]',
+      '[data-testid="start-voice-demo"]',
+      '[data-testid="plan-voice-cta"]',
+      '.who-for-cta',
+    ];
+    ctaSelectors.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        // Only hook "Try the AI" / demo type CTAs, not Calendly links
+        const href = el.getAttribute('href');
+        if (href && href.includes('calendly')) return; // leave Calendly links alone
+        if (href === '#demo-card' || el.classList.contains('who-for-cta')) {
+          el.addEventListener('click', (e) => {
+            e.preventDefault();
+            openChat();
+          });
+        }
+      });
+    });
+  }
+
   function init() {
     const wrapper = document.createElement('div');
     wrapper.id = 'chat-widget-wrapper';
-    wrapper.innerHTML = '<button id="chat-fab" class="chat-fab" onclick="window.__chatOpen()">Create My AI Receptionist</button>' +
+    wrapper.innerHTML =
+      '<button id="chat-fab" class="chat-fab">Create My AI Receptionist</button>' +
       '<div id="chat-window" class="chat-window">' +
       '  <div class="chat-header">' +
-      '    <button id="chat-header-close" class="chat-header-close" onclick="window.__chatClose()">×</button>' +
-      '    <button id="chat-header-back" class="chat-header-back" onclick="window.__chatBack()" style="position:absolute;left:16px;top:16px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.1);border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;visibility:hidden;">←</button>' +
-      '    <h3 style="padding-left:40px;padding-right:40px;">Elite AI Setup Assistant</h3>' +
+
+      '    <button id="chat-header-close" class="chat-header-close" aria-label="Close">×</button>' +
+      '    <h3>Elite AI Setup Assistant</h3>' +
       '    <p>Build your AI employee in a few minutes</p>' +
       '    <div class="chat-progress"><div id="chat-progress-bar" class="chat-progress-bar"></div></div>' +
       '    <div id="chat-progress-text" class="chat-progress-text"></div>' +
       '  </div>' +
       '  <div id="chat-messages" class="chat-messages"></div>' +
+      '  <div id="chat-back-bar" class="chat-back-bar" style="display:none"><button id="chat-back-btn" class="chat-back-btn">← Back to previous question</button></div>' +
       '  <div id="chat-input-area" class="chat-input-area">' +
       '    <textarea id="chat-input" class="chat-input" rows="1" placeholder="Type your answer..."></textarea>' +
-      '    <button id="chat-send-btn" class="chat-send-btn" onclick="window.__chatSend()">↑</button>' +
+      '    <button id="chat-send-btn" class="chat-send-btn" aria-label="Send">↑</button>' +
       '  </div>' +
       '</div>';
     document.body.appendChild(wrapper);
 
-    window.__chatOpen = openChat;
-    window.__chatClose = closeChat;
-    window.__chatSend = handleSend;
-    window.__chatBack = goBack;
+    // Hide header back button (moved to bottom)
+    const headerBack = document.getElementById('chat-header-back');
+    if (headerBack) headerBack.style.display = 'none';
+
+    // Event listeners
+    document.getElementById('chat-fab').addEventListener('click', openChat);
+    document.getElementById('chat-header-close').addEventListener('click', closeChat);
+    document.getElementById('chat-send-btn').addEventListener('click', handleSend);
 
     const inp = document.getElementById('chat-input');
-    inp.addEventListener('keydown', function(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); } });
-    inp.addEventListener('input', function() { this.style.height = 'auto'; this.style.height = Math.min(this.scrollHeight, 80) + 'px'; });
+    inp.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
+    });
+    inp.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = Math.min(this.scrollHeight, 80) + 'px';
+    });
+
+    // Back button at bottom
+    document.getElementById('chat-back-btn').addEventListener('click', goBack);
+
+    // Hook CTA buttons after DOM is ready
+    hookCTAs();
+
+    // Also hook any future CTA clicks via event delegation
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('[href="#demo-card"]');
+      if (target) {
+        e.preventDefault();
+        openChat();
+      }
+    });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

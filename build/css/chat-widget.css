@@ -378,27 +378,31 @@
   text-align: center;
 }
 
-/* Back button */
+/* Back button (hidden in header) */
 .chat-header-back {
-  position: absolute;
-  left: 16px;
-  top: 16px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.1);
-  border: none;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background .2s;
-  visibility: hidden;
+  display: none;
 }
-.chat-header-back:hover {
-  background: rgba(255,255,255,.2) !important;
+
+/* Bottom back bar */
+.chat-back-bar {
+  padding: 8px 18px;
+  background: #f5f0ed;
+  border-top: 1px solid rgba(236,28,140,.08);
+  flex-shrink: 0;
+}
+.chat-back-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 0;
+  font-family: 'Inter', sans-serif;
+  transition: opacity .2s;
+}
+.chat-back-btn:hover {
+  opacity: .7;
 }
 
 /* Other input field */
@@ -444,26 +448,61 @@
 /* Mobile responsive */
 @media (max-width: 500px) {
   .chat-window {
-    width: 90vw;
-    max-width: 90vw;
-    height: 80vh;
-    max-height: 80vh;
-    bottom: 10vh;
-    right: 5vw;
-    border-radius: 20px;
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+    height: 65vh;
+    max-height: 520px;
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+    border-radius: 18px;
   }
   .chat-fab {
-    bottom: 16px;
-    right: 16px;
-    padding: 14px 22px;
-    font-size: 14px;
+    bottom: 14px;
+    right: 14px;
+    padding: 12px 20px;
+    font-size: 13px;
+    box-shadow: none;
   }
+  .chat-fab:hover {
+    box-shadow: none;
+  }
+  .chat-header {
+    padding: 16px 18px 12px;
+  }
+  .chat-header h3 {
+    font-size: 15px;
+  }
+  .chat-messages {
+    padding: 14px 12px;
+  }
+  .chat-msg-bubble {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+  .chat-option-btn {
+    font-size: 12px;
+    padding: 7px 12px;
+  }
+  .chat-input-area {
+    padding: 10px 12px;
+  }
+  .chat-input {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  .chat-send-btn {
+    width: 38px;
+    height: 38px;
+  }
+  .chat-back-bar {
+    padding: 6px 12px;
+  }
+  .chat-back-btn {
+    font-size: 12px;
+  }
+  /* Prevent background scroll when widget is open */
   body.widget-open {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    overflow: hidden !important;
   }
 }

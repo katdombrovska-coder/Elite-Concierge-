@@ -11,7 +11,7 @@ async function sendNotificationEmail(answers) {
   if (!RESEND_KEY) return;
 
   const fields = Object.entries(answers)
-    .filter(([k, v]) => v && v !== 'not specified' && !['final_summary','submission_status'].includes(k))
+    .filter(([k, v]) => v && v !== 'not specified' && !['final_summary','submission_status','business_name','industry','contact_name','contact_email','contact_phone'].includes(k))
     .map(([k, v]) => `<strong>${k.replace(/_/g, ' ')}:</strong> ${v}`)
     .join('<br>');
 
@@ -21,13 +21,14 @@ async function sendNotificationEmail(answers) {
       headers: { 'Authorization': `Bearer ${RESEND_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         from: 'Elite AI <onboarding@eliteai.space>',
-        to: ['kat@eliteai.space'],
+        to: ['hello@eliteai.space'],
         subject: '🎉 New AI Receptionist Setup — ' + (answers.business_name || 'Unknown'),
         html: `<h2>New AI Setup Submission</h2>
           <p><strong>Business:</strong> ${answers.business_name||'N/A'}</p>
           <p><strong>Industry:</strong> ${answers.industry||'N/A'}</p>
           <p><strong>Contact:</strong> ${answers.contact_name||'N/A'} | ${answers.contact_email||'N/A'} | ${answers.contact_phone||'N/A'}</p>
-          <hr><p>${fields}</p><hr><p><em>Submitted via eliteai.space</em></p>`
+          ${fields ? '<hr><h3>Additional Details</h3><p>' + fields + '</p>' : ''}
+          <hr><p><em>Submitted via eliteai.space</em></p>`
       })
     });
   } catch (e) { console.error('Resend error:', e.message); }
@@ -70,7 +71,7 @@ export default async function handler(req, res) {
           restrictions, special_business_rules, contact_name, contact_email,
           contact_phone, final_summary, submission_status
         ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24)
-        ON CONFLICT (session_id) DO UPDATE SET submission_status='submitted', updated_at=NOW()`,
+        ON CONFLICT (session_id) DO UPDATE SET submission_status='submitted'`,
         [sessionId,
           a.business_name||'',a.industry||'',a.business_links||'',a.location_service_area||'',
           a.main_services||'',a.pricing_info||'',a.opening_hours||'',a.languages||'',a.main_ai_goal||'',

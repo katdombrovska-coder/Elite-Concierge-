@@ -1,182 +1,241 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service — Elite AI Space</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; line-height: 1.7; color: #333; background: #f9f9f9; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        h1 { color: #1a1a1a; margin-bottom: 8px; font-size: 2.2em; }
-        .updated { color: #666; font-size: 0.9em; margin-bottom: 30px; }
-        h2 { color: #1a1a1a; margin-top: 35px; margin-bottom: 12px; font-size: 1.4em; }
-        p { margin-bottom: 14px; color: #444; }
-        ul { margin-bottom: 14px; margin-left: 24px; }
-        li { margin-bottom: 6px; color: #444; }
-        hr { border: none; border-top: 1px solid #e0e0e0; margin: 30px 0; }
-        a { color: #0066cc; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .back-link { display: inline-block; margin-bottom: 24px; color: #0066cc; font-weight: 500; }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Terms of Service — Elite AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#fff7eb;--ink:#240029;--ink-2:#3a1240;--muted:#6b4f6f;--line:#e9d9d4;--accent:#ec1c8c;--accent-hov:#c8146f;--dark:#240029;--card:#ffffff;--radius:22px;--radius-pill:999px;--shadow-card:0 1px 0 rgba(36,0,41,.04),0 20px 50px -30px rgba(36,0,41,.18)}
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--ink);background:var(--bg);
+      background-image:radial-gradient(1200px 700px at 8% -10%,#ffd6e7,transparent 55%),radial-gradient(1300px 800px at 110% -5%,#fff1b0,transparent 60%),radial-gradient(1000px 700px at 50% 0%,#fcd9bd,transparent 70%);
+      background-attachment:fixed;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;line-height:1.65;overflow-x:hidden
+    }
+    body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.018;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px 180px}
+    body>*{position:relative;z-index:1}
+    ::selection{background:rgba(236,28,140,.25);color:var(--ink)}
+    a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+    a:hover{color:var(--accent-hov)}
+    .wrap{max-width:760px;margin:0 auto;padding:0 28px}
+    @media(max-width:700px){.wrap{padding:0 20px}}
+
+    /* Nav */
+    .nav{position:sticky;top:0;z-index:50;padding:18px 0;background:rgba(255,247,235,.78);backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);border-bottom:1px solid var(--line)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:1200px;margin:0 auto;padding:0 28px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em;font-size:18px;color:var(--ink);text-decoration:none}
+    .nav-back{font-size:14px;color:var(--ink-2);font-weight:500;text-decoration:none}
+    .nav-back:hover{color:var(--accent)}
+
+    /* Content */
+    .page{padding:60px 0 80px}
+    @media(max-width:700px){.page{padding:40px 0 60px}}
+    h1{font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:clamp(34px,5vw,52px);letter-spacing:-.025em;line-height:1.05;margin:0 0 8px;color:var(--ink)}
+    .updated{font-size:14px;color:var(--muted);margin-bottom:48px}
+    h2{font-family:'Bricolage Grotesque',serif;font-weight:700;font-size:22px;color:var(--ink);margin:40px 0 12px;letter-spacing:-.01em}
+    h3{font-family:'Bricolage Grotesque',serif;font-weight:700;font-size:18px;color:var(--ink);margin:28px 0 8px}
+    p{margin:0 0 14px;font-size:15.5px;color:var(--ink-2)}
+    ul{margin:0 0 14px;padding-left:24px;font-size:15.5px;color:var(--ink-2);line-height:1.7}
+    li{margin-bottom:4px}
+    hr{border:none;border-top:1px solid var(--line);margin:40px 0}
+    .contact-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px 28px;margin-top:40px}
+    .contact-box p{margin:0}
+    .contact-box a{color:var(--accent);font-weight:600}
+
+    /* Footer */
+    .site-footer{background:var(--dark);color:#fff;padding:48px 0 32px}
+    .site-footer .wrap{max-width:1200px}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1)}
+    .footer-bottom span{font-size:13px;color:rgba(255,255,255,.4)}
+    .footer-links{display:flex;gap:20px}
+    .footer-links a{font-size:13px;color:rgba(255,255,255,.5);text-decoration:none}
+    .footer-links a:hover{color:var(--accent)}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <a href="/" class="back-link">← Back to Home</a>
 
-        <h1>Terms of Service</h1>
-        <p class="updated">Last updated: June 2026</p>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="brand"><img src="/android-chrome-192x192.png?v=3" alt="Elite AI" width="26" height="26" style="width:26px;height:26px;border-radius:6px"> <span>Elite AI</span></a>
+    <a href="/" class="nav-back">← Back to site</a>
+  </div>
+</nav>
 
-        <p>Please read these Terms of Service carefully before using Elite AI Space services.</p>
+<main class="page">
+  <div class="wrap">
+    <h1>Terms of Service</h1>
+    <p class="updated">Last updated: June 2026</p>
+    <p>Please read these Terms of Service carefully before using Elite AI services.</p>
 
-        <hr>
+    <hr>
 
-        <h2>1. Acceptance of Terms</h2>
-        <p>By accessing the Elite AI Space website or using our services, you agree to these Terms of Service and our Privacy Policy.</p>
-        <p>If you do not agree with these terms, you should not use our services.</p>
-        <p>These Terms constitute a legally binding agreement between you and Elite AI, a company operating in Portugal.</p>
+    <h2>1. Acceptance of Terms</h2>
+    <p>By accessing the Elite AI website or using our services, you agree to these Terms of Service and our Privacy Policy.</p>
+    <p>If you do not agree with these terms, you should not use our services.</p>
+    <p>These Terms constitute a legally binding agreement between you and Elite AI, a company operating in Portugal.</p>
 
-        <hr>
+    <hr>
 
-        <h2>2. Description of Services</h2>
-        <p>Elite AI Space provides AI-powered communication and automation systems for businesses.</p>
-        <p>Services may include:</p>
-        <ul>
-            <li>AI voice agents</li>
-            <li>AI receptionists</li>
-            <li>AI chat systems</li>
-            <li>workflow automations</li>
-            <li>appointment booking systems</li>
-            <li>CRM and calendar integrations</li>
-            <li>SMS and WhatsApp communication</li>
-            <li>inbound and outbound AI communication infrastructure</li>
-        </ul>
-        <p>Service scope may vary depending on the selected plan, onboarding requirements, integrations, and custom agreements.</p>
+    <h2>2. Description of Services</h2>
+    <p>Elite AI provides AI-powered communication and automation systems for businesses.</p>
+    <p>Services may include:</p>
+    <ul>
+      <li>AI voice agents</li>
+      <li>AI receptionists</li>
+      <li>AI chat systems</li>
+      <li>workflow automations</li>
+      <li>appointment booking systems</li>
+      <li>CRM and calendar integrations</li>
+      <li>SMS and WhatsApp communication</li>
+      <li>inbound and outbound AI communication infrastructure</li>
+    </ul>
+    <p>Service scope may vary depending on the selected plan, onboarding requirements, integrations, and custom agreements.</p>
 
-        <hr>
+    <hr>
 
-        <h2>3. Client Responsibilities</h2>
-        <p>Clients are responsible for providing accurate business information, onboarding materials, integration credentials, and operational instructions required for service configuration.</p>
-        <p>Clients are also responsible for ensuring their use of AI systems complies with applicable laws and regulations, including laws related to:</p>
-        <ul>
-            <li>call recording</li>
-            <li>customer notifications</li>
-            <li>consumer communication</li>
-            <li>privacy and data protection</li>
-        </ul>
-        <p>Where legally required, clients must inform users that conversations may be recorded or processed by AI systems.</p>
-        <p>Clients may not use Elite AI Space services for unlawful, deceptive, abusive, or harmful activities.</p>
+    <h2>3. Client Responsibilities</h2>
+    <p>Clients are responsible for providing accurate business information, onboarding materials, integration credentials, and operational instructions required for service configuration.</p>
+    <p>Clients are also responsible for ensuring their use of AI systems complies with applicable laws and regulations, including laws related to:</p>
+    <ul>
+      <li>call recording</li>
+      <li>customer notifications</li>
+      <li>consumer communication</li>
+      <li>privacy and data protection</li>
+    </ul>
+    <p>Where legally required, clients must inform users that conversations may be recorded or processed by AI systems.</p>
+    <p>Clients may not use Elite AI services for unlawful, deceptive, abusive, or harmful activities.</p>
 
-        <hr>
+    <hr>
 
-        <h2>4. Pricing, Billing &amp; Payments</h2>
-        <p>Pricing may include:</p>
-        <ul>
-            <li>one-time setup or implementation fees</li>
-            <li>recurring monthly or annual subscription fees</li>
-            <li>usage-based charges where applicable</li>
-        </ul>
-        <p>Pricing depends on factors including:</p>
-        <ul>
-            <li>communication volume</li>
-            <li>integrations</li>
-            <li>workflow complexity</li>
-            <li>AI usage</li>
-            <li>support requirements</li>
-        </ul>
-        <p>Invoices and subscription billing terms are agreed during onboarding or through the selected plan.</p>
-        <p>Failure to complete payment may result in suspension or limitation of services.</p>
-        <p>Unless otherwise stated, prices do not include applicable VAT or taxes.</p>
+    <h2>4. Pricing, Billing & Payments</h2>
+    <p>Pricing may include:</p>
+    <ul>
+      <li>one-time setup or implementation fees</li>
+      <li>recurring monthly or annual subscription fees</li>
+      <li>usage-based charges where applicable</li>
+    </ul>
+    <p>Pricing depends on factors including:</p>
+    <ul>
+      <li>communication volume</li>
+      <li>integrations</li>
+      <li>workflow complexity</li>
+      <li>AI usage</li>
+      <li>support requirements</li>
+    </ul>
+    <p>Invoices and subscription billing terms are agreed during onboarding or through the selected plan.</p>
+    <p>Failure to complete payment may result in suspension or limitation of services.</p>
+    <p>Unless otherwise stated, prices do not include applicable VAT or taxes.</p>
 
-        <hr>
+    <hr>
 
-        <h2>5. Service Usage &amp; Fair Use</h2>
-        <p>Elite AI Space services may include usage limits, communication quotas, or fair use policies depending on the selected plan.</p>
-        <p>Excessive, abusive, fraudulent, or technically harmful usage may result in:</p>
-        <ul>
-            <li>temporary suspension</li>
-            <li>service limitations</li>
-            <li>additional usage charges</li>
-            <li>account termination</li>
-        </ul>
-        <p>We reserve the right to protect platform stability, infrastructure integrity, and service availability.</p>
+    <h2>5. Service Usage & Fair Use</h2>
+    <p>Elite AI services may include usage limits, communication quotas, or fair use policies depending on the selected plan.</p>
+    <p>Excessive, abusive, fraudulent, or technically harmful usage may result in:</p>
+    <ul>
+      <li>temporary suspension</li>
+      <li>service limitations</li>
+      <li>additional usage charges</li>
+      <li>account termination</li>
+    </ul>
+    <p>We reserve the right to protect platform stability, infrastructure integrity, and service availability.</p>
 
-        <hr>
+    <hr>
 
-        <h2>6. Intellectual Property</h2>
-        <p>All platform materials, branding, website content, software configurations, automations, prompts, workflows, and system architectures developed by Elite AI Space remain the intellectual property of Elite AI unless otherwise agreed in writing.</p>
-        <p>Clients retain ownership of their business data, customer data, scripts, and uploaded materials.</p>
-        <p>Clients grant Elite AI Space a limited right to process and use such materials solely for the purpose of delivering services.</p>
+    <h2>6. Intellectual Property</h2>
+    <p>All platform materials, branding, website content, software configurations, automations, prompts, workflows, and system architectures developed by Elite AI remain the intellectual property of Elite AI unless otherwise agreed in writing.</p>
+    <p>Clients retain ownership of their business data, customer data, scripts, and uploaded materials. Clients grant Elite AI a limited right to process and use such materials solely for the purpose of delivering services.</p>
 
-        <hr>
+    <hr>
 
-        <h2>7. Data Processing &amp; Privacy</h2>
-        <p>Where Elite AI Space processes personal data on behalf of clients, clients act as data controllers and Elite AI Space acts as a data processor where applicable under GDPR.</p>
-        <p>Our services may rely on third-party providers including cloud infrastructure, telephony, AI, CRM, analytics, and payment providers.</p>
-        <p>Additional Data Processing Agreements may be provided where required.</p>
-        <p>For more information, please review our <a href="/privacy.html">Privacy Policy</a>.</p>
+    <h2>7. Data Processing & Privacy</h2>
+    <p>Where Elite AI processes personal data on behalf of clients, clients act as data controllers and Elite AI acts as a data processor where applicable under GDPR.</p>
+    <p>Our services may rely on third-party providers including cloud infrastructure, telephony, AI, CRM, analytics, and payment providers.</p>
+    <p>Additional Data Processing Agreements may be provided where required.</p>
+    <p>For more information, please review our <a href="/privacy.html">Privacy Policy</a>.</p>
 
-        <hr>
+    <hr>
 
-        <h2>8. Service Availability</h2>
-        <p>We aim to maintain reliable service availability and infrastructure performance.</p>
-        <p>However, we do not guarantee uninterrupted or error-free operation at all times.</p>
-        <p>Service interruptions may occur due to:</p>
-        <ul>
-            <li>maintenance</li>
-            <li>third-party outages</li>
-            <li>telecom provider issues</li>
-            <li>infrastructure failures</li>
-            <li>force majeure events</li>
-            <li>external platform limitations</li>
-        </ul>
-        <p>Elite AI Space is not liable for downtime outside our reasonable control.</p>
+    <h2>8. Service Availability</h2>
+    <p>We aim to maintain reliable service availability and infrastructure performance.</p>
+    <p>However, we do not guarantee uninterrupted or error-free operation at all times.</p>
+    <p>Service interruptions may occur due to:</p>
+    <ul>
+      <li>maintenance</li>
+      <li>third-party outages</li>
+      <li>telecom provider issues</li>
+      <li>infrastructure failures</li>
+      <li>force majeure events</li>
+      <li>external platform limitations</li>
+    </ul>
+    <p>Elite AI is not liable for downtime outside our reasonable control.</p>
 
-        <hr>
+    <hr>
 
-        <h2>9. Limitation of Liability</h2>
-        <p>To the maximum extent permitted by law, Elite AI Space is not liable for indirect, incidental, special, or consequential damages including:</p>
-        <ul>
-            <li>lost profits</li>
-            <li>lost revenue</li>
-            <li>business interruption</li>
-            <li>data loss</li>
-            <li>reputational damage</li>
-        </ul>
-        <p>Total liability related to the services will not exceed the total amount paid by the client during the previous 12 months.</p>
+    <h2>9. Limitation of Liability</h2>
+    <p>To the maximum extent permitted by law, Elite AI is not liable for indirect, incidental, special, or consequential damages including:</p>
+    <ul>
+      <li>lost profits</li>
+      <li>lost revenue</li>
+      <li>business interruption</li>
+      <li>data loss</li>
+      <li>reputational damage</li>
+    </ul>
+    <p>Total liability related to the services will not exceed the total amount paid by the client during the previous 12 months.</p>
 
-        <hr>
+    <hr>
 
-        <h2>10. Suspension &amp; Termination</h2>
-        <p>We reserve the right to suspend or terminate services in cases including:</p>
-        <ul>
-            <li>non-payment</li>
-            <li>abuse of the platform</li>
-            <li>unlawful usage</li>
-            <li>violation of these Terms</li>
-            <li>security or infrastructure risks</li>
-        </ul>
-        <p>Clients may cancel services according to their subscription or agreement terms.</p>
-        <p>Upon termination, data may be deleted or retained according to applicable legal obligations and retention policies.</p>
+    <h2>10. Suspension & Termination</h2>
+    <p>We reserve the right to suspend or terminate services in cases including:</p>
+    <ul>
+      <li>non-payment</li>
+      <li>abuse of the platform</li>
+      <li>unlawful usage</li>
+      <li>violation of these Terms</li>
+      <li>security or infrastructure risks</li>
+    </ul>
+    <p>Clients may cancel services according to their subscription or agreement terms.</p>
+    <p>Upon termination, data may be deleted or retained according to applicable legal obligations and retention policies.</p>
 
-        <hr>
+    <hr>
 
-        <h2>11. Governing Law</h2>
-        <p>These Terms are governed by the laws of Portugal.</p>
-        <p>Any disputes arising from these Terms or the use of Elite AI Space services will be subject to the jurisdiction of Portuguese courts unless otherwise required by applicable consumer protection laws.</p>
+    <h2>11. Governing Law</h2>
+    <p>These Terms are governed by the laws of Portugal.</p>
+    <p>Any disputes arising from these Terms or the use of Elite AI services will be subject to the jurisdiction of Portuguese courts unless otherwise required by applicable consumer protection laws.</p>
 
-        <hr>
+    <hr>
 
-        <h2>12. Changes to These Terms</h2>
-        <p>We may update these Terms periodically.</p>
-        <p>Material changes may be communicated through email or platform notifications.</p>
-        <p>Continued use of the services after updates constitutes acceptance of the revised Terms.</p>
+    <h2>12. Changes to These Terms</h2>
+    <p>We may update these Terms periodically.</p>
+    <p>Material changes may be communicated through email or platform notifications.</p>
+    <p>Continued use of the services after updates constitutes acceptance of the revised Terms.</p>
 
-        <hr>
+    <hr>
 
-        <h2>13. Contact</h2>
-        <p>For legal or service-related inquiries contact:</p>
-        <p><a href="mailto:hello@eliteai.space">hello@eliteai.space</a></p>
+    <h2>13. Contact</h2>
+    <div class="contact-box">
+      <p>For legal or service-related inquiries contact:</p>
+      <p><a href="mailto:hello@eliteai.space">hello@eliteai.space</a></p>
     </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span>© 2026 Elite AI. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
