@@ -251,7 +251,8 @@
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 8px;
-  max-width: 90%;
+  max-width: 100%;
+  overflow: visible;
 }
 .chat-option-btn {
   padding: 8px 14px;

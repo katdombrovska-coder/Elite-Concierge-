@@ -555,7 +555,7 @@
     addMsg("Which question would you like to edit? Tap the number:", 'bot');
     const wrap = document.createElement('div');
     wrap.className = 'chat-options';
-    wrap.style.cssText = 'flex-direction:column;overflow-x:hidden;width:100%;box-sizing:border-box;';
+    wrap.style.cssText = 'flex-direction:column;overflow-x:hidden;width:100%;max-width:100%;box-sizing:border-box;';
 
     QUESTIONS.filter(q => q.type !== 'contact').forEach(q => {
       const idx = QUESTIONS.indexOf(q);
