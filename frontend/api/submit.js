@@ -23,8 +23,8 @@ async function sendNotificationEmail(answers) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: 'Elite AI <onboarding@eliteai.space>',
-        to: ['kate@eliteai.space'],
+        from: 'Elite AI <eliteai.space@gmail.com>',
+        to: ['eliteai.space@gmail.com'],
         subject: '🎉 New AI Receptionist Setup — ' + (answers.business_name || 'Unknown'),
         html: `
           <h2>New AI Setup Submission</h2>
