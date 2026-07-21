@@ -1100,6 +1100,10 @@
     .pricing-note a:hover{
       border-bottom-color:var(--accent); opacity:.85;
     }
+    .card-overage{
+      text-align:center; font-size:12px; color:var(--muted);
+      margin:8px 0 0; font-weight:500;
+    }
 
     /* ===================== FOUNDING 30 BADGE ===================== */
     .founding-badge{
@@ -1777,113 +1781,79 @@
     <section class="block" id="pricing">
       <div class="wrap">
         <div class="section-head reveal" style="text-align:center; margin-left:auto; margin-right:auto">
-          <div class="founding-badge">Founding 30 Pricing</div>
           <h2>Choose Your AI Receptionist</h2>
-          <p class="pricing-subtitle">Special pricing for the first 30 founding clients</p>
-          <div class="founding-header-benefits">
-            <span>€0 setup</span>
-            <span>Custom AI Preview</span>
-            <span>77 free testing minutes</span>
-            <span>Activate only if you like the result</span>
-          </div>
+          <p class="pricing-subtitle">AI-powered reception, booking, and automation for your business</p>
         </div>
 
         <div class="price-grid">
-          <!-- CARD 1: STARTER -->
-          <div class="price-card reveal" data-testid="plan-starter">
+          <!-- CARD 1: AI Receptionist -->
+          <div class="price-card reveal" data-testid="plan-ai-receptionist">
             <div class="card-head">
-              <div class="plan">Starter</div>
-              <div class="tag">AI Receptionist</div>
-              <p class="card-subtitle">Never miss another customer call.</p>
+              <div class="plan">AI Receptionist</div>
             </div>
             <div class="founding-price-block">
-              <p class="price-normally-label">Normally</p>
-              <p class="price-regular-line"><s>€99/month</s></p>
-              <p class="price-regular-line"><s>€149 setup</s></p>
-              <p class="price-founding-label">Founding Offer</p>
-              <p class="price-founding">€79<span style="font-size:16px;font-weight:400;color:var(--muted)">/month</span></p>
-              <p class="price-founding-setup">€0 setup included</p>
+              <p class="price-founding">$79<span style="font-size:16px;font-weight:400;color:var(--muted)">/month</span></p>
+              <p class="price-founding-setup">One-time setup: $99</p>
             </div>
-            <p class="card-desc">Perfect for solo specialists and local businesses.</p>
             <ul>
-              <li>AI voice receptionist</li>
-              <li>FAQ answering</li>
-              <li>Missed-call recovery</li>
-              <li>Basic call routing</li>
-              <li>1 language included</li>
-              <li>200+ AI minutes/month</li>
+              <li>AI Voice Receptionist</li>
+              <li>200 AI conversation minutes</li>
+              <li>Business Knowledge Base</li>
+              <li>Call summaries</li>
+              <li>Missed call answering</li>
+              <li>English + 1 language</li>
+              <li>Dashboard</li>
             </ul>
-            <a class="btn btn-primary" href="javascript:void(0)" onclick="window.__chatOpen('Starter');return false;" data-testid="plan-starter-cta">Create My AI Receptionist</a>
+            <p class="card-overage">Additional usage: $0.30/min</p>
+            <a class="btn btn-primary" href="javascript:void(0)" onclick="window.__chatOpen('AI Receptionist');return false;" data-testid="plan-ai-receptionist-cta">Get Started</a>
           </div>
 
-          <!-- CARD 2: MOST POPULAR -->
-          <div class="price-card featured reveal" data-testid="plan-growth">
-            <span class="popular">Most Chosen</span>
+          <!-- CARD 2: MOST POPULAR - AI Receptionist+ -->
+          <div class="price-card featured reveal" data-testid="plan-ai-receptionist-plus">
+            <span class="popular">Most Popular</span>
             <div class="card-head">
-              <div class="plan">Growth</div>
-              <div class="tag">Smart Booking Assistant</div>
-              <p class="card-subtitle">Turn calls into booked appointments.</p>
+              <div class="plan">AI Receptionist+</div>
             </div>
             <div class="founding-price-block">
-              <p class="price-normally-label">Normally</p>
-              <p class="price-regular-line"><s>€249/month</s></p>
-              <p class="price-regular-line"><s>€299 setup</s></p>
-              <p class="price-founding-label">Founding Offer</p>
-              <p class="price-founding">€199<span style="font-size:16px;font-weight:400;color:rgba(255,255,255,.6)">/month</span></p>
-              <p class="price-founding-setup">€0 setup included</p>
+              <p class="price-founding">$149<span style="font-size:16px;font-weight:400;color:rgba(255,255,255,.6)">/month</span></p>
+              <p class="price-founding-setup">One-time setup: $149</p>
             </div>
-            <p class="card-desc">Best for growing businesses and busy teams.</p>
+            <p class="card-desc">Everything in AI Receptionist, plus:</p>
             <ul>
-              <li>AI booking assistant</li>
-              <li>Calendar integration</li>
-              <li>SMS reminders</li>
-              <li>Multilingual support</li>
-              <li>Lead capture</li>
-              <li>Analytics dashboard</li>
-              <li>500+ AI minutes/month</li>
+              <li>700 AI conversation minutes</li>
+              <li>Website AI Chat</li>
+              <li>Calendar Integration</li>
+              <li>Appointment Qualification</li>
+              <li>Analytics</li>
+              <li>Priority Support</li>
             </ul>
-            <a class="btn btn-primary" href="javascript:void(0)" onclick="window.__chatOpen('Growth');return false;" data-testid="plan-growth-cta">Create My AI Receptionist</a>
+            <p class="card-overage" style="color:rgba(255,255,255,.65)">Additional usage: $0.28/min</p>
+            <a class="btn btn-primary" href="javascript:void(0)" onclick="window.__chatOpen('AI Receptionist+');return false;" data-testid="plan-ai-receptionist-plus-cta">Get Started</a>
           </div>
 
-          <!-- CARD 3: PREMIUM -->
-          <div class="price-card reveal" data-testid="plan-premium">
+          <!-- CARD 3: AI Employee -->
+          <div class="price-card reveal" data-testid="plan-ai-employee">
             <div class="card-head">
-              <div class="plan">Premium</div>
-              <div class="tag">Full AI Front Desk</div>
-              <p class="card-subtitle">Your complete AI front desk system.</p>
+              <div class="plan">AI Employee</div>
             </div>
             <div class="founding-price-block">
-              <p class="price-normally-label">Normally</p>
-              <p class="price-regular-line"><s>€499/month</s></p>
-              <p class="price-regular-line"><s>€499 setup</s></p>
-              <p class="price-founding-label">Founding Offer</p>
-              <p class="price-founding">€399<span style="font-size:16px;font-weight:400;color:var(--muted)">/month</span></p>
-              <p class="price-founding-setup">€0 setup included</p>
+              <p class="price-founding">$299<span style="font-size:16px;font-weight:400;color:var(--muted)">/month</span></p>
+              <p class="price-founding-setup">One-time setup: $299</p>
             </div>
-            <p class="card-desc">Built for high-volume and multi-location businesses.</p>
+            <p class="card-desc">Everything above, plus:</p>
             <ul>
-              <li>Voice + chat AI agents</li>
-              <li>Outbound follow-ups</li>
-              <li>CRM automation</li>
-              <li>WhatsApp integration</li>
-              <li>Advanced analytics</li>
-              <li>Reactivation campaigns</li>
-              <li>Custom workflows</li>
-              <li>1000+ AI minutes/month</li>
+              <li>2,000 AI conversation minutes</li>
+              <li>Multiple AI Agents</li>
+              <li>CRM & Workflow Automations</li>
+              <li>API Integrations</li>
+              <li>Follow-up Automation</li>
+              <li>Advanced Analytics</li>
+              <li>Premium Support</li>
             </ul>
-            <a class="btn btn-primary" href="javascript:void(0)" onclick="window.__chatOpen('Premium');return false;" data-testid="plan-premium-cta">Create My AI Receptionist</a>
+            <p class="card-overage">Additional usage: $0.25/min</p>
+            <a class="btn btn-primary" href="javascript:void(0)" onclick="window.__chatOpen('AI Employee');return false;" data-testid="plan-ai-employee-cta">Get Started</a>
           </div>
         </div>
-
-        <p class="pricing-trust"><span class="pricing-trust-line">Custom AI Preview included with every Founding 30 plan.</span> <span class="pricing-trust-line">Try your AI receptionist before activation.</span></p>
-
-        <div class="pricing-urgency-wrap reveal">
-          <div class="pricing-urgency">
-            <strong>Only 10 Founding Clients Remaining</strong>
-            <p class="pricing-urgency-sub">Standard pricing returns after the Founding 30 program closes.</p>
-          </div>
-        </div>
-
 
       </div>
     </section>
