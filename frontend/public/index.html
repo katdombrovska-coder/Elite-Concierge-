@@ -448,33 +448,6 @@
       .founding-spots{font-size:13px}
     }
 
-    /* ===================== Founding sticky bar ===================== */
-    .founding-sticky-bar{
-      position:sticky; top:0; left:0; right:0; z-index:40;
-      height:40px; background:var(--accent);
-      display:flex; align-items:center; justify-content:center;
-      padding:0 44px 0 16px;
-      transition:transform .3s ease;
-      pointer-events:none;
-    }
-    .founding-sticky-bar.is-visible{transform:translateY(0); pointer-events:auto}
-    .founding-sticky-bar.is-dismissed{display:none}
-    .founding-sticky-bar-text{
-      margin:0; font-size:13px; font-weight:500; color:#fff; line-height:1.3;
-    }
-    .founding-sticky-bar-text a{
-      color:#fff; text-decoration:underline; text-underline-offset:3px;
-      font-weight:600;
-    }
-    .founding-sticky-bar-text a:hover{opacity:.9}
-    .founding-sticky-bar-close{
-      position:absolute; right:12px; top:50%; transform:translateY(-50%);
-      width:32px; height:32px; padding:0; border:none; border-radius:50%;
-      background:transparent; color:#fff; font-size:22px; line-height:1;
-      cursor:pointer; opacity:.85;
-    }
-    .founding-sticky-bar-close:hover{opacity:1; background:rgba(255,255,255,.12)}
-
     /* ===================== Founding bottom CTA ===================== */
     .founding-bottom-cta{
       background:var(--dark); color:#fff;
@@ -1455,20 +1428,10 @@
     <link rel="manifest" href="/site.webmanifest?v=3">
     <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png?v=3">
     <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png?v=3">
-  <link rel="stylesheet" href="/css/chat-widget.css?v=202506151205" />
 </head>
 <body>
   <!-- React mounts a hidden root; the real page is this static markup. -->
   <div id="react-root" style="display:none"></div>
-
-  <!-- ===================== FOUNDING STICKY BAR ===================== -->
-  <div class="founding-sticky-bar" id="founding-sticky-bar" role="region" aria-label="Founding offer reminder" style="cursor:pointer" onclick="window.__chatOpen();return false;">
-    <p class="founding-sticky-bar-text">
-      Only 10 Founding Clients Remaining · €0 Setup + 77 Free Testing Minutes
-    </p>
-    <button type="button" class="founding-sticky-bar-close" id="founding-sticky-bar-close" aria-label="Dismiss notification" onclick="event.stopPropagation()">×</button>
-  </div>
-
 
   <!-- ===================== NAVBAR ===================== -->
   <header class="nav" id="nav">
@@ -1483,7 +1446,7 @@
         <a href="#how" data-testid="nav-how-it-works">How it works</a>
       </nav>
       <div class="nav-cta">
-        <a class="btn btn-primary" href="javascript:void(0)" data-testid="nav-cta-button" onclick="window.__chatOpen();return false;">Create My AI Receptionist</a>
+        <a class="btn btn-primary" href="https://t.me/elite_ai_concierge_bot" data-testid="nav-cta-button">Get Started</a>
         <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" data-testid="nav-burger">
           <span></span><span></span><span></span>
         </button>
@@ -1494,7 +1457,7 @@
         <a href="#offer" class="nav-drawer-link">Offer</a>
         <a href="#pricing" class="nav-drawer-link">Pricing</a>
         <a href="#how" class="nav-drawer-link">How it works</a>
-        <a class="btn btn-primary" href="javascript:void(0)" data-testid="nav-cta-mobile" onclick="window.__chatOpen();return false;">Create My AI Receptionist</a>
+        <a class="btn btn-primary" href="https://t.me/elite_ai_concierge_bot" data-testid="nav-cta-mobile">Get Started</a>
       </div>
     </div>
   </header>
@@ -1534,7 +1497,7 @@
               <div class="chip"><span class="chip-label">Languages</span><span class="chip-value">31+</span></div>
             </div>
             <div class="hero-ctas reveal">
-              <a class="btn btn-primary" href="javascript:void(0)" data-testid="hero-primary-cta" onclick="window.__chatOpen();return false;">Create My AI Receptionist</a>
+              <a class="btn btn-primary" href="https://t.me/elite_ai_concierge_bot" data-testid="hero-primary-cta">Get Started</a>
               <a class="btn btn-ghost" href="#voice-demo-card" data-testid="hero-secondary-cta">Hear The AI Receptionist</a>
             </div>
             <div class="hero-benefits reveal">
@@ -1542,7 +1505,6 @@
               <ul class="hero-benefits-list">
                 <li>✓ Custom AI receptionist built for your business</li>
                 <li>✓ Private demo link to test conversations</li>
-                <li>✓ 77 free testing minutes</li>
                 <li>✓ Ready within about 1 hour</li>
               </ul>
             </div>
@@ -1556,13 +1518,6 @@
                   <div class="row-sub">Normally €299–€499</div>
                 </div>
                 <div class="row-value row-value-pink">€0</div>
-              </div>
-              <div class="hero-offer-row">
-                <div class="hero-offer-text">
-                  <div class="row-label">77 Free Testing Minutes</div>
-                  <div class="row-sub">Test before you commit</div>
-                </div>
-                <div class="row-value row-value-small">Included</div>
               </div>
               <div class="hero-offer-row">
                 <div class="hero-offer-text">
@@ -1663,7 +1618,7 @@
               <div class="calc-result-sub">
                 That's roughly <b><span id="calc-monthly" data-testid="calc-monthly">€16,307</span></b> a month walking past your front door.
               </div>
-              <a class="btn btn-primary btn-lg btn-arrow" href="javascript:void(0)" onclick="window.__chatOpen();return false;" data-testid="calc-cta" style="margin-top:22px">Recover Lost Revenue</a>
+              <a class="btn btn-primary btn-lg btn-arrow" href="https://t.me/elite_ai_concierge_bot" data-testid="calc-cta" style="margin-top:22px">Get Started</a>
             </div>
           </div>
         </div>
@@ -1805,7 +1760,7 @@
               <li>Dashboard</li>
             </ul>
             <p class="card-overage">Additional usage: $0.30/min</p>
-            <a class="btn btn-primary" href="javascript:void(0)" onclick="window.__chatOpen('AI Receptionist');return false;" data-testid="plan-ai-receptionist-cta">Get Started</a>
+            <a class="btn btn-primary" href="https://t.me/elite_ai_concierge_bot" data-testid="plan-ai-receptionist-cta">Get Started</a>
           </div>
 
           <!-- CARD 2: MOST POPULAR - AI Receptionist+ -->
@@ -1828,7 +1783,7 @@
               <li>Priority Support</li>
             </ul>
             <p class="card-overage" style="color:rgba(255,255,255,.65)">Additional usage: $0.28/min</p>
-            <a class="btn btn-primary" href="javascript:void(0)" onclick="window.__chatOpen('AI Receptionist+');return false;" data-testid="plan-ai-receptionist-plus-cta">Get Started</a>
+            <a class="btn btn-primary" href="https://t.me/elite_ai_concierge_bot" data-testid="plan-ai-receptionist-plus-cta">Get Started</a>
           </div>
 
           <!-- CARD 3: AI Employee -->
@@ -1851,7 +1806,7 @@
               <li>Premium Support</li>
             </ul>
             <p class="card-overage">Additional usage: $0.25/min</p>
-            <a class="btn btn-primary" href="javascript:void(0)" onclick="window.__chatOpen('AI Employee');return false;" data-testid="plan-ai-employee-cta">Get Started</a>
+            <a class="btn btn-primary" href="https://t.me/elite_ai_concierge_bot" data-testid="plan-ai-employee-cta">Get Started</a>
           </div>
         </div>
 
@@ -1899,7 +1854,7 @@
               <div class="num">04</div>
             </div>
             <div>
-              <h3>Test With 77 Free Minutes</h3>
+              <h3>Test Before You Commit</h3>
               <p>Experience real conversations and evaluate how the AI handles customer interactions before activation.</p>
             </div>
           </div>
@@ -1955,16 +1910,6 @@
             </button>
             <div class="faq-answer">
               <p>Most previews are prepared within about 1 hour after submission.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal">
-            <button class="faq-question" aria-expanded="false">
-              <span>What are the 77 free testing minutes?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>The Founding 30 offer includes 77 free AI conversation minutes so you can evaluate the experience before activation.</p>
             </div>
           </div>
 
@@ -2175,32 +2120,6 @@
     const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-
-    // ---------- Founding sticky bar (after hero, session-dismissible) ----------
-    const foundingStickyBar = document.getElementById("founding-sticky-bar");
-    const foundingStickyClose = document.getElementById("founding-sticky-bar-close");
-    const heroSection = document.querySelector(".hero");
-    const FOUNDING_BAR_KEY = "foundingBarDismissed";
-
-    if (sessionStorage.getItem(FOUNDING_BAR_KEY) === "1") {
-      foundingStickyBar.classList.add("is-dismissed");
-    }
-
-    const updateFoundingStickyBar = () => {
-      if (sessionStorage.getItem(FOUNDING_BAR_KEY) === "1") return;
-      const pastHero = heroSection
-        ? heroSection.getBoundingClientRect().bottom <= 0
-        : window.scrollY > window.innerHeight;
-      foundingStickyBar.classList.toggle("is-visible", pastHero);
-    };
-    updateFoundingStickyBar();
-    window.addEventListener("scroll", updateFoundingStickyBar, { passive: true });
-
-    foundingStickyClose.addEventListener("click", () => {
-      foundingStickyBar.classList.remove("is-visible");
-      foundingStickyBar.classList.add("is-dismissed");
-      sessionStorage.setItem(FOUNDING_BAR_KEY, "1");
-    });
 
     // ---------- Mobile hamburger menu ----------
     const burger = document.getElementById("nav-burger");
@@ -2555,7 +2474,7 @@
       });
     });
   </script>
-  <script src="/js/chat-widget.js?v=202506151205"></script>
+
 
     <!-- ===== Retell AI Voice Demo ===== -->
     <script>
